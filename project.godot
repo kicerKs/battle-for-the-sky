@@ -20,6 +20,11 @@ config/icon="res://icon.svg"
 Global="*res://autoloads/global.gd"
 Game="*res://autoloads/game.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="ignore"
+
 [input]
 
 move_up={

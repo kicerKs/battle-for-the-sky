@@ -8,4 +8,3 @@
 [node name="World" parent="." instance=ExtResource("1_0wfyh")]
 
 [node name="GUI" parent="." instance=ExtResource("2_sugp2")]
-visible = false

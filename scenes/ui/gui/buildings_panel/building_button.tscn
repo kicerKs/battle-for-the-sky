@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbljsvw0xepxi"]
+
+[ext_resource type="Texture2D" uid="uid://psbxuey8832j" path="res://assets/buildings/test_building.png" id="1_rini4"]
+
+[node name="BuildingButton" type="PanelContainer"]
+custom_minimum_size = Vector2(50, 50)
+offset_right = 50.0
+offset_bottom = 50.0
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 2
+texture_normal = ExtResource("1_rini4")
+ignore_texture_size = true
+stretch_mode = 5
