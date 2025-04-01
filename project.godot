@@ -22,7 +22,7 @@ Game="*res://autoloads/game.gd"
 
 [display]
 
-window/stretch/mode="viewport"
+window/size/resizable=false
 window/stretch/aspect="ignore"
 
 [input]

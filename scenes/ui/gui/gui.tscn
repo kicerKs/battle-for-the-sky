@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://dp4h3hdabpmsc"]
+[gd_scene load_steps=7 format=3 uid="uid://dp4h3hdabpmsc"]
 
 [ext_resource type="PackedScene" uid="uid://bbljsvw0xepxi" path="res://scenes/ui/gui/buildings_panel/building_button.tscn" id="1_bikjk"]
+[ext_resource type="Texture2D" uid="uid://c1be1e8s0fvca" path="res://assets/resources/wood.png" id="2_dagy6"]
+[ext_resource type="Texture2D" uid="uid://cq4at1c2y4in8" path="res://assets/resources/food.png" id="3_xjm4d"]
+[ext_resource type="Texture2D" uid="uid://def8x7rbpe8dm" path="res://assets/resources/gold.png" id="4_00xwm"]
+[ext_resource type="Texture2D" uid="uid://cdvxgk3p45brw" path="res://assets/resources/iron.png" id="5_a6c70"]
+[ext_resource type="Texture2D" uid="uid://cu47poko5g5im" path="res://assets/resources/stone.png" id="6_1j7g2"]
 
 [node name="GUI" type="CanvasLayer"]
 
@@ -8,8 +13,8 @@
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -57.0
-offset_right = 57.0
+offset_left = -84.0
+offset_right = 84.0
 offset_bottom = 60.0
 grow_horizontal = 2
 
@@ -31,3 +36,98 @@ layout_mode = 2
 
 [node name="BuildingButton3" parent="PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource("1_bikjk")]
 layout_mode = 2
+
+[node name="PanelContainer2" type="PanelContainer" parent="."]
+offset_right = 100.0
+offset_bottom = 216.0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer2"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer2/MarginContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="WoodBox" type="HBoxContainer" parent="PanelContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="PanelContainer2/MarginContainer/VBoxContainer/WoodBox"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_dagy6")
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer2/MarginContainer/VBoxContainer/WoodBox"]
+visible = false
+custom_minimum_size = Vector2(40, 40)
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_dagy6")
+expand_mode = 1
+
+[node name="woodAmount" type="RichTextLabel" parent="PanelContainer2/MarginContainer/VBoxContainer/WoodBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "1234"
+
+[node name="FoodBox" type="HBoxContainer" parent="PanelContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="PanelContainer2/MarginContainer/VBoxContainer/FoodBox"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("3_xjm4d")
+expand_mode = 1
+
+[node name="foodAmount" type="RichTextLabel" parent="PanelContainer2/MarginContainer/VBoxContainer/FoodBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "1234"
+
+[node name="GoldBox" type="HBoxContainer" parent="PanelContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="PanelContainer2/MarginContainer/VBoxContainer/GoldBox"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("4_00xwm")
+expand_mode = 1
+
+[node name="goldAmount" type="RichTextLabel" parent="PanelContainer2/MarginContainer/VBoxContainer/GoldBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "1234"
+
+[node name="IronBox" type="HBoxContainer" parent="PanelContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect4" type="TextureRect" parent="PanelContainer2/MarginContainer/VBoxContainer/IronBox"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("5_a6c70")
+expand_mode = 1
+
+[node name="ironAmount" type="RichTextLabel" parent="PanelContainer2/MarginContainer/VBoxContainer/IronBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "1234"
+
+[node name="StoneBox" type="HBoxContainer" parent="PanelContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect5" type="TextureRect" parent="PanelContainer2/MarginContainer/VBoxContainer/StoneBox"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("6_1j7g2")
+expand_mode = 1
+
+[node name="stoneAmount" type="RichTextLabel" parent="PanelContainer2/MarginContainer/VBoxContainer/StoneBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "1234"
