@@ -1,13 +1,123 @@
-[gd_scene load_steps=7 format=3 uid="uid://dp4h3hdabpmsc"]
+[gd_scene load_steps=14 format=3 uid="uid://dp4h3hdabpmsc"]
 
 [ext_resource type="PackedScene" uid="uid://bbljsvw0xepxi" path="res://scenes/ui/gui/buildings_panel/building_button.tscn" id="1_bikjk"]
+[ext_resource type="Texture2D" uid="uid://bbtg3trrs7k7u" path="res://scenes/frame1.png" id="1_w62vw"]
 [ext_resource type="Texture2D" uid="uid://c1be1e8s0fvca" path="res://assets/resources/wood.png" id="2_dagy6"]
+[ext_resource type="Texture2D" uid="uid://cl8hl43vnklj8" path="res://assets/building_placeholder.png" id="2_fn1jr"]
+[ext_resource type="Texture2D" uid="uid://dcdmrydrljboo" path="res://assets/resources/heart.png" id="3_4e5kx"]
 [ext_resource type="Texture2D" uid="uid://cq4at1c2y4in8" path="res://assets/resources/food.png" id="3_xjm4d"]
 [ext_resource type="Texture2D" uid="uid://def8x7rbpe8dm" path="res://assets/resources/gold.png" id="4_00xwm"]
 [ext_resource type="Texture2D" uid="uid://cdvxgk3p45brw" path="res://assets/resources/iron.png" id="5_a6c70"]
 [ext_resource type="Texture2D" uid="uid://cu47poko5g5im" path="res://assets/resources/stone.png" id="6_1j7g2"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4cbag"]
+bg_color = Color(0.764706, 0.764706, 0.764706, 0.823529)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_00xwm"]
+bg_color = Color(0.764706, 0.764706, 0.764706, 0.823529)
+
+[sub_resource type="Theme" id="Theme_00xwm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a6c70"]
+bg_color = Color(0.764706, 0.764706, 0.764706, 0.823529)
+
 [node name="GUI" type="CanvasLayer"]
+
+[node name="BuildingPanel" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(800, 0)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -172.0
+offset_right = 250.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_4cbag")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="BuildingPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_w62vw")
+patch_margin_left = 30
+patch_margin_top = 10
+patch_margin_right = 30
+patch_margin_bottom = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="BuildingPanel/NinePatchRect"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 13
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 13
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BuildingPanel/NinePatchRect/MarginContainer"]
+layout_mode = 2
+
+[node name="icon + name" type="VBoxContainer" parent="BuildingPanel/NinePatchRect/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="TextureRect" type="TextureRect" parent="BuildingPanel/NinePatchRect/MarginContainer/HBoxContainer/icon + name"]
+layout_mode = 2
+texture = ExtResource("2_fn1jr")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="BuildingPanel/NinePatchRect/MarginContainer/HBoxContainer/icon + name"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Building name"
+autowrap_mode = 2
+
+[node name="statistics" type="VBoxContainer" parent="BuildingPanel/NinePatchRect/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BuildingPanel/NinePatchRect/MarginContainer/HBoxContainer/statistics"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="BuildingPanel/NinePatchRect/MarginContainer/HBoxContainer/statistics/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+texture = ExtResource("3_4e5kx")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="BuildingPanel/NinePatchRect/MarginContainer/HBoxContainer/statistics/HBoxContainer"]
+custom_minimum_size = Vector2(100, 28)
+layout_mode = 2
+size_flags_vertical = 10
+size_flags_stretch_ratio = 3.58
+text = "300/300
+"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="BuildingPanel/NinePatchRect/MarginContainer/HBoxContainer/statistics"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "XP 30/10000"
+
+[node name="Description" type="RichTextLabel" parent="BuildingPanel/NinePatchRect/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "abla babla bliten blau
+abla babla bliten blau
+abla babla bliten blau
+abla babla bliten blau
+abla babla bliten blau
+abla babla bliten blau
+"
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 anchors_preset = 5
@@ -17,6 +127,7 @@ offset_left = -84.0
 offset_right = 84.0
 offset_bottom = 60.0
 grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_00xwm")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
@@ -40,6 +151,8 @@ layout_mode = 2
 [node name="PanelContainer2" type="PanelContainer" parent="."]
 offset_right = 100.0
 offset_bottom = 216.0
+theme = SubResource("Theme_00xwm")
+theme_override_styles/panel = SubResource("StyleBoxFlat_a6c70")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer2"]
 layout_mode = 2
@@ -52,14 +165,7 @@ size_flags_vertical = 0
 [node name="WoodBox" type="HBoxContainer" parent="PanelContainer2/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="NinePatchRect" type="NinePatchRect" parent="PanelContainer2/MarginContainer/VBoxContainer/WoodBox"]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("2_dagy6")
-
 [node name="TextureRect" type="TextureRect" parent="PanelContainer2/MarginContainer/VBoxContainer/WoodBox"]
-visible = false
 custom_minimum_size = Vector2(40, 40)
 layout_direction = 2
 layout_mode = 2
