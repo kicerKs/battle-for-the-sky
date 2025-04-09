@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmhavp1paqub"]
+
+[ext_resource type="Script" uid="uid://dtw13j3qd58gb" path="res://scenes/ui/main_menu/main_menu.gd" id="1_1ch07"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1ch07")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_right = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="single_but" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+text = "Single"
+
+[node name="multi_but" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+text = "Multi"
+
+[node name="set_but" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+text = "Settings"
+
+[node name="cred_but" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+text = "Credits"
+
+[connection signal="pressed" from="VBoxContainer/single_but" to="." method="_on_single_but_pressed"]
+[connection signal="pressed" from="VBoxContainer/multi_but" to="." method="_on_multi_but_pressed"]
+[connection signal="pressed" from="VBoxContainer/set_but" to="." method="_on_set_but_pressed"]
+[connection signal="pressed" from="VBoxContainer/cred_but" to="." method="_on_cred_but_pressed"]

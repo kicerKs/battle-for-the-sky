@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Battle for the Sky"
-run/main_scene="uid://cp8scluu7v4j0"
+run/main_scene="uid://cmhavp1paqub"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -22,6 +22,7 @@ Game="*res://autoloads/game.gd"
 
 [display]
 
+window/size/mode=3
 window/size/resizable=false
 window/stretch/aspect="ignore"
 
