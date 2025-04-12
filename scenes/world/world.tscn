@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=4 uid="uid://d18ugncataaou"]
+[gd_scene load_steps=7 format=4 uid="uid://d18ugncataaou"]
 
+[ext_resource type="Script" uid="uid://oto0r8kxsw3v" path="res://scenes/world/world.gd" id="1_6m72w"]
 [ext_resource type="PackedScene" uid="uid://bpkxcx0xgyqj6" path="res://scenes/world/islands/presets/island_placeholder.tscn" id="1_dphjl"]
 [ext_resource type="Script" uid="uid://nkf2n8ixla85" path="res://scenes/ui/gui/camera.gd" id="1_sl2e5"]
 [ext_resource type="Script" uid="uid://cyctxh3wcp552" path="res://scenes/world/map/islands_map.gd" id="3_1fp7r"]
@@ -13,6 +14,7 @@ tile_size = Vector2i(500, 400)
 sources/0 = SubResource("TileSetScenesCollectionSource_sl2e5")
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_6m72w")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 324)

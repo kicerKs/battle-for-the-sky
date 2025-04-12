@@ -20,3 +20,8 @@ func update_sprites():
 			$Flag.texture = load("res://assets/buildings/flag_red.png")
 		IslandDevelopmentData.IslandOwner.PLAYER_BLUE:
 			$Flag.texture = load("res://assets/buildings/flag_blue.png")
+
+func add_building(building):
+	building.placement_mode = false
+	building.position -= self.position
+	$BuildingsArea/Buildings.add_child(building)

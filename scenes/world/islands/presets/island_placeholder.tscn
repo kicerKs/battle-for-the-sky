@@ -1,9 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bpkxcx0xgyqj6"]
+[gd_scene load_steps=6 format=3 uid="uid://bpkxcx0xgyqj6"]
 
-[ext_resource type="Texture2D" uid="uid://btwindjxfa24a" path="res://assets/island_placeholder.png" id="1_r58kf"]
 [ext_resource type="Script" uid="uid://c6n8gfkkkqwdp" path="res://scenes/world/islands/island.gd" id="2_51n52"]
 [ext_resource type="Script" uid="uid://bb2u2tgh4mohy" path="res://scenes/world/islands/island_data.gd" id="3_qiftq"]
-[ext_resource type="PackedScene" uid="uid://bntj6xbsx8ydx" path="res://scenes/world/buildings/building.tscn" id="4_8dap8"]
 [ext_resource type="Texture2D" uid="uid://cn5ie6mt44x70" path="res://assets/buildings/test_island.png" id="4_51n52"]
 [ext_resource type="Texture2D" uid="uid://d2g2haiypnote" path="res://assets/buildings/flag_neutral.png" id="5_jdgno"]
 
@@ -12,7 +10,6 @@ script = ExtResource("3_qiftq")
 metadata/_custom_type_script = "uid://bb2u2tgh4mohy"
 
 [node name="IslandPlaceholder" type="Sprite2D"]
-texture = ExtResource("1_r58kf")
 script = ExtResource("2_51n52")
 island_data = SubResource("Resource_0yff4")
 
@@ -24,10 +21,6 @@ metadata/_edit_lock_ = true
 [node name="BuildingsArea" type="Area2D" parent="."]
 
 [node name="Buildings" type="Node2D" parent="BuildingsArea"]
-
-[node name="Building" parent="BuildingsArea/Buildings" instance=ExtResource("4_8dap8")]
-position = Vector2(-117, -43)
-placement_mode = false
 
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="BuildingsArea"]
 polygon = PackedVector2Array(0, -179, -19, -174, -67, -145, -76, -139, -135, -118, -166, -99, -191, -79, -215, -51, -236, -8, -236, 7, -232, 19, -223, 31, -197, 53, -124, 90, -85, 103, -39, 110, -16, 112, 0, 109, 0, 200, -250, 100, -250, -100, 0, -200)

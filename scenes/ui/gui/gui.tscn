@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dp4h3hdabpmsc"]
+[gd_scene load_steps=22 format=3 uid="uid://dp4h3hdabpmsc"]
 
 [ext_resource type="PackedScene" uid="uid://bbljsvw0xepxi" path="res://scenes/ui/gui/buildings_panel/building_button.tscn" id="1_bikjk"]
 [ext_resource type="Script" uid="uid://bqdu7c24sxdfi" path="res://scenes/ui/gui/gui.gd" id="1_w6p3d"]
@@ -10,6 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://def8x7rbpe8dm" path="res://assets/resources/gold.png" id="4_00xwm"]
 [ext_resource type="Texture2D" uid="uid://cdvxgk3p45brw" path="res://assets/resources/iron.png" id="5_a6c70"]
 [ext_resource type="Texture2D" uid="uid://cu47poko5g5im" path="res://assets/resources/stone.png" id="6_1j7g2"]
+[ext_resource type="PackedScene" uid="uid://go0x2bmq58c5" path="res://scenes/world/buildings/instances/test_building_1.tscn" id="6_jepgn"]
+[ext_resource type="PackedScene" uid="uid://dh7ofb1mhtavc" path="res://scenes/world/buildings/instances/test_building_2.tscn" id="7_4mcaj"]
+[ext_resource type="Texture2D" uid="uid://cdj6063ckvcwt" path="res://assets/building_placeholder_2.png" id="8_1a8sg"]
 [ext_resource type="Texture2D" uid="uid://bmsh0s6amr1u8" path="res://assets/resources/unit_test.png" id="10_fn1jr"]
 [ext_resource type="FontFile" uid="uid://csof0iv2sbpot" path="res://assets/resources/m5x7.ttf" id="11_4e5kx"]
 [ext_resource type="Texture2D" uid="uid://bh88bhah6s65v" path="res://assets/resources/Shield.png" id="12_4cbag"]
@@ -130,8 +133,8 @@ abla babla bliten blau
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -84.0
-offset_right = 84.0
+offset_left = -57.0
+offset_right = 57.0
 offset_bottom = 60.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_00xwm")
@@ -148,12 +151,13 @@ layout_mode = 2
 
 [node name="BuildingButton" parent="PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource("1_bikjk")]
 layout_mode = 2
+building = ExtResource("6_jepgn")
+icon = ExtResource("2_fn1jr")
 
 [node name="BuildingButton2" parent="PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource("1_bikjk")]
 layout_mode = 2
-
-[node name="BuildingButton3" parent="PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource("1_bikjk")]
-layout_mode = 2
+building = ExtResource("7_4mcaj")
+icon = ExtResource("8_1a8sg")
 
 [node name="PanelContainer2" type="PanelContainer" parent="."]
 offset_right = 100.0
@@ -382,3 +386,6 @@ abla babla bliten blau
 abla babla bliten blau
 abla babla bliten blau
 "
+
+[connection signal="building_pressed" from="PanelContainer/MarginContainer/HBoxContainer/BuildingButton" to="." method="_on_building_button_building_pressed"]
+[connection signal="building_pressed" from="PanelContainer/MarginContainer/HBoxContainer/BuildingButton2" to="." method="_on_building_button_building_pressed"]
