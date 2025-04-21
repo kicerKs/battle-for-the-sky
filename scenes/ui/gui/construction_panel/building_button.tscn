@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbljsvw0xepxi"]
+
+[ext_resource type="Script" uid="uid://imwxmbg7hu84" path="res://scenes/ui/gui/construction_panel/building_button.gd" id="1_f8djj"]
+[ext_resource type="Texture2D" uid="uid://psbxuey8832j" path="res://assets/buildings/test_building.png" id="1_rini4"]
+
+[node name="BuildingButton" type="PanelContainer"]
+custom_minimum_size = Vector2(50, 50)
+offset_right = 50.0
+offset_bottom = 50.0
+script = ExtResource("1_f8djj")
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Building name"
+icon = ExtResource("1_rini4")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[connection signal="pressed" from="Button" to="." method="_on_texture_button_pressed"]

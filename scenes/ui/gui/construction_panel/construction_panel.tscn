@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://c87lkvypeebod"]
+
+[ext_resource type="PackedScene" uid="uid://bbljsvw0xepxi" path="res://scenes/ui/gui/construction_panel/building_button.tscn" id="1_irbr6"]
+[ext_resource type="Texture2D" uid="uid://bqd64lwx1xt6l" path="res://assets/resources/frame2.png" id="1_k7g8g"]
+[ext_resource type="Script" uid="uid://eq4iddp3mid4" path="res://scenes/ui/gui/construction_panel/construction_panel.gd" id="1_qpvwg"]
+[ext_resource type="PackedScene" uid="uid://go0x2bmq58c5" path="res://scenes/world/buildings/instances/test_building_1.tscn" id="2_k7g8g"]
+[ext_resource type="Texture2D" uid="uid://cl8hl43vnklj8" path="res://assets/building_placeholder.png" id="3_qpvwg"]
+[ext_resource type="PackedScene" uid="uid://dh7ofb1mhtavc" path="res://scenes/world/buildings/instances/test_building_2.tscn" id="4_okhnq"]
+[ext_resource type="Texture2D" uid="uid://cdj6063ckvcwt" path="res://assets/building_placeholder_2.png" id="5_gnnp1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qpvwg"]
+
+[node name="ConstructionPanel" type="PanelContainer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -57.0
+offset_right = 57.0
+offset_bottom = 60.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_qpvwg")
+script = ExtResource("1_qpvwg")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_k7g8g")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="BuildingButton" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_irbr6")]
+layout_mode = 2
+building = ExtResource("2_k7g8g")
+icon = ExtResource("3_qpvwg")
+
+[node name="BuildingButton2" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_irbr6")]
+layout_mode = 2
+building = ExtResource("4_okhnq")
+icon = ExtResource("5_gnnp1")
+
+[connection signal="building_pressed" from="MarginContainer/HBoxContainer/BuildingButton" to="." method="_on_building_button_building_pressed"]
+[connection signal="building_pressed" from="MarginContainer/HBoxContainer/BuildingButton2" to="." method="_on_building_button_building_pressed"]

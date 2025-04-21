@@ -1,0 +1,130 @@
+[gd_scene load_steps=10 format=3 uid="uid://edm5uaol81ig"]
+
+[ext_resource type="Texture2D" uid="uid://bqd64lwx1xt6l" path="res://assets/resources/frame2.png" id="1_ins17"]
+[ext_resource type="Texture2D" uid="uid://c1be1e8s0fvca" path="res://assets/resources/wood.png" id="1_ujojq"]
+[ext_resource type="Texture2D" uid="uid://cq4at1c2y4in8" path="res://assets/resources/food.png" id="2_ins17"]
+[ext_resource type="Texture2D" uid="uid://def8x7rbpe8dm" path="res://assets/resources/gold.png" id="3_7apbk"]
+[ext_resource type="LabelSettings" uid="uid://bmu2llc0hca8r" path="res://scenes/ui/gui/resources_panel/resource_panel_label_settings.tres" id="3_myorl"]
+[ext_resource type="Texture2D" uid="uid://cdvxgk3p45brw" path="res://assets/resources/iron.png" id="4_myorl"]
+[ext_resource type="Texture2D" uid="uid://cu47poko5g5im" path="res://assets/resources/stone.png" id="5_6y14u"]
+
+[sub_resource type="Theme" id="Theme_00xwm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7apbk"]
+
+[node name="ResourcesPanel" type="PanelContainer"]
+offset_right = 174.0
+offset_bottom = 246.0
+theme = SubResource("Theme_00xwm")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_7apbk")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_ins17")
+region_rect = Rect2(1, 1, 64, 64)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="WoodBox" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/WoodBox"]
+custom_minimum_size = Vector2(40, 40)
+layout_direction = 2
+layout_mode = 2
+texture = ExtResource("1_ujojq")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="woodAmount" type="Label" parent="MarginContainer/VBoxContainer/WoodBox"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "144"
+label_settings = ExtResource("3_myorl")
+vertical_alignment = 1
+
+[node name="FoodBox" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/FoodBox"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("2_ins17")
+expand_mode = 1
+
+[node name="foodAmount" type="Label" parent="MarginContainer/VBoxContainer/FoodBox"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "1234"
+label_settings = ExtResource("3_myorl")
+vertical_alignment = 1
+
+[node name="GoldBox" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/VBoxContainer/GoldBox"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("3_7apbk")
+expand_mode = 1
+
+[node name="goldAmount" type="Label" parent="MarginContainer/VBoxContainer/GoldBox"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "1234"
+label_settings = ExtResource("3_myorl")
+vertical_alignment = 1
+
+[node name="IronBox" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/VBoxContainer/IronBox"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("4_myorl")
+expand_mode = 1
+
+[node name="ironAmount" type="Label" parent="MarginContainer/VBoxContainer/IronBox"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "1234"
+label_settings = ExtResource("3_myorl")
+vertical_alignment = 1
+
+[node name="StoneBox" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="TextureRect5" type="TextureRect" parent="MarginContainer/VBoxContainer/StoneBox"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("5_6y14u")
+expand_mode = 1
+
+[node name="stoneAmount" type="Label" parent="MarginContainer/VBoxContainer/StoneBox"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "1234"
+label_settings = ExtResource("3_myorl")
+vertical_alignment = 1

@@ -6,7 +6,8 @@ signal building_pressed(building)
 @export var icon: Texture
 
 func _ready():
-	$TextureButton.texture_normal = icon
+	$Button.icon = icon
 
 func _on_texture_button_pressed() -> void:
 	building_pressed.emit(building)
+	print(building)

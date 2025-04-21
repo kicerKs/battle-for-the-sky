@@ -10,5 +10,5 @@ func _ready() -> void:
 	#build_panel.custom_minimum_size = Vector2(window_width / 2.2,0)
 	# test it out whether its a good idea	
 
-func _on_building_button_building_pressed(building: Variant) -> void:
+func _on_construction_panel_building_selected(building: Variant) -> void:
 	building_selected.emit(building)
