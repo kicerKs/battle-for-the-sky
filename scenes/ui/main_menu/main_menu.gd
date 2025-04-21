@@ -6,7 +6,8 @@ func _on_single_but_pressed() -> void:
 
 
 func _on_multi_but_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://scenes/ui/lobby_menu/lobby_menu.tscn");
+	Lobby.join_game()
 
 
 func _on_set_but_pressed() -> void:
@@ -27,3 +28,7 @@ func _ready():
 		if button is Button:
 			button.custom_minimum_size.x = window_width /2.5
 		
+
+func _on_host_game_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/ui/lobby_menu/lobby_menu.tscn");
+	Lobby.create_game()

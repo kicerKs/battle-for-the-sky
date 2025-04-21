@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbklu3p33ck35"]
+
+[ext_resource type="Script" uid="uid://dm7cw6gqm31w8" path="res://scenes/ui/lobby_menu/lobby_player_entry/player_entry.gd" id="1_lrswl"]
+
+[node name="PlayerEntry" type="PanelContainer"]
+script = ExtResource("1_lrswl")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Color" type="ColorRect" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="Peer" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Host"
+
+[node name="PlayerName" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Player Name"
+
+[node name="Status" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Status: Connected"

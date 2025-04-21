@@ -10,4 +10,3 @@ func _ready():
 
 func _on_texture_button_pressed() -> void:
 	building_pressed.emit(building)
-	print(building)
