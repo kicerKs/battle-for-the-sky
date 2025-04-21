@@ -19,12 +19,12 @@ config/icon="res://icon.svg"
 
 Global="*res://autoloads/global.gd"
 Game="*res://autoloads/game.gd"
+Lobby="*res://autoloads/lobby.gd"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/mode=4
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 

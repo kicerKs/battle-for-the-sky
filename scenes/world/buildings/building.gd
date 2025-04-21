@@ -11,3 +11,11 @@ func can_build():
 	if $Area2D.has_overlapping_areas():
 		return false
 	return true
+
+func get_dict():
+	return {
+		"position" = self.position
+	}
+
+func set_dict(dict):
+	self.position = dict["position"]
