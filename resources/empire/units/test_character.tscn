@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dl6tv7oet2jxt"]
+
+[ext_resource type="Script" uid="uid://cyybcthqo12ku" path="res://resources/empire/units/test_character.gd" id="1_xb5ci"]
+[ext_resource type="Texture2D" uid="uid://b8aitqlv5meyj" path="res://assets/resources/human.png" id="2_xb5ci"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xb5ci"]
+radius = 25.0
+height = 150.0
+
+[node name="TestCharacter" type="CharacterBody2D"]
+script = ExtResource("1_xb5ci")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(5, -5)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_xb5ci")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 3)
+shape = SubResource("CapsuleShape2D_xb5ci")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 5.0
+path_max_distance = 1000.0
+radius = 5.0
