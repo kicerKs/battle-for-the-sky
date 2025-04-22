@@ -16,7 +16,6 @@ func _unhandled_input(event: InputEvent) -> void:
 					if $TileMapLayer.tiles.has(target_island):
 						remove_child(placement_building)
 						add_building.rpc(target_island, building_path, placement_building.get_dict())
-						#$TileMapLayer.tiles[target_island].add_building(placement_building)
 						placement_mode = false
 
 func building_selected(building):
