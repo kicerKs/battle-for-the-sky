@@ -1,22 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://c87lkvypeebod"]
+[gd_scene load_steps=9 format=3 uid="uid://c87lkvypeebod"]
 
 [ext_resource type="PackedScene" uid="uid://bbljsvw0xepxi" path="res://scenes/ui/gui/construction_panel/building_button.tscn" id="1_irbr6"]
 [ext_resource type="Texture2D" uid="uid://bqd64lwx1xt6l" path="res://assets/resources/frame2.png" id="1_k7g8g"]
 [ext_resource type="Script" uid="uid://eq4iddp3mid4" path="res://scenes/ui/gui/construction_panel/construction_panel.gd" id="1_qpvwg"]
 [ext_resource type="PackedScene" uid="uid://go0x2bmq58c5" path="res://scenes/world/buildings/instances/test_building_1.tscn" id="2_k7g8g"]
 [ext_resource type="PackedScene" uid="uid://dh7ofb1mhtavc" path="res://scenes/world/buildings/instances/test_building_2.tscn" id="4_okhnq"]
-[ext_resource type="Texture2D" uid="uid://d1fd6ltnjv8gf" path="res://assets/buildings/house 1.png" id="5_qpvwg"]
-[ext_resource type="Texture2D" uid="uid://beo1uvhw0vg16" path="res://assets/buildings/church 1.png" id="7_okhnq"]
+[ext_resource type="Texture2D" uid="uid://ci2bkvttnpqdi" path="res://assets/buildings/house 1 cropped.png" id="5_qpvwg"]
+[ext_resource type="Texture2D" uid="uid://bepnr8lv0a3sc" path="res://assets/buildings/church 1 cropped.png" id="7_okhnq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qpvwg"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qpvwg"]
-atlas = ExtResource("5_qpvwg")
-region = Rect2(0, 800, 800, 800)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_okhnq"]
-atlas = ExtResource("7_okhnq")
-region = Rect2(0, 800, 800, 800)
 
 [node name="ConstructionPanel" type="PanelContainer"]
 anchors_preset = 5
@@ -51,12 +43,12 @@ theme_override_constants/separation = 10
 [node name="BuildingButton" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_irbr6")]
 layout_mode = 2
 building = ExtResource("2_k7g8g")
-icon = SubResource("AtlasTexture_qpvwg")
+icon = ExtResource("5_qpvwg")
 
 [node name="BuildingButton2" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_irbr6")]
 layout_mode = 2
 building = ExtResource("4_okhnq")
-icon = SubResource("AtlasTexture_okhnq")
+icon = ExtResource("7_okhnq")
 
 [connection signal="building_pressed" from="MarginContainer/HBoxContainer/BuildingButton" to="." method="_on_building_button_building_pressed"]
 [connection signal="building_pressed" from="MarginContainer/HBoxContainer/BuildingButton2" to="." method="_on_building_button_building_pressed"]

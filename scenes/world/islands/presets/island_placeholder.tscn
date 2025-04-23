@@ -1,9 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://bpkxcx0xgyqj6"]
+[gd_scene load_steps=13 format=3 uid="uid://bpkxcx0xgyqj6"]
 
 [ext_resource type="Script" uid="uid://c6n8gfkkkqwdp" path="res://scenes/world/islands/island.gd" id="2_51n52"]
 [ext_resource type="Script" uid="uid://bb2u2tgh4mohy" path="res://scenes/world/islands/island_data.gd" id="3_qiftq"]
 [ext_resource type="Texture2D" uid="uid://cn5ie6mt44x70" path="res://assets/buildings/test_island.png" id="4_51n52"]
+[ext_resource type="Texture2D" uid="uid://cu45k5rss66ku" path="res://assets/buildings/bridge 1.png" id="4_k8b3u"]
 [ext_resource type="Texture2D" uid="uid://d2g2haiypnote" path="res://assets/buildings/flag_neutral.png" id="5_jdgno"]
+[ext_resource type="Texture2D" uid="uid://driblg3mu6ha2" path="res://assets/buildings/bridge 2.png" id="5_u22nc"]
+[ext_resource type="Texture2D" uid="uid://dqa2fdarkmrcv" path="res://assets/buildings/bridge 3.png" id="6_2tewc"]
+[ext_resource type="Texture2D" uid="uid://dutpth223cgod" path="res://assets/buildings/bridge 4.png" id="7_p1ha7"]
+[ext_resource type="Texture2D" uid="uid://b2rh52mf5ogwa" path="res://assets/buildings/bridge 5.png" id="8_r62wl"]
+[ext_resource type="Texture2D" uid="uid://cketal843l4vr" path="res://assets/buildings/bridge 6.png" id="9_binnr"]
 
 [sub_resource type="Resource" id="Resource_0yff4"]
 script = ExtResource("3_qiftq")
@@ -37,23 +43,37 @@ metadata/_edit_lock_ = true
 
 [node name="Bridges" type="Node2D" parent="."]
 
-[node name="Polygon2D" type="Polygon2D" parent="Bridges"]
-polygon = PackedVector2Array(-150, 140, -100, 160, -100, 97, -150, 76)
+[node name="BridgeSW" type="Sprite2D" parent="Bridges"]
+unique_name_in_owner = true
+scale = Vector2(0.166, 0.166)
+texture = ExtResource("4_k8b3u")
 
-[node name="Polygon2D2" type="Polygon2D" parent="Bridges"]
-polygon = PackedVector2Array(150, 140, 100, 160, 100, 85, 150, 66)
+[node name="BridgeW" type="Sprite2D" parent="Bridges"]
+unique_name_in_owner = true
+position = Vector2(-1, 0)
+scale = Vector2(0.166, 0.166)
+texture = ExtResource("5_u22nc")
 
-[node name="Polygon2D3" type="Polygon2D" parent="Bridges"]
-polygon = PackedVector2Array(-150, -140, -100, -160, -100, -130, -150, -110)
+[node name="BridgeNW" type="Sprite2D" parent="Bridges"]
+unique_name_in_owner = true
+scale = Vector2(0.166, 0.166)
+texture = ExtResource("6_2tewc")
 
-[node name="Polygon2D4" type="Polygon2D" parent="Bridges"]
-polygon = PackedVector2Array(150, -140, 100, -160, 100, -133, 150, -120)
+[node name="BridgeSE" type="Sprite2D" parent="Bridges"]
+unique_name_in_owner = true
+scale = Vector2(0.166, 0.166)
+texture = ExtResource("7_p1ha7")
 
-[node name="Polygon2D5" type="Polygon2D" parent="Bridges"]
-polygon = PackedVector2Array(-250, -25, -250, 25, -227, 25, -227, -25)
+[node name="BridgeE" type="Sprite2D" parent="Bridges"]
+unique_name_in_owner = true
+scale = Vector2(0.166, 0.166)
+texture = ExtResource("8_r62wl")
+offset = Vector2(5, 0)
 
-[node name="Polygon2D6" type="Polygon2D" parent="Bridges"]
-polygon = PackedVector2Array(250, -25, 250, 25, 197, 25, 227, -25)
+[node name="BridgeNE" type="Sprite2D" parent="Bridges"]
+unique_name_in_owner = true
+scale = Vector2(0.166, 0.166)
+texture = ExtResource("9_binnr")
 
 [node name="Flag" type="Sprite2D" parent="."]
 position = Vector2(1, -39)

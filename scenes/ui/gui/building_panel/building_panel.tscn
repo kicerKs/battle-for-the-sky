@@ -1,7 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://dghdx8l8c2e6f"]
+[gd_scene load_steps=15 format=3 uid="uid://dghdx8l8c2e6f"]
 
 [ext_resource type="Texture2D" uid="uid://bqd64lwx1xt6l" path="res://assets/resources/frame2.png" id="1_bf4ef"]
-[ext_resource type="Texture2D" uid="uid://d1fd6ltnjv8gf" path="res://assets/buildings/house 1.png" id="2_pfqr3"]
+[ext_resource type="Texture2D" uid="uid://ci2bkvttnpqdi" path="res://assets/buildings/house 1 cropped.png" id="2_pfqr3"]
 [ext_resource type="LabelSettings" uid="uid://dnnraievjxt1t" path="res://scenes/ui/gui/building_panel/building_panel_label_settings.tres" id="3_pfqr3"]
 [ext_resource type="Texture2D" uid="uid://yf8tb4f1enp7" path="res://assets/icons/hp.png" id="4_y84b2"]
 [ext_resource type="Texture2D" uid="uid://dryn31lwjtfhw" path="res://assets/icons/building production.png" id="5_pjxwo"]
@@ -15,10 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://c555ryq6v6pc" path="res://assets/icons/building can upgrade.png" id="13_d5e64"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wgegm"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_haman"]
-atlas = ExtResource("2_pfqr3")
-region = Rect2(0, 800, 800, 800)
 
 [node name="BuildingPanel" type="PanelContainer"]
 custom_minimum_size = Vector2(800, 0)
@@ -69,7 +65,7 @@ theme_override_constants/margin_right = 25
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/icon + name/MarginContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-texture = SubResource("AtlasTexture_haman")
+texture = ExtResource("2_pfqr3")
 expand_mode = 5
 
 [node name="building_name" type="Label" parent="MarginContainer/HBoxContainer/icon + name"]

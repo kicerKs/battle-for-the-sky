@@ -3,6 +3,14 @@ class_name Island
 
 @export var island_data: IslandData
 var ownership: Lobby.Factions
+var connections = {
+	"SW": false,
+	"W": false,
+	"NW": false,
+	"SE": false,
+	"E": false,
+	"NE": false
+}
 
 func _ready():
 	pass
@@ -21,6 +29,11 @@ func set_dict(dict):
 	self.ownership = dict["ownership"]
 	update_sprites()
 
+func set_connections(connections):
+	self.connections = connections
+	# Tutaj @Damian możesz dać usuwanie nav regionów dla pathfindingu
+	update_sprites()
+
 func update_sprites():
 	match ownership:
 		Lobby.Factions.MONSTERS:
@@ -29,6 +42,12 @@ func update_sprites():
 			$Flag.texture = load("res://assets/buildings/flag_red.png")
 		Lobby.Factions.PLAYER_BLUE:
 			$Flag.texture = load("res://assets/buildings/flag_blue.png")
+	%BridgeSW.visible = connections["SW"]
+	%BridgeW.visible = connections["W"]
+	%BridgeNW.visible = connections["NW"]
+	%BridgeSE.visible = connections["SE"]
+	%BridgeE.visible = connections["E"]
+	%BridgeNE.visible = connections["NE"]
 
 func add_building(building):
 	building.placement_mode = false

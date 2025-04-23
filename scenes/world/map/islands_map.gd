@@ -16,6 +16,7 @@ func register_child(node: Node):
 	loaded_islands+=1
 	if loaded_islands == len(get_used_cells()):
 		map_loaded.emit()
+		_set_islands_connections()
 
 func unregister_child(node: Node):
 	tiles.erase(local_to_map(node.position))
@@ -23,3 +24,38 @@ func unregister_child(node: Node):
 @rpc("call_local", "reliable")
 func set_island_dict(key, dict):
 	tiles[key].set_dict(dict)
+
+func _set_islands_connections():
+	var keys = tiles.keys()
+	for key in tiles.keys():
+		var connections = {
+			"SW": false,
+			"W": false,
+			"NW": false,
+			"SE": false,
+			"E": false,
+			"NE": false
+		}
+		if key.y % 2 == 0:
+			if keys.has(key+Vector2i(-1,-1)):
+				connections["NW"] = true
+			if keys.has(key+Vector2i(0, -1)):
+				connections["NE"] = true
+			if keys.has(key+Vector2i(-1, 1)):
+				connections["SW"] = true
+			if keys.has(key+Vector2i(0, 1)):
+				connections["SE"] = true
+		else:
+			if keys.has(key+Vector2i(0, -1)):
+				connections["NW"] = true
+			if keys.has(key+Vector2i(1, -1)):
+				connections["NE"] = true
+			if keys.has(key+Vector2i(0, 1)):
+				connections["SW"] = true
+			if keys.has(key+Vector2i(1, 1)):
+				connections["SE"] = true
+		if keys.has(key+Vector2i(1, 0)):
+			connections["E"] = true
+		if keys.has(key+Vector2i(-1, 0)):
+			connections["W"] = true
+		tiles[key].set_connections(connections)
