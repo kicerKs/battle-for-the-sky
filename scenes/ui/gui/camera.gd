@@ -3,7 +3,7 @@ extends Camera2D
 @export var moving_speed: float = 1000.0
 @export var zoom_speed: float = 0.1
 @export var min_zoom: float = 0.25
-@export var max_zoom: float = 3.5
+@export var max_zoom: float = 2.0
 @export var edge_scroll_speed: float = 1000.0
 @export var edge_scroll_margin: int = 20
 

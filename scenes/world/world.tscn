@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=4 uid="uid://d18ugncataaou"]
+[gd_scene load_steps=10 format=4 uid="uid://d18ugncataaou"]
 
 [ext_resource type="Script" uid="uid://oto0r8kxsw3v" path="res://scenes/world/world.gd" id="1_6m72w"]
 [ext_resource type="PackedScene" uid="uid://bpkxcx0xgyqj6" path="res://scenes/world/islands/presets/island_placeholder.tscn" id="1_dphjl"]
 [ext_resource type="Script" uid="uid://nkf2n8ixla85" path="res://scenes/ui/gui/camera.gd" id="1_sl2e5"]
 [ext_resource type="Script" uid="uid://cyctxh3wcp552" path="res://scenes/world/map/islands_map.gd" id="3_1fp7r"]
 [ext_resource type="Script" uid="uid://d1wpyb6qmgiep" path="res://scenes/world/map_generator.gd" id="5_v5dby"]
+[ext_resource type="PackedScene" uid="uid://dl6tv7oet2jxt" path="res://resources/empire/units/test_character.tscn" id="5_v5dby"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_sl2e5"]
 scenes/1/scene = ExtResource("1_dphjl")
@@ -13,6 +14,8 @@ scenes/1/scene = ExtResource("1_dphjl")
 tile_shape = 3
 tile_size = Vector2i(500, 400)
 sources/0 = SubResource("TileSetScenesCollectionSource_sl2e5")
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_6m72w"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_6m72w")
@@ -23,10 +26,44 @@ limit_smoothed = true
 script = ExtResource("1_sl2e5")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAQAAAAEAAAAAAAAAAQAAAAIAAAAAAAAAAQAAAAMAAAAAAAAAAQAAAAQAAAAAAAAAAQABAAQAAAAAAAAAAQACAAQAAAAAAAAAAQADAAQAAAAAAAAAAQAEAAQAAAAAAAAAAQAEAAMAAAAAAAAAAQADAAMAAAAAAAAAAQAEAAIAAAAAAAAAAQADAAEAAAAAAAAAAQADAAAAAAAAAAAAAQACAAAAAAAAAAAAAQABAAAAAAAAAAAAAQABAAEAAAAAAAAAAQACAAEAAAAAAAAAAQACAAIAAAAAAAAAAQABAAIAAAAAAAAAAQABAAMAAAAAAAAAAQACAAMAAAAAAAAAAQADAAIAAAAAAAAAAQAEAAEAAAAAAAAAAQAEAAAAAAAAAAAAAQAAAAUAAAAAAAAAAQABAAUAAAAAAAAAAQACAAUAAAAAAAAAAQADAAUAAAAAAAAAAQAEAAUAAAAAAAAAAQA=")
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAQAAAAEAAAAAAAAAAQAAAAIAAAAAAAAAAQAAAAQAAAAAAAAAAQABAAQAAAAAAAAAAQACAAQAAAAAAAAAAQADAAQAAAAAAAAAAQAEAAQAAAAAAAAAAQAEAAMAAAAAAAAAAQADAAMAAAAAAAAAAQAEAAIAAAAAAAAAAQADAAEAAAAAAAAAAQADAAAAAAAAAAAAAQACAAAAAAAAAAAAAQABAAAAAAAAAAAAAQABAAEAAAAAAAAAAQACAAEAAAAAAAAAAQACAAIAAAAAAAAAAQABAAIAAAAAAAAAAQACAAMAAAAAAAAAAQADAAIAAAAAAAAAAQAEAAEAAAAAAAAAAQAEAAAAAAAAAAAAAQAAAAUAAAAAAAAAAQABAAUAAAAAAAAAAQACAAUAAAAAAAAAAQADAAUAAAAAAAAAAQAEAAUAAAAAAAAAAQAAAAMAAAAAAAAAAQABAAMAAAAAAAAAAQA=")
 tile_set = SubResource("TileSet_1fp7r")
 script = ExtResource("3_1fp7r")
+
 
 [node name="MapGenerator" type="Node" parent="." node_paths=PackedStringArray("tilemap")]
 script = ExtResource("5_v5dby")
 tilemap = NodePath("../TileMapLayer")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_6m72w")
+
+[node name="TestUnits" type="Node" parent="."]
+
+[node name="TestCharacter" parent="TestUnits" instance=ExtResource("5_v5dby")]
+position = Vector2(1234, 771)
+scale = Vector2(0.08, 0.08)
+
+[node name="TestCharacter2" parent="TestUnits" instance=ExtResource("5_v5dby")]
+position = Vector2(1193, 780)
+scale = Vector2(0.08, 0.08)
+
+[node name="TestCharacter3" parent="TestUnits" instance=ExtResource("5_v5dby")]
+position = Vector2(1285, 767)
+scale = Vector2(0.08, 0.08)
+
+[node name="TestCharacter4" parent="TestUnits" instance=ExtResource("5_v5dby")]
+position = Vector2(1287, 685)
+scale = Vector2(0.08, 0.08)
+
+[node name="TestCharacter5" parent="TestUnits" instance=ExtResource("5_v5dby")]
+position = Vector2(1132, 760)
+scale = Vector2(0.08, 0.08)
+
+[node name="TestCharacter6" parent="TestUnits" instance=ExtResource("5_v5dby")]
+position = Vector2(1174, 697)
+scale = Vector2(0.08, 0.08)
+
+[node name="TestCharacter7" parent="TestUnits" instance=ExtResource("5_v5dby")]
+position = Vector2(1227, 685)
+scale = Vector2(0.08, 0.08)
