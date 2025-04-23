@@ -1,13 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://b00qlr3qdf2xk"]
+[gd_scene load_steps=14 format=3 uid="uid://b00qlr3qdf2xk"]
 
 [ext_resource type="Texture2D" uid="uid://bqd64lwx1xt6l" path="res://assets/resources/frame2.png" id="1_4su13"]
 [ext_resource type="Texture2D" uid="uid://bmsh0s6amr1u8" path="res://assets/resources/unit_test.png" id="2_gpnjr"]
-[ext_resource type="Texture2D" uid="uid://dcdmrydrljboo" path="res://assets/resources/heart.png" id="3_5gqcm"]
 [ext_resource type="LabelSettings" uid="uid://d007hy5a7s8yl" path="res://scenes/ui/gui/unit_panel/unit_panel_label_settings.tres" id="3_gpnjr"]
-[ext_resource type="Texture2D" uid="uid://dcliptl3do6db" path="res://assets/resources/Sword.png" id="4_dtrf8"]
-[ext_resource type="Texture2D" uid="uid://bh88bhah6s65v" path="res://assets/resources/Shield.png" id="5_34sqj"]
-[ext_resource type="Texture2D" uid="uid://ds0x17xl5fvgr" path="res://assets/resources/speed.png" id="6_mtul5"]
-[ext_resource type="Texture2D" uid="uid://bpetq6rubw0vm" path="res://assets/resources/attackspeed.png" id="7_imqgq"]
+[ext_resource type="Texture2D" uid="uid://yf8tb4f1enp7" path="res://assets/icons/hp.png" id="4_34sqj"]
+[ext_resource type="Texture2D" uid="uid://crpoahnb8qllh" path="res://assets/icons/atk.png" id="5_mtul5"]
+[ext_resource type="Texture2D" uid="uid://qlbjeegmsind" path="res://assets/icons/def.png" id="6_imqgq"]
+[ext_resource type="Texture2D" uid="uid://ctvms3p4v0sqj" path="res://assets/icons/spd.png" id="7_5t18f"]
+[ext_resource type="Texture2D" uid="uid://b0k22s5inl5aq" path="res://assets/icons/atk_spd.png" id="8_08odm"]
+[ext_resource type="Texture2D" uid="uid://dg5r5uton3fyv" path="res://assets/icons/meele range.png" id="9_58t75"]
+[ext_resource type="Texture2D" uid="uid://dfohjxxu3e02y" path="res://assets/icons/single target.png" id="10_mhg2c"]
+[ext_resource type="Texture2D" uid="uid://dsmpsl6i272v3" path="res://assets/icons/inflict dmg.png" id="11_cbdtt"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5t18f"]
 
@@ -103,7 +106,9 @@ size_flags_vertical = 0
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_vertical = 0
-texture = ExtResource("3_5gqcm")
+tooltip_text = "Health"
+texture = ExtResource("4_34sqj")
+expand_mode = 5
 
 [node name="hp_label" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/HP Container"]
 layout_mode = 2
@@ -121,7 +126,9 @@ size_flags_vertical = 0
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_vertical = 0
-texture = ExtResource("4_dtrf8")
+tooltip_text = "Attack Power"
+texture = ExtResource("5_mtul5")
+expand_mode = 5
 
 [node name="attack_label" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Attack Container"]
 layout_mode = 2
@@ -138,7 +145,9 @@ size_flags_vertical = 0
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_vertical = 0
-texture = ExtResource("5_34sqj")
+tooltip_text = "Defense"
+texture = ExtResource("6_imqgq")
+expand_mode = 5
 
 [node name="defense_label" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Defense Container"]
 layout_mode = 2
@@ -156,7 +165,9 @@ size_flags_vertical = 0
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_vertical = 0
-texture = ExtResource("6_mtul5")
+tooltip_text = "Speed"
+texture = ExtResource("7_5t18f")
+expand_mode = 5
 
 [node name="spd_label" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Speed Container"]
 layout_mode = 2
@@ -174,7 +185,9 @@ size_flags_vertical = 0
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_vertical = 0
-texture = ExtResource("7_imqgq")
+tooltip_text = "Attack Speed"
+texture = ExtResource("8_08odm")
+expand_mode = 5
 
 [node name="attspd_label" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/AttackSpeed Container"]
 layout_mode = 2
@@ -192,19 +205,25 @@ size_flags_horizontal = 3
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_horizontal = 6
-texture = ExtResource("4_dtrf8")
+tooltip_text = "Melee"
+texture = ExtResource("9_58t75")
+expand_mode = 5
 
 [node name="AOEIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/HBoxContainer"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_horizontal = 6
-texture = ExtResource("4_dtrf8")
+tooltip_text = "Single-target"
+texture = ExtResource("10_mhg2c")
+expand_mode = 5
 
 [node name="DamageHealIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/HBoxContainer"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_horizontal = 6
-texture = ExtResource("4_dtrf8")
+tooltip_text = "Deals damage"
+texture = ExtResource("11_cbdtt")
+expand_mode = 5
 
 [node name="Description" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(600, 60)
