@@ -31,7 +31,12 @@ func set_dict(dict):
 
 func set_connections(connections):
 	self.connections = connections
-	# Tutaj @Damian możesz dać usuwanie nav regionów dla pathfindingu
+	%NavigationBridgeW.enabled = connections["W"]
+	%NavigationBridgeSW.enabled = connections["SW"]
+	%NavigationBridgeSE.enabled = connections["SE"]
+	%NavigationBridgeE.enabled = connections["E"]
+	%NavigationBridgeNE.enabled = connections["NE"]
+	%NavigationBridgeNW.enabled = connections["NW"]
 	update_sprites()
 
 func update_sprites():
@@ -52,4 +57,5 @@ func update_sprites():
 func add_building(building):
 	building.placement_mode = false
 	building.position -= self.position
-	$BuildingsArea/Buildings.add_child(building)
+	%MainNavigationRegion.add_child(building)
+	%MainNavigationRegion.bake_navigation_polygon()

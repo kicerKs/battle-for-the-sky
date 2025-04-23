@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bntj6xbsx8ydx"]
+[gd_scene load_steps=5 format=3 uid="uid://bntj6xbsx8ydx"]
 
 [ext_resource type="Script" uid="uid://dkfjkrmloyb8q" path="res://scenes/world/buildings/building.gd" id="2_0y3a2"]
 [ext_resource type="Texture2D" uid="uid://psbxuey8832j" path="res://assets/buildings/test_building.png" id="2_7vgqh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ydu6b"]
 size = Vector2(50, 50)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_7vgqh"]
+outlines = Array[PackedVector2Array]([PackedVector2Array(-25, -25, 25, -25, 25, 25, -25, 25)])
 
 [node name="Building" type="Node2D"]
 script = ExtResource("2_0y3a2")
@@ -18,3 +21,11 @@ texture = ExtResource("2_7vgqh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_ydu6b")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_7vgqh")
+enabled = false
+
+[node name="Polygon2D" type="Polygon2D" parent="NavigationRegion2D"]
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(-25, -25, 25, -25, 25, 25, -25, 25)

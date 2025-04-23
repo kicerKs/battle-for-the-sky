@@ -3,6 +3,11 @@ class_name Building
 
 var placement_mode: bool = false
 
+func _ready():
+	var xd = $NavigationObstacle2D
+	remove_child(xd)
+	add_child(xd)
+
 func _input(_event: InputEvent):
 	if placement_mode:
 		position = get_global_mouse_position()	
