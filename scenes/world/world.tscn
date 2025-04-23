@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://d18ugncataaou"]
+[gd_scene load_steps=10 format=4 uid="uid://d18ugncataaou"]
 
 [ext_resource type="Script" uid="uid://oto0r8kxsw3v" path="res://scenes/world/world.gd" id="1_6m72w"]
 [ext_resource type="PackedScene" uid="uid://bpkxcx0xgyqj6" path="res://scenes/world/islands/presets/island_placeholder.tscn" id="1_dphjl"]
 [ext_resource type="Script" uid="uid://nkf2n8ixla85" path="res://scenes/ui/gui/camera.gd" id="1_sl2e5"]
 [ext_resource type="Script" uid="uid://cyctxh3wcp552" path="res://scenes/world/map/islands_map.gd" id="3_1fp7r"]
+[ext_resource type="Script" uid="uid://d1wpyb6qmgiep" path="res://scenes/world/map_generator.gd" id="5_v5dby"]
 [ext_resource type="PackedScene" uid="uid://dl6tv7oet2jxt" path="res://resources/empire/units/test_character.tscn" id="5_v5dby"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_sl2e5"]
@@ -28,6 +29,11 @@ script = ExtResource("1_sl2e5")
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAQAAAAEAAAAAAAAAAQAAAAIAAAAAAAAAAQAAAAQAAAAAAAAAAQABAAQAAAAAAAAAAQACAAQAAAAAAAAAAQADAAQAAAAAAAAAAQAEAAQAAAAAAAAAAQAEAAMAAAAAAAAAAQADAAMAAAAAAAAAAQAEAAIAAAAAAAAAAQADAAEAAAAAAAAAAQADAAAAAAAAAAAAAQACAAAAAAAAAAAAAQABAAAAAAAAAAAAAQABAAEAAAAAAAAAAQACAAEAAAAAAAAAAQACAAIAAAAAAAAAAQABAAIAAAAAAAAAAQACAAMAAAAAAAAAAQADAAIAAAAAAAAAAQAEAAEAAAAAAAAAAQAEAAAAAAAAAAAAAQAAAAUAAAAAAAAAAQABAAUAAAAAAAAAAQACAAUAAAAAAAAAAQADAAUAAAAAAAAAAQAEAAUAAAAAAAAAAQAAAAMAAAAAAAAAAQABAAMAAAAAAAAAAQA=")
 tile_set = SubResource("TileSet_1fp7r")
 script = ExtResource("3_1fp7r")
+
+
+[node name="MapGenerator" type="Node" parent="." node_paths=PackedStringArray("tilemap")]
+script = ExtResource("5_v5dby")
+tilemap = NodePath("../TileMapLayer")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_6m72w")
