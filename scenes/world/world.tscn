@@ -32,14 +32,32 @@ script = ExtResource("3_1fp7r")
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_6m72w")
 
-[node name="TestCharacter" parent="." instance=ExtResource("5_v5dby")]
+[node name="TestUnits" type="Node" parent="."]
+
+[node name="TestCharacter" parent="TestUnits" instance=ExtResource("5_v5dby")]
 position = Vector2(1234, 771)
-scale = Vector2(0.35, 0.35)
+scale = Vector2(0.08, 0.08)
 
-[node name="TestCharacter2" parent="." instance=ExtResource("5_v5dby")]
+[node name="TestCharacter2" parent="TestUnits" instance=ExtResource("5_v5dby")]
 position = Vector2(1193, 780)
-scale = Vector2(0.35, 0.35)
+scale = Vector2(0.08, 0.08)
 
-[node name="TestCharacter3" parent="." instance=ExtResource("5_v5dby")]
+[node name="TestCharacter3" parent="TestUnits" instance=ExtResource("5_v5dby")]
 position = Vector2(1285, 767)
-scale = Vector2(0.35, 0.35)
+scale = Vector2(0.08, 0.08)
+
+[node name="TestCharacter4" parent="TestUnits" instance=ExtResource("5_v5dby")]
+position = Vector2(1287, 685)
+scale = Vector2(0.08, 0.08)
+
+[node name="TestCharacter5" parent="TestUnits" instance=ExtResource("5_v5dby")]
+position = Vector2(1132, 760)
+scale = Vector2(0.08, 0.08)
+
+[node name="TestCharacter6" parent="TestUnits" instance=ExtResource("5_v5dby")]
+position = Vector2(1174, 697)
+scale = Vector2(0.08, 0.08)
+
+[node name="TestCharacter7" parent="TestUnits" instance=ExtResource("5_v5dby")]
+position = Vector2(1227, 685)
+scale = Vector2(0.08, 0.08)

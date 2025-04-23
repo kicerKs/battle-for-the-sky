@@ -1,25 +1,139 @@
-[gd_scene load_steps=4 format=3 uid="uid://dl6tv7oet2jxt"]
+[gd_scene load_steps=18 format=3 uid="uid://dl6tv7oet2jxt"]
 
 [ext_resource type="Script" uid="uid://cyybcthqo12ku" path="res://resources/empire/units/test_character.gd" id="1_xb5ci"]
-[ext_resource type="Texture2D" uid="uid://b8aitqlv5meyj" path="res://assets/resources/human.png" id="2_xb5ci"]
+[ext_resource type="Texture2D" uid="uid://bmsh0s6amr1u8" path="res://assets/resources/unit_test.png" id="2_xb5ci"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xb5ci"]
-radius = 25.0
-height = 150.0
+radius = 82.0
+height = 424.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l2a1g"]
+atlas = ExtResource("2_xb5ci")
+region = Rect2(0, 70, 740, 730)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h141o"]
+atlas = ExtResource("2_xb5ci")
+region = Rect2(820, 70, 740, 730)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hyo0f"]
+atlas = ExtResource("2_xb5ci")
+region = Rect2(1640, 70, 740, 730)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12525"]
+atlas = ExtResource("2_xb5ci")
+region = Rect2(2460, 70, 740, 730)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t36qh"]
+atlas = ExtResource("2_xb5ci")
+region = Rect2(0, 870, 740, 730)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qn0t"]
+atlas = ExtResource("2_xb5ci")
+region = Rect2(820, 870, 740, 730)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bud83"]
+atlas = ExtResource("2_xb5ci")
+region = Rect2(1640, 870, 740, 730)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vymlm"]
+atlas = ExtResource("2_xb5ci")
+region = Rect2(2460, 870, 740, 730)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xb5ci"]
+atlas = ExtResource("2_xb5ci")
+region = Rect2(0, 70, 740, 730)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m1kc6"]
+atlas = ExtResource("2_xb5ci")
+region = Rect2(820, 70, 740, 730)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmuja"]
+atlas = ExtResource("2_xb5ci")
+region = Rect2(1640, 70, 740, 730)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hnc1u"]
+atlas = ExtResource("2_xb5ci")
+region = Rect2(2460, 70, 740, 730)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6hfjt"]
+atlas = ExtResource("2_xb5ci")
+region = Rect2(0, 870, 740, 730)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g3gjs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l2a1g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h141o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hyo0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_12525")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t36qh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5qn0t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bud83")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vymlm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xb5ci")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m1kc6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmuja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hnc1u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6hfjt")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
 
 [node name="TestCharacter" type="CharacterBody2D"]
 script = ExtResource("1_xb5ci")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(5, -5)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("2_xb5ci")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 3)
+position = Vector2(15, 75)
 shape = SubResource("CapsuleShape2D_xb5ci")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-path_desired_distance = 5.0
-path_max_distance = 1000.0
-radius = 5.0
+path_desired_distance = 25.0
+target_desired_distance = 35.0
+avoidance_enabled = true
+radius = 15.0
+avoidance_priority = 0.5
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_g3gjs")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.590991
+
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
