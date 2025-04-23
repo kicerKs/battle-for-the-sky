@@ -1,15 +1,16 @@
 [gd_scene load_steps=4 format=3 uid="uid://go0x2bmq58c5"]
 
 [ext_resource type="Script" uid="uid://dkfjkrmloyb8q" path="res://scenes/world/buildings/building.gd" id="1_auffh"]
-[ext_resource type="Texture2D" uid="uid://cl8hl43vnklj8" path="res://assets/building_placeholder.png" id="2_tqlq1"]
+[ext_resource type="Texture2D" uid="uid://d1fd6ltnjv8gf" path="res://assets/buildings/house 1.png" id="2_tqlq1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ydu6b"]
-size = Vector2(50, 50)
+size = Vector2(50, 100)
 
 [node name="Building" type="Node2D"]
 script = ExtResource("1_auffh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.063, 0.063)
 texture = ExtResource("2_tqlq1")
 
 [node name="Area2D" type="Area2D" parent="."]

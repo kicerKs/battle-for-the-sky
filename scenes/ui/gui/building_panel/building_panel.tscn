@@ -1,20 +1,24 @@
-[gd_scene load_steps=15 format=3 uid="uid://dghdx8l8c2e6f"]
+[gd_scene load_steps=16 format=3 uid="uid://dghdx8l8c2e6f"]
 
 [ext_resource type="Texture2D" uid="uid://bqd64lwx1xt6l" path="res://assets/resources/frame2.png" id="1_bf4ef"]
-[ext_resource type="Texture2D" uid="uid://cl8hl43vnklj8" path="res://assets/building_placeholder.png" id="2_pfqr3"]
+[ext_resource type="Texture2D" uid="uid://d1fd6ltnjv8gf" path="res://assets/buildings/house 1.png" id="2_pfqr3"]
 [ext_resource type="LabelSettings" uid="uid://dnnraievjxt1t" path="res://scenes/ui/gui/building_panel/building_panel_label_settings.tres" id="3_pfqr3"]
-[ext_resource type="Texture2D" uid="uid://dcdmrydrljboo" path="res://assets/resources/heart.png" id="3_y84b2"]
-[ext_resource type="Texture2D" uid="uid://dbw5ca27oorrq" path="res://assets/resources/production.png" id="4_pjxwo"]
+[ext_resource type="Texture2D" uid="uid://yf8tb4f1enp7" path="res://assets/icons/hp.png" id="4_y84b2"]
+[ext_resource type="Texture2D" uid="uid://dryn31lwjtfhw" path="res://assets/icons/building production.png" id="5_pjxwo"]
 [ext_resource type="Texture2D" uid="uid://b8aitqlv5meyj" path="res://assets/resources/human.png" id="5_wjw1r"]
 [ext_resource type="Texture2D" uid="uid://c1be1e8s0fvca" path="res://assets/resources/wood.png" id="6_d5e64"]
 [ext_resource type="Texture2D" uid="uid://cq4at1c2y4in8" path="res://assets/resources/food.png" id="7_haman"]
 [ext_resource type="Texture2D" uid="uid://def8x7rbpe8dm" path="res://assets/resources/gold.png" id="8_ij6ju"]
 [ext_resource type="Texture2D" uid="uid://cu47poko5g5im" path="res://assets/resources/stone.png" id="9_k7wtp"]
 [ext_resource type="Texture2D" uid="uid://cdvxgk3p45brw" path="res://assets/resources/iron.png" id="10_agwku"]
-[ext_resource type="Texture2D" uid="uid://bp5o8d0vrd2i4" path="res://assets/resources/time.png" id="11_p3efj"]
-[ext_resource type="Texture2D" uid="uid://dnp4jokjn0ny3" path="res://assets/resources/upgrade.png" id="12_lkh7q"]
+[ext_resource type="Texture2D" uid="uid://c5xrjey8kacnq" path="res://assets/icons/building time.png" id="12_wjw1r"]
+[ext_resource type="Texture2D" uid="uid://c555ryq6v6pc" path="res://assets/icons/building can upgrade.png" id="13_d5e64"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wgegm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_haman"]
+atlas = ExtResource("2_pfqr3")
+region = Rect2(0, 800, 800, 800)
 
 [node name="BuildingPanel" type="PanelContainer"]
 custom_minimum_size = Vector2(800, 0)
@@ -65,7 +69,7 @@ theme_override_constants/margin_right = 25
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/icon + name/MarginContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-texture = ExtResource("2_pfqr3")
+texture = SubResource("AtlasTexture_haman")
 expand_mode = 5
 
 [node name="building_name" type="Label" parent="MarginContainer/HBoxContainer/icon + name"]
@@ -101,7 +105,8 @@ size_flags_vertical = 0
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_vertical = 0
-texture = ExtResource("3_y84b2")
+texture = ExtResource("4_y84b2")
+expand_mode = 5
 
 [node name="hp_label" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/HP Container"]
 layout_mode = 2
@@ -119,11 +124,10 @@ size_flags_vertical = 0
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_vertical = 0
-texture = ExtResource("4_pjxwo")
+texture = ExtResource("5_pjxwo")
 expand_mode = 5
 
 [node name="Unit Container" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container"]
-visible = false
 layout_mode = 2
 theme_override_constants/separation = 10
 
@@ -230,7 +234,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_vertical = 0
-texture = ExtResource("11_p3efj")
+texture = ExtResource("12_wjw1r")
 expand_mode = 5
 
 [node name="CountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container/Time"]
@@ -264,7 +268,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Food" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container"]
-visible = false
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container/Food"]
@@ -283,7 +286,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Gold" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container"]
-visible = false
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container/Gold"]
@@ -302,7 +304,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Stone" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container"]
-visible = false
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container/Stone"]
@@ -321,7 +322,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Iron" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container"]
-visible = false
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container/Iron"]
@@ -346,7 +346,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_vertical = 0
-texture = ExtResource("11_p3efj")
+texture = ExtResource("12_wjw1r")
 expand_mode = 5
 
 [node name="CountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container/Time"]
@@ -366,7 +366,7 @@ theme_override_constants/separation = 10
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_vertical = 0
-texture = ExtResource("12_lkh7q")
+texture = ExtResource("13_d5e64")
 expand_mode = 5
 
 [node name="Wood" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container"]
@@ -388,7 +388,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Food" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container"]
-visible = false
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container/Food"]
@@ -425,7 +424,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Stone" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container"]
-visible = false
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container/Stone"]
