@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dl6tv7oet2jxt"]
+[gd_scene load_steps=19 format=3 uid="uid://dl6tv7oet2jxt"]
 
 [ext_resource type="Script" uid="uid://cyybcthqo12ku" path="res://resources/empire/units/test_character.gd" id="1_xb5ci"]
 [ext_resource type="Texture2D" uid="uid://bmsh0s6amr1u8" path="res://assets/resources/unit_test.png" id="2_xb5ci"]
@@ -116,6 +116,11 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_xb5ci"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
 [node name="TestCharacter" type="CharacterBody2D"]
 script = ExtResource("1_xb5ci")
 
@@ -134,5 +139,8 @@ debug_enabled = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_g3gjs")
 autoplay = "idle"
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_xb5ci")
 
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
