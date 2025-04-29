@@ -1,5 +1,6 @@
-[gd_scene load_steps=21 format=3 uid="uid://dl6tv7oet2jxt"]
+[gd_scene load_steps=22 format=3 uid="uid://dl6tv7oet2jxt"]
 
+[ext_resource type="Script" uid="uid://cyybcthqo12ku" path="res://resources/empire/units/test_character.gd" id="1_hyo0f"]
 [ext_resource type="Texture2D" uid="uid://bmsh0s6amr1u8" path="res://assets/resources/unit_test.png" id="2_xb5ci"]
 [ext_resource type="Script" uid="uid://bgjqylyg8052t" path="res://resources/empire/units/HealthComponent.gd" id="3_h141o"]
 [ext_resource type="Script" uid="uid://bu625gum4lcu2" path="res://resources/empire/units/AttackComponent.gd" id="4_hyo0f"]
@@ -123,8 +124,22 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="TestCharacter" type="CharacterBody2D"]
+[node name="TestCharacter" type="CharacterBody2D" node_paths=PackedStringArray("movement_component")]
+script = ExtResource("1_hyo0f")
+movement_component = NodePath("Components/MovementComponent")
+
+[node name="Components" type="Node" parent="."]
+
+[node name="MovementComponent" type="Node" parent="Components" node_paths=PackedStringArray("nav_agent", "anim")]
 script = ExtResource("6_12525")
+nav_agent = NodePath("../../NavigationAgent2D")
+anim = NodePath("../../AnimatedSprite2D")
+
+[node name="HealthComponent" type="Node" parent="Components"]
+script = ExtResource("3_h141o")
+
+[node name="AttackComponent" type="Node" parent="Components"]
+script = ExtResource("4_hyo0f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(15, 75)
@@ -133,12 +148,7 @@ shape = SubResource("CapsuleShape2D_xb5ci")
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_xb5ci")
 
-[node name="MovementComponent" type="Node2D" parent="." node_paths=PackedStringArray("nav_agent", "anim")]
-script = ExtResource("6_12525")
-nav_agent = NodePath("NavigationAgent2D")
-anim = NodePath("AnimatedSprite2D")
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="MovementComponent"]
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 25.0
 target_desired_distance = 35.0
 avoidance_enabled = true
@@ -146,14 +156,8 @@ neighbor_distance = 100.0
 avoidance_priority = 0.5
 debug_enabled = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MovementComponent"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_g3gjs")
 autoplay = "idle"
 
-[node name="HealthComponent" type="Node2D" parent="."]
-script = ExtResource("3_h141o")
-
-[node name="AttackComponent" type="Node2D" parent="."]
-script = ExtResource("4_hyo0f")
-
-[connection signal="velocity_computed" from="MovementComponent/NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]

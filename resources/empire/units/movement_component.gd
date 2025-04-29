@@ -1,6 +1,5 @@
-extends Node2D
+extends Node
 class_name MovementComponent
-
 
 @export var nav_agent: NavigationAgent2D   
 @export var anim: AnimatedSprite2D
@@ -9,10 +8,14 @@ class_name MovementComponent
 var target_position: Vector2 = Vector2.ZERO
 var intended_velocity: Vector2 = Vector2.ZERO
 
+func _ready():
+	nav_agent.velocity_computed.connect(_on_navigation_agent_velocity_computed)
+
 func _input(event):
 	if event.is_action_pressed("mouse_click"):
-		print_debug(target_position)
-		target_position = get_global_mouse_position()
+		print_debug(nav_agent)
+		print_debug(self)
+		target_position = owner.get_global_mouse_position()
 		nav_agent.target_position = target_position
 
 func update_movement(delta):
@@ -22,8 +25,11 @@ func update_movement(delta):
 		return
 		
 	var next_path_pos: Vector2 = nav_agent.get_next_path_position()
-	var direction: Vector2 = (next_path_pos - global_position).normalized()
+	var direction: Vector2 = (next_path_pos - owner.global_position).normalized()
 	intended_velocity = direction * speed
 	nav_agent.set_velocity(intended_velocity)
 
 	anim.play("walk")
+
+func _on_navigation_agent_velocity_computed(safe_velocity: Vector2) -> void:
+	owner.velocity = safe_velocity

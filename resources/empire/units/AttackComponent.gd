@@ -1,5 +1,5 @@
 class_name AttackComponent
-extends Node2D
+extends Node
 
 @export var attack_speed:=1.0 # attacks per second
 

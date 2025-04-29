@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 class_name HealthComponent
 
 @export var max_hp:= 100
