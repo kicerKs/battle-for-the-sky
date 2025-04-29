@@ -1,16 +1,17 @@
 extends Node2D
 class_name MovementComponent
 
-@export var speed := 150.0
-@export var nav_agent: NavigationAgent2D
-@export var anim: AnimatedSprite2D 
 
+@export var nav_agent: NavigationAgent2D   
+@export var anim: AnimatedSprite2D
+
+@export var speed := 150.0
 var target_position: Vector2 = Vector2.ZERO
 var intended_velocity: Vector2 = Vector2.ZERO
 
 func _input(event):
-	
 	if event.is_action_pressed("mouse_click"):
+		print_debug(target_position)
 		target_position = get_global_mouse_position()
 		nav_agent.target_position = target_position
 
