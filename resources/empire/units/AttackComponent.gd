@@ -1,25 +1,25 @@
 class_name AttackComponent
 extends Node
 
-@export var attack_speed:=1.0 # attacks per second
+var testCharacter: TestCharacter
+var attack_speed:int
+var attack:int
+var range:int
+var singleTarget:bool
 
-@export_group("Damage")
-@export var melee_damage:= 10.0
-@export var ranger_damage:=9.0
-@export var aoe_damage:=4.0
 
-@export_group("Range")
-@export var melee_range:=1.0
-@export var ranger_range:=10.0
-@export var aoe_range:= 5.0
 
-func deal_melee_damage(target: HealthComponent) -> void:
-	target.take_damage(melee_damage)
+func _ready() ->void:
+	await owner.ready
+	testCharacter = owner as TestCharacter
+	attack_speed= testCharacter.stats.actionSpeed
+	attack = testCharacter.stats.action
+	range = testCharacter.stats.range
+	singleTarget = testCharacter.stats.singleTarget
 
-func deal_ranged_damage(target: HealthComponent) -> void:
-	target.take_damage(ranger_damage)
-
-func deal_aoe_damage(targets: Array) -> void:
+func damage(targets:Array)->void: #funkcja będzie wywoływana dla listy przeciwników którzy się znajdują w range unit
 	for target in targets:
 		if target is HealthComponent:
-			target.take_damage(aoe_damage)
+			target.take_damage(attack) #Do zrobienia: wybierz przeciwnika najbliższego  - posortuj po odległości?
+			if (singleTarget):break
+			

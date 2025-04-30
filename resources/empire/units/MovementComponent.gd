@@ -1,20 +1,23 @@
 extends Node
 class_name MovementComponent
 
+var testCharacter: TestCharacter
+
 @export var nav_agent: NavigationAgent2D   
 @export var anim: AnimatedSprite2D
 
-@export var speed := 150.0
+@export var speed :int
 var target_position: Vector2 = Vector2.ZERO
 var intended_velocity: Vector2 = Vector2.ZERO
 
 func _ready():
 	nav_agent.velocity_computed.connect(_on_navigation_agent_velocity_computed)
+	await owner.ready
+	testCharacter = owner as TestCharacter
+	speed = testCharacter.stats.speed
 
 func _input(event):
 	if event.is_action_pressed("mouse_click"):
-		print_debug(nav_agent)
-		print_debug(self)
 		target_position = owner.get_global_mouse_position()
 		nav_agent.target_position = target_position
 
