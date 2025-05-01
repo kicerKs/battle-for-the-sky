@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://c817i4cmyy633"]
+
+[ext_resource type="Script" uid="uid://dkfjkrmloyb8q" path="res://scenes/world/buildings/building.gd" id="1_akj7n"]
+[ext_resource type="Script" uid="uid://d4hsgvbrj0rlt" path="res://resources/empire/buildings/train_component.gd" id="2_gbih2"]
+[ext_resource type="PackedScene" uid="uid://dl6tv7oet2jxt" path="res://resources/empire/units/test_character.tscn" id="3_80531"]
+[ext_resource type="Texture2D" uid="uid://psbxuey8832j" path="res://assets/buildings/test_building.png" id="4_i3chs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_akj7n"]
+size = Vector2(58, 95)
+
+[node name="Building" type="Node2D"]
+script = ExtResource("1_akj7n")
+metadata/_custom_type_script = "uid://dkfjkrmloyb8q"
+
+[node name="TrainComponent" type="Node" parent="."]
+script = ExtResource("2_gbih2")
+unit_scene = ExtResource("3_80531")
+train_time = 2.0
+metadata/_custom_type_script = "uid://d4hsgvbrj0rlt"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("4_i3chs")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 16.5)
+shape = SubResource("RectangleShape2D_akj7n")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+offset_left = -18.0
+offset_top = -73.0
+offset_right = 22.0
+offset_bottom = -33.0
+
+[node name="Button" type="Button" parent="PanelContainer"]
+layout_mode = 2
+text = "OFF"
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = 35.0
+offset_top = 10.0
+offset_right = 39.0
+offset_bottom = 37.0
+scale = Vector2(2, 2)
+max_value = 1.0
+fill_mode = 3
+show_percentage = false
+
+[connection signal="pressed" from="PanelContainer/Button" to="TrainComponent" method="_on_button_pressed"]
