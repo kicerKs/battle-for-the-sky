@@ -2,6 +2,7 @@ extends Node2D
 class_name Building
 
 var placement_mode: bool = false
+@onready var sprite = $Sprite2D
 
 func _ready():
 	var xd = $NavigationObstacle2D

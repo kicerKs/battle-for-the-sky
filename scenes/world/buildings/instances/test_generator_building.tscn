@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkrv674okmjmm"]
+
+[ext_resource type="Script" uid="uid://dkfjkrmloyb8q" path="res://scenes/world/buildings/building.gd" id="1_2utar"]
+[ext_resource type="Script" uid="uid://bgfw61xrlis0x" path="res://scenes/world/buildings/generator_component.gd" id="2_qo0ud"]
+[ext_resource type="Texture2D" uid="uid://cdj6063ckvcwt" path="res://assets/building_placeholder_2.png" id="3_qo0ud"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_atpml"]
+size = Vector2(50, 50)
+
+[node name="Building" type="Node2D"]
+script = ExtResource("1_2utar")
+metadata/_custom_type_script = "uid://dkfjkrmloyb8q"
+
+[node name="GeneratorComponent" type="Node" parent="."]
+script = ExtResource("2_qo0ud")
+metadata/_custom_type_script = "uid://bgfw61xrlis0x"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_qo0ud")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_atpml")
+
+[node name="GenerationProgressBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = 28.0
+offset_top = -2.0
+offset_right = 32.0
+offset_bottom = 25.0
+max_value = 1.0
+fill_mode = 3
+show_percentage = false
