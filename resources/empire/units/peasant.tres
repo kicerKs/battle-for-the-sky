@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="UnitStats" load_steps=2 format=3 uid="uid://wcmy4crj6wo7"]
+
+[ext_resource type="Script" uid="uid://cayakk8o7fjyy" path="res://scenes/world/units/unit_stats.gd" id="1_ss1ou"]
+
+[resource]
+script = ExtResource("1_ss1ou")
+name = "Peasant"
+description = "Weak melee unit."
+level = 1
+training = {
+"food": 5,
+"gold": 0,
+"iron": 0,
+"stone": 0,
+"time": 10,
+"wood": 0
+}
+max_hp = 20
+armor = 10
+speed = 100
+range = 60
+singleTarget = true
+action = 0
+actionSpeed = 0
+metadata/_custom_type_script = "uid://cayakk8o7fjyy"

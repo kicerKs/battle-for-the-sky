@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dkfjkrmloyb8q" path="res://scenes/world/buildings/building.gd" id="1_akj7n"]
 [ext_resource type="Script" uid="uid://d4hsgvbrj0rlt" path="res://scenes/world/buildings/train_component.gd" id="2_gbih2"]
-[ext_resource type="PackedScene" uid="uid://dl6tv7oet2jxt" path="res://resources/empire/units/test_character.tscn" id="3_80531"]
+[ext_resource type="PackedScene" uid="uid://dl6tv7oet2jxt" path="res://scenes/world/units/test_character.tscn" id="3_80531"]
 [ext_resource type="Texture2D" uid="uid://psbxuey8832j" path="res://assets/buildings/test_building.png" id="4_i3chs"]
 [ext_resource type="Texture2D" uid="uid://dnp4jokjn0ny3" path="res://assets/resources/upgrade.png" id="5_gbih2"]
 
