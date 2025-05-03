@@ -8,14 +8,16 @@ enum Factions{
 const FACTION_COLORS = {
 	Factions.MONSTERS: Color.WHITE,
 	Factions.PLAYER_RED: Color.RED,
-	Factions.PLAYER_BLUE: Color.BLUE
+	Factions.PLAYER_BLUE: Color.BLUE,
 }
 
 signal player_connected(peer_id, player_info)
 signal player_disconnected(peer_id)
 signal server_disconnected
 
-const PORT = 3907
+signal connection_failed
+
+const DEFAULT_SERVER_PORT = 3907
 const DEFAULT_SERVER_IP = "127.0.0.1"
 const MAX_CONNECTIONS = 2
 
@@ -36,20 +38,24 @@ func _ready():
 
 func create_game():
 	var peer = ENetMultiplayerPeer.new()
-	var error = peer.create_server(PORT, MAX_CONNECTIONS)
+	var error = peer.create_server(DEFAULT_SERVER_PORT, MAX_CONNECTIONS)
 	if error:
 		return error
 	multiplayer.multiplayer_peer = peer
+	player_info["color"] = Factions.PLAYER_RED
 	
 	players[1] = player_info
 	player_connected.emit(1, player_info)
 	print("game created")
 
-func join_game(address = ""):
+func join_game(address = "", port = -1):
 	if address.is_empty():
 		address = DEFAULT_SERVER_IP
+	if port < 0:
+		port = DEFAULT_SERVER_PORT
 	var peer = ENetMultiplayerPeer.new()
-	var error = peer.create_client(address, PORT)
+	var error = peer.create_client(address, port)
+	print(error)
 	if error:
 		return error
 	multiplayer.multiplayer_peer = peer
@@ -91,11 +97,15 @@ func _on_player_disconnected(id):
 
 func _on_connected_ok():
 	var peer_id = multiplayer.get_unique_id()
+	player_info["color"] = Factions.PLAYER_BLUE
 	players[peer_id] = player_info
 	player_connected.emit(peer_id, player_info)
+	get_tree().change_scene_to_file("res://scenes/ui/lobby_menu/lobby_menu.tscn");
 
 func _on_connected_fail():
 	multiplayer.multiplayer_peer = null
+	print("connection failed")
+	connection_failed.emit()
 
 func _on_server_disconnected():
 	multiplayer.multiplayer_peer = null
