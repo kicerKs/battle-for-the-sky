@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c87lkvypeebod"]
+[gd_scene load_steps=13 format=3 uid="uid://c87lkvypeebod"]
 
 [ext_resource type="PackedScene" uid="uid://bbljsvw0xepxi" path="res://scenes/ui/gui/construction_panel/building_button.tscn" id="1_irbr6"]
 [ext_resource type="Texture2D" uid="uid://bqd64lwx1xt6l" path="res://assets/resources/frame2.png" id="1_k7g8g"]
@@ -7,6 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://dh7ofb1mhtavc" path="res://scenes/world/buildings/instances/test_building_2.tscn" id="4_okhnq"]
 [ext_resource type="Texture2D" uid="uid://ci2bkvttnpqdi" path="res://assets/buildings/house 1 cropped.png" id="5_qpvwg"]
 [ext_resource type="Texture2D" uid="uid://bepnr8lv0a3sc" path="res://assets/buildings/church 1 cropped.png" id="7_okhnq"]
+[ext_resource type="PackedScene" uid="uid://c817i4cmyy633" path="res://scenes/world/buildings/instances/test_unit_building.tscn" id="8_gnnp1"]
+[ext_resource type="Texture2D" uid="uid://psbxuey8832j" path="res://assets/buildings/test_building.png" id="9_6p2um"]
+[ext_resource type="PackedScene" uid="uid://dkrv674okmjmm" path="res://scenes/world/buildings/instances/test_generator_building.tscn" id="10_u3a1o"]
+[ext_resource type="Texture2D" uid="uid://cdj6063ckvcwt" path="res://assets/building_placeholder_2.png" id="11_1m4r6"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qpvwg"]
 
@@ -44,11 +48,27 @@ theme_override_constants/separation = 10
 layout_mode = 2
 building = ExtResource("2_k7g8g")
 icon = ExtResource("5_qpvwg")
+building_name = "House"
 
 [node name="BuildingButton2" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_irbr6")]
 layout_mode = 2
 building = ExtResource("4_okhnq")
 icon = ExtResource("7_okhnq")
+building_name = "Church"
+
+[node name="BuildingButton3" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_irbr6")]
+layout_mode = 2
+building = ExtResource("8_gnnp1")
+icon = ExtResource("9_6p2um")
+building_name = "Units"
+
+[node name="BuildingButton4" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_irbr6")]
+layout_mode = 2
+building = ExtResource("10_u3a1o")
+icon = ExtResource("11_1m4r6")
+building_name = "Wood"
 
 [connection signal="building_pressed" from="MarginContainer/HBoxContainer/BuildingButton" to="." method="_on_building_button_building_pressed"]
 [connection signal="building_pressed" from="MarginContainer/HBoxContainer/BuildingButton2" to="." method="_on_building_button_building_pressed"]
+[connection signal="building_pressed" from="MarginContainer/HBoxContainer/BuildingButton3" to="." method="_on_building_button_building_pressed"]
+[connection signal="building_pressed" from="MarginContainer/HBoxContainer/BuildingButton4" to="." method="_on_building_button_building_pressed"]
