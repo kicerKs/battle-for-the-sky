@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cmhavp1paqub"]
+[gd_scene load_steps=3 format=3 uid="uid://cmhavp1paqub"]
 
 [ext_resource type="Script" uid="uid://dtw13j3qd58gb" path="res://scenes/ui/main_menu/main_menu.gd" id="1_1ch07"]
+[ext_resource type="Texture2D" uid="uid://bqd64lwx1xt6l" path="res://assets/resources/frame2.png" id="2_e8t4i"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -11,7 +12,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1ch07")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="MainContainer" type="CenterContainer" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,10 +21,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainContainer"]
 layout_mode = 2
 
-[node name="single_but" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="SinglePlayerButton" type="Button" parent="MainContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -30,30 +32,117 @@ size_flags_vertical = 3
 theme_override_font_sizes/font_size = 32
 text = "Single"
 
-[node name="HostGameButton" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="HostGameButton" type="Button" parent="MainContainer/VBoxContainer"]
 layout_mode = 2
 text = "Host game"
 
-[node name="multi_but" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="JoinGameButton" type="Button" parent="MainContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 text = "Join game"
 
-[node name="set_but" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="SettingsButton" type="Button" parent="MainContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 text = "Settings"
 
-[node name="cred_but" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="CreditsButton" type="Button" parent="MainContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 text = "Credits"
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/single_but" to="." method="_on_single_but_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/HostGameButton" to="." method="_on_host_game_button_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/multi_but" to="." method="_on_multi_but_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/set_but" to="." method="_on_set_but_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/cred_but" to="." method="_on_cred_but_pressed"]
+[node name="JoiningGameBox" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -182.0
+offset_top = -71.5
+offset_right = 182.0
+offset_bottom = 71.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="JoiningGameBox"]
+layout_mode = 2
+texture = ExtResource("2_e8t4i")
+region_rect = Rect2(1, 1, 65, 65)
+patch_margin_left = 30
+patch_margin_top = 10
+patch_margin_right = 30
+patch_margin_bottom = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="JoiningGameBox"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="JoiningGameBox/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="JoiningGameBox/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Joining game"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="GridContainer" parent="JoiningGameBox/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+columns = 2
+
+[node name="Label" type="Label" parent="JoiningGameBox/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Enter IP Address:"
+
+[node name="IPTextEdit" type="TextEdit" parent="JoiningGameBox/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 35)
+layout_mode = 2
+text = "127.0.0.1"
+placeholder_text = "IP Address"
+
+[node name="Label2" type="Label" parent="JoiningGameBox/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Port:"
+
+[node name="PortTextEdit" type="TextEdit" parent="JoiningGameBox/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 35)
+layout_mode = 2
+text = "3907"
+placeholder_text = "Port"
+
+[node name="ConnectionMessage" type="Label" parent="JoiningGameBox/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="JoiningGameBox/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="JoinButton" type="Button" parent="JoiningGameBox/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Join"
+
+[node name="CancelButton" type="Button" parent="JoiningGameBox/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Cancel"
+
+[connection signal="pressed" from="MainContainer/VBoxContainer/SinglePlayerButton" to="." method="_on_single_but_pressed"]
+[connection signal="pressed" from="MainContainer/VBoxContainer/HostGameButton" to="." method="_on_host_game_button_pressed"]
+[connection signal="pressed" from="MainContainer/VBoxContainer/JoinGameButton" to="." method="_on_multi_but_pressed"]
+[connection signal="pressed" from="MainContainer/VBoxContainer/SettingsButton" to="." method="_on_set_but_pressed"]
+[connection signal="pressed" from="MainContainer/VBoxContainer/CreditsButton" to="." method="_on_cred_but_pressed"]
+[connection signal="pressed" from="JoiningGameBox/MarginContainer/VBoxContainer/HBoxContainer2/JoinButton" to="." method="_on_join_button_pressed"]
+[connection signal="pressed" from="JoiningGameBox/MarginContainer/VBoxContainer/HBoxContainer2/CancelButton" to="." method="_on_cancel_button_pressed"]
