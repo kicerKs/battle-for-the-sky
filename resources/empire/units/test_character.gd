@@ -1,29 +1,26 @@
+class_name TestCharacter
 extends CharacterBody2D
 
-@export var speed: float = 150.0
-var target_position: Vector2 = Vector2.ZERO
-
-@onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
-@onready var anim: AnimatedSprite2D = $AnimatedSprite2D
-
-func _input(event):
-	if event.is_action_pressed("mouse_click"):
-		target_position = get_global_mouse_position()
-		nav_agent.target_position = target_position
+@export var stats: UnitStats
+@export var movement_component: MovementComponent
+@export var health_component: HealthComponent
+@export var attack_component: AttackComponent
+@export var heal_component: HealComponent
+@export var side : Lobby.Factions
 
 func _physics_process(delta):
-	# pathfinding
-	if nav_agent.is_navigation_finished():
-		anim.play("idle")
-		return
-	
-	var next_path_pos: Vector2 = nav_agent.get_next_path_position()
-	var direction: Vector2 = (next_path_pos - global_position).normalized()
-	var intended_velocity = direction * speed
-	nav_agent.set_velocity(intended_velocity)
-	
-	anim.play("walk")
-
-func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
-	velocity = safe_velocity
+	movement_component.update_movement(delta)
 	move_and_slide()
+
+func _on_unit_died():
+	queue_free()
+
+func _ready():
+	if (attack_component==null): #healer
+		stats.action = 7
+		stats.actionSpeed=1
+	if (heal_component==null): #warrior
+		stats.action=10
+		stats.actionSpeed=1
+	if(health_component!=null):
+		health_component.unit_died.connect(_on_unit_died)
