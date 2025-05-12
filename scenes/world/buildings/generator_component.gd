@@ -1,9 +1,10 @@
 extends Node
 class_name GeneratorComponent
 
-@export var generation_resource: Game.Resources
-@export var generation_amount: int = 10
 @export var generation_interval: float = 5.0
+@export var generation_resources: Dictionary[Game.Resources, int] = {
+	Game.Resources.GOLD: 1,
+}
 
 var is_active: bool = false
 
@@ -22,7 +23,8 @@ func _process(delta: float) -> void:
 			_generation_timer = generation_interval
 
 func generate_resources():
-	Game.change_player_resource(generation_resource, generation_amount)
+	for res in generation_resources:
+		Game.change_player_resource(res, generation_resources[res])
 
 func get_generation_progress() -> float:
 	return 1.0 - (_generation_timer / generation_interval)

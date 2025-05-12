@@ -3,12 +3,8 @@ class_name TrainComponent
 
 @export var unit_scene: PackedScene
 
-# These variables are in train units
-@export var train_time: float = 10.0 # in seconds
-@export var resource_cost: Dictionary = {
-	Game.Resources.GOLD: 25,
-	Game.Resources.FOOD: 50
-}
+var new_unit: CharacterBody2D
+var unit_stats: UnitStats
 
 var is_active: bool = false
 
@@ -21,6 +17,10 @@ func activate():
 	is_active = true
 	_spawn_position = get_parent().global_position
 	_training_loop = true
+
+func load_unit():
+	new_unit = unit_scene.instantiate()
+	unit_stats = new_unit.stats
 
 func _process(delta: float) -> void:
 	if is_active:
@@ -36,29 +36,26 @@ func start_training():
 	if _is_training:
 		return false
 	
-	for res in resource_cost:
-		if Game.get_player_resource(res) < resource_cost[res]:
+	load_unit()
+	for res in unit_stats.trainingResources:
+		if Game.get_player_resource(res) < unit_stats.trainingResources[res]:
 			return false
-	
-	for res in resource_cost:
-		Game.change_player_resource(res, -resource_cost[res])
+	for res in unit_stats.trainingResources:
+		Game.change_player_resource(res, -unit_stats.trainingResources[res])
 	
 	_is_training = true
-	_current_train_timer = train_time
+	_current_train_timer = unit_stats.trainingTime
 	return true
 
 func complete_training(): 
 	_is_training = false
-	
-	var new_unit = unit_scene.instantiate()
 	get_tree().current_scene.add_child(new_unit)
 	new_unit.global_position = _spawn_position
-	
 	if _training_loop:
 		start_training()
 
 func get_training_progress() -> float:
-	return 1.0 - (_current_train_timer / train_time)
+	return 1.0 - (_current_train_timer / unit_stats.trainingTime)
 
 func _on_button_pressed() -> void:
 	if _training_loop:

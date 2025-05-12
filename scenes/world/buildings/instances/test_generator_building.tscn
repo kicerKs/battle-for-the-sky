@@ -14,6 +14,10 @@ metadata/_custom_type_script = "uid://dkfjkrmloyb8q"
 
 [node name="GeneratorComponent" type="Node" parent="."]
 script = ExtResource("2_qo0ud")
+generation_resources = Dictionary[int, int]({
+0: 30,
+4: 15
+})
 metadata/_custom_type_script = "uid://bgfw61xrlis0x"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

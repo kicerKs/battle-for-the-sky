@@ -16,7 +16,6 @@ metadata/_custom_type_script = "uid://dkfjkrmloyb8q"
 [node name="TrainComponent" type="Node" parent="."]
 script = ExtResource("2_gbih2")
 unit_scene = ExtResource("3_80531")
-train_time = 2.0
 metadata/_custom_type_script = "uid://d4hsgvbrj0rlt"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
