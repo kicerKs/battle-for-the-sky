@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="UnitStats" load_steps=2 format=3 uid="uid://cc6inv7aq6lbl"]
+
+[ext_resource type="Script" uid="uid://cayakk8o7fjyy" path="res://scenes/world/units/unit_stats.gd" id="1_gn4kk"]
+
+[resource]
+script = ExtResource("1_gn4kk")
+name = "Knight"
+description = "Strong melee unit"
+level = 2
+trainingTime = 5
+trainingResources = Dictionary[int, int]({
+0: 5,
+1: 5,
+2: 5,
+3: 5,
+4: 5
+})
+max_hp = 100
+armor = 50
+speed = 100
+range = 60
+singleTarget = true
+action = 0
+actionSpeed = 0
+metadata/_custom_type_script = "uid://cayakk8o7fjyy"

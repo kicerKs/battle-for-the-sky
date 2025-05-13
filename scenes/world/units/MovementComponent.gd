@@ -1,17 +1,16 @@
 extends Node
 class_name MovementComponent
 
-var testCharacter: TestCharacter
-
+@export var testCharacter: TestCharacter
 @export var nav_agent: NavigationAgent2D   
 @export var anim: AnimatedSprite2D
+@export var speed: int = 100
 
-@export var speed :int
 var target_position: Vector2 = Vector2.ZERO
 var intended_velocity: Vector2 = Vector2.ZERO
 
 func _ready():
-	nav_agent.velocity_computed.connect(_on_navigation_agent_velocity_computed)
+	nav_agent.velocity_computed.connect(_on_navigation_agent_2d_velocity_computed)
 	await owner.ready
 	testCharacter = owner as TestCharacter
 	speed = testCharacter.stats.speed
@@ -34,5 +33,5 @@ func update_movement(delta):
 
 	anim.play("walk")
 
-func _on_navigation_agent_velocity_computed(safe_velocity: Vector2) -> void:
+func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
 	owner.velocity = safe_velocity

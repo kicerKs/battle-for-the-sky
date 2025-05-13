@@ -132,11 +132,13 @@ stats = ExtResource("2_7mtp3")
 movement_component = NodePath("Components/MovementComponent")
 health_component = NodePath("Components/HealthComponent")
 attack_component = NodePath("Components/AttackComponent")
+side = 2
 
 [node name="Components" type="Node" parent="."]
 
-[node name="MovementComponent" type="Node" parent="Components" node_paths=PackedStringArray("nav_agent", "anim")]
+[node name="MovementComponent" type="Node" parent="Components" node_paths=PackedStringArray("testCharacter", "nav_agent", "anim")]
 script = ExtResource("6_12525")
+testCharacter = NodePath("../..")
 nav_agent = NodePath("../../NavigationAgent2D")
 anim = NodePath("../../AnimatedSprite2D")
 
@@ -165,4 +167,4 @@ debug_enabled = true
 sprite_frames = SubResource("SpriteFrames_g3gjs")
 autoplay = "idle"
 
-[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
+[connection signal="velocity_computed" from="NavigationAgent2D" to="Components/MovementComponent" method="_on_navigation_agent_2d_velocity_computed"]
