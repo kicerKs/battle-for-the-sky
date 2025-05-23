@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://chixtoay5fbmj" path="res://scenes/world/units/MovementComponent.gd" id="3_j16s4"]
 [ext_resource type="Script" uid="uid://bgjqylyg8052t" path="res://scenes/world/units/HealthComponent.gd" id="4_aerbk"]
 [ext_resource type="Script" uid="uid://bu625gum4lcu2" path="res://scenes/world/units/AttackComponent.gd" id="5_6lqp2"]
-[ext_resource type="Texture2D" uid="uid://cnp3jpfg6lf5b" path="res://assets/units/knight_blue_up.png" id="6_fhf8c"]
+[ext_resource type="Texture2D" uid="uid://cqh125xfmua8m" path="res://assets/units/knight_blue_up.png" id="6_fhf8c"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cx5rf"]
 radius = 73.0
