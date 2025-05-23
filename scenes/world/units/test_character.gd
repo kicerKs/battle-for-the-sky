@@ -8,9 +8,10 @@ extends CharacterBody2D
 @export var heal_component: HealComponent
 @export var side : Lobby.Factions
 
-func _physics_process(delta):
-	movement_component.update_movement(delta)
-	move_and_slide()
+@export var animation: AnimatedSprite2D
+@export var nav_agent: NavigationAgent2D
+
+@onready var label = $Label
 
 func _on_unit_died():
 	queue_free()
