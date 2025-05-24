@@ -12,6 +12,8 @@ extends Resource
 	Game.Resources.IRON: 0,
 	Game.Resources.GOLD: 0
 }
+@export var spriteSheetBlue: Texture2D
+@export var spriteSheetRed: Texture2D
 @export var max_hp: int = 100
 @export var armor: int = 10
 @export var speed: int = 100

@@ -46,12 +46,15 @@ func building_selected(building):
 func add_building(target_island, scene_path, building_dict):
 	var building = load(scene_path).instantiate()
 	building.set_dict(building_dict)
-	activate_building(building)
+	activate_building(building, target_island)
 	$TileMapLayer.tiles[target_island].add_building(building)
 
 # Building starts to work after placed on map
-func activate_building(building):
+func activate_building(building, target_island):
 	if building.has_node("TrainComponent"):
-		building.get_node("TrainComponent").activate()
+		var train_component = building.get_node("TrainComponent")
+		train_component.island_key = target_island
+		train_component.island_ownership = $TileMapLayer.tiles[target_island].ownership
+		train_component.activate()
 	if building.has_node("GeneratorComponent"):
 		building.get_node("GeneratorComponent").activate()

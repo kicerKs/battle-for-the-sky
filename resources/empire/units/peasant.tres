@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="UnitStats" load_steps=2 format=3 uid="uid://wcmy4crj6wo7"]
+[gd_resource type="Resource" script_class="UnitStats" load_steps=4 format=3 uid="uid://wcmy4crj6wo7"]
 
-[ext_resource type="Script" uid="uid://cayakk8o7fjyy" path="res://scenes/world/units/unit_stats.gd" id="1_ss1ou"]
+[ext_resource type="Script" uid="uid://cayakk8o7fjyy" path="res://resources/empire/units/unit_stats.gd" id="1_3r2wr"]
+[ext_resource type="Texture2D" uid="uid://bh3kn7ed737u8" path="res://assets/units/soldier_blue.png" id="2_c7mri"]
+[ext_resource type="Texture2D" uid="uid://ydh2j76stlfe" path="res://assets/units/soldier_red.png" id="3_q4y1w"]
 
 [resource]
-script = ExtResource("1_ss1ou")
+script = ExtResource("1_3r2wr")
 name = "Peasant"
 description = "Weak melee unit."
 level = 1
@@ -15,6 +17,8 @@ trainingResources = Dictionary[int, int]({
 3: 1,
 4: 1
 })
+spriteSheetBlue = ExtResource("2_c7mri")
+spriteSheetRed = ExtResource("3_q4y1w")
 max_hp = 20
 armor = 10
 speed = 100

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dl6tv7oet2jxt"]
+[gd_scene load_steps=27 format=3 uid="uid://dl6tv7oet2jxt"]
 
 [ext_resource type="Script" uid="uid://cyybcthqo12ku" path="res://scenes/world/units/test_character.gd" id="1_hyo0f"]
 [ext_resource type="Resource" uid="uid://wcmy4crj6wo7" path="res://resources/empire/units/peasant.tres" id="2_7mtp3"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://bu625gum4lcu2" path="res://scenes/world/units/components/AttackComponent.gd" id="4_hyo0f"]
 [ext_resource type="Script" uid="uid://dfmwd4i4cvcj5" path="res://scenes/world/units/states/unit_state_moving.gd" id="5_mlo0c"]
 [ext_resource type="Script" uid="uid://chixtoay5fbmj" path="res://scenes/world/units/components/MovementComponent.gd" id="6_12525"]
+[ext_resource type="Script" uid="uid://c7ftxhy6tmrtt" path="res://scenes/world/units/animation_generator.gd" id="10_mlo0c"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xb5ci"]
 radius = 82.0
@@ -179,7 +180,9 @@ debug_enabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_g3gjs")
+animation = &"walk"
 autoplay = "idle"
+script = ExtResource("10_mlo0c")
 
 [node name="Label" type="Label" parent="."]
 offset_left = -457.143

@@ -17,6 +17,15 @@ func _on_unit_died():
 	queue_free()
 
 func _ready():
+	# normalnie podpinasz se png unitow jakie chcesz i animacje same sie tworza
+	var spritesheet: Texture2D
+	match side:
+		1:
+			spritesheet = stats.spriteSheetRed
+		2:
+			spritesheet = stats.spriteSheetBlue
+	animation.setup_animations(spritesheet)
+	
 	if (attack_component==null): #healer
 		stats.action = 7
 		stats.actionSpeed=1

@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dkfjkrmloyb8q" path="res://scenes/world/buildings/building.gd" id="1_akj7n"]
 [ext_resource type="Script" uid="uid://d4hsgvbrj0rlt" path="res://scenes/world/buildings/train_component.gd" id="2_gbih2"]
-[ext_resource type="PackedScene" uid="uid://dl6tv7oet2jxt" path="res://scenes/world/units/test_character.tscn" id="3_80531"]
-[ext_resource type="PackedScene" uid="uid://rk5i478u326k" path="res://scenes/world/units/test_upgraded_character.tscn" id="4_80531"]
+[ext_resource type="Resource" uid="uid://wcmy4crj6wo7" path="res://resources/empire/units/peasant.tres" id="3_i3chs"]
+[ext_resource type="Resource" uid="uid://cc6inv7aq6lbl" path="res://resources/empire/units/knight.tres" id="4_qq1jg"]
 [ext_resource type="Texture2D" uid="uid://dnp4jokjn0ny3" path="res://assets/resources/upgrade.png" id="5_gbih2"]
 [ext_resource type="Texture2D" uid="uid://f026odxk54xh" path="res://assets/buildings/barrack 1.png" id="5_i3chs"]
 [ext_resource type="Texture2D" uid="uid://dha7evfn17uqt" path="res://assets/buildings/barrack 2.png" id="6_qq1jg"]
@@ -17,8 +17,8 @@ metadata/_custom_type_script = "uid://dkfjkrmloyb8q"
 
 [node name="TrainComponent" type="Node" parent="."]
 script = ExtResource("2_gbih2")
-base_unit_scene = ExtResource("3_80531")
-upgraded_unit_scene = ExtResource("4_80531")
+base_unit = ExtResource("3_i3chs")
+upgraded_unit = ExtResource("4_qq1jg")
 texture1 = ExtResource("5_i3chs")
 texture2 = ExtResource("6_qq1jg")
 metadata/_custom_type_script = "uid://d4hsgvbrj0rlt"

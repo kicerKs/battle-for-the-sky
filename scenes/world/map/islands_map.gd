@@ -15,7 +15,24 @@ func register_child(node: Node):
 	#node.init(IslandData.new(), IslandDevelopmentData.IslandOwner.PLAYER_RED)
 	loaded_islands+=1
 	if loaded_islands == len(get_used_cells()):
-		map_loaded.emit()
+		#map_loaded.emit()
+		
+		# ### FOR OWNERSHIP TESTS ###
+		var red_island_key = Vector2i(1, 0)
+		var red_island = tiles[red_island_key]
+		tiles.erase(red_island_key)
+		var blue_island_key = Vector2i(0, 0)
+		var blue_island = tiles[blue_island_key]
+		red_island.ownership = Lobby.Factions.PLAYER_RED
+		blue_island.ownership = Lobby.Factions.PLAYER_BLUE
+		tiles[red_island_key] = red_island
+		tiles[blue_island_key] = blue_island
+		
+		# Here map is refreshed and sended to all players, if multiplayer
+		for key in tiles:
+			set_island_dict.rpc(key, tiles[key].get_dict())
+		# ###########################
+		
 		_set_islands_connections()
 
 func unregister_child(node: Node):
