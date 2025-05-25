@@ -4,6 +4,8 @@ class_name MovementComponent
 @export var testCharacter: TestCharacter
 @export var speed: int = 100
 
+@onready var animation: AnimatedSprite2D = $"../../AnimatedSprite2D"
+
 var target_position: Vector2 = Vector2.ZERO
 var intended_velocity: Vector2 = Vector2.ZERO
 
@@ -13,13 +15,16 @@ func _ready():
 	testCharacter = owner as TestCharacter
 	speed = testCharacter.stats.speed
 
-func start_moving():
-	target_position = owner.get_global_mouse_position()
-	owner.nav_agent.target_position = target_position
+func start_moving(target_island_pos: Vector2):
+	owner.nav_agent.target_position = target_island_pos
 
 func update_movement(delta):
 	var next_path_pos: Vector2 = owner.nav_agent.get_next_path_position()
 	var direction: Vector2 = (next_path_pos - owner.global_position).normalized()
+	if direction.x > 0:
+		animation.flip_h = false
+	else:
+		animation.flip_h = true
 	intended_velocity = direction * speed
 	owner.nav_agent.set_velocity(intended_velocity)
 

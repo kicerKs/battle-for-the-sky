@@ -20,7 +20,6 @@ func register_child(node: Node):
 		# ### FOR OWNERSHIP TESTS ###
 		var red_island_key = Vector2i(1, 0)
 		var red_island = tiles[red_island_key]
-		tiles.erase(red_island_key)
 		var blue_island_key = Vector2i(0, 0)
 		var blue_island = tiles[blue_island_key]
 		red_island.ownership = Lobby.Factions.PLAYER_RED
@@ -76,3 +75,5 @@ func _set_islands_connections():
 		if keys.has(key+Vector2i(-1, 0)):
 			connections["W"] = true
 		tiles[key].set_connections(connections)
+
+#func get_

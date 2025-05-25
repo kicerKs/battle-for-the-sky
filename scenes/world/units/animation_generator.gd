@@ -1,8 +1,6 @@
 extends AnimatedSprite2D
 
 func setup_animations(sprite_sheet: Texture2D) -> void:
-	# Assuming this function is part of a script attached to an AnimatedSprite2D node
-	
 	# Clear any existing animations
 	var sprite_frames = SpriteFrames.new()
 	self.sprite_frames = sprite_frames
@@ -30,7 +28,7 @@ func create_idle_animation(sprite_sheet: Texture2D, frame_size: Vector2) -> void
 func create_walk_animation(sprite_sheet: Texture2D, frame_size: Vector2) -> void:
 	sprite_frames.add_animation("walk")
 	
-	var row = 1  # Second row (0-based index)
+	var row = 1  # Second row
 	for column in range(7):  # All 7 columns
 		var atlas = AtlasTexture.new()
 		atlas.atlas = sprite_sheet
@@ -38,13 +36,13 @@ func create_walk_animation(sprite_sheet: Texture2D, frame_size: Vector2) -> void
 		
 		sprite_frames.add_frame("walk", atlas)
 	
-	sprite_frames.set_animation_speed("walk", 10)  # Adjust speed as needed
+	sprite_frames.set_animation_speed("walk", 10)
 	sprite_frames.set_animation_loop("walk", true)
 
 func create_attack_animation(sprite_sheet: Texture2D, frame_size: Vector2) -> void:
 	sprite_frames.add_animation("attack")
 	
-	var row = 2  # Third row (0-based index)
+	var row = 2  # Third row
 	for column in range(7):  # All 7 columns
 		var atlas = AtlasTexture.new()
 		atlas.atlas = sprite_sheet
@@ -52,13 +50,13 @@ func create_attack_animation(sprite_sheet: Texture2D, frame_size: Vector2) -> vo
 		
 		sprite_frames.add_frame("attack", atlas)
 	
-	sprite_frames.set_animation_speed("attack", 15)  # Adjust speed as needed
-	sprite_frames.set_animation_loop("attack", false)
+	sprite_frames.set_animation_speed("attack", 15)
+	sprite_frames.set_animation_loop("attack", true)
 
 func create_death_animation(sprite_sheet: Texture2D, frame_size: Vector2) -> void:
 	sprite_frames.add_animation("death")
 	
-	var row = 3  # Fourth row (0-based index)
+	var row = 3  # Fourth row
 	for column in range(4):  # First 4 columns
 		var atlas = AtlasTexture.new()
 		atlas.atlas = sprite_sheet
@@ -66,5 +64,5 @@ func create_death_animation(sprite_sheet: Texture2D, frame_size: Vector2) -> voi
 		
 		sprite_frames.add_frame("death", atlas)
 	
-	sprite_frames.set_animation_speed("death", 8)  # Adjust speed as needed
+	sprite_frames.set_animation_speed("death", 8)
 	sprite_frames.set_animation_loop("death", false)

@@ -1,14 +1,15 @@
-[gd_scene load_steps=27 format=3 uid="uid://dl6tv7oet2jxt"]
+[gd_scene load_steps=28 format=3 uid="uid://dl6tv7oet2jxt"]
 
 [ext_resource type="Script" uid="uid://cyybcthqo12ku" path="res://scenes/world/units/test_character.gd" id="1_hyo0f"]
 [ext_resource type="Resource" uid="uid://wcmy4crj6wo7" path="res://resources/empire/units/peasant.tres" id="2_7mtp3"]
 [ext_resource type="Texture2D" uid="uid://bmsh0s6amr1u8" path="res://assets/resources/unit_test.png" id="2_xb5ci"]
 [ext_resource type="Script" uid="uid://bgjqylyg8052t" path="res://scenes/world/units/components/HealthComponent.gd" id="3_h141o"]
 [ext_resource type="Script" uid="uid://bcmlgj2w55p8f" path="res://common/state_machine.gd" id="3_jdsxw"]
-[ext_resource type="Script" uid="uid://cdv35lujsymu2" path="res://scenes/world/units/states/unit_state_idle.gd" id="4_2ix3x"]
 [ext_resource type="Script" uid="uid://bu625gum4lcu2" path="res://scenes/world/units/components/AttackComponent.gd" id="4_hyo0f"]
 [ext_resource type="Script" uid="uid://dfmwd4i4cvcj5" path="res://scenes/world/units/states/unit_state_moving.gd" id="5_mlo0c"]
+[ext_resource type="Script" uid="uid://bu25hbxcgqsnt" path="res://scenes/world/units/states/unit_state_conquering.gd" id="6_74vs3"]
 [ext_resource type="Script" uid="uid://chixtoay5fbmj" path="res://scenes/world/units/components/MovementComponent.gd" id="6_12525"]
+[ext_resource type="Script" uid="uid://dfp1sreyotxeh" path="res://scenes/world/units/states/unit_state_attacking.gd" id="7_l5r3j"]
 [ext_resource type="Script" uid="uid://c7ftxhy6tmrtt" path="res://scenes/world/units/animation_generator.gd" id="10_mlo0c"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xb5ci"]
@@ -140,16 +141,19 @@ side = 2
 animation = NodePath("AnimatedSprite2D")
 nav_agent = NodePath("NavigationAgent2D")
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state") groups=["state_machine"]]
 script = ExtResource("3_jdsxw")
-initial_state = NodePath("Idle")
+initial_state = NodePath("Moving")
 metadata/_custom_type_script = "uid://bcmlgj2w55p8f"
-
-[node name="Idle" type="Node" parent="StateMachine"]
-script = ExtResource("4_2ix3x")
 
 [node name="Moving" type="Node" parent="StateMachine"]
 script = ExtResource("5_mlo0c")
+
+[node name="Conquering" type="Node" parent="StateMachine"]
+script = ExtResource("6_74vs3")
+
+[node name="Attacking" type="Node" parent="StateMachine"]
+script = ExtResource("7_l5r3j")
 
 [node name="Components" type="Node" parent="."]
 

@@ -20,9 +20,11 @@ func _ready():
 	# normalnie podpinasz se png unitow jakie chcesz i animacje same sie tworza
 	var spritesheet: Texture2D
 	match side:
-		1:
+		0: # monsters (won't be able to build on monster islands in the future)
+			spritesheet = stats.spriteSheetBlue
+		1: # other player
 			spritesheet = stats.spriteSheetRed
-		2:
+		2: # our player
 			spritesheet = stats.spriteSheetBlue
 	animation.setup_animations(spritesheet)
 	

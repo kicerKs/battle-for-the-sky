@@ -3,7 +3,7 @@ class_name StateMachine
 
 @export var initial_state: State
 
-var prevous_state_name: String
+var previous_state_name: String
 @onready var state: State = (func get_initial_state() -> State:
 	return initial_state if initial_state != null else get_child(0)
 	).call()
@@ -30,6 +30,6 @@ func transition_to_state(target_state_path: String) -> void:
 		return
 	
 	state.on_exit()
-	prevous_state_name = state.name
+	previous_state_name = state.name
 	state = get_node(target_state_path)
 	state.on_enter()
