@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c817i4cmyy633"]
+[gd_scene load_steps=10 format=3 uid="uid://c817i4cmyy633"]
 
 [ext_resource type="Script" uid="uid://dkfjkrmloyb8q" path="res://scenes/world/buildings/building.gd" id="1_akj7n"]
 [ext_resource type="Script" uid="uid://d4hsgvbrj0rlt" path="res://scenes/world/buildings/train_component.gd" id="2_gbih2"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dnp4jokjn0ny3" path="res://assets/resources/upgrade.png" id="5_gbih2"]
 [ext_resource type="Texture2D" uid="uid://f026odxk54xh" path="res://assets/buildings/barrack 1.png" id="5_i3chs"]
 [ext_resource type="Texture2D" uid="uid://dha7evfn17uqt" path="res://assets/buildings/barrack 2.png" id="6_qq1jg"]
+[ext_resource type="Texture2D" uid="uid://bpetq6rubw0vm" path="res://assets/resources/attackspeed.png" id="8_qq1jg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_akj7n"]
 size = Vector2(58, 65)
@@ -47,10 +48,10 @@ show_percentage = false
 [node name="Buttons" type="Node2D" parent="."]
 
 [node name="PanelContainer" type="PanelContainer" parent="Buttons"]
-offset_left = -15.0
-offset_top = 68.0
-offset_right = 25.0
-offset_bottom = 108.0
+offset_left = -39.0
+offset_top = 70.0
+offset_right = 1.0
+offset_bottom = 110.0
 scale = Vector2(0.75, 0.75)
 
 [node name="TrainActivateButton" type="Button" parent="Buttons/PanelContainer"]
@@ -82,5 +83,25 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "X"
 
+[node name="PanelContainer4" type="PanelContainer" parent="Buttons"]
+offset_left = 8.0
+offset_top = 70.0
+offset_right = 48.0
+offset_bottom = 110.0
+scale = Vector2(0.75, 0.75)
+
+[node name="FrontChangeButton" type="Button" parent="Buttons/PanelContainer4"]
+unique_name_in_owner = true
+layout_mode = 2
+icon = ExtResource("8_qq1jg")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -75.0
+offset_top = 16.0
+offset_right = -35.0
+offset_bottom = 39.0
+text = "false"
+
 [connection signal="pressed" from="Buttons/PanelContainer/TrainActivateButton" to="TrainComponent" method="_on_train_activate_button_pressed"]
 [connection signal="pressed" from="Buttons/PanelContainer2/UpgradeButton" to="TrainComponent" method="_on_upgrade_button_pressed"]
+[connection signal="pressed" from="Buttons/PanelContainer4/FrontChangeButton" to="TrainComponent" method="_on_front_change_button_pressed"]

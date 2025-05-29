@@ -13,6 +13,15 @@ extends CharacterBody2D
 
 @onready var label = $Label
 
+signal front_changed(island: Vector2i)
+
+var spawn_position: Vector2
+var current_front: Vector2i:
+	set(value):
+		if current_front != value:
+			current_front = value
+			front_changed.emit(value)
+
 func _on_unit_died():
 	queue_free()
 

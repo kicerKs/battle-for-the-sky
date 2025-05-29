@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dl6tv7oet2jxt"]
+[gd_scene load_steps=29 format=3 uid="uid://dl6tv7oet2jxt"]
 
 [ext_resource type="Script" uid="uid://cyybcthqo12ku" path="res://scenes/world/units/test_character.gd" id="1_hyo0f"]
 [ext_resource type="Resource" uid="uid://wcmy4crj6wo7" path="res://resources/empire/units/peasant.tres" id="2_7mtp3"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://dfmwd4i4cvcj5" path="res://scenes/world/units/states/unit_state_moving.gd" id="5_mlo0c"]
 [ext_resource type="Script" uid="uid://bu25hbxcgqsnt" path="res://scenes/world/units/states/unit_state_conquering.gd" id="6_74vs3"]
 [ext_resource type="Script" uid="uid://chixtoay5fbmj" path="res://scenes/world/units/components/MovementComponent.gd" id="6_12525"]
+[ext_resource type="Script" uid="uid://jhhec70pls3g" path="res://scenes/world/units/states/unit_state_idle.gd" id="7_74vs3"]
 [ext_resource type="Script" uid="uid://dfp1sreyotxeh" path="res://scenes/world/units/states/unit_state_attacking.gd" id="7_l5r3j"]
 [ext_resource type="Script" uid="uid://c7ftxhy6tmrtt" path="res://scenes/world/units/animation_generator.gd" id="10_mlo0c"]
 
@@ -130,7 +131,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="TestCharacter" type="CharacterBody2D" node_paths=PackedStringArray("movement_component", "health_component", "attack_component", "animation", "nav_agent")]
+[node name="TestCharacter" type="CharacterBody2D" node_paths=PackedStringArray("movement_component", "health_component", "attack_component", "animation", "nav_agent") groups=["units"]]
 scale = Vector2(0.07, 0.07)
 script = ExtResource("1_hyo0f")
 stats = ExtResource("2_7mtp3")
@@ -143,7 +144,7 @@ nav_agent = NodePath("NavigationAgent2D")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state") groups=["state_machine"]]
 script = ExtResource("3_jdsxw")
-initial_state = NodePath("Moving")
+initial_state = NodePath("Idle")
 metadata/_custom_type_script = "uid://bcmlgj2w55p8f"
 
 [node name="Moving" type="Node" parent="StateMachine"]
@@ -154,6 +155,9 @@ script = ExtResource("6_74vs3")
 
 [node name="Attacking" type="Node" parent="StateMachine"]
 script = ExtResource("7_l5r3j")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("7_74vs3")
 
 [node name="Components" type="Node" parent="."]
 
@@ -170,6 +174,7 @@ script = ExtResource("4_hyo0f")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(15, 75)
 shape = SubResource("CapsuleShape2D_xb5ci")
+disabled = true
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_xb5ci")
@@ -178,6 +183,7 @@ replication_config = SubResource("SceneReplicationConfig_xb5ci")
 path_desired_distance = 25.0
 target_desired_distance = 35.0
 avoidance_enabled = true
+radius = 5.0
 neighbor_distance = 100.0
 avoidance_priority = 0.5
 debug_enabled = true

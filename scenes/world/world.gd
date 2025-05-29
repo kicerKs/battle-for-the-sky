@@ -54,6 +54,7 @@ func activate_building(building, target_island):
 	if building.has_node("TrainComponent"):
 		var train_component = building.get_node("TrainComponent")
 		train_component.island_key = target_island
+		train_component.current_front = target_island
 		train_component.island_ownership = $TileMapLayer.tiles[target_island].ownership
 		train_component.activate()
 	if building.has_node("GeneratorComponent"):
