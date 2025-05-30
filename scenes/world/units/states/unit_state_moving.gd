@@ -1,5 +1,8 @@
 extends UnitState
 
+var is_at_target_island: bool = false
+var timer: float = 2.5
+
 func on_enter() -> void:
 	unit.label.text = "Moving"
 	unit.animation.play("walk")
@@ -11,7 +14,13 @@ func physics_update(delta: float) -> void:
 	unit.move_and_slide()
 
 func update(delta: float) -> void:
-	if unit.nav_agent.is_navigation_finished():
+	if Game.tileMapLayer.local_to_map(unit.position) == unit.current_front:
+		if is_at_target_island:
+			timer -= delta
+		else:
+			is_at_target_island = true
+	if unit.nav_agent.is_navigation_finished() or timer <= 0:
+		timer = 2.5
 		unit.movement_component.intended_velocity = Vector2.ZERO
 		var current_island_side = get_current_island_ownership()
 		if current_island_side == 0 or current_island_side == 1:

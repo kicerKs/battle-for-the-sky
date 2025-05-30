@@ -2,10 +2,12 @@ extends TileMapLayer
 
 signal map_loaded
 
+@onready var custom_progress_bar = load("res://scenes/ui/gui/other_elements/CustomProgressBar.tscn")
+
 var tiles = { }
 var loaded_islands = 0
 
-var conquering_time: float = 15.0
+var conquering_time: float = 5.0
 var conquering_islands: Array[Vector2i] = []
 var conquering_progress_bars: Dictionary[Vector2i, ProgressBar] = {}
 
@@ -17,7 +19,7 @@ func _ready():
 func _process(delta: float) -> void:
 	for island_key in conquering_islands.duplicate():
 		tiles[island_key].conquering_timer -= delta
-		var progress = tiles[island_key].conquering_timer / conquering_time
+		var progress = 1.0 - (tiles[island_key].conquering_timer / conquering_time)
 		conquering_progress_bars[island_key].value = progress
 		if tiles[island_key].conquering_timer <= 0:
 			stop_conquering(island_key)
@@ -99,17 +101,8 @@ func start_conquering(unit_position: Vector2, unit_side: Lobby.Factions):
 	tiles[island_key].conquering_unit_side = unit_side
 	conquering_islands.append(island_key)
 	
-	var progress_bar: ProgressBar = ProgressBar.new()
-	progress_bar.show_percentage = false
-	progress_bar.size = Vector2(250.0, 30.0)
+	var progress_bar: ProgressBar = custom_progress_bar.instantiate()
 	progress_bar.position = map_to_local(island_key) + Vector2(-125.0, 25.0)
-	progress_bar.max_value = 1.0
-	progress_bar.value = 1.0
-	var style_box = StyleBoxFlat.new()
-	style_box.bg_color = Color(0, 1, 0)
-	style_box.set_corner_radius_all(10)
-	progress_bar.add_theme_stylebox_override("fill", style_box)
-	progress_bar.add_theme_stylebox_override("bg", style_box.duplicate())
 	add_child(progress_bar)
 	conquering_progress_bars[island_key] = progress_bar
 

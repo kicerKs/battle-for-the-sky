@@ -9,7 +9,7 @@ script = ExtResource("1_3r2wr")
 name = "Peasant"
 description = "Weak melee unit."
 level = 1
-trainingTime = 5
+trainingTime = 2
 trainingResources = Dictionary[int, int]({
 0: 1,
 1: 1,

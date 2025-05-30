@@ -48,6 +48,7 @@ func add_building(target_island, scene_path, building_dict):
 	building.set_dict(building_dict)
 	activate_building(building, target_island)
 	Game.tileMapLayer.tiles[target_island].add_building(building)
+	print(building.get_dict())
 
 # Building starts to work after placed on map
 func activate_building(building, target_island):
