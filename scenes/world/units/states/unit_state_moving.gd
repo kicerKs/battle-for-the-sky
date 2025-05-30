@@ -23,7 +23,8 @@ func update(delta: float) -> void:
 		timer = 2.5
 		unit.movement_component.intended_velocity = Vector2.ZERO
 		var current_island_side = get_current_island_ownership()
-		if current_island_side == 0 or current_island_side == 1:
+		print(current_island_side)
+		if current_island_side != unit.side:
 			change_state.emit(CONQUERING)
 		else:
 			change_state.emit(IDLE)

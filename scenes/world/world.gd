@@ -11,7 +11,7 @@ func _unhandled_input(event: InputEvent) -> void:
 				placement_building.queue_free()
 				placement_mode = false
 			elif event.button_index == MOUSE_BUTTON_LEFT:
-				if placement_building.can_build():
+				if placement_building.can_build($TileMapLayer.tiles[Game.tileMapLayer.local_to_map(placement_building.position)]):
 					var target_island = Game.tileMapLayer.local_to_map(placement_building.position)
 					if Game.tileMapLayer.tiles.has(target_island):
 						remove_child(placement_building)
@@ -26,8 +26,11 @@ func _process(delta: float) -> void:
 func update_visual_feedback():
 	if placement_building.sprite:
 		var target_island = Game.tileMapLayer.local_to_map(placement_building.position)
-		if placement_building.can_build() and Game.tileMapLayer.tiles.has(target_island):
-			placement_building.sprite.modulate = Color(0.5, 1, 0.5)  # Light green
+		if Game.tileMapLayer.tiles.has(target_island):
+			if placement_building.can_build($TileMapLayer.tiles[target_island]):
+				placement_building.sprite.modulate = Color(0.5, 1, 0.5)  # Light green
+			else:
+				placement_building.sprite.modulate = Color(1, 0.5, 0.5)  # Light red
 		else:
 			placement_building.sprite.modulate = Color(1, 0.5, 0.5)  # Light red
 
