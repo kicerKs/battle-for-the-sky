@@ -14,7 +14,6 @@ func on_enter() -> void:
 func update(delta: float) -> void:
 	if timer_started:
 		timer -= delta
-		print(timer)
 		if timer <= 0:
 			
 			change_state.emit(IDLE)

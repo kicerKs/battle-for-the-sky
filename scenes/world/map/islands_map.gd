@@ -6,6 +6,7 @@ var tiles = { }
 var loaded_islands = 0
 
 func _ready():
+	Game.tileMapLayer = self
 	connect("child_entered_tree", register_child)
 	connect("child_exiting_tree", unregister_child)
 
@@ -75,5 +76,3 @@ func _set_islands_connections():
 		if keys.has(key+Vector2i(-1, 0)):
 			connections["W"] = true
 		tiles[key].set_connections(connections)
-
-#func get_

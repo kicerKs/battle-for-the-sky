@@ -6,5 +6,5 @@ func on_enter() -> void:
 	await tree_entered
 
 func update(delta: float) -> void:
-	if unit.current_front != islands_map.local_to_map(unit.position):
+	if unit.current_front != Game.tileMapLayer.local_to_map(unit.position):
 		change_state.emit(MOVING)

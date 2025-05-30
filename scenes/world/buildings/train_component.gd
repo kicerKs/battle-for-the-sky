@@ -13,7 +13,6 @@ class_name TrainComponent
 @onready var label: Label = $"../Label"
 
 var new_unit: CharacterBody2D
-var islands_map
 
 var is_active: bool = false
 var building_level: int = 0
@@ -44,7 +43,6 @@ var front_change_mode: bool = false:
 
 func _ready() -> void:
 	sprite.texture = texture1
-	islands_map = get_tree().get_first_node_in_group("islands_map")
 
 # This function is called only when building is placed on island
 func activate():
@@ -67,7 +65,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if front_change_mode:
 		if event is InputEventMouse and event.is_pressed():
 			if event.button_index == MOUSE_BUTTON_LEFT:
-				current_front = islands_map.local_to_map(owner.get_global_mouse_position())
+				current_front = Game.tileMapLayer.local_to_map(owner.get_global_mouse_position())
 			front_change_mode = false
 
 func _process(delta: float) -> void:
