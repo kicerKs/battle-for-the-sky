@@ -10,10 +10,8 @@ func on_enter() -> void:
 	unit.animation.play("idle")
 	timer = conquering_time
 	timer_started = true
+	Game.tileMapLayer.start_conquering(unit.position, unit.side)
 
 func update(delta: float) -> void:
-	if timer_started:
-		timer -= delta
-		if timer <= 0:
-			
-			change_state.emit(IDLE)
+	if get_current_island_ownership() == unit.side:
+		change_state.emit(IDLE)

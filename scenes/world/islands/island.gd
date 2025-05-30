@@ -1,6 +1,11 @@
 extends Sprite2D
 class_name Island
 
+@onready var progress_bar: ProgressBar = $ConqueringProgressBar
+
+var conquering_timer: float = 0.0
+var conquering_unit_side: Lobby.Factions
+
 @export var island_data: IslandData
 var ownership: Lobby.Factions
 var connections = {

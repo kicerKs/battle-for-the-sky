@@ -136,13 +136,3 @@ metadata/_edit_lock_ = true
 [node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="BuildingsArea"]
 polygon = PackedVector2Array(0, -200, 250, -100, 250, 100, 0, 200, 0, 109, 50, 96, 61, 94, 86, 88, 131, 78, 165, 55, 191, 32, 216, 1, 232, -31, 236, -55, 238, -66, 237, -82, 227, -95, 215, -102, 202, -108, 174, -111, 133, -130, 115, -135, 97, -134, 82, -138, 44, -160, 14, -179, 0, -180)
 metadata/_edit_lock_ = true
-
-[node name="ConqueringProgressBar" type="ProgressBar" parent="."]
-visible = false
-offset_left = 131.0
-offset_top = 17.0
-offset_right = 135.0
-offset_bottom = 44.0
-rotation = 1.5708
-scale = Vector2(10, 10)
-show_percentage = false

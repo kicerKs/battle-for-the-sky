@@ -13,8 +13,7 @@ func physics_update(delta: float) -> void:
 func update(delta: float) -> void:
 	if unit.nav_agent.is_navigation_finished():
 		unit.movement_component.intended_velocity = Vector2.ZERO
-		var current_island_key = Game.tileMapLayer.local_to_map(unit.position)
-		var current_island_side = Game.tileMapLayer.tiles[current_island_key].ownership
+		var current_island_side = get_current_island_ownership()
 		if current_island_side == 0 or current_island_side == 1:
 			change_state.emit(CONQUERING)
 		else:
