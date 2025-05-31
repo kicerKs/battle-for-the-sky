@@ -5,51 +5,38 @@ signal map_loaded
 var tiles = { }
 var loaded_islands = 0
 
-var conquering_time: float = 5.0
-var conquering_islands: Array[Vector2i] = []
-
 func _ready():
 	Game.tileMapLayer = self
 	connect("child_entered_tree", register_child)
 	connect("child_exiting_tree", unregister_child)
 
-func _process(delta: float) -> void:
-	for island_key in conquering_islands.duplicate():
-		tiles[island_key].conquering_timer -= delta
-		var progress = 1.0 - (tiles[island_key].conquering_timer / conquering_time)
-		if tiles[island_key].conquering_timer <= 0:
-			stop_conquering(island_key)
-		tiles[island_key].progress_bar.value = progress
-
 func register_child(node: Node):
-	if node is Island:
-		tiles[local_to_map(node.position)] = node
-		# Tutaj info z wygenerowanej mapy, wrzucimy to potem może w jeden resource, albo i nie, idk
-		#node.init(IslandData.new(), IslandDevelopmentData.IslandOwner.PLAYER_RED)
-		loaded_islands+=1
-		if loaded_islands == len(get_used_cells()):
-			#map_loaded.emit()
-			
-			# ### FOR OWNERSHIP TESTS ###
-			var red_island_key = Vector2i(1, 0)
-			var red_island = tiles[red_island_key]
-			var blue_island_key = Vector2i(0, 0)
-			var blue_island = tiles[blue_island_key]
-			red_island.ownership = Lobby.Factions.PLAYER_RED
-			blue_island.ownership = Lobby.Factions.PLAYER_BLUE
-			tiles[red_island_key] = red_island
-			tiles[blue_island_key] = blue_island
-			
-			# Here map is refreshed and sended to all players, if multiplayer
-			for key in tiles:
-				set_island_dict.rpc(key, tiles[key].get_dict())
-			# ###########################
-			
-			_set_islands_connections()
+	tiles[local_to_map(node.position)] = node
+	# Tutaj info z wygenerowanej mapy, wrzucimy to potem może w jeden resource, albo i nie, idk
+	#node.init(IslandData.new(), IslandDevelopmentData.IslandOwner.PLAYER_RED)
+	loaded_islands+=1
+	if loaded_islands == len(get_used_cells()):
+		#map_loaded.emit()
+		
+		# ### FOR OWNERSHIP TESTS ###
+		var red_island_key = Vector2i(1, 0)
+		var red_island = tiles[red_island_key]
+		var blue_island_key = Vector2i(0, 0)
+		var blue_island = tiles[blue_island_key]
+		red_island.ownership = Lobby.Factions.PLAYER_RED
+		blue_island.ownership = Lobby.Factions.PLAYER_BLUE
+		tiles[red_island_key] = red_island
+		tiles[blue_island_key] = blue_island
+		
+		# Here map is refreshed and sended to all players, if multiplayer
+		for key in tiles:
+			set_island_dict.rpc(key, tiles[key].get_dict())
+		# ###########################
+		
+		_set_islands_connections()
 
 func unregister_child(node: Node):
-	if node is Island:
-		tiles.erase(local_to_map(node.position))
+	tiles.erase(local_to_map(node.position))
 
 @rpc("call_local", "reliable")
 func set_island_dict(key, dict):
@@ -89,25 +76,3 @@ func _set_islands_connections():
 		if keys.has(key+Vector2i(-1, 0)):
 			connections["W"] = true
 		tiles[key].set_connections(connections)
-
-func start_conquering(unit_position: Vector2, unit_side: Lobby.Factions):
-	var island_key = local_to_map(unit_position)
-	if conquering_islands.has(island_key):
-		return
-	
-	tiles[island_key].conquering_timer = conquering_time
-	tiles[island_key].conquering_unit_side = unit_side
-	conquering_islands.append(island_key)
-	
-	tiles[island_key].progress_bar.visible = true
-
-func stop_conquering(island_key: Vector2i):
-	tiles[island_key].progress_bar.visible = false
-	tiles[island_key].progress_bar.value = 0.0
-	
-	conquering_islands.erase(island_key)
-	
-	var island = tiles[island_key]
-	island.ownership = island.conquering_unit_side
-	
-	set_island_dict.rpc(island_key, tiles[island_key].get_dict())

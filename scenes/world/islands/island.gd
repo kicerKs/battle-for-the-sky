@@ -1,8 +1,12 @@
 extends Sprite2D
 class_name Island
 
+signal island_conquered
+
 @onready var progress_bar = $CustomProgressBar
 
+var conquering: bool = false
+var conquering_time: float = 5.0
 var conquering_timer: float = 0.0
 var conquering_unit_side: Lobby.Factions
 
@@ -19,6 +23,14 @@ var connections = {
 
 func _ready():
 	pass
+
+func _process(delta: float) -> void:
+	if conquering:
+		conquering_timer -= delta
+		var progress = 1.0 - (conquering_timer / conquering_time)
+		if conquering_timer <= 0:
+			stop_conquering()
+		progress_bar.value = progress
 
 #func init(data: IslandData = IslandData.new(), owner: IslandDevelopmentData.IslandOwner = IslandDevelopmentData.IslandOwner.MONSTERS):
 #	island_development_data = IslandDevelopmentData.new()
@@ -66,3 +78,21 @@ func add_building(building):
 	building.position -= self.position
 	%MainNavigationRegion.add_child(building)
 	%MainNavigationRegion.bake_navigation_polygon()
+
+func start_conquering(unit_side: Lobby.Factions):
+	if conquering:
+		return
+	
+	conquering_timer = conquering_time
+	conquering_unit_side = unit_side
+	progress_bar.visible = true
+	conquering = true
+
+func stop_conquering():
+	progress_bar.visible = false
+	progress_bar.value = 0.0
+	
+	ownership = conquering_unit_side
+	set_dict(self)
+	conquering = false
+	island_conquered.emit()

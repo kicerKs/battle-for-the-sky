@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c817i4cmyy633"]
+[gd_scene load_steps=11 format=3 uid="uid://c817i4cmyy633"]
 
 [ext_resource type="Script" uid="uid://dkfjkrmloyb8q" path="res://scenes/world/buildings/building.gd" id="1_akj7n"]
 [ext_resource type="Script" uid="uid://d4hsgvbrj0rlt" path="res://scenes/world/buildings/train_component.gd" id="2_gbih2"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dnp4jokjn0ny3" path="res://assets/resources/upgrade.png" id="5_gbih2"]
 [ext_resource type="Texture2D" uid="uid://f026odxk54xh" path="res://assets/buildings/barrack 1.png" id="5_i3chs"]
 [ext_resource type="Texture2D" uid="uid://dha7evfn17uqt" path="res://assets/buildings/barrack 2.png" id="6_qq1jg"]
+[ext_resource type="Script" uid="uid://dlfqvdrv0wj33" path="res://scenes/world/units/components/SearchComponent.gd" id="7_g6107"]
 [ext_resource type="Texture2D" uid="uid://bpetq6rubw0vm" path="res://assets/resources/attackspeed.png" id="8_qq1jg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_akj7n"]
@@ -16,13 +17,18 @@ size = Vector2(58, 65)
 script = ExtResource("1_akj7n")
 metadata/_custom_type_script = "uid://dkfjkrmloyb8q"
 
-[node name="TrainComponent" type="Node" parent="."]
+[node name="TrainComponent" type="Node" parent="." node_paths=PackedStringArray("search_component")]
 script = ExtResource("2_gbih2")
 base_unit = ExtResource("3_i3chs")
 upgraded_unit = ExtResource("4_qq1jg")
 texture1 = ExtResource("5_i3chs")
 texture2 = ExtResource("6_qq1jg")
+search_component = NodePath("../SearchComponent")
 metadata/_custom_type_script = "uid://d4hsgvbrj0rlt"
+
+[node name="SearchComponent" type="Node" parent="."]
+script = ExtResource("7_g6107")
+metadata/_custom_type_script = "uid://dlfqvdrv0wj33"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.08, 0.08)

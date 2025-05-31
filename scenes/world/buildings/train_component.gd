@@ -7,9 +7,10 @@ class_name TrainComponent
 @export var texture1: CompressedTexture2D
 @export var texture2: CompressedTexture2D
 
-@onready var sprite: Sprite2D = $"../Sprite2D"
-@onready var unit_scene = load("res://scenes/world/units/test_character.tscn")
+@export var search_component: SearchComponent
 
+@onready var sprite: Sprite2D = $"../Sprite2D"
+@onready var unit_scene: PackedScene = load("res://scenes/world/units/test_character.tscn")
 @onready var label: Label = $"../Label"
 
 var new_unit: CharacterBody2D
@@ -48,10 +49,14 @@ func _ready() -> void:
 func activate():
 	is_active = true
 	spawn_position = get_parent().global_position
+	current_front = search_component.find_nearest_enemy_island(
+		Game.tileMapLayer.local_to_map(spawn_position)
+	)
 	_training_loop = true
 
 func load_unit():
 	new_unit = unit_scene.instantiate()
+	new_unit.auto_front_change.connect(_on_auto_front_change)
 	new_unit.side = island_ownership
 	new_unit.spawn_position = spawn_position
 	match building_level:
@@ -119,3 +124,6 @@ func _on_upgrade_button_pressed() -> void:
 
 func _on_front_change_button_pressed() -> void:
 	front_change_mode = true
+
+func _on_auto_front_change(island: Vector2i):
+	current_front = search_component.find_nearest_enemy_island(island)

@@ -142,9 +142,9 @@ side = 2
 animation = NodePath("AnimatedSprite2D")
 nav_agent = NodePath("NavigationAgent2D")
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state") groups=["state_machine"]]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_jdsxw")
-initial_state = NodePath("Idle")
+initial_state = NodePath("Moving")
 metadata/_custom_type_script = "uid://bcmlgj2w55p8f"
 
 [node name="Moving" type="Node" parent="StateMachine"]

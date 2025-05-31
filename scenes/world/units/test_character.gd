@@ -2,17 +2,19 @@ class_name TestCharacter
 extends CharacterBody2D
 
 @export var stats: UnitStats
+
 @export var movement_component: MovementComponent
 @export var health_component: HealthComponent
 @export var attack_component: AttackComponent
 @export var heal_component: HealComponent
-@export var side : Lobby.Factions
 
+@export var side : Lobby.Factions
 @export var animation: AnimatedSprite2D
 @export var nav_agent: NavigationAgent2D
 
 @onready var label = $Label
 
+signal auto_front_change(island: Vector2i)
 signal front_changed(island: Vector2i)
 
 var spawn_position: Vector2

@@ -1,17 +1,13 @@
 extends UnitState
 
-@export var conquering_time: float = 10
-
-var timer: float = 0
-var timer_started: bool = false
-
 func on_enter() -> void:
 	unit.label.text = "Conquering"
 	unit.animation.play("idle")
-	timer = conquering_time
-	timer_started = true
-	Game.tileMapLayer.start_conquering(unit.position, unit.side)
+	var island = Game.tileMapLayer.tiles[Game.tileMapLayer.local_to_map(unit.position)]
+	island.start_conquering(unit.side)
+	island.connect("island_conquered", _on_island_conquered)
 
-func update(delta: float) -> void:
-	if get_current_island_ownership() == unit.side:
-		change_state.emit(IDLE)
+func _on_island_conquered():
+	change_state.emit(IDLE)
+
+# If enemy spotted, change to attacking state

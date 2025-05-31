@@ -1,7 +1,7 @@
 extends Node
 class_name SearchComponent
 
-# Grid search algorithm for nearest island that fulfill some conditions (currently not used)
+# Grid search algorithm for nearest enemy island
 
 var hex_directions = [
 	Vector2i(1, 0), Vector2i(1, 1), Vector2i(0, 1),
@@ -30,12 +30,13 @@ func find_nearest_enemy_island(current_island: Vector2i) -> Vector2i:
 			if neighbor_pos in visited:
 				continue
 				
-			# Check if this is a grey or red flag
-			#if get_island_ownership(neighbor_pos) == 1:
-				#return neighbor_pos
+			# Check if this is a enemy flag
+			var island = Game.tileMapLayer.tiles[neighbor_pos]
+			if island.ownership != Lobby.Factions.PLAYER_BLUE:
+				return neighbor_pos
 				
 			# Mark as visited and add to queue
 			visited[neighbor_pos] = true
 			queue.append(neighbor_pos)
 	
-	return Vector2i(-1, -1)  # Return invalid position if no red flag found
+	return Vector2i(-1, -1)  # Return invalid position if no enemy flag found
