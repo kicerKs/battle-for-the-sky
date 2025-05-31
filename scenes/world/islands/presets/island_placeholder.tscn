@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bpkxcx0xgyqj6"]
+[gd_scene load_steps=20 format=3 uid="uid://bpkxcx0xgyqj6"]
 
 [ext_resource type="Script" uid="uid://c6n8gfkkkqwdp" path="res://scenes/world/islands/island.gd" id="2_51n52"]
 [ext_resource type="Script" uid="uid://bb2u2tgh4mohy" path="res://scenes/world/islands/island_data.gd" id="3_qiftq"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dutpth223cgod" path="res://assets/buildings/bridge 4.png" id="7_p1ha7"]
 [ext_resource type="Texture2D" uid="uid://b2rh52mf5ogwa" path="res://assets/buildings/bridge 5.png" id="8_r62wl"]
 [ext_resource type="Texture2D" uid="uid://cketal843l4vr" path="res://assets/buildings/bridge 6.png" id="9_binnr"]
+[ext_resource type="PackedScene" uid="uid://balv6egn28qqq" path="res://scenes/ui/gui/other_elements/CustomProgressBar.tscn" id="11_u22nc"]
 
 [sub_resource type="Resource" id="Resource_0yff4"]
 script = ExtResource("3_qiftq")
@@ -136,3 +137,10 @@ metadata/_edit_lock_ = true
 [node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="BuildingsArea"]
 polygon = PackedVector2Array(0, -200, 250, -100, 250, 100, 0, 200, 0, 109, 50, 96, 61, 94, 86, 88, 131, 78, 165, 55, 191, 32, 216, 1, 232, -31, 236, -55, 238, -66, 237, -82, 227, -95, 215, -102, 202, -108, 174, -111, 133, -130, 115, -135, 97, -134, 82, -138, 44, -160, 14, -179, 0, -180)
 metadata/_edit_lock_ = true
+
+[node name="CustomProgressBar" parent="." instance=ExtResource("11_u22nc")]
+visible = false
+offset_left = -128.0
+offset_top = 14.0
+offset_right = 122.0
+offset_bottom = 44.0

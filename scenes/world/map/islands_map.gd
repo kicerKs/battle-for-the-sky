@@ -2,14 +2,11 @@ extends TileMapLayer
 
 signal map_loaded
 
-@onready var custom_progress_bar = load("res://scenes/ui/gui/other_elements/CustomProgressBar.tscn")
-
 var tiles = { }
 var loaded_islands = 0
 
 var conquering_time: float = 5.0
 var conquering_islands: Array[Vector2i] = []
-var conquering_progress_bars: Dictionary[Vector2i, ProgressBar] = {}
 
 func _ready():
 	Game.tileMapLayer = self
@@ -20,9 +17,9 @@ func _process(delta: float) -> void:
 	for island_key in conquering_islands.duplicate():
 		tiles[island_key].conquering_timer -= delta
 		var progress = 1.0 - (tiles[island_key].conquering_timer / conquering_time)
-		conquering_progress_bars[island_key].value = progress
 		if tiles[island_key].conquering_timer <= 0:
 			stop_conquering(island_key)
+		tiles[island_key].progress_bar.value = progress
 
 func register_child(node: Node):
 	if node is Island:
@@ -51,7 +48,8 @@ func register_child(node: Node):
 			_set_islands_connections()
 
 func unregister_child(node: Node):
-	tiles.erase(local_to_map(node.position))
+	if node is Island:
+		tiles.erase(local_to_map(node.position))
 
 @rpc("call_local", "reliable")
 func set_island_dict(key, dict):
@@ -101,21 +99,15 @@ func start_conquering(unit_position: Vector2, unit_side: Lobby.Factions):
 	tiles[island_key].conquering_unit_side = unit_side
 	conquering_islands.append(island_key)
 	
-	var progress_bar: ProgressBar = custom_progress_bar.instantiate()
-	progress_bar.position = map_to_local(island_key) + Vector2(-125.0, 25.0)
-	add_child(progress_bar)
-	conquering_progress_bars[island_key] = progress_bar
+	tiles[island_key].progress_bar.visible = true
 
 func stop_conquering(island_key: Vector2i):
-	if conquering_progress_bars.has(island_key):
-		conquering_progress_bars[island_key].queue_free()
-		conquering_progress_bars.erase(island_key)
+	tiles[island_key].progress_bar.visible = false
+	tiles[island_key].progress_bar.value = 0.0
 	
 	conquering_islands.erase(island_key)
 	
 	var island = tiles[island_key]
 	island.ownership = island.conquering_unit_side
-	tiles[island_key] = island
 	
-	for key in tiles:
-		set_island_dict.rpc(key, tiles[key].get_dict())
+	set_island_dict.rpc(island_key, tiles[island_key].get_dict())

@@ -1,7 +1,7 @@
 extends Sprite2D
 class_name Island
 
-@onready var progress_bar: ProgressBar = $ConqueringProgressBar
+@onready var progress_bar = $CustomProgressBar
 
 var conquering_timer: float = 0.0
 var conquering_unit_side: Lobby.Factions

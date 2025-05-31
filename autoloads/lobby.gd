@@ -26,7 +26,7 @@ var players_loaded = 0
 var players = {}
 var player_info = {
 	"name": "Player",
-	"color": Factions.PLAYER_RED
+	"color": Factions.PLAYER_BLUE
 }
 
 func _ready():
