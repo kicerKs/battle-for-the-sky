@@ -14,6 +14,8 @@ func _ready():
 		%StartButton.disabled = true
 	for key in Lobby.players.keys():
 		_add_new_player(key, Lobby.players[key])
+	var host_name = Lobby.players[1]["name"]
+	$PanelContainer/VBoxContainer/Label.text = host_name + "'s Game"
 
 func _add_new_player(peer_id, player_info):
 	var scene = player_entry_scene.instantiate()

@@ -1,9 +1,39 @@
-[gd_scene load_steps=5 format=3 uid="uid://cmhavp1paqub"]
+[gd_scene load_steps=8 format=3 uid="uid://cmhavp1paqub"]
 
 [ext_resource type="Script" uid="uid://dtw13j3qd58gb" path="res://scenes/ui/main_menu/main_menu.gd" id="1_1ch07"]
 [ext_resource type="Texture2D" uid="uid://dsttt01mbchn7" path="res://assets/UI/main screen.png" id="2_cmwxi"]
-[ext_resource type="Texture2D" uid="uid://bqd64lwx1xt6l" path="res://assets/resources/frame2.png" id="2_e8t4i"]
 [ext_resource type="Theme" uid="uid://tit816pj440" path="res://resources/ui/themes/mainmenu/button_theme_main_menu.tres" id="3_r70wa"]
+[ext_resource type="FontFile" uid="uid://ba8wsyl36d580" path="res://resources/ui/fonts/Quintessential-Regular.ttf" id="4_cmwxi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r70wa"]
+bg_color = Color(0.422388, 0.597074, 0.910494, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.401623, 0.262534, 0.0870988, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_52x6y"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(0.0745098, 0.301961, 0.654902, 0.878431)
+corner_radius_top_left = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ouhi"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(0.0745098, 0.301961, 0.654902, 0.878431)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -25,6 +55,7 @@ texture = ExtResource("2_cmwxi")
 expand_mode = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
 layout_mode = 2
 offset_left = 785.0
 offset_top = 331.0
@@ -85,15 +116,7 @@ offset_right = 182.0
 offset_bottom = 71.5
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="NinePatchRect" type="NinePatchRect" parent="JoiningGameBox"]
-layout_mode = 2
-texture = ExtResource("2_e8t4i")
-region_rect = Rect2(1, 1, 65, 65)
-patch_margin_left = 30
-patch_margin_top = 10
-patch_margin_right = 30
-patch_margin_bottom = 10
+theme_override_styles/panel = SubResource("StyleBoxFlat_r70wa")
 
 [node name="MarginContainer" type="MarginContainer" parent="JoiningGameBox"]
 layout_mode = 2
@@ -104,9 +127,14 @@ theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="JoiningGameBox/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 20
 
 [node name="Label" type="Label" parent="JoiningGameBox/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("4_cmwxi")
+theme_override_font_sizes/font_size = 32
 text = "Joining game"
 horizontal_alignment = 1
 
@@ -114,27 +142,42 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
+theme_override_constants/h_separation = 20
 columns = 2
 
 [node name="Label" type="Label" parent="JoiningGameBox/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "Enter IP Address:"
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("4_cmwxi")
+theme_override_font_sizes/font_size = 24
+text = "IP Address:"
 
 [node name="IPTextEdit" type="TextEdit" parent="JoiningGameBox/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 35)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_constants/outline_size = 5
+theme_override_styles/normal = SubResource("StyleBoxFlat_52x6y")
 text = "127.0.0.1"
 placeholder_text = "IP Address"
 
 [node name="Label2" type="Label" parent="JoiningGameBox/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("4_cmwxi")
+theme_override_font_sizes/font_size = 24
 text = "Port:"
 
 [node name="PortTextEdit" type="TextEdit" parent="JoiningGameBox/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 35)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_constants/outline_size = 5
+theme_override_styles/normal = SubResource("StyleBoxFlat_8ouhi")
 text = "3907"
 placeholder_text = "Port"
 
@@ -144,15 +187,18 @@ layout_mode = 2
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="JoiningGameBox/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 20
 
 [node name="JoinButton" type="Button" parent="JoiningGameBox/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("3_r70wa")
 text = "Join"
 
 [node name="CancelButton" type="Button" parent="JoiningGameBox/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("3_r70wa")
 text = "Cancel"
 
 [connection signal="pressed" from="VBoxContainer/SinglePlayerButton" to="." method="_on_single_but_pressed"]

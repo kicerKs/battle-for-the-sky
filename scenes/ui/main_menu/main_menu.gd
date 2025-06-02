@@ -18,7 +18,7 @@ func _on_single_but_pressed() -> void:
 
 func _on_multi_but_pressed() -> void:
 	%JoiningGameBox.visible = true
-	%MainContainer.visible = false
+	%VBoxContainer.visible = false
 
 func _on_set_but_pressed() -> void:
 	pass # Replace with function body.
@@ -36,7 +36,7 @@ func _on_join_button_pressed() -> void:
 
 func _on_cancel_button_pressed() -> void:
 	%JoiningGameBox.visible = false
-	%MainContainer.visible = true
+	%VBoxContainer.visible = true
 
 func _show_connection_error_message():
 	%ConnectionMessage.text = "Failed to connect to the server! Check if IP address is valid and try again."

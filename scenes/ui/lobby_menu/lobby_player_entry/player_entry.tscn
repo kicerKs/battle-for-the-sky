@@ -1,8 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://dbklu3p33ck35"]
+[gd_scene load_steps=4 format=3 uid="uid://dbklu3p33ck35"]
 
 [ext_resource type="Script" uid="uid://dm7cw6gqm31w8" path="res://scenes/ui/lobby_menu/lobby_player_entry/player_entry.gd" id="1_lrswl"]
+[ext_resource type="FontFile" uid="uid://ba8wsyl36d580" path="res://resources/ui/fonts/Quintessential-Regular.ttf" id="2_jrqs7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qx8ra"]
+bg_color = Color(0.0745098, 0.301961, 0.654902, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2, 0.109804, 0.027451, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
 
 [node name="PlayerEntry" type="PanelContainer"]
+theme_override_styles/panel = SubResource("StyleBoxFlat_qx8ra")
 script = ExtResource("1_lrswl")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -17,15 +35,27 @@ layout_mode = 2
 [node name="Peer" type="Label" parent="HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("2_jrqs7")
+theme_override_font_sizes/font_size = 22
 text = "Host"
 
 [node name="PlayerName" type="Label" parent="HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("2_jrqs7")
+theme_override_font_sizes/font_size = 22
 text = "Player Name"
 
 [node name="Status" type="Label" parent="HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("2_jrqs7")
+theme_override_font_sizes/font_size = 22
 text = "Status: Connected"
