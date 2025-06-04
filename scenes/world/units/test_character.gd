@@ -47,3 +47,8 @@ func _ready():
 		stats.actionSpeed=1
 	if(health_component!=null):
 		health_component.unit_died.connect(_on_unit_died)
+
+func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			SignalBus.unit_clicked.emit(self)

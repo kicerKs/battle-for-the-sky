@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="BuildingStats" load_steps=4 format=3 uid="uid://hs8rrnbl81ig"]
+
+[ext_resource type="Script" uid="uid://cnpqub73glek8" path="res://resources/empire/buildings/building_stats.gd" id="1_4t5mh"]
+[ext_resource type="Texture2D" uid="uid://by1kqdl2apkej" path="res://assets/buildings/barrack 1 cropped.png" id="1_k56rh"]
+[ext_resource type="Texture2D" uid="uid://f026odxk54xh" path="res://assets/buildings/barrack 1.png" id="2_n0e8u"]
+
+[resource]
+script = ExtResource("1_4t5mh")
+name = "Barracks"
+description = "Trains knights"
+is_upgraded = false
+texture = ExtResource("2_n0e8u")
+icon = ExtResource("1_k56rh")
+cost = Dictionary[int, int]({
+0: 10,
+1: 0,
+2: 0,
+3: 0,
+4: 0
+})
+metadata/_custom_type_script = "uid://cnpqub73glek8"

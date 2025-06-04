@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="BuildingStats" load_steps=4 format=3 uid="uid://bc1is3namt155"]
+
+[ext_resource type="Script" uid="uid://cnpqub73glek8" path="res://resources/empire/buildings/building_stats.gd" id="1_61oy4"]
+[ext_resource type="Texture2D" uid="uid://ci2bkvttnpqdi" path="res://assets/buildings/house 1 cropped.png" id="1_v3ex6"]
+[ext_resource type="Texture2D" uid="uid://d1fd6ltnjv8gf" path="res://assets/buildings/house 1.png" id="3_v3ex6"]
+
+[resource]
+script = ExtResource("1_61oy4")
+name = "House"
+description = "Trains peasants"
+is_upgraded = false
+texture = ExtResource("3_v3ex6")
+icon = ExtResource("1_v3ex6")
+cost = Dictionary[int, int]({
+0: 5,
+1: 0,
+2: 0,
+3: 0,
+4: 0
+})
+metadata/_custom_type_script = "uid://cnpqub73glek8"

@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="UnitStats" load_steps=5 format=3 uid="uid://c02iduu6f2f7p"]
+
+[ext_resource type="Script" uid="uid://cayakk8o7fjyy" path="res://resources/empire/units/unit_stats.gd" id="1_q7xis"]
+[ext_resource type="Texture2D" uid="uid://hqqtpupdy15b" path="res://assets/units/soldier_blue_up.png" id="2_g5s6b"]
+[ext_resource type="Texture2D" uid="uid://eyrsur4kgqnm" path="res://assets/units/soldier_red_up.png" id="3_r32me"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7xis"]
+atlas = ExtResource("2_g5s6b")
+region = Rect2(0, 0, 800, 800)
+
+[resource]
+script = ExtResource("1_q7xis")
+name = "Soldier"
+description = "Strong melee unit"
+level = 2
+spriteSheetBlue = ExtResource("2_g5s6b")
+spriteSheetRed = ExtResource("3_r32me")
+max_hp = 150
+armor = 50
+speed = 100
+range = 60
+singleTarget = true
+action = 0
+actionSpeed = 0
+icon = SubResource("AtlasTexture_q7xis")
+metadata/_custom_type_script = "uid://cayakk8o7fjyy"

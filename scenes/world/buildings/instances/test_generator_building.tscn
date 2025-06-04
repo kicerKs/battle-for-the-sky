@@ -1,16 +1,21 @@
-[gd_scene load_steps=7 format=3 uid="uid://dkrv674okmjmm"]
+[gd_scene load_steps=11 format=3 uid="uid://dkrv674okmjmm"]
 
 [ext_resource type="Script" uid="uid://dkfjkrmloyb8q" path="res://scenes/world/buildings/building.gd" id="1_2utar"]
+[ext_resource type="Resource" uid="uid://b4a6olvmb635h" path="res://resources/empire/buildings/generators/woodcutter/woodcutter_1.tres" id="2_84i42"]
 [ext_resource type="Script" uid="uid://bgfw61xrlis0x" path="res://scenes/world/buildings/generator_component.gd" id="2_qo0ud"]
-[ext_resource type="Resource" uid="uid://df47n6l2jj8r7" path="res://resources/empire/buildings/woodcutter.tres" id="3_hfpdo"]
-[ext_resource type="Texture2D" uid="uid://cdj6063ckvcwt" path="res://assets/building_placeholder_2.png" id="3_qo0ud"]
+[ext_resource type="Resource" uid="uid://df47n6l2jj8r7" path="res://resources/empire/buildings/generators/woodcutter/woodcutter_1_generator.tres" id="3_hfpdo"]
 [ext_resource type="Texture2D" uid="uid://dnp4jokjn0ny3" path="res://assets/resources/upgrade.png" id="4_atpml"]
+[ext_resource type="PackedScene" uid="uid://kuij88i7j4x1" path="res://scenes/world/buildings/upgrade_component.tscn" id="5_84i42"]
+[ext_resource type="Resource" uid="uid://knnjujux4ks2" path="res://resources/empire/buildings/generators/woodcutter/woodcutter_2.tres" id="6_mab8j"]
+[ext_resource type="Resource" uid="uid://bhu236kvrs205" path="res://resources/empire/buildings/generators/woodcutter/woodcutter_2_generator.tres" id="7_a87ni"]
+[ext_resource type="Texture2D" uid="uid://byx58bdtjlh34" path="res://assets/buildings/timber.png" id="8_a87ni"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_atpml"]
 size = Vector2(50, 50)
 
 [node name="Building" type="Node2D"]
 script = ExtResource("1_2utar")
+stats = ExtResource("2_84i42")
 metadata/_custom_type_script = "uid://dkfjkrmloyb8q"
 
 [node name="GeneratorComponent" type="Node" parent="."]
@@ -18,8 +23,21 @@ script = ExtResource("2_qo0ud")
 stats = ExtResource("3_hfpdo")
 metadata/_custom_type_script = "uid://bgfw61xrlis0x"
 
+[node name="UpgradeComponent" parent="." instance=ExtResource("5_84i42")]
+upgrade_cost = Dictionary[int, int]({
+0: 2,
+1: 0,
+2: 2,
+3: 0,
+4: 0
+})
+upgraded_building = ExtResource("6_mab8j")
+generator_stats = ExtResource("7_a87ni")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("3_qo0ud")
+position = Vector2(-3.57628e-07, -4.17233e-07)
+scale = Vector2(0.0625, 0.0625)
+texture = ExtResource("8_a87ni")
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -62,4 +80,5 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "X"
 
-[connection signal="pressed" from="Buttons/PanelContainer2/UpgradeButton" to="GeneratorComponent" method="_on_upgrade_button_pressed"]
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="pressed" from="Buttons/PanelContainer2/UpgradeButton" to="UpgradeComponent" method="_on_upgrade_button_pressed"]

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="GeneratorStats" load_steps=2 format=3 uid="uid://df47n6l2jj8r7"]
+
+[ext_resource type="Script" uid="uid://dm6kvxs8ifu41" path="res://resources/empire/buildings/generator_stats.gd" id="1_jkwn6"]
+
+[resource]
+script = ExtResource("1_jkwn6")
+generatingTime = 15
+generatingResources = Dictionary[int, int]({
+0: 15,
+1: 0,
+2: 0,
+3: 0,
+4: 0
+})
+metadata/_custom_type_script = "uid://dm6kvxs8ifu41"

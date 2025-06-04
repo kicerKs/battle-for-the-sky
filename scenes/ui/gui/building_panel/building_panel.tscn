@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://dghdx8l8c2e6f"]
+[gd_scene load_steps=16 format=3 uid="uid://dghdx8l8c2e6f"]
 
 [ext_resource type="Texture2D" uid="uid://bqd64lwx1xt6l" path="res://assets/resources/frame2.png" id="1_bf4ef"]
+[ext_resource type="Script" uid="uid://revmvetclto8" path="res://scenes/ui/gui/building_panel/building_panel.gd" id="1_y84b2"]
 [ext_resource type="Texture2D" uid="uid://ci2bkvttnpqdi" path="res://assets/buildings/house 1 cropped.png" id="2_pfqr3"]
 [ext_resource type="LabelSettings" uid="uid://dnnraievjxt1t" path="res://scenes/ui/gui/building_panel/building_panel_label_settings.tres" id="3_pfqr3"]
 [ext_resource type="Texture2D" uid="uid://yf8tb4f1enp7" path="res://assets/icons/hp.png" id="4_y84b2"]
@@ -31,6 +32,7 @@ grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxEmpty_wgegm")
+script = ExtResource("1_y84b2")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 2
@@ -62,13 +64,15 @@ layout_mode = 2
 theme_override_constants/margin_left = 25
 theme_override_constants/margin_right = 25
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/icon + name/MarginContainer"]
+[node name="BuildingIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/icon + name/MarginContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = ExtResource("2_pfqr3")
 expand_mode = 5
 
-[node name="building_name" type="Label" parent="MarginContainer/HBoxContainer/icon + name"]
+[node name="BuildingName" type="Label" parent="MarginContainer/HBoxContainer/icon + name"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -124,26 +128,30 @@ texture = ExtResource("5_pjxwo")
 expand_mode = 5
 
 [node name="Unit Container" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container"]
+[node name="UnitTextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 texture = ExtResource("5_wjw1r")
 expand_mode = 5
 
-[node name="Wood" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container"]
+[node name="UniWood" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container/Wood"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container/UniWood"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_vertical = 0
 texture = ExtResource("6_d5e64")
 expand_mode = 5
 
-[node name="CountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container/Wood"]
+[node name="UniWoodCountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container/UniWood"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "25"
@@ -151,17 +159,19 @@ label_settings = ExtResource("3_pfqr3")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Food" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container"]
+[node name="UniFood" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container/Food"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container/UniFood"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_vertical = 0
 texture = ExtResource("7_haman")
 expand_mode = 5
 
-[node name="CountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container/Food"]
+[node name="UniFoodCountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container/UniFood"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "25"
@@ -169,17 +179,19 @@ label_settings = ExtResource("3_pfqr3")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Gold" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container"]
+[node name="UniGold" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container/Gold"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container/UniGold"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_vertical = 0
 texture = ExtResource("8_ij6ju")
 expand_mode = 5
 
-[node name="CountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container/Gold"]
+[node name="UniGoldCountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container/UniGold"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "25"
@@ -187,17 +199,19 @@ label_settings = ExtResource("3_pfqr3")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Stone" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container"]
+[node name="UniStone" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container/Stone"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container/UniStone"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_vertical = 0
 texture = ExtResource("9_k7wtp")
 expand_mode = 5
 
-[node name="CountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container/Stone"]
+[node name="UniStoneCountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container/UniStone"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "25"
@@ -205,17 +219,19 @@ label_settings = ExtResource("3_pfqr3")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Iron" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container"]
+[node name="UniIron" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container/Iron"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container/UniIron"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_vertical = 0
 texture = ExtResource("10_agwku")
 expand_mode = 5
 
-[node name="CountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container/Iron"]
+[node name="UniIronCountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container/UniIron"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "25"
@@ -223,17 +239,19 @@ label_settings = ExtResource("3_pfqr3")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Time" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container"]
+[node name="UniTime" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container/Time"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container/UniTime"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_vertical = 0
 texture = ExtResource("12_wjw1r")
 expand_mode = 5
 
-[node name="CountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container/Time"]
+[node name="UniTimeCountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container/UniTime"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "25"
@@ -242,20 +260,23 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Resource Container" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Wood" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container"]
+[node name="ResWood" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container/Wood"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container/ResWood"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_vertical = 0
 texture = ExtResource("6_d5e64")
 expand_mode = 5
 
-[node name="CountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container/Wood"]
+[node name="ResWoodCountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container/ResWood"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "25"
@@ -263,17 +284,19 @@ label_settings = ExtResource("3_pfqr3")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Food" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container"]
+[node name="ResFood" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container/Food"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container/ResFood"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_vertical = 0
 texture = ExtResource("7_haman")
 expand_mode = 5
 
-[node name="CountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container/Food"]
+[node name="ResFoodCountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container/ResFood"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "25"
@@ -281,17 +304,19 @@ label_settings = ExtResource("3_pfqr3")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Gold" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container"]
+[node name="ResGold" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container/Gold"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container/ResGold"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_vertical = 0
 texture = ExtResource("8_ij6ju")
 expand_mode = 5
 
-[node name="CountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container/Gold"]
+[node name="ResGoldCountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container/ResGold"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "25"
@@ -299,17 +324,19 @@ label_settings = ExtResource("3_pfqr3")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Stone" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container"]
+[node name="ResStone" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container/Stone"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container/ResStone"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_vertical = 0
 texture = ExtResource("9_k7wtp")
 expand_mode = 5
 
-[node name="CountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container/Stone"]
+[node name="ResStoneCountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container/ResStone"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "25"
@@ -317,17 +344,19 @@ label_settings = ExtResource("3_pfqr3")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Iron" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container"]
+[node name="ResIron" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container/Iron"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container/ResIron"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_vertical = 0
 texture = ExtResource("10_agwku")
 expand_mode = 5
 
-[node name="CountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container/Iron"]
+[node name="ResIronCountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container/ResIron"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "25"
@@ -335,17 +364,19 @@ label_settings = ExtResource("3_pfqr3")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Time" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container"]
+[node name="ResTime" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container/Time"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container/ResTime"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_vertical = 0
 texture = ExtResource("12_wjw1r")
 expand_mode = 5
 
-[node name="CountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container/Time"]
+[node name="ResTimeCountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container/ResTime"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "25"
@@ -354,6 +385,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Upgrade Container" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_constants/separation = 10
@@ -365,17 +397,19 @@ size_flags_vertical = 0
 texture = ExtResource("13_d5e64")
 expand_mode = 5
 
-[node name="Wood" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container"]
+[node name="UpWood" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container/Wood"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container/UpWood"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_vertical = 0
 texture = ExtResource("6_d5e64")
 expand_mode = 5
 
-[node name="CountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container/Wood"]
+[node name="UpWoodCountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container/UpWood"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "25"
@@ -383,17 +417,19 @@ label_settings = ExtResource("3_pfqr3")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Food" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container"]
+[node name="UpFood" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container/Food"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container/UpFood"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_vertical = 0
 texture = ExtResource("7_haman")
 expand_mode = 5
 
-[node name="CountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container/Food"]
+[node name="UpFoodCountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container/UpFood"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "25"
@@ -401,17 +437,19 @@ label_settings = ExtResource("3_pfqr3")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Gold" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container"]
+[node name="UpGold" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container/Gold"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container/UpGold"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_vertical = 0
 texture = ExtResource("8_ij6ju")
 expand_mode = 5
 
-[node name="CountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container/Gold"]
+[node name="UpGoldCountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container/UpGold"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "25"
@@ -419,17 +457,19 @@ label_settings = ExtResource("3_pfqr3")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Stone" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container"]
+[node name="UpStone" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container/Stone"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container/UpStone"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_vertical = 0
 texture = ExtResource("9_k7wtp")
 expand_mode = 5
 
-[node name="CountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container/Stone"]
+[node name="UpStoneCountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container/UpStone"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "25"
@@ -437,17 +477,19 @@ label_settings = ExtResource("3_pfqr3")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Iron" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container"]
+[node name="UpIron" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container/Iron"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container/UpIron"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_vertical = 0
 texture = ExtResource("10_agwku")
 expand_mode = 5
 
-[node name="CountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container/Iron"]
+[node name="UpIronCountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container/UpIron"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "25"
@@ -456,6 +498,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Description" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3

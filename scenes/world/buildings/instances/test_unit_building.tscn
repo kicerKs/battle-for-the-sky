@@ -1,28 +1,28 @@
-[gd_scene load_steps=11 format=3 uid="uid://c817i4cmyy633"]
+[gd_scene load_steps=13 format=3 uid="uid://c817i4cmyy633"]
 
 [ext_resource type="Script" uid="uid://dkfjkrmloyb8q" path="res://scenes/world/buildings/building.gd" id="1_akj7n"]
+[ext_resource type="Resource" uid="uid://bc1is3namt155" path="res://resources/empire/buildings/trainers/house/house_1.tres" id="2_ei8ew"]
 [ext_resource type="Script" uid="uid://d4hsgvbrj0rlt" path="res://scenes/world/buildings/train_component.gd" id="2_gbih2"]
-[ext_resource type="Resource" uid="uid://wcmy4crj6wo7" path="res://resources/empire/units/peasant.tres" id="3_i3chs"]
-[ext_resource type="Resource" uid="uid://cc6inv7aq6lbl" path="res://resources/empire/units/knight.tres" id="4_qq1jg"]
+[ext_resource type="Resource" uid="uid://beo8i2f6jcg3w" path="res://resources/empire/buildings/trainers/house/house_1_trainer.tres" id="3_kcyx4"]
 [ext_resource type="Texture2D" uid="uid://dnp4jokjn0ny3" path="res://assets/resources/upgrade.png" id="5_gbih2"]
-[ext_resource type="Texture2D" uid="uid://f026odxk54xh" path="res://assets/buildings/barrack 1.png" id="5_i3chs"]
-[ext_resource type="Texture2D" uid="uid://dha7evfn17uqt" path="res://assets/buildings/barrack 2.png" id="6_qq1jg"]
+[ext_resource type="Resource" uid="uid://c2fjfp51jee2k" path="res://resources/empire/buildings/trainers/house/house_2.tres" id="6_ei8ew"]
+[ext_resource type="Resource" uid="uid://btol4brade3aq" path="res://resources/empire/buildings/trainers/house/house_2_trainer.tres" id="7_eltow"]
 [ext_resource type="Script" uid="uid://dlfqvdrv0wj33" path="res://scenes/world/units/components/SearchComponent.gd" id="7_g6107"]
+[ext_resource type="PackedScene" uid="uid://kuij88i7j4x1" path="res://scenes/world/buildings/upgrade_component.tscn" id="8_kcyx4"]
 [ext_resource type="Texture2D" uid="uid://bpetq6rubw0vm" path="res://assets/resources/attackspeed.png" id="8_qq1jg"]
+[ext_resource type="Texture2D" uid="uid://d1fd6ltnjv8gf" path="res://assets/buildings/house 1.png" id="9_ei8ew"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_akj7n"]
 size = Vector2(58, 65)
 
 [node name="Building" type="Node2D"]
 script = ExtResource("1_akj7n")
+stats = ExtResource("2_ei8ew")
 metadata/_custom_type_script = "uid://dkfjkrmloyb8q"
 
 [node name="TrainComponent" type="Node" parent="." node_paths=PackedStringArray("search_component")]
 script = ExtResource("2_gbih2")
-base_unit = ExtResource("3_i3chs")
-upgraded_unit = ExtResource("4_qq1jg")
-texture1 = ExtResource("5_i3chs")
-texture2 = ExtResource("6_qq1jg")
+stats = ExtResource("3_kcyx4")
 search_component = NodePath("../SearchComponent")
 metadata/_custom_type_script = "uid://d4hsgvbrj0rlt"
 
@@ -30,9 +30,20 @@ metadata/_custom_type_script = "uid://d4hsgvbrj0rlt"
 script = ExtResource("7_g6107")
 metadata/_custom_type_script = "uid://dlfqvdrv0wj33"
 
+[node name="UpgradeComponent" parent="." instance=ExtResource("8_kcyx4")]
+upgrade_cost = Dictionary[int, int]({
+0: 0,
+1: 2,
+2: 0,
+3: 2,
+4: 0
+})
+upgraded_building = ExtResource("6_ei8ew")
+trainer_stats = ExtResource("7_eltow")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.08, 0.08)
-texture = ExtResource("5_i3chs")
+texture = ExtResource("9_ei8ew")
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -108,6 +119,7 @@ offset_right = -35.0
 offset_bottom = 39.0
 text = "false"
 
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="pressed" from="Buttons/PanelContainer/TrainActivateButton" to="TrainComponent" method="_on_train_activate_button_pressed"]
-[connection signal="pressed" from="Buttons/PanelContainer2/UpgradeButton" to="TrainComponent" method="_on_upgrade_button_pressed"]
+[connection signal="pressed" from="Buttons/PanelContainer2/UpgradeButton" to="UpgradeComponent" method="_on_upgrade_button_pressed"]
 [connection signal="pressed" from="Buttons/PanelContainer4/FrontChangeButton" to="TrainComponent" method="_on_front_change_button_pressed"]

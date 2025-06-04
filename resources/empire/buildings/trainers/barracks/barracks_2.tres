@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="BuildingStats" load_steps=4 format=3 uid="uid://dx47pw4pa83d4"]
+
+[ext_resource type="Texture2D" uid="uid://bpvpdv2fs4vyt" path="res://assets/buildings/barrack 2 cropped.png" id="1_3vrxl"]
+[ext_resource type="Script" uid="uid://cnpqub73glek8" path="res://resources/empire/buildings/building_stats.gd" id="1_o0rjp"]
+[ext_resource type="Texture2D" uid="uid://dha7evfn17uqt" path="res://assets/buildings/barrack 2.png" id="2_7uncr"]
+
+[resource]
+script = ExtResource("1_o0rjp")
+name = "Upgraded Barracks"
+description = "Upgraded barracks trains upgraded knights"
+is_upgraded = true
+texture = ExtResource("2_7uncr")
+icon = ExtResource("1_3vrxl")
+cost = Dictionary[int, int]({
+0: 0,
+1: 0,
+2: 0,
+3: 0,
+4: 0
+})
+metadata/_custom_type_script = "uid://cnpqub73glek8"

@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://b00qlr3qdf2xk"]
+[gd_scene load_steps=15 format=3 uid="uid://b00qlr3qdf2xk"]
 
 [ext_resource type="Texture2D" uid="uid://bqd64lwx1xt6l" path="res://assets/resources/frame2.png" id="1_4su13"]
+[ext_resource type="Script" uid="uid://dbq5ssyjve4go" path="res://scenes/ui/gui/unit_panel/unit_panel.gd" id="1_mtul5"]
 [ext_resource type="Texture2D" uid="uid://bmsh0s6amr1u8" path="res://assets/resources/unit_test.png" id="2_gpnjr"]
 [ext_resource type="LabelSettings" uid="uid://d007hy5a7s8yl" path="res://scenes/ui/gui/unit_panel/unit_panel_label_settings.tres" id="3_gpnjr"]
 [ext_resource type="Texture2D" uid="uid://yf8tb4f1enp7" path="res://assets/icons/hp.png" id="4_34sqj"]
@@ -33,6 +34,7 @@ grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxEmpty_5t18f")
+script = ExtResource("1_mtul5")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 2
@@ -66,13 +68,15 @@ size_flags_vertical = 6
 theme_override_constants/margin_left = 25
 theme_override_constants/margin_right = 25
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/icon + name/MarginContainer"]
+[node name="UnitIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/icon + name/MarginContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = SubResource("AtlasTexture_stgc1")
 expand_mode = 5
 
 [node name="character_name" type="Label" parent="MarginContainer/HBoxContainer/icon + name"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 6
@@ -111,6 +115,7 @@ texture = ExtResource("4_34sqj")
 expand_mode = 5
 
 [node name="hp_label" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/HP Container"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_stretch_ratio = 3.58
 text = "300/300"
@@ -131,6 +136,7 @@ texture = ExtResource("5_mtul5")
 expand_mode = 5
 
 [node name="attack_label" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Attack Container"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "30"
@@ -150,6 +156,7 @@ texture = ExtResource("6_imqgq")
 expand_mode = 5
 
 [node name="defense_label" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Defense Container"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "25"
@@ -170,6 +177,7 @@ texture = ExtResource("7_5t18f")
 expand_mode = 5
 
 [node name="spd_label" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Speed Container"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "25"
@@ -190,6 +198,7 @@ texture = ExtResource("8_08odm")
 expand_mode = 5
 
 [node name="attspd_label" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/AttackSpeed Container"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "25"
@@ -202,6 +211,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="RangeIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -210,6 +220,7 @@ texture = ExtResource("9_58t75")
 expand_mode = 5
 
 [node name="AOEIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -218,6 +229,7 @@ texture = ExtResource("10_mhg2c")
 expand_mode = 5
 
 [node name="DamageHealIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -226,6 +238,7 @@ texture = ExtResource("11_cbdtt")
 expand_mode = 5
 
 [node name="Description" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(600, 60)
 layout_mode = 2
 size_flags_horizontal = 3

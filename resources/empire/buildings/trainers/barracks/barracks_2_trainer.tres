@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TrainerStats" load_steps=2 format=3 uid="uid://crrwpuirefdbu"]
+
+[ext_resource type="Script" uid="uid://bg5yhrle0o8gv" path="res://resources/empire/buildings/trainer_stats.gd" id="1_m8hi1"]
+
+[resource]
+script = ExtResource("1_m8hi1")
+training_time = 15
+metadata/_custom_type_script = "uid://bg5yhrle0o8gv"

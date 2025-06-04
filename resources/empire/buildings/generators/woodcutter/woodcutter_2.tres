@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="BuildingStats" load_steps=3 format=3 uid="uid://knnjujux4ks2"]
+
+[ext_resource type="Script" uid="uid://cnpqub73glek8" path="res://resources/empire/buildings/building_stats.gd" id="1_6ucot"]
+[ext_resource type="Texture2D" uid="uid://bsistd7bvwwjq" path="res://assets/buildings/timber_up.png" id="2_m70k6"]
+
+[resource]
+script = ExtResource("1_6ucot")
+name = "Sawmill"
+description = "An upgraded wood generator building."
+is_upgraded = true
+texture = ExtResource("2_m70k6")
+icon = ExtResource("2_m70k6")
+cost = Dictionary[int, int]({
+0: 10,
+1: 0,
+2: 0,
+3: 0,
+4: 0
+})
+metadata/_custom_type_script = "uid://cnpqub73glek8"

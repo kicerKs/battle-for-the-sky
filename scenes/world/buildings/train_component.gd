@@ -1,22 +1,16 @@
 extends Node
 class_name TrainComponent
 
-@export var base_unit: UnitStats
-@export var upgraded_unit: UnitStats
-
-@export var texture1: CompressedTexture2D
-@export var texture2: CompressedTexture2D
+@export var stats: TrainerStats
 
 @export var search_component: SearchComponent
 
 @onready var sprite: Sprite2D = $"../Sprite2D"
-@onready var unit_scene: PackedScene = load("res://scenes/world/units/test_character.tscn")
 @onready var label: Label = $"../Label"
 
 var new_unit: CharacterBody2D
 
 var is_active: bool = false
-var building_level: int = 0
 var island_key: Vector2i
 var island_ownership: Lobby.Factions
 var spawn_position: Vector2
@@ -42,9 +36,6 @@ var front_change_mode: bool = false:
 		else:
 			label.text = "false"
 
-func _ready() -> void:
-	sprite.texture = texture1
-
 # This function is called only when building is placed on island
 func activate():
 	is_active = true
@@ -55,15 +46,10 @@ func activate():
 	_training_loop = true
 
 func load_unit():
-	new_unit = unit_scene.instantiate()
+	new_unit = stats.unit.instantiate()
 	new_unit.auto_front_change.connect(_on_auto_front_change)
 	new_unit.side = island_ownership
 	new_unit.spawn_position = spawn_position
-	match building_level:
-		0:
-			new_unit.stats = base_unit
-		1:
-			new_unit.stats = upgraded_unit
 
 # for testing 
 func _unhandled_input(event: InputEvent) -> void:
@@ -88,14 +74,14 @@ func start_training():
 		return false
 	
 	load_unit()
-	for res in new_unit.stats.trainingResources:
-		if Game.get_player_resource(res) < new_unit.stats.trainingResources[res]:
+	for res in stats.training_cost:
+		if Game.get_player_resource(res) < stats.training_cost[res]:
 			return false
-	for res in new_unit.stats.trainingResources:
-		Game.change_player_resource(res, -new_unit.stats.trainingResources[res])
+	for res in stats.training_cost:
+		Game.change_player_resource(res, -stats.training_cost[res])
 	
 	_is_training = true
-	_current_train_timer = new_unit.stats.trainingTime
+	_current_train_timer = stats.training_time
 	return true
 
 func complete_training(): 
@@ -107,7 +93,7 @@ func complete_training():
 		start_training()
 
 func get_training_progress() -> float:
-	return 1.0 - (_current_train_timer / new_unit.stats.trainingTime)
+	return 1.0 - (_current_train_timer / stats.training_time)
 
 func _on_train_activate_button_pressed() -> void:
 	if _training_loop:
@@ -116,11 +102,6 @@ func _on_train_activate_button_pressed() -> void:
 		%TrainActivateButton.text = "ON"
 	
 	_training_loop = !_training_loop
-
-func _on_upgrade_button_pressed() -> void:
-	building_level += 1
-	%UpgradeButton.disabled = true
-	sprite.texture = texture2
 
 func _on_front_change_button_pressed() -> void:
 	front_change_mode = true

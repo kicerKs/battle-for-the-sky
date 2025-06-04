@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://kuij88i7j4x1"]
+
+[ext_resource type="Script" uid="uid://kgricn64lxfn" path="res://scenes/world/buildings/upgrade_component.gd" id="1_wnspl"]
+
+[node name="UpgradeComponent" type="Node"]
+script = ExtResource("1_wnspl")

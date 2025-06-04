@@ -10,6 +10,7 @@
 script = ExtResource("1_w6p3d")
 
 [node name="BuildingPanel" parent="." instance=ExtResource("2_7a7fb")]
+visible = false
 
 [node name="ConstructionPanel" parent="." instance=ExtResource("3_kebd8")]
 

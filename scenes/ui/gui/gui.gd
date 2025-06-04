@@ -9,6 +9,25 @@ func _ready() -> void:
 	#char_panel.custom_minimum_size = Vector2(window_width /2.2,0)
 	#build_panel.custom_minimum_size = Vector2(window_width / 2.2,0)
 	# test it out whether its a good idea	
+	
+	SignalBus.connect("building_clicked", show_building_panel)
+	SignalBus.connect("unit_clicked", show_unit_panel)
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_RIGHT:
+			$BuildingPanel.visible = false
+			$UnitPanel.visible = false
+
+func show_building_panel(building: Building):
+	$UnitPanel.visible = false
+	$BuildingPanel.visible = true
+	$BuildingPanel.setup(building)
+
+func show_unit_panel(unit: TestCharacter):
+	$BuildingPanel.visible = false
+	$UnitPanel.visible = true
+	$UnitPanel.setup(unit)
 
 func _on_construction_panel_building_selected(building: Variant) -> void:
 	building_selected.emit(building)
