@@ -4,16 +4,16 @@
 [ext_resource type="Resource" uid="uid://bc1is3namt155" path="res://resources/empire/buildings/trainers/house/house_1.tres" id="2_ei8ew"]
 [ext_resource type="Script" uid="uid://d4hsgvbrj0rlt" path="res://scenes/world/buildings/train_component.gd" id="2_gbih2"]
 [ext_resource type="Resource" uid="uid://beo8i2f6jcg3w" path="res://resources/empire/buildings/trainers/house/house_1_trainer.tres" id="3_kcyx4"]
-[ext_resource type="Texture2D" uid="uid://dnp4jokjn0ny3" path="res://assets/resources/upgrade.png" id="5_gbih2"]
 [ext_resource type="Resource" uid="uid://c2fjfp51jee2k" path="res://resources/empire/buildings/trainers/house/house_2.tres" id="6_ei8ew"]
 [ext_resource type="Resource" uid="uid://btol4brade3aq" path="res://resources/empire/buildings/trainers/house/house_2_trainer.tres" id="7_eltow"]
 [ext_resource type="Script" uid="uid://dlfqvdrv0wj33" path="res://scenes/world/units/components/SearchComponent.gd" id="7_g6107"]
 [ext_resource type="PackedScene" uid="uid://kuij88i7j4x1" path="res://scenes/world/buildings/upgrade_component.tscn" id="8_kcyx4"]
 [ext_resource type="Texture2D" uid="uid://bpetq6rubw0vm" path="res://assets/resources/attackspeed.png" id="8_qq1jg"]
 [ext_resource type="Texture2D" uid="uid://d1fd6ltnjv8gf" path="res://assets/buildings/house 1.png" id="9_ei8ew"]
+[ext_resource type="Texture2D" uid="uid://c555ryq6v6pc" path="res://assets/icons/building can upgrade.png" id="10_ei8ew"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_akj7n"]
-size = Vector2(58, 65)
+size = Vector2(200, 350)
 
 [node name="Building" type="Node2D"]
 script = ExtResource("1_akj7n")
@@ -53,10 +53,10 @@ shape = SubResource("RectangleShape2D_akj7n")
 
 [node name="UnitTrainProgressBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
-offset_left = 35.0
-offset_top = 10.0
-offset_right = 39.0
-offset_bottom = 37.0
+offset_left = 101.0
+offset_top = -11.0
+offset_right = 107.0
+offset_bottom = 98.0
 scale = Vector2(2, 2)
 max_value = 1.0
 fill_mode = 3
@@ -65,10 +65,10 @@ show_percentage = false
 [node name="Buttons" type="Node2D" parent="."]
 
 [node name="PanelContainer" type="PanelContainer" parent="Buttons"]
-offset_left = -39.0
-offset_top = 70.0
-offset_right = 1.0
-offset_bottom = 110.0
+offset_left = 5.0
+offset_top = 217.0
+offset_right = 45.0
+offset_bottom = 257.0
 scale = Vector2(0.75, 0.75)
 
 [node name="TrainActivateButton" type="Button" parent="Buttons/PanelContainer"]
@@ -77,22 +77,23 @@ layout_mode = 2
 text = "ON"
 
 [node name="PanelContainer2" type="PanelContainer" parent="Buttons"]
-offset_left = -39.0
-offset_top = -36.0
-offset_right = 1.0
-offset_bottom = 4.0
+offset_left = -35.0
+offset_top = 217.0
+offset_right = 5.0
+offset_bottom = 257.0
 scale = Vector2(0.75, 0.75)
 
 [node name="UpgradeButton" type="Button" parent="Buttons/PanelContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
-icon = ExtResource("5_gbih2")
+icon = ExtResource("10_ei8ew")
+expand_icon = true
 
 [node name="PanelContainer3" type="PanelContainer" parent="Buttons"]
-offset_left = 8.0
-offset_top = -36.0
-offset_right = 48.0
-offset_bottom = 4.0
+offset_left = 70.0
+offset_top = 208.0
+offset_right = 110.0
+offset_bottom = 248.0
 scale = Vector2(0.75, 0.75)
 
 [node name="RemoveButton" type="Button" parent="Buttons/PanelContainer3"]
@@ -101,10 +102,10 @@ layout_mode = 2
 text = "X"
 
 [node name="PanelContainer4" type="PanelContainer" parent="Buttons"]
-offset_left = 8.0
-offset_top = 70.0
-offset_right = 48.0
-offset_bottom = 110.0
+offset_left = -100.0
+offset_top = 208.0
+offset_right = -60.0
+offset_bottom = 248.0
 scale = Vector2(0.75, 0.75)
 
 [node name="FrontChangeButton" type="Button" parent="Buttons/PanelContainer4"]

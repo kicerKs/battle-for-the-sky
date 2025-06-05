@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bqxs5pv8its2r"]
+[gd_scene load_steps=34 format=3 uid="uid://bqxs5pv8its2r"]
 
 [ext_resource type="Script" uid="uid://cyybcthqo12ku" path="res://scenes/world/units/test_character.gd" id="1_rle55"]
 [ext_resource type="Resource" uid="uid://cc6inv7aq6lbl" path="res://resources/empire/units/peasant/peasant.tres" id="2_66boy"]
@@ -115,7 +115,7 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_m1kc6")
 }, {
 "duration": 1.0,
@@ -138,8 +138,21 @@ radius = 20000.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_7x4tg"]
 radius = 600.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_66boy"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7x4tg"]
+bg_color = Color(0.340192, 0.698577, 0.227424, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
 [node name="TestCharacter" type="CharacterBody2D" node_paths=PackedStringArray("movement_component", "health_component", "attack_component", "animation", "nav_agent") groups=["units"]]
 scale = Vector2(0.07, 0.07)
+collision_layer = 17
+collision_mask = 17
 input_pickable = true
 script = ExtResource("1_rle55")
 stats = ExtResource("2_66boy")
@@ -216,15 +229,29 @@ horizontal_alignment = 1
 
 [node name="DetectionRange" type="Area2D" parent="."]
 unique_name_in_owner = true
+collision_layer = 16
+collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
 shape = SubResource("CircleShape2D_66boy")
 
 [node name="AttackRange" type="Area2D" parent="."]
 unique_name_in_owner = true
+collision_layer = 16
+collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
 shape = SubResource("CircleShape2D_7x4tg")
+
+[node name="HPBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = -371.0
+offset_top = -600.0
+offset_right = 371.0
+offset_bottom = -530.0
+theme_override_styles/background = SubResource("StyleBoxFlat_66boy")
+theme_override_styles/fill = SubResource("StyleBoxFlat_7x4tg")
+show_percentage = false
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="velocity_computed" from="NavigationAgent2D" to="Components/MovementComponent" method="_on_navigation_agent_2d_velocity_computed"]

@@ -50,7 +50,7 @@ func create_attack_animation(sprite_sheet: Texture2D, frame_size: Vector2) -> vo
 		
 		sprite_frames.add_frame("attack", atlas)
 	
-	sprite_frames.set_animation_speed("attack", 15)
+	sprite_frames.set_animation_speed("attack", 7)
 	sprite_frames.set_animation_loop("attack", true)
 
 func create_death_animation(sprite_sheet: Texture2D, frame_size: Vector2) -> void:

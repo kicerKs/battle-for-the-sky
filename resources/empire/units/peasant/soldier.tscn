@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bqcybw2oa43k1"]
+[gd_scene load_steps=34 format=3 uid="uid://bqcybw2oa43k1"]
 
 [ext_resource type="Script" uid="uid://cyybcthqo12ku" path="res://scenes/world/units/test_character.gd" id="1_8jfkc"]
 [ext_resource type="Resource" uid="uid://c02iduu6f2f7p" path="res://resources/empire/units/peasant/soldier.tres" id="2_8jfkc"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://bu25hbxcgqsnt" path="res://scenes/world/units/states/unit_state_conquering.gd" id="5_36tkg"]
 [ext_resource type="Script" uid="uid://dfp1sreyotxeh" path="res://scenes/world/units/states/unit_state_attacking.gd" id="6_gksn2"]
 [ext_resource type="Script" uid="uid://jhhec70pls3g" path="res://scenes/world/units/states/unit_state_idle.gd" id="7_ackx2"]
+[ext_resource type="Script" uid="uid://4gsx4bajmlk1" path="res://scenes/world/units/states/unit_state_engage.gd" id="8_6vxgh"]
 [ext_resource type="Script" uid="uid://chixtoay5fbmj" path="res://scenes/world/units/components/MovementComponent.gd" id="8_7nhcn"]
 [ext_resource type="Script" uid="uid://bgjqylyg8052t" path="res://scenes/world/units/components/HealthComponent.gd" id="9_toamu"]
 [ext_resource type="Script" uid="uid://bu625gum4lcu2" path="res://scenes/world/units/components/AttackComponent.gd" id="10_hvq0v"]
@@ -131,6 +132,23 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_8jfkc"]
+radius = 20000.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6vxgh"]
+radius = 600.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8jfkc"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6vxgh"]
+bg_color = Color(0.340192, 0.698577, 0.227424, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
 [node name="TestCharacter" type="CharacterBody2D" node_paths=PackedStringArray("movement_component", "health_component", "attack_component", "animation", "nav_agent") groups=["units"]]
 scale = Vector2(0.07, 0.07)
 input_pickable = true
@@ -159,6 +177,9 @@ script = ExtResource("6_gksn2")
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("7_ackx2")
+
+[node name="Engage" type="Node" parent="StateMachine"]
+script = ExtResource("8_6vxgh")
 
 [node name="Components" type="Node" parent="."]
 
@@ -203,6 +224,32 @@ theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 120
 text = "State"
 horizontal_alignment = 1
+
+[node name="DetectionRange" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+shape = SubResource("CircleShape2D_8jfkc")
+
+[node name="AttackRange" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+shape = SubResource("CircleShape2D_6vxgh")
+
+[node name="HPBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = -371.0
+offset_top = -600.0
+offset_right = 371.0
+offset_bottom = -530.0
+theme_override_styles/background = SubResource("StyleBoxFlat_8jfkc")
+theme_override_styles/fill = SubResource("StyleBoxFlat_6vxgh")
+show_percentage = false
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="velocity_computed" from="NavigationAgent2D" to="Components/MovementComponent" method="_on_navigation_agent_2d_velocity_computed"]

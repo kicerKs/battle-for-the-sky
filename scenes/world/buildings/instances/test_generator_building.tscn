@@ -4,11 +4,11 @@
 [ext_resource type="Resource" uid="uid://b4a6olvmb635h" path="res://resources/empire/buildings/generators/woodcutter/woodcutter_1.tres" id="2_84i42"]
 [ext_resource type="Script" uid="uid://bgfw61xrlis0x" path="res://scenes/world/buildings/generator_component.gd" id="2_qo0ud"]
 [ext_resource type="Resource" uid="uid://df47n6l2jj8r7" path="res://resources/empire/buildings/generators/woodcutter/woodcutter_1_generator.tres" id="3_hfpdo"]
-[ext_resource type="Texture2D" uid="uid://dnp4jokjn0ny3" path="res://assets/resources/upgrade.png" id="4_atpml"]
 [ext_resource type="PackedScene" uid="uid://kuij88i7j4x1" path="res://scenes/world/buildings/upgrade_component.tscn" id="5_84i42"]
 [ext_resource type="Resource" uid="uid://knnjujux4ks2" path="res://resources/empire/buildings/generators/woodcutter/woodcutter_2.tres" id="6_mab8j"]
 [ext_resource type="Resource" uid="uid://bhu236kvrs205" path="res://resources/empire/buildings/generators/woodcutter/woodcutter_2_generator.tres" id="7_a87ni"]
 [ext_resource type="Texture2D" uid="uid://byx58bdtjlh34" path="res://assets/buildings/timber.png" id="8_a87ni"]
+[ext_resource type="Texture2D" uid="uid://c555ryq6v6pc" path="res://assets/icons/building can upgrade.png" id="9_a87ni"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_atpml"]
 size = Vector2(200, 200)
@@ -46,15 +46,16 @@ shape = SubResource("RectangleShape2D_atpml")
 
 [node name="GenerationProgressBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
-offset_left = 28.0
-offset_top = -2.0
-offset_right = 32.0
-offset_bottom = 25.0
+offset_left = 102.0
+offset_top = -100.0
+offset_right = 116.0
+offset_bottom = 100.0
 max_value = 1.0
 fill_mode = 3
 show_percentage = false
 
 [node name="Buttons" type="Node2D" parent="."]
+position = Vector2(0, -67)
 
 [node name="PanelContainer2" type="PanelContainer" parent="Buttons"]
 offset_left = -39.0
@@ -66,7 +67,8 @@ scale = Vector2(0.75, 0.75)
 [node name="UpgradeButton" type="Button" parent="Buttons/PanelContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
-icon = ExtResource("4_atpml")
+icon = ExtResource("9_a87ni")
+expand_icon = true
 
 [node name="PanelContainer3" type="PanelContainer" parent="Buttons"]
 offset_left = 8.0

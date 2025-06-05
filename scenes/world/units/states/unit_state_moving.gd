@@ -3,13 +3,18 @@ extends UnitState
 var is_at_target_island: bool = false
 var timer: float = 2.5
 
-var test_timer: float = 1
+var test_timer: float = 0.2
 
 func on_enter() -> void:
+	print("Start moving")
 	unit.label.text = "Moving"
 	unit.animation.play("walk")
 	unit.front_changed.connect(_on_front_changed)
 	unit.movement_component.start_moving(Game.tileMapLayer.map_to_local(unit.current_front))
+	var arr = %DetectionRange.get_overlapping_bodies()
+	for body in arr:
+		if body is CharacterBody2D and body != owner and body.side != owner.side:
+			change_state.emit(ENGAGE)
 
 func physics_update(delta: float) -> void:
 	unit.movement_component.update_movement(delta)

@@ -4,9 +4,10 @@ extends UnitState
 var timer = attack_speed
 
 func on_enter() -> void:
+	print("Start attacking")
 	unit.label.text = "Attacking"
 	unit.animation.play("attack")
-	timer = 0
+	timer = attack_speed
 
 func update(delta: float) -> void:
 	timer -= delta
@@ -14,9 +15,8 @@ func update(delta: float) -> void:
 		timer = attack_speed
 		if owner.attack_component.target != null:
 			owner.attack_component.damage()
-		else:
-			change_state.emit(ENGAGE)
-	elif owner.attack_component.target == null:
+	if owner.attack_component.target == null:
+		
 		change_state.emit(ENGAGE)
 	
 	

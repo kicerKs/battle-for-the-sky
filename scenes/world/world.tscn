@@ -36,8 +36,5 @@ script = ExtResource("3_1fp7r")
 navigation_polygon = SubResource("NavigationPolygon_6m72w")
 
 [node name="TestCharacter" parent="." instance=ExtResource("5_v5dby")]
-position = Vector2(2440, 2759)
+position = Vector2(4885, 1348)
 side = 1
-
-[node name="TestCharacter2" parent="." instance=ExtResource("5_v5dby")]
-position = Vector2(1718, 1279)

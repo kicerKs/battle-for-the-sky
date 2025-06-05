@@ -39,6 +39,7 @@ func _ready():
 			spritesheet = stats.spriteSheetBlue
 	animation.setup_animations(spritesheet)
 	
+	
 	if (attack_component==null): #healer
 		stats.action = 7
 		stats.actionSpeed=1
