@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bqxs5pv8its2r"]
+[gd_scene load_steps=32 format=3 uid="uid://bqxs5pv8its2r"]
 
 [ext_resource type="Script" uid="uid://cyybcthqo12ku" path="res://scenes/world/units/test_character.gd" id="1_rle55"]
 [ext_resource type="Resource" uid="uid://cc6inv7aq6lbl" path="res://resources/empire/units/peasant/peasant.tres" id="2_66boy"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://bu25hbxcgqsnt" path="res://scenes/world/units/states/unit_state_conquering.gd" id="5_chmfx"]
 [ext_resource type="Script" uid="uid://dfp1sreyotxeh" path="res://scenes/world/units/states/unit_state_attacking.gd" id="6_34fbi"]
 [ext_resource type="Script" uid="uid://jhhec70pls3g" path="res://scenes/world/units/states/unit_state_idle.gd" id="7_ey1i5"]
+[ext_resource type="Script" uid="uid://4gsx4bajmlk1" path="res://scenes/world/units/states/unit_state_engage.gd" id="8_66boy"]
 [ext_resource type="Script" uid="uid://chixtoay5fbmj" path="res://scenes/world/units/components/MovementComponent.gd" id="8_tf3lg"]
 [ext_resource type="Script" uid="uid://bgjqylyg8052t" path="res://scenes/world/units/components/HealthComponent.gd" id="9_guamy"]
 [ext_resource type="Script" uid="uid://bu625gum4lcu2" path="res://scenes/world/units/components/AttackComponent.gd" id="10_4t8hy"]
@@ -131,6 +132,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_66boy"]
+radius = 20000.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7x4tg"]
+radius = 600.0
+
 [node name="TestCharacter" type="CharacterBody2D" node_paths=PackedStringArray("movement_component", "health_component", "attack_component", "animation", "nav_agent") groups=["units"]]
 scale = Vector2(0.07, 0.07)
 input_pickable = true
@@ -159,6 +166,9 @@ script = ExtResource("6_34fbi")
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("7_ey1i5")
+
+[node name="Engage" type="Node" parent="StateMachine"]
+script = ExtResource("8_66boy")
 
 [node name="Components" type="Node" parent="."]
 
@@ -203,6 +213,18 @@ theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 120
 text = "State"
 horizontal_alignment = 1
+
+[node name="DetectionRange" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+shape = SubResource("CircleShape2D_66boy")
+
+[node name="AttackRange" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+shape = SubResource("CircleShape2D_7x4tg")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="velocity_computed" from="NavigationAgent2D" to="Components/MovementComponent" method="_on_navigation_agent_2d_velocity_computed"]

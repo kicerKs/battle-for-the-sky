@@ -3,6 +3,8 @@ extends UnitState
 var is_at_target_island: bool = false
 var timer: float = 2.5
 
+var test_timer: float = 1
+
 func on_enter() -> void:
 	unit.label.text = "Moving"
 	unit.animation.play("walk")
@@ -14,6 +16,13 @@ func physics_update(delta: float) -> void:
 	unit.move_and_slide()
 
 func update(delta: float) -> void:
+	test_timer -= delta
+	if test_timer <= 0:
+		test_timer = 1.0
+		var arr = %DetectionRange.get_overlapping_bodies()
+		for body in arr:
+			if body is CharacterBody2D and body != owner and body.side != owner.side:
+				change_state.emit(ENGAGE)
 	if Game.tileMapLayer.local_to_map(unit.position) == unit.current_front:
 		if is_at_target_island:
 			timer -= delta

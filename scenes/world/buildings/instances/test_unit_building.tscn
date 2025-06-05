@@ -42,7 +42,7 @@ upgraded_building = ExtResource("6_ei8ew")
 trainer_stats = ExtResource("7_eltow")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.08, 0.08)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("9_ei8ew")
 
 [node name="Area2D" type="Area2D" parent="."]

@@ -5,6 +5,7 @@ const IDLE = "Idle"
 const MOVING = "Moving"
 const CONQUERING = "Conquering"
 const ATTACKING = "Attacking"
+const ENGAGE = "Engage"
 
 var state_machine: StateMachine
 var unit: TestCharacter
