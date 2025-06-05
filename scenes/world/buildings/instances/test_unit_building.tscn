@@ -123,4 +123,5 @@ text = "false"
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="pressed" from="Buttons/PanelContainer/TrainActivateButton" to="TrainComponent" method="_on_train_activate_button_pressed"]
 [connection signal="pressed" from="Buttons/PanelContainer2/UpgradeButton" to="UpgradeComponent" method="_on_upgrade_button_pressed"]
+[connection signal="pressed" from="Buttons/PanelContainer3/RemoveButton" to="." method="_on_remove_button_pressed"]
 [connection signal="pressed" from="Buttons/PanelContainer4/FrontChangeButton" to="TrainComponent" method="_on_front_change_button_pressed"]

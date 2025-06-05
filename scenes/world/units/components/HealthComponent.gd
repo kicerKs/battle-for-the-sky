@@ -20,9 +20,8 @@ func take_damage(amount: int) -> void:
 	
 func  _ready() ->void:
 	await owner.ready
-	testCharacter = owner as TestCharacter
-	max_hp = testCharacter.stats.max_hp
-	current_hp = testCharacter.stats.max_hp
-	armor = testCharacter.stats.armor
+	max_hp = owner.stats.max_hp
+	current_hp = owner.stats.max_hp
+	armor = owner.stats.armor
 	%HPBar.max_value = max_hp
 	%HPBar.value = current_hp

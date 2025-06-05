@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="MonsterStats" load_steps=3 format=3 uid="uid://4ygv5awlfsd3"]
+
+[ext_resource type="Script" uid="uid://coiuntar4uhqc" path="res://scenes/world/monsters/monster_stats.gd" id="1_7rl1s"]
+[ext_resource type="Texture2D" uid="uid://dbajaa01dit5d" path="res://assets/enemies/goblin.png" id="2_edchc"]
+
+[resource]
+script = ExtResource("1_7rl1s")
+name = "Goblin"
+description = "A small, greedy, green goblin. Destroyer of pastures, farmlands, and childhood dreams."
+spriteSheet = ExtResource("2_edchc")
+max_hp = 100
+armor = 10
+speed = 100
+range = 60
+singleTarget = true
+action = 0
+actionSpeed = 1
+metadata/_custom_type_script = "uid://coiuntar4uhqc"

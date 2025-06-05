@@ -1,7 +1,7 @@
 extends Node
 class_name MovementComponent
 
-@export var testCharacter: TestCharacter
+@export var testCharacter: CharacterBody2D
 @export var speed: int = 100
 
 @onready var animation: AnimatedSprite2D = $"../../AnimatedSprite2D"
@@ -12,8 +12,7 @@ var intended_velocity: Vector2 = Vector2.ZERO
 func _ready():
 	await owner.ready
 	owner.nav_agent.velocity_computed.connect(_on_navigation_agent_2d_velocity_computed)
-	testCharacter = owner as TestCharacter
-	speed = testCharacter.stats.speed
+	speed = owner.stats.speed
 
 func start_moving(target_island_pos: Vector2):
 	owner.nav_agent.target_position = target_island_pos

@@ -13,11 +13,10 @@ var singleTarget:bool
 
 func _ready() ->void:
 	await owner.ready
-	testCharacter = owner as TestCharacter
-	attack_speed= testCharacter.stats.actionSpeed
-	attack = testCharacter.stats.action
-	range = testCharacter.stats.range
-	singleTarget = testCharacter.stats.singleTarget
+	attack_speed= owner.stats.actionSpeed
+	attack = owner.stats.action
+	range = owner.stats.range
+	singleTarget = owner.stats.singleTarget
 
 func damage()->void: #funkcja będzie wywoływana dla listy przeciwników którzy się znajdują w range unit
 	if singleTarget:
