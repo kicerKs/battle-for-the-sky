@@ -12,12 +12,14 @@ func _ready() -> void:
 	
 	SignalBus.connect("building_clicked", show_building_panel)
 	SignalBus.connect("unit_clicked", show_unit_panel)
+	SignalBus.connect("monster_clicked", show_monster_panel)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_RIGHT:
 			$BuildingPanel.visible = false
 			$UnitPanel.visible = false
+			SignalBus.panels_closed.emit()
 
 func show_building_panel(building: Building):
 	$UnitPanel.visible = false
@@ -28,6 +30,11 @@ func show_unit_panel(unit: TestCharacter):
 	$BuildingPanel.visible = false
 	$UnitPanel.visible = true
 	$UnitPanel.setup(unit)
+
+func show_monster_panel(unit: TestMonster):
+	$BuildingPanel.visible = false
+	$UnitPanel.visible = true
+	$UnitPanel.setup_monster(unit)
 
 func _on_construction_panel_building_selected(building: Variant) -> void:
 	building_selected.emit(building)
