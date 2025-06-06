@@ -55,6 +55,7 @@ fill_mode = 3
 show_percentage = false
 
 [node name="Buttons" type="Node2D" parent="."]
+visible = false
 position = Vector2(0, -67)
 
 [node name="PanelContainer2" type="PanelContainer" parent="Buttons"]

@@ -14,6 +14,7 @@ func _ready():
 	remove_child(xd)
 	add_child(xd)
 	$Sprite2D.texture = stats.texture
+	SignalBus.connect("panels_closed", hide_buttons)
 
 func _input(event: InputEvent):
 	if placement_mode:
@@ -43,6 +44,13 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			SignalBus.building_clicked.emit(self)
+			show_buttons()
 
 func _on_remove_button_pressed() -> void:
 	queue_free()
+
+func show_buttons():
+	$Buttons.visible = true
+
+func hide_buttons():
+	$Buttons.visible = false

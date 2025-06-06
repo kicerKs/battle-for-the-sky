@@ -63,6 +63,7 @@ fill_mode = 3
 show_percentage = false
 
 [node name="Buttons" type="Node2D" parent="."]
+visible = false
 
 [node name="PanelContainer" type="PanelContainer" parent="Buttons"]
 offset_left = 5.0

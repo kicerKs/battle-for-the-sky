@@ -15,8 +15,8 @@ func _ready():
 	var tile_size = $"../TileMapLayer".tile_set.tile_size
 	camera_limit_end.x = tile_size.x + ((rect.size.x-1) * tile_size.x) 
 	camera_limit_end.y = (tile_size.y/2) + ((rect.size.y-1)) * (tile_size.y*0.75)
-	camera_limit_start.x = (tile_size.x/2)
-	camera_limit_start.y = tile_size.y/2
+	camera_limit_start.x = -(tile_size.x/4)
+	camera_limit_start.y = -tile_size.y/4
 
 func _process(delta: float) -> void:
 	var direction: Vector2 = Vector2.ZERO
