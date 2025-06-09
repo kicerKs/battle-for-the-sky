@@ -37,6 +37,13 @@ func _process(delta: float) -> void:
 #	island_development_data.ownership = owner
 #	update_sprites()
 
+func get_island_polygon():
+	var polygon = %MainNavigationRegion.navigation_polygon.get_vertices()
+	var return_polygon: PackedVector2Array
+	for el in polygon:
+		return_polygon.append(el + position)
+	return return_polygon
+
 func get_dict():
 	return {
 		"ownership" = self.ownership
