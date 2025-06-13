@@ -23,7 +23,7 @@ func _input(event: InputEvent):
 func can_build(island: Island):
 	if $Area2D.has_overlapping_areas():
 		return false
-	if island.ownership == Lobby.player_info["color"]:
+	if island.ownership == Lobby.player_info["color"] and island.buildings_number < island.building_limit:
 		return true
 	return false
 
@@ -47,7 +47,8 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 			show_buttons()
 
 func _on_remove_button_pressed() -> void:
-	queue_free()
+	SignalBus.hide_panels.emit()
+	get_parent().get_parent().remove_building(self)
 
 func show_buttons():
 	$Buttons.visible = true

@@ -1,9 +1,13 @@
 extends Sprite2D
 class_name Island
 
+@export var building_limit: int = 4
+
 signal island_conquered
 
 @onready var progress_bar = $CustomProgressBar
+
+var buildings_number = 0
 
 var conquering: bool = false
 var conquering_time: float = 5.0
@@ -79,12 +83,23 @@ func update_sprites():
 	%BridgeSE.visible = connections["SE"]
 	%BridgeE.visible = connections["E"]
 	%BridgeNE.visible = connections["NE"]
+	
+	%BuildingLimitLabel.text = str(buildings_number) + "/" + str(building_limit)
 
 func add_building(building):
 	building.placement_mode = false
 	building.position -= self.position
 	%MainNavigationRegion.add_child(building)
 	%MainNavigationRegion.bake_navigation_polygon()
+	buildings_number+=1
+	update_sprites()
+
+func remove_building(building):
+	%MainNavigationRegion.remove_child(building)
+	building.queue_free()
+	%MainNavigationRegion.bake_navigation_polygon()
+	buildings_number-=1
+	update_sprites()
 
 func start_conquering(unit_side: Lobby.Factions):
 	if conquering:

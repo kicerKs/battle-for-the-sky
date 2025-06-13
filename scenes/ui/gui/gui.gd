@@ -13,13 +13,17 @@ func _ready() -> void:
 	SignalBus.connect("building_clicked", show_building_panel)
 	SignalBus.connect("unit_clicked", show_unit_panel)
 	SignalBus.connect("monster_clicked", show_monster_panel)
+	SignalBus.connect("hide_panels", hide_panels)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_RIGHT:
-			$BuildingPanel.visible = false
-			$UnitPanel.visible = false
-			SignalBus.panels_closed.emit()
+			hide_panels()
+
+func hide_panels():
+	$BuildingPanel.visible = false
+	$UnitPanel.visible = false
+	SignalBus.panels_closed.emit()
 
 func show_building_panel(building: Building):
 	$UnitPanel.visible = false
