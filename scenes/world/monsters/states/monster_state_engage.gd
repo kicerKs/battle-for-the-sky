@@ -17,6 +17,7 @@ func physics_update(delta: float) -> void:
 	monster.move_and_slide()
 
 func update(delta: float) -> void:
+	target = choose_closest_target()
 	if target == null:
 		change_state.emit(IDLE)
 		return

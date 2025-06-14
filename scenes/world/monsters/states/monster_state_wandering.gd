@@ -3,7 +3,6 @@ extends MonsterState
 func on_enter() -> void:
 	monster.label.text = "Wandering"
 	monster.animation.play("walk")
-	print("Enter wandering " + str(multiplayer.get_unique_id()))
 
 func physics_update(delta: float) -> void:
 	monster.movement_component.update_movement(delta)

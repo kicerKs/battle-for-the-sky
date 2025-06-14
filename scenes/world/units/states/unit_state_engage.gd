@@ -17,6 +17,7 @@ func physics_update(delta: float) -> void:
 	unit.move_and_slide()
 
 func update(delta: float) -> void:
+	target = choose_closest_target()
 	if target == null:
 		change_state.emit(MOVING)
 		return
@@ -24,7 +25,6 @@ func update(delta: float) -> void:
 	var array = %AttackRange.get_overlapping_bodies()
 	if target in array:
 		owner.attack_component.target = target
-		print("I start attacking " + str(target))
 		change_state.emit(ATTACKING)
 
 func choose_closest_target():
