@@ -41,3 +41,7 @@ position = Vector2(3454, 2562)
 
 [node name="TestCharacter" parent="." instance=ExtResource("6_bq33v")]
 position = Vector2(4283, 1352)
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://bqxs5pv8its2r")
+spawn_path = NodePath("..")

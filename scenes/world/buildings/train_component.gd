@@ -9,6 +9,7 @@ class_name TrainComponent
 @onready var label: Label = $"../Label"
 
 var new_unit: CharacterBody2D
+static var xd = 0
 
 var is_active: bool = false
 var island_key: Vector2i
@@ -47,6 +48,8 @@ func activate():
 
 func load_unit():
 	new_unit = stats.unit.instantiate()
+	new_unit.name = "Unit"+str(xd)
+	xd+=1
 	new_unit.auto_front_change.connect(_on_auto_front_change)
 	new_unit.side = island_ownership
 	new_unit.spawn_position = spawn_position
@@ -87,7 +90,8 @@ func start_training():
 func complete_training(): 
 	_is_training = false
 	new_unit.current_front = current_front
-	get_tree().current_scene.add_child(new_unit)
+	new_unit.owner = get_tree().current_scene.get_node("World")
+	get_tree().current_scene.get_node("World").add_child(new_unit)
 	new_unit.global_position = spawn_position
 	if _training_loop:
 		start_training()

@@ -15,5 +15,7 @@ func update(delta: float) -> void:
 		timer = attack_speed
 		if owner.attack_component.target != null:
 			owner.attack_component.damage()
-	if owner.attack_component.target == null:
+	var array = %AttackRange.get_overlapping_bodies()
+	if owner.attack_component.target == null or owner.attack_component.target not in array:
 		change_state.emit(ENGAGE)
+	

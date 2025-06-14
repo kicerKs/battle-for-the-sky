@@ -6,6 +6,7 @@ class_name MovementComponent
 
 @onready var animation: AnimatedSprite2D = $"../../AnimatedSprite2D"
 
+var collisions: Array[Vector2] = []
 var target_position: Vector2 = Vector2.ZERO
 var intended_velocity: Vector2 = Vector2.ZERO
 
@@ -17,6 +18,9 @@ func _ready():
 func start_moving(target_island_pos: Vector2):
 	owner.nav_agent.target_position = target_island_pos
 
+func add_collision(vector: Vector2):
+	collisions.append(vector)
+
 func update_movement(delta):
 	var next_path_pos: Vector2 = owner.nav_agent.get_next_path_position()
 	var direction: Vector2 = (next_path_pos - owner.global_position).normalized()
@@ -25,6 +29,9 @@ func update_movement(delta):
 	else:
 		animation.flip_h = true
 	intended_velocity = direction * speed
+	for coll in collisions:
+		intended_velocity += coll
+	collisions.clear()
 	owner.nav_agent.set_velocity(intended_velocity)
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:

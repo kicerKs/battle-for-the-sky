@@ -5,6 +5,7 @@ var target = null
 func on_enter() -> void:
 	print("Start engage")
 	unit.label.text = "Engage"
+	unit.animation.play("walk")
 	target = choose_closest_target()
 	if target != null:
 		unit.movement_component.start_moving(target.position)
@@ -15,6 +16,9 @@ func on_enter() -> void:
 func physics_update(delta: float) -> void:
 	unit.movement_component.update_movement(delta)
 	unit.move_and_slide()
+	for i in unit.get_slide_collision_count():
+		var collision = unit.get_slide_collision(i)
+		unit.movement_component.add_collision(collision.get_remainder())
 
 func update(delta: float) -> void:
 	target = choose_closest_target()
@@ -22,7 +26,7 @@ func update(delta: float) -> void:
 		change_state.emit(MOVING)
 		return
 	unit.movement_component.start_moving(target.position)
-	var array = %AttackRange.get_overlapping_bodies()
+	var array: Array = %AttackRange.get_overlapping_bodies()
 	if target in array:
 		owner.attack_component.target = target
 		change_state.emit(ATTACKING)
@@ -31,7 +35,6 @@ func choose_closest_target():
 	var array: Array = %DetectionRange.get_overlapping_bodies()
 	var new_array: Array = []
 	for el: CharacterBody2D in array:
-		print(el)
 		if el is not TestCharacter and el is not TestMonster:
 			continue
 		elif el == owner:

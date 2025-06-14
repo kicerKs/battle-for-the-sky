@@ -31,6 +31,9 @@ properties/2/replication_mode = 1
 properties/3/path = NodePath("Components/HealthComponent:current_hp")
 properties/3/spawn = true
 properties/3/replication_mode = 1
+properties/4/path = NodePath(".:side")
+properties/4/spawn = true
+properties/4/replication_mode = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l2a1g"]
 atlas = ExtResource("11_86ayf")
@@ -160,7 +163,7 @@ border_color = Color(0, 0, 0, 1)
 
 [node name="TestCharacter" type="CharacterBody2D" node_paths=PackedStringArray("movement_component", "health_component", "attack_component", "animation", "nav_agent") groups=["units"]]
 scale = Vector2(0.07, 0.07)
-collision_layer = 17
+collision_layer = 19
 collision_mask = 17
 input_pickable = true
 script = ExtResource("1_rle55")
@@ -246,8 +249,8 @@ shape = SubResource("CircleShape2D_66boy")
 
 [node name="AttackRange" type="Area2D" parent="."]
 unique_name_in_owner = true
-collision_layer = 16
-collision_mask = 16
+collision_layer = 18
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
 shape = SubResource("CircleShape2D_7x4tg")
