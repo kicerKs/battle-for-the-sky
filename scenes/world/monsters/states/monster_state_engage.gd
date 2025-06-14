@@ -4,12 +4,13 @@ var target = null
 func on_enter() -> void:
 	monster.label.text = "Engage"
 	monster.animation.play("walk")
-	target = choose_closest_target()
-	if target != null:
-		monster.movement_component.start_moving(target.position)
-	else:
-		change_state.emit(IDLE)
-		return
+	if multiplayer.is_server():
+		target = choose_closest_target()
+		if target != null:
+			monster.movement_component.start_moving(target.position)
+		else:
+			change_state.emit(IDLE)
+			return
 
 func physics_update(delta: float) -> void:
 	monster.movement_component.update_movement(delta)

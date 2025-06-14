@@ -16,12 +16,4 @@ func update(delta: float) -> void:
 		if owner.attack_component.target != null:
 			owner.attack_component.damage()
 	if owner.attack_component.target == null:
-		
 		change_state.emit(ENGAGE)
-	
-	
-	# if no enemy nearby
-	#	if state_machine.previous_state_name == CONQUERING:
-	#		change_state.emit(CONQUERING)
-	#	if state_machine.previous_state_name == MOVING:
-	#		change_state.emit(MOVING)

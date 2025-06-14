@@ -32,17 +32,18 @@ func _process(delta: float) -> void:
 		direction.x += 1
 	
 	# Edge Scrolling
-	var mouse_pos = get_viewport().get_mouse_position()
-	var screen_size = get_viewport_rect().size
 	
-	if mouse_pos.x <= edge_scroll_margin:
-		direction.x -= 1
-	elif mouse_pos.x >= screen_size.x - edge_scroll_margin:
-		direction.x += 1
-	if mouse_pos.y <= edge_scroll_margin:
-		direction.y -= 1
-	elif mouse_pos.y >= screen_size.y - edge_scroll_margin:
-		direction.y += 1
+	#var mouse_pos = get_viewport().get_mouse_position()
+	#var screen_size = get_viewport_rect().size
+	
+	#if mouse_pos.x <= edge_scroll_margin:
+	#	direction.x -= 1
+	#elif mouse_pos.x >= screen_size.x - edge_scroll_margin:
+	#	direction.x += 1
+	#if mouse_pos.y <= edge_scroll_margin:
+	#	direction.y -= 1
+	#elif mouse_pos.y >= screen_size.y - edge_scroll_margin:
+	#	direction.y += 1
 	
 	# Changing camera position
 	if direction != Vector2.ZERO:

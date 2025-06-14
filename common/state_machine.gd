@@ -16,15 +16,21 @@ func _ready() -> void:
 	state.on_enter()
 
 func _process(delta: float) -> void:
-	state.update(delta)
+	if multiplayer.is_server():
+		state.update(delta)
 
 func _unhandled_input(event: InputEvent) -> void:
 	state.handle_input(event)
 
 func _physics_process(delta: float) -> void:
-	state.physics_update(delta)
+	if multiplayer.is_server():
+		state.physics_update(delta)
 
+@rpc("any_peer", "call_remote", "reliable")
 func transition_to_state(target_state_path: String) -> void:
+	print("Change state on " + str(multiplayer.get_unique_id()))
+	if multiplayer.is_server():
+		transition_to_state.rpc(target_state_path)
 	if not has_node(target_state_path):
 		printerr(owner.name + ": Trying to change state to " + target_state_path + " but it does not exist.")
 		return

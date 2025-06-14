@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://d18ugncataaou"]
+[gd_scene load_steps=10 format=4 uid="uid://d18ugncataaou"]
 
 [ext_resource type="Script" uid="uid://oto0r8kxsw3v" path="res://scenes/world/world.gd" id="1_6m72w"]
 [ext_resource type="PackedScene" uid="uid://bpkxcx0xgyqj6" path="res://scenes/world/islands/presets/island_placeholder.tscn" id="1_dphjl"]
 [ext_resource type="Script" uid="uid://nkf2n8ixla85" path="res://scenes/ui/gui/camera.gd" id="1_sl2e5"]
 [ext_resource type="Script" uid="uid://cyctxh3wcp552" path="res://scenes/world/map/islands_map.gd" id="3_1fp7r"]
+[ext_resource type="PackedScene" uid="uid://bqxs5pv8its2r" path="res://resources/empire/units/peasant/peasant.tscn" id="6_bq33v"]
 [ext_resource type="PackedScene" uid="uid://dym44rd600q0n" path="res://scenes/world/monsters/test_monster.tscn" id="6_t5ptc"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_sl2e5"]
@@ -36,10 +37,7 @@ script = ExtResource("3_1fp7r")
 navigation_polygon = SubResource("NavigationPolygon_6m72w")
 
 [node name="TestCharacter2" parent="." instance=ExtResource("6_t5ptc")]
-position = Vector2(2527, 2613)
+position = Vector2(3454, 2562)
 
-[node name="TestCharacter3" parent="." instance=ExtResource("6_t5ptc")]
-position = Vector2(2645, 2492)
-
-[node name="TestCharacter4" parent="." instance=ExtResource("6_t5ptc")]
-position = Vector2(1134, 934)
+[node name="TestCharacter" parent="." instance=ExtResource("6_bq33v")]
+position = Vector2(4283, 1352)

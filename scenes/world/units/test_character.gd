@@ -25,6 +25,10 @@ var current_front: Vector2i:
 			front_changed.emit(value)
 
 func _on_unit_died():
+	die.rpc()
+
+@rpc("authority", "call_local", "reliable")
+func die():
 	queue_free()
 
 func _ready():

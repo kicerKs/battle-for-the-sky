@@ -15,6 +15,10 @@ var side : Lobby.Factions = Lobby.Factions.MONSTERS
 @onready var label = $Label
 
 func _on_unit_died():
+	die.rpc()
+
+@rpc("authority", "call_local", "reliable")
+func die():
 	queue_free()
 
 func _ready():

@@ -10,6 +10,7 @@ func on_enter() -> void:
 	monster.animation.play("idle")
 	test_timer = 0.2
 	wandering_timer = 2
+	print("Enter idle " + str(multiplayer.get_unique_id()))
 
 func update(delta: float) -> void:
 	# Detect enemies

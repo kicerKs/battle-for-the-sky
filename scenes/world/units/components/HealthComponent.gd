@@ -3,8 +3,8 @@ class_name HealthComponent
 
 var testCharacter: TestCharacter
 
-var max_hp: int
-var current_hp: int
+@export var max_hp: int
+@export var current_hp: int
 var armor: int
 var damage:int
 
@@ -23,5 +23,10 @@ func  _ready() ->void:
 	max_hp = owner.stats.max_hp
 	current_hp = owner.stats.max_hp
 	armor = owner.stats.armor
+	%HPBar.max_value = max_hp
+	%HPBar.value = current_hp
+	$"../../MultiplayerSynchronizer".synchronized.connect(sync_hp_bars)
+
+func sync_hp_bars():
 	%HPBar.max_value = max_hp
 	%HPBar.value = current_hp
