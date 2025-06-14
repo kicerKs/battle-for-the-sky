@@ -6,7 +6,6 @@ var timer: float = 2.5
 var test_timer: float = 0.2
 
 func on_enter() -> void:
-	print("Start moving")
 	unit.label.text = "Moving"
 	unit.animation.play("walk")
 	unit.front_changed.connect(_on_front_changed)

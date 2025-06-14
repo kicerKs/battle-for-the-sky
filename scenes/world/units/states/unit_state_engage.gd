@@ -3,7 +3,6 @@ extends UnitState
 var target = null
 
 func on_enter() -> void:
-	print("Start engage")
 	unit.label.text = "Engage"
 	unit.animation.play("walk")
 	target = choose_closest_target()

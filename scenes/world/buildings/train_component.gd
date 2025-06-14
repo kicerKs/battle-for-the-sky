@@ -61,8 +61,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	if front_change_mode:
 		if event is InputEventMouse and event.is_pressed():
 			if event.button_index == MOUSE_BUTTON_LEFT:
-				current_front = Game.tileMapLayer.local_to_map(owner.get_global_mouse_position())
-			front_change_mode = false
+				change_front.rpc(owner.get_global_mouse_position())
+				#current_front = Game.tileMapLayer.local_to_map(owner.get_global_mouse_position())
 
 func _process(delta: float) -> void:
 	%UnitTrainProgressBar.value = training_progress
@@ -115,3 +115,7 @@ func _on_front_change_button_pressed() -> void:
 
 func _on_auto_front_change(island: Vector2i):
 	current_front = search_component.find_nearest_enemy_island(island)
+
+@rpc("call_local", "any_peer", "reliable")
+func change_front(pos):
+	current_front = Game.tileMapLayer.local_to_map(pos)

@@ -56,6 +56,8 @@ func show_buttons():
 
 func hide_buttons():
 	$Buttons.visible = false
+	if has_node("TrainComponent"):
+		get_node("TrainComponent").front_change_mode = false
 
 func get_island() -> Island:
 	return Game.tileMapLayer.tiles[Game.tileMapLayer.local_to_map(self.global_position)]

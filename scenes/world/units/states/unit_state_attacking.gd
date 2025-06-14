@@ -4,7 +4,6 @@ extends UnitState
 var timer = attack_speed
 
 func on_enter() -> void:
-	print("Start attacking")
 	unit.label.text = "Attacking"
 	unit.animation.play("attack")
 	timer = attack_speed

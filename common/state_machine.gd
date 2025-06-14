@@ -28,7 +28,6 @@ func _physics_process(delta: float) -> void:
 
 @rpc("any_peer", "call_remote", "reliable")
 func transition_to_state(target_state_path: String) -> void:
-	print("Change state on " + str(multiplayer.get_unique_id()))
 	if multiplayer.is_server():
 		transition_to_state.rpc(target_state_path)
 	if not has_node(target_state_path):

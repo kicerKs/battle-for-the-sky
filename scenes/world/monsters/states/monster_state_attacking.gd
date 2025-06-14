@@ -4,7 +4,6 @@ extends MonsterState
 var timer = attack_speed
 
 func on_enter() -> void:
-	print("Start attacking")
 	monster.label.text = "Attacking"
 	monster.animation.play("attack")
 	timer = attack_speed
