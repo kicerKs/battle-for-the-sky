@@ -41,10 +41,11 @@ func reload():
 
 
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event is InputEventMouseButton:
+	if event is InputEventMouseButton and !placement_mode:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			SignalBus.building_clicked.emit(self)
-			show_buttons()
+			if get_island().ownership == Lobby.player_info["color"]:
+				show_buttons()
 
 func _on_remove_button_pressed() -> void:
 	SignalBus.hide_panels.emit()
@@ -55,3 +56,6 @@ func show_buttons():
 
 func hide_buttons():
 	$Buttons.visible = false
+
+func get_island() -> Island:
+	return Game.tileMapLayer.tiles[Game.tileMapLayer.local_to_map(self.global_position)]

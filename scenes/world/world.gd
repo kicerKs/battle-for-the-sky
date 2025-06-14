@@ -11,12 +11,13 @@ func _unhandled_input(event: InputEvent) -> void:
 				placement_building.queue_free()
 				placement_mode = false
 			elif event.button_index == MOUSE_BUTTON_LEFT:
-				if placement_building.can_build($TileMapLayer.tiles[Game.tileMapLayer.local_to_map(placement_building.position)]):
-					var target_island = Game.tileMapLayer.local_to_map(placement_building.position)
-					if Game.tileMapLayer.tiles.has(target_island):
-						remove_child(placement_building)
-						add_building.rpc(target_island, building_path, placement_building.get_dict())
-						placement_mode = false
+				if Game.tileMapLayer.local_to_map(placement_building.position) in Game.tileMapLayer.tiles:
+					if placement_building.can_build($TileMapLayer.tiles[Game.tileMapLayer.local_to_map(placement_building.position)]):
+						var target_island = Game.tileMapLayer.local_to_map(placement_building.position)
+						if Game.tileMapLayer.tiles.has(target_island):
+							remove_child(placement_building)
+							add_building.rpc(target_island, building_path, placement_building.get_dict())
+							placement_mode = false
 
 func _process(delta: float) -> void:
 	if placement_mode:
