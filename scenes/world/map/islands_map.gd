@@ -19,9 +19,9 @@ func register_child(node: Node):
 		#map_loaded.emit()
 		
 		# ### FOR OWNERSHIP TESTS ###
-		var red_island_key = Vector2i(1, 0)
+		var red_island_key = Vector2i(1, 1)
 		var red_island = tiles[red_island_key]
-		var blue_island_key = Vector2i(0, 0)
+		var blue_island_key = Vector2i(3, 4)
 		var blue_island = tiles[blue_island_key]
 		red_island.ownership = Lobby.Factions.PLAYER_RED
 		blue_island.ownership = Lobby.Factions.PLAYER_BLUE
