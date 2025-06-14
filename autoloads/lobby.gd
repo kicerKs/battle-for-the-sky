@@ -90,6 +90,8 @@ func _register_player(new_player_info):
 	var new_player_id = multiplayer.get_remote_sender_id()
 	players[new_player_id] = new_player_info
 	player_connected.emit(new_player_id, new_player_info)
+	if new_player_id == 1 and !multiplayer.is_server():
+		get_tree().change_scene_to_file("res://scenes/ui/lobby_menu/lobby_menu.tscn")
 
 func _on_player_disconnected(id):
 	players.erase(id)
@@ -100,7 +102,6 @@ func _on_connected_ok():
 	player_info["color"] = Factions.PLAYER_BLUE
 	players[peer_id] = player_info
 	player_connected.emit(peer_id, player_info)
-	get_tree().change_scene_to_file("res://scenes/ui/lobby_menu/lobby_menu.tscn");
 
 func _on_connected_fail():
 	multiplayer.multiplayer_peer = null
