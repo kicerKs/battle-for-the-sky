@@ -3,6 +3,8 @@ class_name GeneratorComponent
 
 @export var stats: GeneratorStats
 
+@export var generation_progress: float
+
 var is_active: bool = false
 
 var _generation_timer: float = 0.0
@@ -13,12 +15,13 @@ func activate():
 	reset_timer()
 
 func _process(delta: float) -> void:
+	%GenerationProgressBar.value = generation_progress
 	if is_active:
 		_generation_timer -= delta
-		%GenerationProgressBar.value = get_generation_progress()
 		if _generation_timer <= 0:
 			generate_resources()
 			reset_timer()
+		generation_progress = get_generation_progress()
 
 func generate_resources():
 	for res in stats.generatingResources:

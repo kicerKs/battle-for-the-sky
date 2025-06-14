@@ -11,6 +11,8 @@ class_name TrainComponent
 var new_unit: CharacterBody2D
 static var xd = 0
 
+@export var training_progress: float
+
 var is_active: bool = false
 var island_key: Vector2i
 var island_ownership: Lobby.Factions
@@ -63,14 +65,15 @@ func _unhandled_input(event: InputEvent) -> void:
 			front_change_mode = false
 
 func _process(delta: float) -> void:
+	%UnitTrainProgressBar.value = training_progress
 	if is_active:
 		if _is_training:
 			_current_train_timer -= delta
-			%UnitTrainProgressBar.value = get_training_progress()
 			if _current_train_timer <= 0:
 				complete_training()
 		if _training_loop:
 			start_training()
+		training_progress = get_training_progress()
 
 func start_training():
 	if _is_training:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c817i4cmyy633"]
+[gd_scene load_steps=14 format=3 uid="uid://c817i4cmyy633"]
 
 [ext_resource type="Script" uid="uid://dkfjkrmloyb8q" path="res://scenes/world/buildings/building.gd" id="1_akj7n"]
 [ext_resource type="Resource" uid="uid://bc1is3namt155" path="res://resources/empire/buildings/trainers/house/house_1.tres" id="2_ei8ew"]
@@ -14,6 +14,11 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_akj7n"]
 size = Vector2(200, 350)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ei8ew"]
+properties/0/path = NodePath("TrainComponent:training_progress")
+properties/0/spawn = true
+properties/0/replication_mode = 1
 
 [node name="Building" type="Node2D"]
 script = ExtResource("1_akj7n")
@@ -120,6 +125,9 @@ offset_top = 16.0
 offset_right = -35.0
 offset_bottom = 39.0
 text = "false"
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_ei8ew")
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="pressed" from="Buttons/PanelContainer/TrainActivateButton" to="TrainComponent" method="_on_train_activate_button_pressed"]

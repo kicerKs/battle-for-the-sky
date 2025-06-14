@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dkrv674okmjmm"]
+[gd_scene load_steps=12 format=3 uid="uid://dkrv674okmjmm"]
 
 [ext_resource type="Script" uid="uid://dkfjkrmloyb8q" path="res://scenes/world/buildings/building.gd" id="1_2utar"]
 [ext_resource type="Resource" uid="uid://b4a6olvmb635h" path="res://resources/empire/buildings/generators/woodcutter/woodcutter_1.tres" id="2_84i42"]
@@ -12,6 +12,11 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_atpml"]
 size = Vector2(200, 200)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_a87ni"]
+properties/0/path = NodePath("GeneratorComponent:generation_progress")
+properties/0/spawn = true
+properties/0/replication_mode = 1
 
 [node name="Building" type="Node2D"]
 script = ExtResource("1_2utar")
@@ -82,6 +87,9 @@ scale = Vector2(0.75, 0.75)
 unique_name_in_owner = true
 layout_mode = 2
 text = "X"
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_a87ni")
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="pressed" from="Buttons/PanelContainer2/UpgradeButton" to="UpgradeComponent" method="_on_upgrade_button_pressed"]
