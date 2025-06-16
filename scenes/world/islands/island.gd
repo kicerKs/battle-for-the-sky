@@ -2,6 +2,13 @@ extends Sprite2D
 class_name Island
 
 @export var building_limit: int = 4
+@export var resources_modifier = {
+	Game.Resources.WOOD: 1.0,
+	Game.Resources.FOOD: 1.0,
+	Game.Resources.STONE: 1.0,
+	Game.Resources.GOLD: 1.0,
+	Game.Resources.IRON: 1.0
+}
 
 signal island_conquered
 
@@ -47,6 +54,9 @@ func get_island_polygon():
 	for el in polygon:
 		return_polygon.append(el + position)
 	return return_polygon
+
+func get_resource_bonus(resource: Game.Resources):
+	return resources_modifier[resource]
 
 func get_dict():
 	return {

@@ -25,11 +25,10 @@ func _process(delta: float) -> void:
 
 @rpc("authority", "call_local", "reliable")
 func generate_resources():
-	print(Game.tileMapLayer.local_to_map(owner.global_position))
 	if Game.tileMapLayer.tiles[Game.tileMapLayer.local_to_map(owner.global_position)].ownership == Lobby.player_info["color"]:
 		for res in stats.generatingResources:
 			if stats.generatingResources[res] != 0:
-				Game.change_player_resource(res, stats.generatingResources[res])
+				Game.change_player_resource(res, int(stats.generatingResources[res] * get_island_multiplayer(res)))
 				# play animation here
 
 func get_generation_progress() -> float:
@@ -38,3 +37,6 @@ func get_generation_progress() -> float:
 func reset_timer():
 	_generation_timer = stats.generatingTime
 	%GenerationProgressBar.value = get_generation_progress()
+
+func get_island_multiplayer(resource: Game.Resources):
+	return owner.get_island().get_resource_bonus(resource)
