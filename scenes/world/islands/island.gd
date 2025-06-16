@@ -95,6 +95,26 @@ func update_sprites():
 	%BridgeNE.visible = connections["NE"]
 	
 	%BuildingLimitLabel.text = str(buildings_number) + "/" + str(building_limit)
+	%IslandBonusIcon.visible = true
+	%IslandBonusLabel.visible = true
+	if resources_modifier[Game.Resources.WOOD] > 1.0:
+		%IslandBonusIcon.texture = load("res://assets/resources/wood.png")
+		%IslandBonusLabel.text = "+"+str((resources_modifier[Game.Resources.WOOD]-1.0)*100)+"%"
+	elif resources_modifier[Game.Resources.FOOD] > 1.0:
+		%IslandBonusIcon.texture = load("res://assets/resources/food.png")
+		%IslandBonusLabel.text = "+"+str((resources_modifier[Game.Resources.FOOD]-1.0)*100)+"%"
+	elif resources_modifier[Game.Resources.STONE] > 1.0:
+		%IslandBonusIcon.texture = load("res://assets/resources/stone.png")
+		%IslandBonusLabel.text = "+"+str((resources_modifier[Game.Resources.STONE]-1.0)*100)+"%"
+	elif resources_modifier[Game.Resources.IRON] > 1.0:
+		%IslandBonusIcon.texture = load("res://assets/resources/iron.png")
+		%IslandBonusLabel.text = "+"+str((resources_modifier[Game.Resources.IRON]-1.0)*100)+"%"
+	elif resources_modifier[Game.Resources.GOLD] > 1.0:
+		%IslandBonusIcon.texture = load("res://assets/resources/gold.png")
+		%IslandBonusLabel.text = "+"+str((resources_modifier[Game.Resources.GOLD]-1.0)*100)+"%"
+	else:
+		%IslandBonusIcon.visible = false
+		%IslandBonusLabel.visible = false
 
 func add_building(building):
 	building.placement_mode = false
