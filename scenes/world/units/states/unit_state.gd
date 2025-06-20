@@ -6,6 +6,7 @@ const MOVING = "Moving"
 const CONQUERING = "Conquering"
 const ATTACKING = "Attacking"
 const ENGAGE = "Engage"
+const DYING = "Dying"
 
 var state_machine: StateMachine
 var unit: TestCharacter

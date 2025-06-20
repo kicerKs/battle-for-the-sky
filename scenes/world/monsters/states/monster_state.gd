@@ -5,6 +5,7 @@ const IDLE = "Idle"
 const WANDERING = "Wandering"
 const ATTACKING = "Attacking"
 const ENGAGE = "Engage"
+const DYING = "Dying"
 
 var state_machine: StateMachine
 var monster: TestMonster

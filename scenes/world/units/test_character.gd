@@ -25,7 +25,8 @@ var current_front: Vector2i:
 			front_changed.emit(value)
 
 func _on_unit_died():
-	die.rpc()
+	$StateMachine.transition_to_state(MonsterState.DYING)
+	#die.rpc()
 
 @rpc("authority", "call_local", "reliable")
 func die():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dym44rd600q0n"]
+[gd_scene load_steps=34 format=3 uid="uid://dym44rd600q0n"]
 
 [ext_resource type="Script" uid="uid://0fqsdmh2dnpn" path="res://scenes/world/monsters/test_monster.gd" id="1_angyd"]
 [ext_resource type="Resource" uid="uid://4ygv5awlfsd3" path="res://resources/monsters/units/goblin/goblin_stats.tres" id="2_qtknx"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://bcmlgj2w55p8f" path="res://common/state_machine.gd" id="5_5q1cb"]
 [ext_resource type="Script" uid="uid://cju0l6y8aayaq" path="res://scenes/world/monsters/states/monster_state_attacking.gd" id="5_qtknx"]
 [ext_resource type="Script" uid="uid://2ys706connp" path="res://scenes/world/monsters/states/monster_state_engage.gd" id="6_4odkr"]
+[ext_resource type="Script" uid="uid://dnx6f66l560i1" path="res://scenes/world/monsters/states/monster_state_dying.gd" id="8_4odkr"]
 [ext_resource type="Script" uid="uid://chixtoay5fbmj" path="res://scenes/world/units/components/MovementComponent.gd" id="10_1acnb"]
 [ext_resource type="Script" uid="uid://bgjqylyg8052t" path="res://scenes/world/units/components/HealthComponent.gd" id="11_m0r5m"]
 [ext_resource type="Script" uid="uid://bu625gum4lcu2" path="res://scenes/world/units/components/AttackComponent.gd" id="12_16jbj"]
@@ -187,6 +188,9 @@ script = ExtResource("5_qtknx")
 [node name="Engage" type="Node" parent="StateMachine"]
 script = ExtResource("6_4odkr")
 
+[node name="Dying" type="Node" parent="StateMachine"]
+script = ExtResource("8_4odkr")
+
 [node name="Components" type="Node" parent="."]
 
 [node name="MovementComponent" type="Node" parent="Components" node_paths=PackedStringArray("testCharacter")]
@@ -217,6 +221,7 @@ debug_enabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_g3gjs")
+animation = &"walk"
 autoplay = "idle"
 script = ExtResource("14_ntseo")
 
