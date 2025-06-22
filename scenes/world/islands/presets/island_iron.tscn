@@ -1,27 +1,27 @@
-[gd_scene load_steps=22 format=3 uid="uid://bpkxcx0xgyqj6"]
+[gd_scene load_steps=22 format=3 uid="uid://boegb4ttde2n4"]
 
-[ext_resource type="Script" uid="uid://c6n8gfkkkqwdp" path="res://scenes/world/islands/island.gd" id="2_51n52"]
-[ext_resource type="Script" uid="uid://bb2u2tgh4mohy" path="res://scenes/world/islands/island_data.gd" id="3_qiftq"]
-[ext_resource type="Texture2D" uid="uid://cn5ie6mt44x70" path="res://assets/buildings/test_island.png" id="4_51n52"]
-[ext_resource type="Texture2D" uid="uid://cu45k5rss66ku" path="res://assets/buildings/bridge 1.png" id="4_k8b3u"]
-[ext_resource type="Texture2D" uid="uid://d2g2haiypnote" path="res://assets/buildings/flag_neutral.png" id="5_jdgno"]
-[ext_resource type="Texture2D" uid="uid://driblg3mu6ha2" path="res://assets/buildings/bridge 2.png" id="5_u22nc"]
-[ext_resource type="Texture2D" uid="uid://dqa2fdarkmrcv" path="res://assets/buildings/bridge 3.png" id="6_2tewc"]
-[ext_resource type="Texture2D" uid="uid://dutpth223cgod" path="res://assets/buildings/bridge 4.png" id="7_p1ha7"]
-[ext_resource type="Texture2D" uid="uid://b2rh52mf5ogwa" path="res://assets/buildings/bridge 5.png" id="8_r62wl"]
-[ext_resource type="Texture2D" uid="uid://cketal843l4vr" path="res://assets/buildings/bridge 6.png" id="9_binnr"]
-[ext_resource type="PackedScene" uid="uid://balv6egn28qqq" path="res://scenes/ui/gui/other_elements/CustomProgressBar.tscn" id="11_u22nc"]
-[ext_resource type="Texture2D" uid="uid://6dnjfx3mt3cu" path="res://assets/icons/building limit.png" id="12_p1ha7"]
-[ext_resource type="Texture2D" uid="uid://cu47poko5g5im" path="res://assets/resources/stone.png" id="13_r62wl"]
+[ext_resource type="Script" uid="uid://c6n8gfkkkqwdp" path="res://scenes/world/islands/island.gd" id="1_cf7ad"]
+[ext_resource type="Script" uid="uid://bb2u2tgh4mohy" path="res://scenes/world/islands/island_data.gd" id="2_3a8uc"]
+[ext_resource type="Texture2D" uid="uid://bgn0gpjxy6s2t" path="res://assets/islands/iron island.png" id="3_cf7ad"]
+[ext_resource type="Texture2D" uid="uid://cu45k5rss66ku" path="res://assets/buildings/bridge 1.png" id="4_1vyxd"]
+[ext_resource type="Texture2D" uid="uid://driblg3mu6ha2" path="res://assets/buildings/bridge 2.png" id="5_502no"]
+[ext_resource type="Texture2D" uid="uid://dqa2fdarkmrcv" path="res://assets/buildings/bridge 3.png" id="6_bkhif"]
+[ext_resource type="Texture2D" uid="uid://dutpth223cgod" path="res://assets/buildings/bridge 4.png" id="7_358mk"]
+[ext_resource type="Texture2D" uid="uid://b2rh52mf5ogwa" path="res://assets/buildings/bridge 5.png" id="8_mr8a7"]
+[ext_resource type="Texture2D" uid="uid://cketal843l4vr" path="res://assets/buildings/bridge 6.png" id="9_7v3nu"]
+[ext_resource type="Texture2D" uid="uid://d2g2haiypnote" path="res://assets/buildings/flag_neutral.png" id="10_smyl2"]
+[ext_resource type="PackedScene" uid="uid://balv6egn28qqq" path="res://scenes/ui/gui/other_elements/CustomProgressBar.tscn" id="11_2e252"]
+[ext_resource type="Texture2D" uid="uid://6dnjfx3mt3cu" path="res://assets/icons/building limit.png" id="12_mxqxo"]
+[ext_resource type="Texture2D" uid="uid://cu47poko5g5im" path="res://assets/resources/stone.png" id="13_wnnpa"]
 
 [sub_resource type="Resource" id="Resource_0yff4"]
-script = ExtResource("3_qiftq")
+script = ExtResource("2_3a8uc")
 metadata/_custom_type_script = "uid://bb2u2tgh4mohy"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_s2qvn"]
-vertices = PackedVector2Array(79.9531, -1058.31, 163.367, -1012.25, 163.094, -1012.4, 366.578, 556.297, 149.539, 611.313, 149.648, 611.281, -901.477, 443.633, -958.188, 424.719, -1162.7, 323.461, -1226.45, 275.398, -1362.97, 138.883, -1361.01, -153.531, -1249.91, -368.844, -1033.04, -566.891, -901.422, -645.078, -31.3984, 655.047, -128.727, 658.977, -313.797, 641.07, -476.43, 618.258, -606.367, 567.68, -596.273, -775.711, -446.32, -831.07, 598.867, 499.469, -315.461, -922.672, -229.008, -977.328, -163.352, -1015.13, -84.0391, -1051.4, 2.32813, -1067.88, 502.859, -810.602, 887.797, 380.906, 1180.06, 137.789, 1036.33, 281.523, 952.578, 347.539, 600.281, -788.359, 901.297, -685.359, 1359.56, -159.359, 1097.66, -642.047, 1419.95, -390.563, 1388.49, -202.773, 1195.85, -637.094, 1288.08, -600.203, 1373.52, -537.094, 1416.13, -468.906)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 4, 5), PackedInt32Array(6, 7, 8, 9, 10, 11, 12, 13, 14), PackedInt32Array(5, 15, 16, 17, 18, 19, 6, 14, 20, 21, 3), PackedInt32Array(22, 3, 21, 23, 24, 25, 26, 27, 0, 2, 28, 29), PackedInt32Array(30, 31, 32, 29, 28, 33, 34, 35), PackedInt32Array(35, 34, 36), PackedInt32Array(37, 38, 35, 36, 39, 40, 41, 42)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-906, -654, -1039, -575, -1258, -375, -1370, -155, -1373, 143, -1233, 283, -1168, 332, -962, 434, -905, 453, -610, 577, -479, 628, -315, 651, -129, 669, -30, 665, 152, 621, 369, 566, 602, 509, 892, 390, 958, 356, 1043, 289, 1188, 144, 1368, -154, 1398, -199, 1430, -390, 1426, -472, 1381, -544, 1293, -609, 1198, -647, 1099, -652, 904, -695, 603, -798, 506.621, -820, 168.206, -1021, 83.1018, -1068, 2.00245, -1078, -87.1067, -1061, -168, -1024, -234, -986, -321, -931, -451, -840, -600, -785)])
+vertices = PackedVector2Array(79.9531, -1058.31, 163.367, -1012.25, 163.094, -1012.4, 366.578, 556.297, 149.539, 611.313, 149.648, 611.281, -901.477, 443.633, -958.188, 424.719, -1162.7, 323.461, -1226.45, 275.398, -1362.95, 138.898, -1360.02, -152.547, -1249.9, -368.852, -1033.04, -566.891, -901.398, -645.094, -606.367, 567.68, -845.523, -669.008, -31.3984, 655.047, -128.727, 658.977, -313.797, 641.07, -476.43, 618.258, -596.273, -775.711, -446.32, -831.07, 598.867, 499.469, -315.461, -922.672, -229.008, -977.328, -163.352, -1015.13, -84.0391, -1051.4, 2.32813, -1067.88, 502.859, -810.602, 887.797, 380.906, 1180.06, 137.789, 1036.33, 281.523, 952.578, 347.539, 600.281, -788.359, 901.297, -685.359, 1359.56, -159.359, 1097.66, -642.047, 1419.95, -390.563, 1388.49, -202.773, 1195.85, -637.094, 1288.08, -600.203, 1373.52, -537.094, 1416.13, -468.906)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 4, 5), PackedInt32Array(6, 7, 8, 9, 10, 11, 12, 13, 14), PackedInt32Array(15, 6, 14, 16), PackedInt32Array(5, 17, 18, 19, 20, 15, 16, 21, 22, 3), PackedInt32Array(23, 3, 22, 24, 25, 26, 27, 28, 0, 2, 29, 30), PackedInt32Array(31, 32, 33, 30, 29, 34, 35, 36), PackedInt32Array(36, 35, 37), PackedInt32Array(38, 39, 36, 37, 40, 41, 42, 43)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-906, -654, -1039, -575, -1258, -375, -1370, -155, -1373, 143, -1233, 283, -1168, 332, -962, 434, -905, 453, -610, 577, -479, 628, -315, 651, -129, 669, -30, 665, 152, 621, 369, 566, 602, 509, 892, 390, 958, 356, 1043, 289, 1188, 144, 1368, -154, 1398, -199, 1430, -390, 1426, -472, 1381, -544, 1293, -609, 1198, -647, 1099, -652, 904, -695, 603, -798, 506.621, -820, 168.206, -1021, 83.1018, -1068, 2.00245, -1078, -87.1067, -1061, -168, -1024, -234, -986, -321, -931, -451, -840, -600, -785, -849.464, -678.203)])
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_k8b3u"]
 vertices = PackedVector2Array(-150.93, 128.93, -282, 128.063, -282, -153.188, -149.063, -155.789)
@@ -53,53 +53,54 @@ vertices = PackedVector2Array(23.0938, -70.6406, -259.141, 49.9063, -260.93, -14
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(36, -270, 33, -64, -269, 65, -271, -147)])
 
-[node name="IslandPlaceholder" type="Sprite2D"]
-script = ExtResource("2_51n52")
+[node name="IronIsland" type="Sprite2D"]
+script = ExtResource("1_cf7ad")
+building_limit = 3
 resources_modifier = {
-0: 1.5,
+0: 1.0,
 1: 1.0,
 2: 1.0,
 3: 1.0,
-4: 1.0
+4: 1.2
 }
 island_data = SubResource("Resource_0yff4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("4_51n52")
+texture = ExtResource("3_cf7ad")
 metadata/_edit_lock_ = true
 
 [node name="Bridges" type="Node2D" parent="."]
 
 [node name="BridgeSW" type="Sprite2D" parent="Bridges"]
 unique_name_in_owner = true
-texture = ExtResource("4_k8b3u")
+texture = ExtResource("4_1vyxd")
 
 [node name="BridgeW" type="Sprite2D" parent="Bridges"]
 unique_name_in_owner = true
 position = Vector2(-1, 0)
-texture = ExtResource("5_u22nc")
+texture = ExtResource("5_502no")
 
 [node name="BridgeNW" type="Sprite2D" parent="Bridges"]
 unique_name_in_owner = true
-texture = ExtResource("6_2tewc")
+texture = ExtResource("6_bkhif")
 
 [node name="BridgeSE" type="Sprite2D" parent="Bridges"]
 unique_name_in_owner = true
-texture = ExtResource("7_p1ha7")
+texture = ExtResource("7_358mk")
 
 [node name="BridgeE" type="Sprite2D" parent="Bridges"]
 unique_name_in_owner = true
-texture = ExtResource("8_r62wl")
+texture = ExtResource("8_mr8a7")
 offset = Vector2(5, 0)
 
 [node name="BridgeNE" type="Sprite2D" parent="Bridges"]
 unique_name_in_owner = true
-texture = ExtResource("9_binnr")
+texture = ExtResource("9_7v3nu")
 
 [node name="Flag" type="Sprite2D" parent="."]
 position = Vector2(3, -216)
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("5_jdgno")
+texture = ExtResource("10_smyl2")
 
 [node name="MainNavigationRegion" type="NavigationRegion2D" parent="."]
 unique_name_in_owner = true
@@ -145,7 +146,7 @@ metadata/_edit_lock_ = true
 polygon = PackedVector2Array(0, -1200, 1500, -600, 1500, 600, 0, 1200, 0, 657, 159, 619, 320, 576, 370, 564, 595, 517, 896, 392, 994, 330, 1191, 148, 1377, -162, 1432, -398, 1427, -464, 1365, -561, 1265, -627, 1182, -646, 1115, -651, 1069, -658, 903, -694, 589, -806, 487, -834, 248, -975, 91, -1070, 40, -1081, 0, -1075)
 metadata/_edit_lock_ = true
 
-[node name="CustomProgressBar" parent="." instance=ExtResource("11_u22nc")]
+[node name="CustomProgressBar" parent="." instance=ExtResource("11_2e252")]
 visible = false
 offset_left = -128.0
 offset_top = 14.0
@@ -165,7 +166,7 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
-texture = ExtResource("12_p1ha7")
+texture = ExtResource("12_mxqxo")
 expand_mode = 3
 stretch_mode = 5
 
@@ -180,7 +181,7 @@ text = "3/3"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
-texture = ExtResource("13_r62wl")
+texture = ExtResource("13_wnnpa")
 expand_mode = 3
 stretch_mode = 5
 
