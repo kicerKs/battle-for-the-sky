@@ -183,7 +183,6 @@ func is_pathable():
 				stack.append(node + Vector2i(0, 1))
 			if connections["SE"] == 1 and node + Vector2i(1, 1) not in visited_nodes:
 				stack.append(node + Vector2i(1, 1))
-	print(visited_nodes)
 	if num_of_visited_nodes == (map_size.x+1) * (map_size.y+1):
 		return true
 	return false

@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=3 uid="uid://bfpcejjeblvb5"]
+
+[ext_resource type="Script" uid="uid://dygyc5vd6k1w1" path="res://scenes/world/buildings/lair.gd" id="1_72wpl"]
+[ext_resource type="Texture2D" uid="uid://b4mqt7qj6p0i3" path="res://assets/buildings/goblin_tent.png" id="2_7i64j"]
+[ext_resource type="Resource" uid="uid://wkw646heby6y" path="res://resources/monsters/buildings/goblin_tent/goblin_tent.tres" id="2_a4dru"]
+[ext_resource type="Script" uid="uid://cuadstb6yf17v" path="res://scenes/world/buildings/lair_component.gd" id="3_a4dru"]
+[ext_resource type="Resource" uid="uid://r0ct523ysgh5" path="res://resources/monsters/buildings/goblin_tent/goblin_tent_lair.tres" id="4_2bkwp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a4dru"]
+size = Vector2(200, 350)
+
+[node name="Lair" type="Node2D"]
+script = ExtResource("1_72wpl")
+stats = ExtResource("2_a4dru")
+
+[node name="TrainComponent" type="Node" parent="."]
+script = ExtResource("3_a4dru")
+stats = ExtResource("4_2bkwp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_7i64j")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_a4dru")

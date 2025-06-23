@@ -47,5 +47,5 @@ script = ExtResource("1_sl2e5")
 navigation_polygon = SubResource("NavigationPolygon_6m72w")
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("uid://bqxs5pv8its2r")
+_spawnable_scenes = PackedStringArray("uid://bqxs5pv8its2r", "uid://dym44rd600q0n")
 spawn_path = NodePath("..")

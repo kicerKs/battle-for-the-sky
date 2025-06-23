@@ -119,7 +119,8 @@ func update_sprites():
 		%IslandBonusLabel.visible = false
 
 func add_building(building):
-	building.placement_mode = false
+	if building is Building:
+		building.placement_mode = false
 	building.position -= self.position
 	%MainNavigationRegion.add_child(building)
 	%MainNavigationRegion.bake_navigation_polygon()

@@ -14,7 +14,10 @@ var side : Lobby.Factions = Lobby.Factions.MONSTERS
 
 @onready var label = $Label
 
+signal monster_died
+
 func _on_unit_died():
+	monster_died.emit()
 	$StateMachine.transition_to_state(MonsterState.DYING)
 	#die.rpc()
 
