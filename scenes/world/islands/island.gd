@@ -68,6 +68,8 @@ func set_dict(dict):
 	update_sprites()
 
 func set_connections(connections):
+	if connections is Array:
+		connections = connections[0]
 	self.connections = connections
 	%NavigationBridgeW.enabled = connections["W"]
 	%NavigationBridgeSW.enabled = connections["SW"]
