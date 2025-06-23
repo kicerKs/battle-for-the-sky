@@ -1,10 +1,25 @@
-[gd_scene load_steps=6 format=3 uid="uid://dp4h3hdabpmsc"]
+[gd_scene load_steps=9 format=3 uid="uid://dp4h3hdabpmsc"]
 
 [ext_resource type="Script" uid="uid://bqdu7c24sxdfi" path="res://scenes/ui/gui/gui.gd" id="1_w6p3d"]
 [ext_resource type="PackedScene" uid="uid://dghdx8l8c2e6f" path="res://scenes/ui/gui/building_panel/building_panel.tscn" id="2_7a7fb"]
 [ext_resource type="PackedScene" uid="uid://c87lkvypeebod" path="res://scenes/ui/gui/construction_panel/construction_panel.tscn" id="3_kebd8"]
 [ext_resource type="PackedScene" uid="uid://edm5uaol81ig" path="res://scenes/ui/gui/resources_panel/resources_panel.tscn" id="4_00xwm"]
+[ext_resource type="FontFile" uid="uid://ba8wsyl36d580" path="res://resources/ui/fonts/Quintessential-Regular.ttf" id="6_a6c70"]
+[ext_resource type="Theme" uid="uid://tit816pj440" path="res://resources/ui/themes/mainmenu/button_theme_main_menu.tres" id="7_1j7g2"]
 [ext_resource type="PackedScene" uid="uid://b00qlr3qdf2xk" path="res://scenes/ui/gui/unit_panel/unit_panel.tscn" id="13_w6p3d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w62vw"]
+bg_color = Color(0.422388, 0.597074, 0.910494, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.401623, 0.262534, 0.0870988, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="GUI" type="CanvasLayer"]
 script = ExtResource("1_w6p3d")
@@ -19,4 +34,51 @@ visible = false
 [node name="UnitPanel" parent="." instance=ExtResource("13_w6p3d")]
 visible = false
 
+[node name="JoiningGameBox" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -182.0
+offset_top = -71.5
+offset_right = 182.0
+offset_bottom = 71.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w62vw")
+
+[node name="MarginContainer" type="MarginContainer" parent="JoiningGameBox"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="JoiningGameBox/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="JoiningGameBox/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("6_a6c70")
+theme_override_font_sizes/font_size = 32
+text = "Host abandoned game, you won!"
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="JoiningGameBox/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="JoinButton" type="Button" parent="JoiningGameBox/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("7_1j7g2")
+text = "Victory!"
+
 [connection signal="building_selected" from="ConstructionPanel" to="." method="_on_construction_panel_building_selected"]
+[connection signal="pressed" from="JoiningGameBox/MarginContainer/VBoxContainer/HBoxContainer2/JoinButton" to="." method="_on_join_button_pressed"]

@@ -14,6 +14,8 @@ func _ready() -> void:
 	SignalBus.connect("unit_clicked", show_unit_panel)
 	SignalBus.connect("monster_clicked", show_monster_panel)
 	SignalBus.connect("hide_panels", hide_panels)
+	
+	Lobby.server_disconnected.connect(show_leave_panel)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -42,3 +44,9 @@ func show_monster_panel(unit: TestMonster):
 
 func _on_construction_panel_building_selected(building: Variant) -> void:
 	building_selected.emit(building)
+
+func show_leave_panel():
+	%JoiningGameBox.visible = true
+
+func _on_join_button_pressed() -> void:
+	get_tree().quit()
