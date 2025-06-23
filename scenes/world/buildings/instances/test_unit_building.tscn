@@ -119,6 +119,10 @@ unique_name_in_owner = true
 layout_mode = 2
 icon = ExtResource("8_qq1jg")
 
+[node name="Line2D" type="Line2D" parent="Buttons"]
+z_index = 1
+default_color = Color(0, 1, 0, 1)
+
 [node name="Label" type="Label" parent="."]
 offset_left = -75.0
 offset_top = 16.0

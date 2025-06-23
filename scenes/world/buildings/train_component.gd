@@ -47,6 +47,12 @@ func activate():
 		Game.tileMapLayer.local_to_map(spawn_position)
 	)
 	_training_loop = true
+	
+	var line = owner.get_node("Buttons").get_node("Line2D")
+	line.global_position = Vector2(0, 0)
+	line.clear_points()
+	line.add_point(owner.global_position)
+	line.add_point(Game.tileMapLayer.map_to_local(current_front))
 
 func load_unit():
 	new_unit = stats.unit.instantiate()
@@ -119,3 +125,8 @@ func _on_auto_front_change(island: Vector2i):
 @rpc("call_local", "any_peer", "reliable")
 func change_front(pos):
 	current_front = Game.tileMapLayer.local_to_map(pos)
+	var line = owner.get_node("Buttons").get_node("Line2D")
+	line.global_position = Vector2(0, 0)
+	line.clear_points()
+	line.add_point(owner.global_position)
+	line.add_point(Game.tileMapLayer.map_to_local(current_front))

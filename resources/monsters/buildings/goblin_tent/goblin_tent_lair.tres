@@ -15,4 +15,5 @@ training_time = 8
 unit = ExtResource("2_gsnyx")
 unit_stats = ExtResource("4_uby6w")
 unit_icon = SubResource("AtlasTexture_v2ali")
+unit_limit = 3
 metadata/_custom_type_script = "uid://cgn4rw1tmlctg"

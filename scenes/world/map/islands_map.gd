@@ -30,8 +30,8 @@ func register_child(node: Node):
 			
 			var blue_island_key = Vector2i(0, last_island_y)
 			var blue_island = tiles[blue_island_key]
-			red_island.ownership = Lobby.Factions.PLAYER_RED
-			blue_island.ownership = Lobby.Factions.PLAYER_BLUE
+			red_island.ownership = Lobby.Factions.PLAYER_BLUE
+			blue_island.ownership = Lobby.Factions.PLAYER_RED
 			tiles[red_island_key] = red_island
 			tiles[blue_island_key] = blue_island
 			
