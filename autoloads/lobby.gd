@@ -28,6 +28,8 @@ var player_info = {
 	"name": "Oskar",
 	"color": Factions.PLAYER_BLUE
 }
+var last_used_ip
+var last_used_port
 
 func _ready():
 	multiplayer.peer_connected.connect(_on_player_connected)
@@ -35,6 +37,12 @@ func _ready():
 	multiplayer.connected_to_server.connect(_on_connected_ok)
 	multiplayer.connection_failed.connect(_on_connected_fail)
 	multiplayer.server_disconnected.connect(_on_server_disconnected)
+	
+	load_config()
+	if last_used_ip == null:
+		last_used_ip = DEFAULT_SERVER_IP
+	if last_used_port == null:
+		last_used_port = DEFAULT_SERVER_PORT
 
 func create_game():
 	var peer = ENetMultiplayerPeer.new()
@@ -53,6 +61,9 @@ func join_game(address = "", port = -1):
 		address = DEFAULT_SERVER_IP
 	if port < 0:
 		port = DEFAULT_SERVER_PORT
+	last_used_ip = address
+	last_used_port = port
+	save_config()
 	var peer = ENetMultiplayerPeer.new()
 	var error = peer.create_client(address, port)
 	print(error)
@@ -112,3 +123,30 @@ func _on_server_disconnected():
 	multiplayer.multiplayer_peer = null
 	players.clear()
 	server_disconnected.emit()
+
+func load_config():
+	var config = ConfigFile.new()
+	
+	var err = config.load("user://config.cfg")
+	
+	if err != OK:
+		return
+	
+	player_info["name"] = config.get_value("Multiplayer", "player_name")
+	last_used_ip = config.get_value("Multiplayer", "last_ip")
+	last_used_port = config.get_value("Multiplayer", "last_port")
+
+func save_config():
+	var config = ConfigFile.new()
+	
+	config.set_value("Multiplayer", "player_name", player_info["name"])
+	if last_used_ip != null:
+		config.set_value("Multiplayer", "last_ip", last_used_ip)
+	else:
+		config.set_value("Multiplayer", "last_ip", DEFAULT_SERVER_IP)
+	if last_used_port != null:
+		config.set_value("Multiplayer", "last_port", last_used_port)
+	else:
+		config.set_value("Multiplayer", "last_port", DEFAULT_SERVER_PORT)
+	
+	config.save("user://config.cfg")

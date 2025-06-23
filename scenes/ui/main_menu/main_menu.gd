@@ -19,9 +19,11 @@ func _on_single_but_pressed() -> void:
 func _on_multi_but_pressed() -> void:
 	%JoiningGameBox.visible = true
 	%VBoxContainer.visible = false
+	%IPTextEdit.text = Lobby.last_used_ip
+	%PortTextEdit.text = str(Lobby.last_used_port)
 
 func _on_set_but_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://scenes/ui/settings_menu/settings_menu.tscn");
 
 func _on_cred_but_pressed() -> void:
 	pass
