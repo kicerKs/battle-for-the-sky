@@ -19,6 +19,9 @@ func _unhandled_input(event: InputEvent) -> void:
 							add_building.rpc(target_island, building_path, placement_building.get_dict())
 							placement_mode = false
 
+func _ready():
+	Game.world = $VFX
+
 func _process(delta: float) -> void:
 	if placement_mode:
 		update_visual_feedback()

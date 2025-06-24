@@ -19,11 +19,18 @@ func update(delta: float) -> void:
 	timer -= delta
 	if timer <= 0:
 		timer = attack_speed
-		if owner.attack_component.target != null:
+		if owner.has_node("Components/HealComponent"):
+			owner.heal_component.heal()
+		elif owner.attack_component.target != null:
 			owner.attack_component.damage()
 	var array = %AttackRange.get_overlapping_bodies()
-	if owner.attack_component.target == null or owner.attack_component.target not in array:
-		change_state.emit(ENGAGE)
+	if owner.has_node("Components/AttackComponent"):
+		if owner.attack_component.target == null or owner.attack_component.target not in array:
+			change_state.emit(ENGAGE)
+	elif owner.has_node("Components/HealComponent"):
+		if owner.heal_component.target == null or owner.heal_component.target not in array or owner.heal_component.target.health_component.is_max_hp():
+			#print(owner.heal_component.target, owner.heal_component.target.health_component.is_max_hp())
+			change_state.emit(ENGAGE)
 	
 	
 	# if no enemy nearby

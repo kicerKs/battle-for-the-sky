@@ -12,7 +12,7 @@ func on_enter() -> void:
 	unit.movement_component.start_moving(Game.tileMapLayer.map_to_local(unit.current_front))
 	var arr = %DetectionRange.get_overlapping_bodies()
 	for body in arr:
-		if body is CharacterBody2D and body != owner and body.side != owner.side:
+		if body is CharacterBody2D and body != owner and ((body.side != owner.side and owner.has_node("Components/AttackComponent")) or (body.side == owner.side and owner.has_node("Components/HealComponent") and !body.health_component.is_max_hp())):
 			change_state.emit(ENGAGE)
 
 func physics_update(delta: float) -> void:
@@ -25,7 +25,7 @@ func update(delta: float) -> void:
 		test_timer = 1.0
 		var arr = %DetectionRange.get_overlapping_bodies()
 		for body in arr:
-			if body is CharacterBody2D and body != owner and body.side != owner.side:
+			if body is CharacterBody2D and body != owner and ((body.side != owner.side and owner.has_node("Components/AttackComponent")) or (body.side == owner.side and owner.has_node("Components/HealComponent") and !body.health_component.is_max_hp())):
 				change_state.emit(ENGAGE)
 	if Game.tileMapLayer.local_to_map(unit.position) == unit.current_front:
 		if is_at_target_island:

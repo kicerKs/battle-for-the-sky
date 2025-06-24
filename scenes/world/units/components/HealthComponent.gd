@@ -17,7 +17,11 @@ func take_damage(amount: int) -> void:
 	%HPBar.value = current_hp
 	if (current_hp ==0):
 		emit_signal("unit_died")
-	
+
+func heal(amount: int) -> void:
+	current_hp = min(current_hp + amount, max_hp)
+	%HPBar.value = current_hp
+
 func  _ready() ->void:
 	await owner.ready
 	max_hp = owner.stats.max_hp
@@ -30,3 +34,8 @@ func  _ready() ->void:
 func sync_hp_bars():
 	%HPBar.max_value = max_hp
 	%HPBar.value = current_hp
+
+func is_max_hp():
+	if current_hp == max_hp:
+		return true
+	return false

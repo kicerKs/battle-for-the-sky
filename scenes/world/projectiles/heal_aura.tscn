@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfd5k0w8lrb38"]
+
+[ext_resource type="Script" uid="uid://c1yxpkk1qy1uv" path="res://scenes/world/projectiles/heal_aura.gd" id="1_ovfg7"]
+[ext_resource type="Texture2D" uid="uid://boeqml2hq7ul" path="res://assets/gfx/heal_aura.png" id="2_ujh74"]
+
+[node name="HealAura" type="Node2D"]
+script = ExtResource("1_ovfg7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("2_ujh74")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

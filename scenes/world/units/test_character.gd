@@ -43,7 +43,7 @@ func _ready():
 		2: # our player
 			spritesheet = stats.spriteSheetBlue
 	animation.setup_animations(spritesheet)
-	
+	%AttackRangeCollisionShape2D.shape.radius = stats.range * 10.0
 	
 	if (attack_component==null): #healer
 		stats.action = 7

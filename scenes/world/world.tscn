@@ -35,6 +35,12 @@ tile_set = SubResource("TileSet_1fp7r")
 navigation_enabled = false
 script = ExtResource("3_1fp7r")
 
+[node name="VFX" type="Node2D" parent="."]
+
+[node name="MultiplayerSpawner2" type="MultiplayerSpawner" parent="VFX"]
+_spawnable_scenes = PackedStringArray("uid://qu4kfgbknqr2")
+spawn_path = NodePath("..")
+
 [node name="MapGenerator" type="Node" parent="."]
 script = ExtResource("10_gb53w")
 

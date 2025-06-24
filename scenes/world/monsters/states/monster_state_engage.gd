@@ -25,14 +25,12 @@ func update(delta: float) -> void:
 	var array = %AttackRange.get_overlapping_bodies()
 	if target in array:
 		owner.attack_component.target = target
-		print("I start attacking " + str(target))
 		change_state.emit(ATTACKING)
 
 func choose_closest_target():
 	var array: Array = %DetectionRange.get_overlapping_bodies()
 	var new_array: Array = []
 	for el: CharacterBody2D in array:
-		print(el)
 		if el is not TestCharacter:
 			continue
 		elif el == owner:

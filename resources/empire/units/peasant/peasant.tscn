@@ -11,13 +11,13 @@
 [ext_resource type="Script" uid="uid://chixtoay5fbmj" path="res://scenes/world/units/components/MovementComponent.gd" id="8_tf3lg"]
 [ext_resource type="Script" uid="uid://ci5l05gemqu30" path="res://scenes/world/units/states/unit_state_dying.gd" id="9_7x4tg"]
 [ext_resource type="Script" uid="uid://bgjqylyg8052t" path="res://scenes/world/units/components/HealthComponent.gd" id="9_guamy"]
-[ext_resource type="Script" uid="uid://bu625gum4lcu2" path="res://scenes/world/units/components/AttackComponent.gd" id="10_4t8hy"]
 [ext_resource type="Texture2D" uid="uid://bmsh0s6amr1u8" path="res://assets/resources/unit_test.png" id="11_86ayf"]
 [ext_resource type="Script" uid="uid://c7ftxhy6tmrtt" path="res://scenes/world/units/animation_generator.gd" id="12_vqhq0"]
+[ext_resource type="Script" uid="uid://dqk12ljcuxgxn" path="res://scenes/world/units/components/HealComponent.gd" id="14_chmfx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xb5ci"]
-radius = 313.571
-height = 741.429
+radius = 23.0
+height = 58.0
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_xb5ci"]
 properties/0/path = NodePath(".:position")
@@ -146,24 +146,23 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_66boy"]
-radius = 20000.0
+radius = 800.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7x4tg"]
-radius = 600.0
+radius = 60.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_66boy"]
 bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7x4tg"]
 bg_color = Color(0.340192, 0.698577, 0.227424, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
 border_color = Color(0, 0, 0, 1)
 
-[node name="TestCharacter" type="CharacterBody2D" node_paths=PackedStringArray("movement_component", "health_component", "attack_component", "animation", "nav_agent") groups=["units"]]
-scale = Vector2(0.07, 0.07)
+[node name="TestCharacter" type="CharacterBody2D" node_paths=PackedStringArray("movement_component", "health_component", "attack_component", "heal_component", "animation", "nav_agent") groups=["units"]]
 collision_layer = 19
 collision_mask = 17
 input_pickable = true
@@ -171,7 +170,8 @@ script = ExtResource("1_rle55")
 stats = ExtResource("2_66boy")
 movement_component = NodePath("Components/MovementComponent")
 health_component = NodePath("Components/HealthComponent")
-attack_component = NodePath("Components/AttackComponent")
+attack_component = NodePath("")
+heal_component = NodePath("Components/HealComponent")
 side = 2
 animation = NodePath("AnimatedSprite2D")
 nav_agent = NodePath("NavigationAgent2D")
@@ -208,11 +208,11 @@ testCharacter = NodePath("../..")
 [node name="HealthComponent" type="Node" parent="Components"]
 script = ExtResource("9_guamy")
 
-[node name="AttackComponent" type="Node" parent="Components"]
-script = ExtResource("10_4t8hy")
+[node name="HealComponent" type="Node" parent="Components"]
+script = ExtResource("14_chmfx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(15, 75)
+position = Vector2(1, 2)
 shape = SubResource("CapsuleShape2D_xb5ci")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
@@ -228,18 +228,19 @@ avoidance_priority = 0.5
 debug_enabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.07, 0.07)
 sprite_frames = SubResource("SpriteFrames_g3gjs")
 animation = &"walk"
 autoplay = "idle"
 script = ExtResource("12_vqhq0")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -457.143
-offset_top = -528.571
-offset_right = 456.857
-offset_bottom = -363.571
+offset_left = -113.0
+offset_top = -75.0
+offset_right = 114.0
+offset_bottom = -58.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_font_sizes/font_size = 120
+theme_override_font_sizes/font_size = 12
 text = "State"
 horizontal_alignment = 1
 
@@ -247,27 +248,39 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 collision_layer = 16
 collision_mask = 16
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
 shape = SubResource("CircleShape2D_66boy")
+metadata/_edit_lock_ = true
 
 [node name="AttackRange" type="Area2D" parent="."]
 unique_name_in_owner = true
 collision_layer = 18
 collision_mask = 2
+metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+[node name="AttackRangeCollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+unique_name_in_owner = true
 shape = SubResource("CircleShape2D_7x4tg")
+metadata/_edit_lock_ = true
 
 [node name="HPBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
-offset_left = -371.0
-offset_top = -600.0
-offset_right = 371.0
-offset_bottom = -530.0
+offset_left = -34.0
+offset_top = -56.0
+offset_right = 34.0
+offset_bottom = -46.0
 theme_override_styles/background = SubResource("StyleBoxFlat_66boy")
 theme_override_styles/fill = SubResource("StyleBoxFlat_7x4tg")
 show_percentage = false
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://bri2l5ir5eg1u", "uid://cqobkdhf7su8e")
+
+[node name="MultiplayerSpawner2" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://dfd5k0w8lrb38")
+spawn_path = NodePath("..")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="velocity_computed" from="NavigationAgent2D" to="Components/MovementComponent" method="_on_navigation_agent_2d_velocity_computed"]

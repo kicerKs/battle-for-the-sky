@@ -18,6 +18,10 @@ func _ready():
 func start_moving(target_island_pos: Vector2):
 	owner.nav_agent.target_position = target_island_pos
 
+func end_moving():
+	var nav: NavigationAgent2D = owner.nav_agent
+	nav.target_position = owner.global_position
+
 func add_collision(vector: Vector2):
 	collisions.append(vector)
 

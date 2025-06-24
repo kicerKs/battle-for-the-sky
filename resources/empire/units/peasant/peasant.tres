@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="UnitStats" load_steps=5 format=3 uid="uid://cc6inv7aq6lbl"]
+[gd_resource type="Resource" script_class="UnitStats" load_steps=6 format=3 uid="uid://cc6inv7aq6lbl"]
 
 [ext_resource type="Script" uid="uid://cayakk8o7fjyy" path="res://resources/empire/units/unit_stats.gd" id="1_5t4rl"]
 [ext_resource type="Texture2D" uid="uid://bh3kn7ed737u8" path="res://assets/units/soldier_blue.png" id="2_5t4rl"]
 [ext_resource type="Texture2D" uid="uid://ydh2j76stlfe" path="res://assets/units/soldier_red.png" id="3_1heng"]
+[ext_resource type="Texture2D" uid="uid://doi2pvc8ekqxg" path="res://assets/units/archer_blue.png" id="3_eoaoo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5t4rl"]
 atlas = ExtResource("2_5t4rl")
@@ -13,12 +14,12 @@ script = ExtResource("1_5t4rl")
 name = "Peasant"
 description = "Weak melee unit"
 level = 1
-spriteSheetBlue = ExtResource("2_5t4rl")
+spriteSheetBlue = ExtResource("3_eoaoo")
 spriteSheetRed = ExtResource("3_1heng")
 max_hp = 100
 armor = 50
 speed = 100
-range = 60
+range = 1200
 singleTarget = true
 action = 0
 actionSpeed = 1
