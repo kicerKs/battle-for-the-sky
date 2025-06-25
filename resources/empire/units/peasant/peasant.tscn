@@ -12,8 +12,8 @@
 [ext_resource type="Script" uid="uid://ci5l05gemqu30" path="res://scenes/world/units/states/unit_state_dying.gd" id="9_7x4tg"]
 [ext_resource type="Script" uid="uid://bgjqylyg8052t" path="res://scenes/world/units/components/HealthComponent.gd" id="9_guamy"]
 [ext_resource type="Texture2D" uid="uid://bmsh0s6amr1u8" path="res://assets/resources/unit_test.png" id="11_86ayf"]
+[ext_resource type="Script" uid="uid://bu625gum4lcu2" path="res://scenes/world/units/components/AttackComponent.gd" id="12_7x4tg"]
 [ext_resource type="Script" uid="uid://c7ftxhy6tmrtt" path="res://scenes/world/units/animation_generator.gd" id="12_vqhq0"]
-[ext_resource type="Script" uid="uid://dqk12ljcuxgxn" path="res://scenes/world/units/components/HealComponent.gd" id="14_chmfx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xb5ci"]
 radius = 23.0
@@ -162,7 +162,7 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0, 0, 0, 1)
 
-[node name="TestCharacter" type="CharacterBody2D" node_paths=PackedStringArray("movement_component", "health_component", "heal_component", "animation", "nav_agent") groups=["units"]]
+[node name="TestCharacter" type="CharacterBody2D" node_paths=PackedStringArray("movement_component", "health_component", "attack_component", "heal_component", "animation", "nav_agent") groups=["units"]]
 collision_layer = 19
 collision_mask = 17
 input_pickable = true
@@ -170,7 +170,8 @@ script = ExtResource("1_rle55")
 stats = ExtResource("2_66boy")
 movement_component = NodePath("Components/MovementComponent")
 health_component = NodePath("Components/HealthComponent")
-heal_component = NodePath("Components/HealComponent")
+attack_component = NodePath("Components/AttackComponent")
+heal_component = NodePath("")
 side = 2
 animation = NodePath("AnimatedSprite2D")
 nav_agent = NodePath("NavigationAgent2D")
@@ -207,8 +208,8 @@ testCharacter = NodePath("../..")
 [node name="HealthComponent" type="Node" parent="Components"]
 script = ExtResource("9_guamy")
 
-[node name="HealComponent" type="Node" parent="Components"]
-script = ExtResource("14_chmfx")
+[node name="AttackComponent" type="Node" parent="Components"]
+script = ExtResource("12_7x4tg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 2)

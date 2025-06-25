@@ -15,8 +15,8 @@
 [ext_resource type="Script" uid="uid://c7ftxhy6tmrtt" path="res://scenes/world/units/animation_generator.gd" id="14_ntseo"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xb5ci"]
-radius = 313.571
-height = 712.857
+radius = 24.0
+height = 60.0
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_xb5ci"]
 properties/0/path = NodePath(".:position")
@@ -142,24 +142,23 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_17xdk"]
-radius = 20000.0
+radius = 2000.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_muntq"]
-radius = 600.0
+radius = 60.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2dusl"]
 bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3i26h"]
 bg_color = Color(0.340192, 0.698577, 0.227424, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
 border_color = Color(0, 0, 0, 1)
 
 [node name="TestCharacter" type="CharacterBody2D" node_paths=PackedStringArray("movement_component", "health_component", "attack_component", "animation", "nav_agent")]
-scale = Vector2(0.07, 0.07)
 collision_layer = 19
 collision_mask = 17
 input_pickable = true
@@ -204,7 +203,7 @@ script = ExtResource("11_m0r5m")
 script = ExtResource("12_16jbj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(15, 75)
+position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_xb5ci")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
@@ -220,12 +219,14 @@ avoidance_priority = 0.5
 debug_enabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.07, 0.07)
 sprite_frames = SubResource("SpriteFrames_g3gjs")
 animation = &"walk"
 autoplay = "idle"
 script = ExtResource("14_ntseo")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_left = -457.143
 offset_top = -528.571
 offset_right = 456.857
@@ -239,24 +240,28 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 collision_layer = 16
 collision_mask = 16
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
 shape = SubResource("CircleShape2D_17xdk")
+metadata/_edit_lock_ = true
 
 [node name="AttackRange" type="Area2D" parent="."]
 unique_name_in_owner = true
 collision_layer = 18
 collision_mask = 2
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
 shape = SubResource("CircleShape2D_muntq")
+metadata/_edit_lock_ = true
 
 [node name="HPBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
-offset_left = -371.0
-offset_top = -600.0
-offset_right = 371.0
-offset_bottom = -530.0
+offset_left = -34.0
+offset_top = -56.0
+offset_right = 34.0
+offset_bottom = -46.0
 theme_override_styles/background = SubResource("StyleBoxFlat_2dusl")
 theme_override_styles/fill = SubResource("StyleBoxFlat_3i26h")
 show_percentage = false
