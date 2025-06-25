@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c817i4cmyy633"]
+[gd_scene load_steps=16 format=3 uid="uid://c817i4cmyy633"]
 
 [ext_resource type="Script" uid="uid://dkfjkrmloyb8q" path="res://scenes/world/buildings/building.gd" id="1_akj7n"]
 [ext_resource type="Resource" uid="uid://bc1is3namt155" path="res://resources/empire/buildings/trainers/house/house_1.tres" id="2_ei8ew"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://bpetq6rubw0vm" path="res://assets/resources/attackspeed.png" id="8_qq1jg"]
 [ext_resource type="Texture2D" uid="uid://d1fd6ltnjv8gf" path="res://assets/buildings/house 1.png" id="9_ei8ew"]
 [ext_resource type="Texture2D" uid="uid://c555ryq6v6pc" path="res://assets/icons/building can upgrade.png" id="10_ei8ew"]
+[ext_resource type="Texture2D" uid="uid://cdki4fbh54yuc" path="res://assets/buildings/exclamation_status.png" id="12_o0igf"]
+[ext_resource type="Texture2D" uid="uid://curhut5bk68hy" path="res://assets/buildings/sleep_status.png" id="13_2ps7l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_akj7n"]
 size = Vector2(200, 350)
@@ -19,6 +21,9 @@ size = Vector2(200, 350)
 properties/0/path = NodePath("TrainComponent:training_progress")
 properties/0/spawn = true
 properties/0/replication_mode = 1
+properties/1/path = NodePath("Buttons/PanelContainer/TrainActivateButton:text")
+properties/1/spawn = true
+properties/1/replication_mode = 1
 
 [node name="Building" type="Node2D"]
 script = ExtResource("1_akj7n")
@@ -132,6 +137,20 @@ text = "false"
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_ei8ew")
+
+[node name="NoResources" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(8, -119)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("12_o0igf")
+
+[node name="BuildingSleeps" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-154, -86)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("13_2ps7l")
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="pressed" from="Buttons/PanelContainer/TrainActivateButton" to="TrainComponent" method="_on_train_activate_button_pressed"]

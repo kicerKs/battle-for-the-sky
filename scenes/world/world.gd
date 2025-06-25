@@ -16,6 +16,8 @@ func _unhandled_input(event: InputEvent) -> void:
 						var target_island = Game.tileMapLayer.local_to_map(placement_building.position)
 						if Game.tileMapLayer.tiles.has(target_island):
 							remove_child(placement_building)
+							for res in placement_building.stats.cost.keys():
+								Game.change_player_resource(res, -placement_building.stats.cost[res])
 							add_building.rpc(target_island, building_path, placement_building.get_dict())
 							placement_mode = false
 

@@ -21,6 +21,9 @@ func _input(event: InputEvent):
 		position = get_global_mouse_position()
 
 func can_build(island: Island):
+	for res in stats.cost.keys():
+		if Game.get_player_resource(res) < stats.cost[res]:
+			return false
 	if $Area2D.has_overlapping_areas():
 		return false
 	if island.ownership == Lobby.player_info["color"] and island.buildings_number < island.building_limit:

@@ -72,14 +72,15 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _process(delta: float) -> void:
 	%UnitTrainProgressBar.value = training_progress
-	if is_active:
-		if _is_training:
-			_current_train_timer -= delta
-			if _current_train_timer <= 0:
-				complete_training()
-		if _training_loop:
-			start_training()
-		training_progress = get_training_progress()
+	if multiplayer.is_server():
+		if is_active:
+			if _is_training:
+				_current_train_timer -= delta
+				if _current_train_timer <= 0:
+					complete_training()
+			if _training_loop:
+				start_training()
+			training_progress = get_training_progress()
 
 func start_training():
 	if _is_training:
@@ -88,13 +89,32 @@ func start_training():
 	load_unit()
 	for res in stats.training_cost:
 		if Game.get_player_resource(res) < stats.training_cost[res]:
+			show_no_resources.rpc()
 			return false
 	for res in stats.training_cost:
 		Game.change_player_resource(res, -stats.training_cost[res])
 	
+	hide_no_resources.rpc()
+	hide_sleep.rpc()
 	_is_training = true
 	_current_train_timer = stats.training_time
 	return true
+
+@rpc("any_peer", "call_local", "reliable")
+func show_no_resources():
+	%NoResources.visible = true
+
+@rpc("any_peer", "call_local", "reliable")
+func hide_no_resources():
+	%NoResources.visible = false
+
+@rpc("any_peer", "call_local", "reliable")
+func show_sleep():
+	%BuildingSleeps.visible = true
+
+@rpc("any_peer", "call_local", "reliable")
+func hide_sleep():
+	%BuildingSleeps.visible = false
 
 func complete_training(): 
 	_is_training = false
@@ -109,12 +129,18 @@ func get_training_progress() -> float:
 	return 1.0 - (_current_train_timer / stats.training_time)
 
 func _on_train_activate_button_pressed() -> void:
-	if _training_loop:
-		%TrainActivateButton.text = "OFF"
-	else:
-		%TrainActivateButton.text = "ON"
-	
-	_training_loop = !_training_loop
+	change_training_status.rpc()
+
+@rpc("any_peer", "call_local", "reliable")
+func change_training_status():
+	if multiplayer.is_server():
+		if _training_loop:
+			%TrainActivateButton.text = "OFF"
+			show_sleep.rpc()
+		else:
+			%TrainActivateButton.text = "ON"
+			hide_sleep.rpc()
+		_training_loop = !_training_loop
 
 func _on_front_change_button_pressed() -> void:
 	front_change_mode = true
