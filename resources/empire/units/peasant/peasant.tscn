@@ -162,7 +162,7 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0, 0, 0, 1)
 
-[node name="TestCharacter" type="CharacterBody2D" node_paths=PackedStringArray("movement_component", "health_component", "attack_component", "heal_component", "animation", "nav_agent") groups=["units"]]
+[node name="TestCharacter" type="CharacterBody2D" node_paths=PackedStringArray("movement_component", "health_component", "heal_component", "animation", "nav_agent") groups=["units"]]
 collision_layer = 19
 collision_mask = 17
 input_pickable = true
@@ -170,7 +170,6 @@ script = ExtResource("1_rle55")
 stats = ExtResource("2_66boy")
 movement_component = NodePath("Components/MovementComponent")
 health_component = NodePath("Components/HealthComponent")
-attack_component = NodePath("")
 heal_component = NodePath("Components/HealComponent")
 side = 2
 animation = NodePath("AnimatedSprite2D")

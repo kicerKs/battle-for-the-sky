@@ -36,7 +36,6 @@ func update(delta: float) -> void:
 
 func choose_closest_target():
 	var array: Array = %DetectionRange.get_overlapping_bodies()
-	print(len(array))
 	var new_array: Array = []
 	for el: CharacterBody2D in array:
 		if el is not TestCharacter and el is not TestMonster:
@@ -44,7 +43,6 @@ func choose_closest_target():
 		elif el == owner:
 			continue
 		elif el.side == owner.side and owner.has_node("Components/HealComponent") and !el.health_component.is_max_hp():
-			print("I can heal yoU!")
 			new_array.append(el)
 		elif el.side != owner.side and owner.has_node("Components/AttackComponent"):
 			new_array.append(el)

@@ -15,6 +15,7 @@ func _ready():
 	connect("child_exiting_tree", unregister_child)
 
 func register_child(node: Node):
+	node.name = "Island"+str(local_to_map(node.position))
 	tiles[local_to_map(node.position)] = node
 	# Tutaj info z wygenerowanej mapy, wrzucimy to potem może w jeden resource, albo i nie, idk
 	#node.init(IslandData.new(), IslandDevelopmentData.IslandOwner.PLAYER_RED)

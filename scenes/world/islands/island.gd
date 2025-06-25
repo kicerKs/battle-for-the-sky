@@ -21,6 +21,8 @@ var conquering_time: float = 5.0
 var conquering_timer: float = 0.0
 var conquering_unit_side: Lobby.Factions
 
+@export var progress: float
+
 @export var island_data: IslandData
 var ownership: Lobby.Factions
 var connections = {
@@ -33,12 +35,12 @@ var connections = {
 }
 
 func _ready():
-	pass
+	$MultiplayerSynchronizer.synchronized.connect(sync_conquering_bar)
 
 func _process(delta: float) -> void:
 	if conquering:
 		conquering_timer -= delta
-		var progress = 1.0 - (conquering_timer / conquering_time)
+		progress = 1.0 - (conquering_timer / conquering_time)
 		if conquering_timer <= 0:
 			stop_conquering()
 		progress_bar.value = progress
@@ -63,6 +65,7 @@ func get_dict():
 		"ownership" = self.ownership
 	}
 
+@rpc("call_local", "any_peer", "reliable")
 func set_dict(dict):
 	self.ownership = dict["ownership"]
 	update_sprites()
@@ -140,14 +143,25 @@ func start_conquering(unit_side: Lobby.Factions):
 	
 	conquering_timer = conquering_time
 	conquering_unit_side = unit_side
-	progress_bar.visible = true
 	conquering = true
+	show_conquering_bar.rpc()
+
+@rpc("call_local", "any_peer", "reliable")
+func show_conquering_bar():
+	progress_bar.visible = true
 
 func stop_conquering():
-	progress_bar.visible = false
+	hide_conquering_bar.rpc()
 	progress_bar.value = 0.0
 	
 	ownership = conquering_unit_side
-	set_dict(self)
+	set_dict.rpc(get_dict())
 	conquering = false
 	island_conquered.emit()
+
+@rpc("call_local", "reliable", "any_peer")
+func hide_conquering_bar():
+	progress_bar.visible = false
+
+func sync_conquering_bar():
+	progress_bar.value = progress

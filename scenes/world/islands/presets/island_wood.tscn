@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bq3hbiiy2stu8"]
+[gd_scene load_steps=23 format=3 uid="uid://bq3hbiiy2stu8"]
 
 [ext_resource type="Script" uid="uid://c6n8gfkkkqwdp" path="res://scenes/world/islands/island.gd" id="1_46180"]
 [ext_resource type="Script" uid="uid://bb2u2tgh4mohy" path="res://scenes/world/islands/island_data.gd" id="2_dmyj7"]
@@ -52,6 +52,11 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(269, -139, 274, 27, -35
 vertices = PackedVector2Array(23.0938, -70.6406, -259.141, 49.9063, -260.93, -140.258, 25.7813, -255.133)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(36, -270, 33, -64, -269, 65, -271, -147)])
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_46180"]
+properties/0/path = NodePath(".:progress")
+properties/0/spawn = true
+properties/0/replication_mode = 1
 
 [node name="WoodIsland" type="Sprite2D"]
 script = ExtResource("1_46180")
@@ -191,3 +196,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 32
 text = "+20%"
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_46180")
