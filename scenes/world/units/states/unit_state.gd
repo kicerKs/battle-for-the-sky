@@ -10,11 +10,13 @@ const DYING = "Dying"
 
 var state_machine: StateMachine
 var unit: TestCharacter
+var starting_island: Vector2i
 
 func _ready() -> void:
 	await owner.ready
 	unit = owner as TestCharacter
 	state_machine = get_tree().get_first_node_in_group("state_machine")
+	starting_island = Game.tileMapLayer.starting_islands[Lobby.player_info["color"]]
 	await tree_entered
 
 # ownership of island where unit is standing

@@ -5,7 +5,8 @@ func on_enter() -> void:
 	unit.animation.play("idle")
 	if unit.current_front == Game.tileMapLayer.local_to_map(unit.position):
 		# if player haven't chosen another front, search for another
-		unit.auto_front_change.emit(Game.tileMapLayer.local_to_map(unit.position))
+		#unit.auto_front_change.emit(Game.tileMapLayer.local_to_map(unit.position))
+		unit.auto_front_change.emit(starting_island)
 
 func update(delta: float) -> void:
 	if unit.current_front != Game.tileMapLayer.local_to_map(unit.position):

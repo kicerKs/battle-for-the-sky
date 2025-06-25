@@ -16,8 +16,8 @@
 [ext_resource type="Script" uid="uid://c7ftxhy6tmrtt" path="res://scenes/world/units/animation_generator.gd" id="12_vqhq0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xb5ci"]
-radius = 23.0
-height = 58.0
+radius = 8.0
+height = 36.0
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_xb5ci"]
 properties/0/path = NodePath(".:position")
@@ -221,7 +221,7 @@ replication_config = SubResource("SceneReplicationConfig_xb5ci")
 path_desired_distance = 25.0
 target_desired_distance = 35.0
 avoidance_enabled = true
-radius = 8.0
+radius = 1.5
 neighbor_distance = 100.0
 avoidance_priority = 0.5
 debug_enabled = true
