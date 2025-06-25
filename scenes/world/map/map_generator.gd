@@ -2,11 +2,7 @@ extends Node
 
 @onready var tilemap = $"../TileMapLayer"
 
-enum MAP_SIZE{
-	SMALL,
-	MEDIUM,
-	LARGE
-}
+
 
 var wfc = WFC.new()
 var possible_cells = ["plains", "wood", "food", "stone", "iron", "gold"]
@@ -23,17 +19,20 @@ func _ready():
 	tilemap.clear()
 	if multiplayer.is_server():
 		wfc.prepare()
-		generate_map(MAP_SIZE.SMALL)
-		tilemap.set_generated_connections.rpc(wfc.get_connections_map(Vector2(3, 3)))
+		generate_map(Game.map_size)
+		tilemap.set_generated_connections.rpc(wfc.get_connections_map(get_map_size() - Vector2(0, int(get_map_size().y / 2))))
 
-func generate_map(size: MAP_SIZE):
-	var max_coords
-	if size == MAP_SIZE.SMALL:
-		max_coords = Vector2(3, 5)
-	elif size == MAP_SIZE.MEDIUM:
-		max_coords = Vector2(5, 7)
-	else:
-		max_coords = Vector2(7, 9)
+func get_map_size():
+	match Game.map_size:
+		Game.MAP_SIZE.SMALL:
+			return Vector2(3, 5)
+		Game.MAP_SIZE.MEDIUM:
+			return Vector2(5, 7)
+		Game.MAP_SIZE.LARGE:
+			return Vector2(7, 9)
+
+func generate_map(size: Game.MAP_SIZE):
+	var max_coords = get_map_size()
 	
 	for i in range(0, max_coords.x):
 		for j in range(0, int((max_coords.y-1)/2)):

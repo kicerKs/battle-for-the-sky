@@ -30,3 +30,12 @@ func _remove_player(peer_id):
 
 func _on_start_button_pressed() -> void:
 	Lobby.load_game.rpc("res://scenes/main.tscn")
+
+func _on_button_pressed() -> void:
+	Game.map_size = Game.MAP_SIZE.SMALL
+
+func _on_button_2_pressed() -> void:
+	Game.map_size = Game.MAP_SIZE.MEDIUM
+
+func _on_button_3_pressed() -> void:
+	Game.map_size = Game.MAP_SIZE.LARGE

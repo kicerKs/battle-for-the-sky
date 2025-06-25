@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://rdnkv3f51bbi"]
+[gd_scene load_steps=7 format=3 uid="uid://rdnkv3f51bbi"]
 
 [ext_resource type="Script" uid="uid://dnfoxgfgvm4wf" path="res://scenes/ui/lobby_menu/lobby_menu.gd" id="1_qmhvb"]
 [ext_resource type="Texture2D" uid="uid://dsttt01mbchn7" path="res://assets/UI/main screen.png" id="2_a0tyc"]
 [ext_resource type="FontFile" uid="uid://ba8wsyl36d580" path="res://resources/ui/fonts/Quintessential-Regular.ttf" id="3_a0tyc"]
 [ext_resource type="Theme" uid="uid://bwog57enfyk0k" path="res://resources/ui/themes/mainmenu/button_theme_lobby.tres" id="4_as4g2"]
+[ext_resource type="ButtonGroup" uid="uid://b7djhnawux2m4" path="res://scenes/ui/lobby_menu/map_size_button_group.tres" id="5_q8jfn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ijcef"]
 bg_color = Color(0.0745098, 0.301961, 0.654902, 0.878431)
@@ -76,24 +77,41 @@ theme = ExtResource("4_as4g2")
 text = "Start Game!"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.25
 anchor_top = 0.2
 anchor_right = 0.3
 anchor_bottom = 0.8
+offset_left = -22.0
+offset_top = 85.0
+offset_right = -22.0
+offset_bottom = 85.0
+theme_override_constants/separation = 20
 
-[node name="Label" type="Label" parent="VBoxContainer2"]
+[node name="Button" type="Button" parent="VBoxContainer2"]
 layout_mode = 2
-text = "Colors:"
-horizontal_alignment = 1
+theme = ExtResource("4_as4g2")
+toggle_mode = true
+button_pressed = true
+button_group = ExtResource("5_q8jfn")
+text = "S"
 
-[node name="ColorRect" type="ColorRect" parent="VBoxContainer2"]
-custom_minimum_size = Vector2(50, 50)
+[node name="Button2" type="Button" parent="VBoxContainer2"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-color = Color(1, 0.403922, 1, 1)
+theme = ExtResource("4_as4g2")
+toggle_mode = true
+button_group = ExtResource("5_q8jfn")
+text = "M"
+
+[node name="Button3" type="Button" parent="VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("4_as4g2")
+toggle_mode = true
+button_group = ExtResource("5_q8jfn")
+text = "L"
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer2/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer2/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="VBoxContainer2/Button3" to="." method="_on_button_3_pressed"]

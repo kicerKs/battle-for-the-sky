@@ -9,6 +9,14 @@ var camera: Camera2D
 # Resources
 signal resources_changed
 
+enum MAP_SIZE{
+	SMALL,
+	MEDIUM,
+	LARGE
+}
+
+var map_size = MAP_SIZE.SMALL
+
 enum Resources{
 	WOOD,
 	FOOD,
