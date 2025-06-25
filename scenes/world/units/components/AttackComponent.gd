@@ -20,6 +20,10 @@ func _ready() -> void:
 	singleTarget = owner.stats.singleTarget
 
 func damage() -> void: #funkcja będzie wywoływana dla listy przeciwników którzy się znajdują w range unit
+	if target.global_position.x < owner.global_position.x:
+		owner.animation.flip_h = true
+	else:
+		owner.animation.flip_h = false
 	if singleTarget and range <= 100:
 		deal_damage(target)
 	elif singleTarget and range > 100:

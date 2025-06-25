@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b23x5a2lwvc7r"
+path="res://.godot/imported/przegranie gry (floraphonic).mp3-bde19c66dcab41282b605db9f7f137a4.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/przegranie gry (floraphonic).mp3"
+dest_files=["res://.godot/imported/przegranie gry (floraphonic).mp3-bde19c66dcab41282b605db9f7f137a4.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

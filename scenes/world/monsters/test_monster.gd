@@ -29,14 +29,7 @@ func _ready():
 	# normalnie podpinasz se png unitow jakie chcesz i animacje same sie tworza
 	var spritesheet = stats.spriteSheet
 	animation.setup_animations(spritesheet)
-	
-	
-	if (attack_component==null): #healer
-		stats.action = 7
-		stats.actionSpeed=1
-	if (heal_component==null): #warrior
-		stats.action=10
-		stats.actionSpeed=1
+
 	if(health_component!=null):
 		health_component.unit_died.connect(_on_unit_died)
 

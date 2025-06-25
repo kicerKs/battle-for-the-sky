@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://ut1oqncvaqyc"]
+
+[ext_resource type="Script" uid="uid://caasr4n7emaqo" path="res://scenes/world/projectiles/arrow_projectile.gd" id="1_gu314"]
+[ext_resource type="Texture2D" uid="uid://bhb8j6ujbjhcv" path="res://assets/gfx/beholder_laser.png" id="2_gu314"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ntxjw"]
+radius = 25.0
+height = 148.0
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_x4jw2"]
+properties/0/path = NodePath("Sprite2D:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("Sprite2D:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:g_pos")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
+[node name="ArrowProjectile" type="Area2D"]
+collision_layer = 256
+script = ExtResource("1_gu314")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_gu314")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ntxjw")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_x4jw2")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=3 uid="uid://bv78a2o63sj8a"]
+
+[ext_resource type="Script" uid="uid://dygyc5vd6k1w1" path="res://scenes/world/buildings/lair.gd" id="1_ohi58"]
+[ext_resource type="Resource" uid="uid://bdg66ademstjc" path="res://resources/monsters/buildings/cyclops_cave/cyclops_cave.tres" id="2_haebj"]
+[ext_resource type="Script" uid="uid://cuadstb6yf17v" path="res://scenes/world/buildings/lair_component.gd" id="3_pd7gn"]
+[ext_resource type="Resource" uid="uid://c483bn57how30" path="res://resources/monsters/buildings/cyclops_cave/cyclops_cave_lair.tres" id="4_sv10s"]
+[ext_resource type="Texture2D" uid="uid://2x3lhg1j5trv" path="res://assets/buildings/cyclope_cave.png" id="5_haebj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a4dru"]
+size = Vector2(200, 350)
+
+[node name="Lair" type="Node2D"]
+script = ExtResource("1_ohi58")
+stats = ExtResource("2_haebj")
+
+[node name="TrainComponent" type="Node" parent="."]
+script = ExtResource("3_pd7gn")
+stats = ExtResource("4_sv10s")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_haebj")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_a4dru")

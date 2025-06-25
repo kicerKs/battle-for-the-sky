@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="MonsterStats" load_steps=4 format=3 uid="uid://c5eci5hlwfvby"]
+
+[ext_resource type="Texture2D" uid="uid://bbokh7pabwsog" path="res://assets/enemies/beholder.png" id="1_qh0q8"]
+[ext_resource type="Script" uid="uid://coiuntar4uhqc" path="res://scenes/world/monsters/monster_stats.gd" id="2_knti8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_edchc"]
+atlas = ExtResource("1_qh0q8")
+region = Rect2(0, 0, 800, 800)
+
+[resource]
+script = ExtResource("2_knti8")
+name = "Beholder"
+description = "Ouch, it shoots lasers! But that should be sci-fi, no?!"
+spriteSheet = ExtResource("1_qh0q8")
+max_hp = 120
+armor = 10
+speed = 80
+range = 1000
+singleTarget = true
+action = 8
+actionSpeed = 1
+icon = SubResource("AtlasTexture_edchc")
+metadata/_custom_type_script = "uid://coiuntar4uhqc"

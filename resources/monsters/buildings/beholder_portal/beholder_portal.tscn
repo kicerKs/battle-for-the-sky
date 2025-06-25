@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=3 uid="uid://ygxg3074utys"]
+
+[ext_resource type="Script" uid="uid://dygyc5vd6k1w1" path="res://scenes/world/buildings/lair.gd" id="1_rwxho"]
+[ext_resource type="Resource" uid="uid://b2fcdbpvr37a7" path="res://resources/monsters/buildings/beholder_portal/beholder_portal.tres" id="2_1pc7a"]
+[ext_resource type="Script" uid="uid://cuadstb6yf17v" path="res://scenes/world/buildings/lair_component.gd" id="3_0hx7a"]
+[ext_resource type="Resource" uid="uid://dhsfl6fwx2x24" path="res://resources/monsters/buildings/beholder_portal/beholder_portal_lair.tres" id="4_sqgwc"]
+[ext_resource type="Texture2D" uid="uid://d3g7e5d28ckwc" path="res://assets/buildings/beholder_portal.png" id="5_1pc7a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a4dru"]
+size = Vector2(200, 350)
+
+[node name="Lair" type="Node2D"]
+script = ExtResource("1_rwxho")
+stats = ExtResource("2_1pc7a")
+
+[node name="TrainComponent" type="Node" parent="."]
+script = ExtResource("3_0hx7a")
+stats = ExtResource("4_sqgwc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_1pc7a")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_a4dru")

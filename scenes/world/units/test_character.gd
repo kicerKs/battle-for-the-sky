@@ -43,14 +43,8 @@ func _ready():
 		2: # our player
 			spritesheet = stats.spriteSheetBlue
 	animation.setup_animations(spritesheet)
-	%AttackRangeCollisionShape2D.shape.radius = stats.range * 10.0
-	
-	if (attack_component==null): #healer
-		stats.action = 7
-		stats.actionSpeed=1
-	if (heal_component==null): #warrior
-		stats.action=10
-		stats.actionSpeed=1
+	%AttackRangeCollisionShape2D.shape.radius = stats.range
+
 	if(health_component!=null):
 		health_component.unit_died.connect(_on_unit_died)
 

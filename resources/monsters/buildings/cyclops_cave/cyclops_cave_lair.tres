@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="LairStats" load_steps=6 format=3 uid="uid://c483bn57how30"]
+
+[ext_resource type="Script" uid="uid://cgn4rw1tmlctg" path="res://resources/monsters/buildings/lair_stats.gd" id="1_fe85p"]
+[ext_resource type="PackedScene" uid="uid://chkvxlifhfexb" path="res://resources/monsters/units/cyclops/cyclops.tscn" id="2_b67hg"]
+[ext_resource type="Texture2D" uid="uid://bfuoi2anl7f7m" path="res://assets/enemies/cyclop.png" id="3_xf0g2"]
+[ext_resource type="Resource" uid="uid://b7o7cc65teo6o" path="res://resources/monsters/units/cyclops/cyclops_stats.tres" id="4_2ata3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2ali"]
+atlas = ExtResource("3_xf0g2")
+region = Rect2(0, 0, 800, 800)
+
+[resource]
+script = ExtResource("1_fe85p")
+training_time = 12
+unit = ExtResource("2_b67hg")
+unit_stats = ExtResource("4_2ata3")
+unit_icon = SubResource("AtlasTexture_v2ali")
+unit_limit = 2
+metadata/_custom_type_script = "uid://cgn4rw1tmlctg"

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dlq7r0xx47unq"
+path="res://.godot/imported/wygranie (freesound_community).mp3-ae6318fe2dc9e8ac9fab6e5e15097f06.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/wygranie (freesound_community).mp3"
+dest_files=["res://.godot/imported/wygranie (freesound_community).mp3-ae6318fe2dc9e8ac9fab6e5e15097f06.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="BuildingStats" load_steps=3 format=3 uid="uid://b2fcdbpvr37a7"]
+
+[ext_resource type="Texture2D" uid="uid://d3g7e5d28ckwc" path="res://assets/buildings/beholder_portal.png" id="1_wdxkb"]
+[ext_resource type="Script" uid="uid://cnpqub73glek8" path="res://resources/empire/buildings/building_stats.gd" id="2_gg4c3"]
+
+[resource]
+script = ExtResource("2_gg4c3")
+name = "Beholder portal"
+description = "Where it leads us to? Oh..."
+is_upgraded = false
+texture = ExtResource("1_wdxkb")
+icon = ExtResource("1_wdxkb")
+cost = Dictionary[int, int]({
+0: 0,
+1: 0,
+2: 0,
+3: 0,
+4: 0
+})
+metadata/_custom_type_script = "uid://cnpqub73glek8"

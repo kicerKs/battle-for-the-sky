@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="MonsterStats" load_steps=4 format=3 uid="uid://b7o7cc65teo6o"]
+
+[ext_resource type="Texture2D" uid="uid://bfuoi2anl7f7m" path="res://assets/enemies/cyclop.png" id="1_w23fs"]
+[ext_resource type="Script" uid="uid://coiuntar4uhqc" path="res://scenes/world/monsters/monster_stats.gd" id="2_dtnkd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_edchc"]
+atlas = ExtResource("1_w23fs")
+region = Rect2(0, 0, 800, 800)
+
+[resource]
+script = ExtResource("2_dtnkd")
+name = "Cyclop"
+description = "Big, one-eyed monstrocity. It can hit hard, beware."
+spriteSheet = ExtResource("1_w23fs")
+max_hp = 200
+armor = 30
+speed = 60
+range = 60
+singleTarget = true
+action = 10
+actionSpeed = 2
+icon = SubResource("AtlasTexture_edchc")
+metadata/_custom_type_script = "uid://coiuntar4uhqc"

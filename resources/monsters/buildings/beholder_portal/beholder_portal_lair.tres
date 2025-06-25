@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="LairStats" load_steps=6 format=3 uid="uid://dhsfl6fwx2x24"]
+
+[ext_resource type="Script" uid="uid://cgn4rw1tmlctg" path="res://resources/monsters/buildings/lair_stats.gd" id="1_7su6v"]
+[ext_resource type="PackedScene" uid="uid://r12amjxpk554" path="res://resources/monsters/units/beholder/beholder.tscn" id="2_nmj4x"]
+[ext_resource type="Texture2D" uid="uid://bbokh7pabwsog" path="res://assets/enemies/beholder.png" id="3_1jsx2"]
+[ext_resource type="Resource" uid="uid://c5eci5hlwfvby" path="res://resources/monsters/units/beholder/beholder_stats.tres" id="4_krcc1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2ali"]
+atlas = ExtResource("3_1jsx2")
+region = Rect2(0, 0, 800, 800)
+
+[resource]
+script = ExtResource("1_7su6v")
+training_time = 10
+unit = ExtResource("2_nmj4x")
+unit_stats = ExtResource("4_krcc1")
+unit_icon = SubResource("AtlasTexture_v2ali")
+unit_limit = 3
+metadata/_custom_type_script = "uid://cgn4rw1tmlctg"

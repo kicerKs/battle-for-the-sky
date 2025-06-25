@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c5m2ou8qy1c7l"
+path="res://.godot/imported/stracenie wyspy (floraphonic).mp3-5d7914800d14cc500b1499e5cfa8810b.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/stracenie wyspy (floraphonic).mp3"
+dest_files=["res://.godot/imported/stracenie wyspy (floraphonic).mp3-5d7914800d14cc500b1499e5cfa8810b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

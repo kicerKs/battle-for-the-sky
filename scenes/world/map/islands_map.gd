@@ -8,7 +8,9 @@ var loaded_islands = 0
 var starting_islands = { }
 
 var lairs = {
-	"GoblinTent": "res://scenes/world/buildings/lair.tscn"
+	"GoblinTent": "res://resources/monsters/buildings/goblin_tent/goblin_tent.tscn",
+	"CyclopsCave": "res://resources/monsters/buildings/cyclops_cave/cyclops_cave.tscn",
+	"BeholderPortal": "res://resources/monsters/buildings/beholder_portal/beholder_portal.tscn"
 }
 
 func _ready():
