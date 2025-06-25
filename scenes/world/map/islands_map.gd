@@ -5,6 +5,8 @@ signal map_loaded
 var tiles = { }
 var loaded_islands = 0
 
+var starting_islands = { }
+
 var lairs = {
 	"GoblinTent": "res://scenes/world/buildings/lair.tscn"
 }
@@ -31,10 +33,12 @@ func register_child(node: Node):
 			
 			var blue_island_key = Vector2i(0, last_island_y)
 			var blue_island = tiles[blue_island_key]
-			red_island.ownership = Lobby.Factions.PLAYER_BLUE
-			blue_island.ownership = Lobby.Factions.PLAYER_RED
+			red_island.ownership = Lobby.Factions.PLAYER_RED
+			blue_island.ownership = Lobby.Factions.PLAYER_BLUE
 			tiles[red_island_key] = red_island
 			tiles[blue_island_key] = blue_island
+			
+			set_starting_islands.rpc(red_island_key, blue_island_key)
 			
 			# ### ADD LAIRS HERE ###
 			
@@ -45,6 +49,13 @@ func register_child(node: Node):
 			for key in tiles:
 				set_island_dict.rpc(key, tiles[key].get_dict())
 			# ###########################
+
+@rpc("any_peer", "call_local", "reliable")
+func set_starting_islands(r_key, b_key):
+	starting_islands[Lobby.Factions.PLAYER_RED] = r_key
+	starting_islands[Lobby.Factions.PLAYER_BLUE] = b_key
+	if Game.camera != null:
+		Game.camera.setup_camera()
 
 func add_lairs():
 	# Ogólnie to kolizje są aktualizowane dopiero w process_frame, więc z poziomu _ready nie można wykryć kolizji za pomocą Area2D.get_overlapping_areas().

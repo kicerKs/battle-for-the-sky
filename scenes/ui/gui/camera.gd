@@ -11,12 +11,19 @@ var camera_limit_start: Vector2i
 var camera_limit_end: Vector2i
 
 func _ready():
+	Game.camera = self
 	var rect = $"../TileMapLayer".get_used_rect()
 	var tile_size = $"../TileMapLayer".tile_set.tile_size
 	camera_limit_end.x = tile_size.x + ((rect.size.x-1) * tile_size.x) 
 	camera_limit_end.y = (tile_size.y/2) + ((rect.size.y-1)) * (tile_size.y*0.75)
 	camera_limit_start.x = -(tile_size.x/4)
 	camera_limit_start.y = -tile_size.y/4
+	if Game.tileMapLayer.starting_islands.has(Lobby.player_info["color"]):
+		setup_camera()
+
+func setup_camera():
+	position = Vector2(Game.tileMapLayer.map_to_local(Game.tileMapLayer.starting_islands[Lobby.player_info["color"]]))
+	zoom = Vector2(0.5, 0.5)
 
 func reset_camera():
 	var rect = $"../TileMapLayer".get_used_rect()

@@ -4,6 +4,7 @@ extends Node
 
 var tileMapLayer: TileMapLayer
 var world: Node2D
+var camera: Camera2D
 
 # Resources
 signal resources_changed
