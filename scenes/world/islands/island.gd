@@ -152,6 +152,7 @@ func show_conquering_bar():
 
 func stop_conquering():
 	hide_conquering_bar.rpc()
+	remove_all_buildings.rpc()
 	progress_bar.value = 0.0
 	
 	ownership = conquering_unit_side
@@ -162,6 +163,12 @@ func stop_conquering():
 @rpc("call_local", "reliable", "any_peer")
 func hide_conquering_bar():
 	progress_bar.visible = false
+
+@rpc("call_local", "any_peer", "reliable")
+func remove_all_buildings():
+	for node in %MainNavigationRegion.get_children():
+		if node is Building or node is Lair:
+			remove_building(node)
 
 func sync_conquering_bar():
 	progress_bar.value = progress
