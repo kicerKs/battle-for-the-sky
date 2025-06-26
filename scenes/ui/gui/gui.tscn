@@ -80,5 +80,99 @@ size_flags_horizontal = 3
 theme = ExtResource("7_1j7g2")
 text = "Victory!"
 
+[node name="WinScreen" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -182.0
+offset_top = -71.5
+offset_right = 182.0
+offset_bottom = 71.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w62vw")
+
+[node name="MarginContainer" type="MarginContainer" parent="WinScreen"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WinScreen/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="WinScreen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("6_a6c70")
+theme_override_font_sizes/font_size = 32
+text = "You conquered all the lands, congratulations!"
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="WinScreen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="JoinButton" type="Button" parent="WinScreen/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("7_1j7g2")
+text = "Victory!"
+
+[node name="DefeatScreen" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -182.0
+offset_top = -71.5
+offset_right = 182.0
+offset_bottom = 71.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w62vw")
+
+[node name="MarginContainer" type="MarginContainer" parent="DefeatScreen"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DefeatScreen/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="DefeatScreen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("6_a6c70")
+theme_override_font_sizes/font_size = 32
+text = "Your lands have vanished... Good luck next time!"
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="DefeatScreen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="JoinButton" type="Button" parent="DefeatScreen/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("7_1j7g2")
+text = "Ouch!"
+
 [connection signal="building_selected" from="ConstructionPanel" to="." method="_on_construction_panel_building_selected"]
 [connection signal="pressed" from="JoiningGameBox/MarginContainer/VBoxContainer/HBoxContainer2/JoinButton" to="." method="_on_join_button_pressed"]
+[connection signal="pressed" from="WinScreen/MarginContainer/VBoxContainer/HBoxContainer2/JoinButton" to="." method="_on_join_button_pressed"]
+[connection signal="pressed" from="DefeatScreen/MarginContainer/VBoxContainer/HBoxContainer2/JoinButton" to="." method="_on_join_button_pressed"]

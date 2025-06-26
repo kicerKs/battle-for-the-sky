@@ -15,6 +15,8 @@ func _ready() -> void:
 	SignalBus.connect("monster_clicked", show_monster_panel)
 	SignalBus.connect("hide_panels", hide_panels)
 	
+	SignalBus.connect("player_eliminated", show_defeat)
+	SignalBus.connect("player_won", show_victory)
 	Lobby.server_disconnected.connect(show_leave_panel)
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -50,3 +52,13 @@ func show_leave_panel():
 
 func _on_join_button_pressed() -> void:
 	get_tree().quit()
+
+@rpc("call_local", "any_peer", "reliable")
+func show_victory(id):
+	if id == multiplayer.get_unique_id():
+		%WinScreen.visible = true
+
+@rpc("call_local", "any_peer", "reliable")
+func show_defeat(id):
+	if id == multiplayer.get_unique_id():
+		%DefeatScreen.visible = true

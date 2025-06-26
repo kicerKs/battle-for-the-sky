@@ -33,7 +33,8 @@ var players_loaded = 0
 var players = {}
 var player_info = {
 	"name": "Oskar",
-	"color": Factions.PLAYER_RED
+	"color": Factions.PLAYER_RED,
+	"in_game": true
 }
 var last_used_ip
 var last_used_port

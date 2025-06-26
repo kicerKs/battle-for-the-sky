@@ -9,3 +9,6 @@ signal hide_panels
 signal panels_closed
 signal show_resource_cost(dict: Dictionary)
 signal hide_resource_cost
+
+signal player_eliminated(id)
+signal player_won(id)

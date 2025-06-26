@@ -40,7 +40,8 @@ func register_child(node: Node):
 			set_starting_islands.rpc(red_island_key, Lobby.Factions.PLAYER_RED)
 			
 			if len(Lobby.players) > 1:
-				var blue_island_key = Vector2i(0, last_island_y)
+				#var blue_island_key = Vector2i(0, last_island_y)
+				var blue_island_key = Vector2i(0, 1)
 				var blue_island = tiles[blue_island_key]
 				blue_island.ownership = Lobby.Factions.PLAYER_BLUE
 				tiles[blue_island_key] = blue_island
@@ -180,8 +181,26 @@ func check_for_endgame():
 		Lobby.Factions.PLAYER_GREEN: 0,
 		Lobby.Factions.PLAYER_PURPLE: 0
 	}
+	var still_in_game = []
 	for key in tiles.keys():
 		if tiles[key].ownership != Lobby.Factions.MONSTERS:
 			remaining_islands[tiles[key].ownership] += 1
 	
-	print(remaining_islands)
+	#elo, przegrałes, ale dam ci to tylko raz xd
+	for key in Lobby.players.keys():
+		if remaining_islands[Lobby.players[key]["color"]] == 0 and Lobby.players[key]["in_game"]:
+			Lobby.players[key]["in_game"] = false
+			player_eliminated.rpc(key)
+		elif remaining_islands[Lobby.players[key]["color"]] > 0:
+			still_in_game.append(key)
+	
+	if len(still_in_game) == 1:
+		player_won.rpc(still_in_game[0])
+	
+@rpc("call_local", "reliable", "any_peer")
+func player_eliminated(key):
+	SignalBus.player_eliminated.emit(key)
+
+@rpc("call_local", "reliable", "any_peer")
+func player_won(key):
+	SignalBus.player_won.emit(key)
