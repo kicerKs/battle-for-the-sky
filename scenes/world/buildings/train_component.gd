@@ -86,15 +86,16 @@ func _process(delta: float) -> void:
 			training_progress = get_training_progress()
 
 func start_training():
-	if _is_training:
-		return false
-	
-	var player_id
-	for id in Lobby.players.keys():
-		if Lobby.players[id]["color"] == island_ownership:
-			player_id = id
-	
-	reduce_resource.rpc_id(player_id)
+	if multiplayer.is_server():
+		if _is_training:
+			return false
+		
+		var player_id
+		for id in Lobby.players.keys():
+			if Lobby.players[id]["color"] == island_ownership:
+				player_id = id
+		
+		reduce_resource.rpc_id(player_id)
 
 @rpc("any_peer", "call_local", "reliable")
 func training_started():
