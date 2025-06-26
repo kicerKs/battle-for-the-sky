@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://d1uytkg3nafik"]
+[gd_scene load_steps=26 format=3 uid="uid://d1uytkg3nafik"]
 
 [ext_resource type="Script" uid="uid://dkfjkrmloyb8q" path="res://scenes/world/buildings/building.gd" id="1_y4a6c"]
 [ext_resource type="Resource" uid="uid://bc1is3namt155" path="res://resources/empire/buildings/trainers/house/house_1.tres" id="2_yt88b"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://curhut5bk68hy" path="res://assets/buildings/sleep_status.png" id="13_cohos"]
 [ext_resource type="Texture2D" uid="uid://d1v1g2dia2tjj" path="res://assets/icons/bomb.png" id="13_y7u34"]
 [ext_resource type="Texture2D" uid="uid://4a3fd370bpyu" path="res://assets/buildings/building_cloud.png" id="14_thxc2"]
+[ext_resource type="AudioStream" uid="uid://1r2uqoa3qdn6" path="res://assets/audio/budowanie (freesound_community).mp3" id="17_48s3a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_akj7n"]
 size = Vector2(200, 350)
@@ -216,6 +217,9 @@ visible = false
 position = Vector2(9, 99)
 scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_yorsq")
+
+[node name="BuildingSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_48s3a")
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="mouse_entered" from="Buttons/PanelContainer/TrainActivateButton" to="TrainComponent" method="_on_train_activate_button_mouse_entered"]

@@ -29,6 +29,7 @@ func upgrade():
 func start_animation():
 	$"../AnimatedSprite2D".visible = true
 	$"../AnimatedSprite2D".play("default")
+	owner.play_sound()
 
 func _on_upgrade_button_pressed() -> void:
 	for res in upgrade_cost.keys():

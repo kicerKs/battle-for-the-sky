@@ -74,3 +74,6 @@ func start_animation():
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	$AnimatedSprite2D.visible = false
+
+func play_sound():
+	$BuildingSound.play()

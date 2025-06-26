@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://876elfpic5kx"]
+[gd_scene load_steps=22 format=3 uid="uid://876elfpic5kx"]
 
 [ext_resource type="Script" uid="uid://dkfjkrmloyb8q" path="res://scenes/world/buildings/building.gd" id="1_trka8"]
 [ext_resource type="Resource" uid="uid://dhrqghuou0eu8" path="res://resources/empire/buildings/generators/smelter/smelter_1.tres" id="2_07l0q"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cdvxgk3p45brw" path="res://assets/resources/iron.png" id="10_cng01"]
 [ext_resource type="Texture2D" uid="uid://c555ryq6v6pc" path="res://assets/icons/building can upgrade.png" id="11_aj7lt"]
 [ext_resource type="Texture2D" uid="uid://4a3fd370bpyu" path="res://assets/buildings/building_cloud.png" id="12_0wbe5"]
+[ext_resource type="AudioStream" uid="uid://1r2uqoa3qdn6" path="res://assets/audio/budowanie (freesound_community).mp3" id="14_w1yt8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_atpml"]
 size = Vector2(200, 200)
@@ -162,6 +163,9 @@ visible = false
 position = Vector2(0, -17)
 scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_qbr2w")
+
+[node name="BuildingSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_w1yt8")
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="mouse_entered" from="Buttons/PanelContainer2/UpgradeButton" to="UpgradeComponent" method="_on_upgrade_button_mouse_entered"]

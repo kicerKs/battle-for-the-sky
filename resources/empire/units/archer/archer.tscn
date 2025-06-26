@@ -236,6 +236,7 @@ autoplay = "idle"
 script = ExtResource("14_2nrkg")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_left = -113.0
 offset_top = -75.0
 offset_right = 114.0

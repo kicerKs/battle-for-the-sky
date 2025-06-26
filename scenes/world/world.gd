@@ -60,6 +60,8 @@ func add_building(target_island, scene_path, building_dict):
 	building.set_dict(building_dict)
 	building.start_animation()
 	Game.tileMapLayer.tiles[target_island].add_building(building)
+	if building is not Lair:
+		building.play_sound()
 	if multiplayer.is_server():
 		activate_building(building, target_island)
 	

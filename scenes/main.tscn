@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cp8scluu7v4j0"]
+[gd_scene load_steps=9 format=3 uid="uid://cp8scluu7v4j0"]
 
 [ext_resource type="PackedScene" uid="uid://d18ugncataaou" path="res://scenes/world/world.tscn" id="1_0wfyh"]
 [ext_resource type="Script" uid="uid://c1uudd1032ia1" path="res://scenes/main.gd" id="1_sugp2"]
@@ -6,6 +6,8 @@
 [ext_resource type="AudioStream" uid="uid://gxe1codspx2i" path="res://assets/audio/bg music (andorios).mp3" id="4_jyhfs"]
 [ext_resource type="AudioStream" uid="uid://dlq7r0xx47unq" path="res://assets/audio/wygranie (freesound_community).mp3" id="5_tefeu"]
 [ext_resource type="AudioStream" uid="uid://b23x5a2lwvc7r" path="res://assets/audio/przegranie gry (floraphonic).mp3" id="6_o6xl0"]
+[ext_resource type="AudioStream" uid="uid://cbxnfrpq752nc" path="res://assets/audio/podbicie wyspy (freesound_community).mp3" id="7_tipki"]
+[ext_resource type="AudioStream" uid="uid://c5m2ou8qy1c7l" path="res://assets/audio/stracenie wyspy (floraphonic).mp3" id="8_85g3d"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_sugp2")
@@ -23,5 +25,11 @@ stream = ExtResource("5_tefeu")
 
 [node name="DefeatMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_o6xl0")
+
+[node name="IslandConquered" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_tipki")
+
+[node name="IslandLost" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_85g3d")
 
 [connection signal="building_selected" from="GUI" to="World" method="building_selected"]
