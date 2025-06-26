@@ -206,7 +206,6 @@ avoidance_enabled = true
 radius = 2.5
 neighbor_distance = 100.0
 avoidance_priority = 0.5
-debug_enabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_g3gjs")
