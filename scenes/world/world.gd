@@ -61,6 +61,7 @@ func building_selected(building):
 func add_building(target_island, scene_path, building_dict):
 	var building = load(scene_path).instantiate()
 	building.name = "Building"+str(i)
+	i+=1
 	building.set_dict(building_dict)
 	building.start_animation()
 	Game.tileMapLayer.tiles[target_island].add_building(building)
