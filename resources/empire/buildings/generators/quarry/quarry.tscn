@@ -1,0 +1,163 @@
+[gd_scene load_steps=20 format=3 uid="uid://b1qvfnxcyo4pf"]
+
+[ext_resource type="Script" uid="uid://dkfjkrmloyb8q" path="res://scenes/world/buildings/building.gd" id="1_hm4sq"]
+[ext_resource type="Resource" uid="uid://b6q8byaayhjll" path="res://resources/empire/buildings/generators/quarry/quarry_1.tres" id="2_mgrsw"]
+[ext_resource type="Script" uid="uid://bgfw61xrlis0x" path="res://scenes/world/buildings/generator_component.gd" id="3_kt3hx"]
+[ext_resource type="Resource" uid="uid://bj6ue57ha1ldv" path="res://resources/empire/buildings/generators/quarry/quarry_1_generator.tres" id="4_u14fo"]
+[ext_resource type="PackedScene" uid="uid://kuij88i7j4x1" path="res://scenes/world/buildings/upgrade_component.tscn" id="5_kb1se"]
+[ext_resource type="Resource" uid="uid://gsoewhe3cyjy" path="res://resources/empire/buildings/generators/quarry/quarry_2.tres" id="6_ntvof"]
+[ext_resource type="Resource" uid="uid://dirlq0olg5rho" path="res://resources/empire/buildings/generators/quarry/quarry_2_generator.tres" id="7_welmc"]
+[ext_resource type="Texture2D" uid="uid://12ms764ifbf6" path="res://assets/buildings/kamieniolom.png" id="8_j5gr2"]
+[ext_resource type="LabelSettings" uid="uid://bmu2llc0hca8r" path="res://scenes/ui/gui/resources_panel/resource_panel_label_settings.tres" id="9_edy05"]
+[ext_resource type="Texture2D" uid="uid://cu47poko5g5im" path="res://assets/resources/stone.png" id="10_d75qa"]
+[ext_resource type="Texture2D" uid="uid://c555ryq6v6pc" path="res://assets/icons/building can upgrade.png" id="11_3yckd"]
+[ext_resource type="Texture2D" uid="uid://4a3fd370bpyu" path="res://assets/buildings/building_cloud.png" id="12_ybi76"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_atpml"]
+size = Vector2(200, 200)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_a87ni"]
+properties/0/path = NodePath("GeneratorComponent:generation_progress")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvc3b"]
+atlas = ExtResource("12_ybi76")
+region = Rect2(0, 0, 1600, 1600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ekal"]
+atlas = ExtResource("12_ybi76")
+region = Rect2(1600, 0, 1600, 1600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p238k"]
+atlas = ExtResource("12_ybi76")
+region = Rect2(3200, 0, 1600, 1600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ceol0"]
+atlas = ExtResource("12_ybi76")
+region = Rect2(4800, 0, 1600, 1600)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qbr2w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvc3b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ekal")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p238k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ceol0")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Building" type="Node2D"]
+script = ExtResource("1_hm4sq")
+stats = ExtResource("2_mgrsw")
+metadata/_custom_type_script = "uid://dkfjkrmloyb8q"
+
+[node name="GeneratorComponent" type="Node" parent="." node_paths=PackedStringArray("resource_indicator")]
+script = ExtResource("3_kt3hx")
+stats = ExtResource("4_u14fo")
+resource_indicator = NodePath("../ResourceIndicator")
+metadata/_custom_type_script = "uid://bgfw61xrlis0x"
+
+[node name="UpgradeComponent" parent="." instance=ExtResource("5_kb1se")]
+upgrade_cost = Dictionary[int, int]({
+0: 2,
+1: 0,
+2: 2,
+3: 0,
+4: 0
+})
+upgraded_building = ExtResource("6_ntvof")
+generator_stats = ExtResource("7_welmc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3.57628e-07, -4.17233e-07)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("8_j5gr2")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_atpml")
+
+[node name="GenerationProgressBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = 102.0
+offset_top = -100.0
+offset_right = 116.0
+offset_bottom = 100.0
+max_value = 1.0
+fill_mode = 3
+show_percentage = false
+
+[node name="ResourceIndicator" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = -3.0
+offset_top = -78.0
+offset_right = 61.0
+offset_bottom = -55.0
+
+[node name="ResourceNumber" type="Label" parent="ResourceIndicator"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "+40"
+label_settings = ExtResource("9_edy05")
+
+[node name="TextureRect" type="TextureRect" parent="ResourceIndicator"]
+layout_mode = 2
+texture = ExtResource("10_d75qa")
+expand_mode = 3
+
+[node name="Buttons" type="Node2D" parent="."]
+visible = false
+position = Vector2(0, -67)
+
+[node name="PanelContainer2" type="PanelContainer" parent="Buttons"]
+offset_left = -39.0
+offset_top = -66.0
+offset_right = 1.0
+offset_bottom = -26.0
+scale = Vector2(0.75, 0.75)
+
+[node name="UpgradeButton" type="Button" parent="Buttons/PanelContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+icon = ExtResource("11_3yckd")
+expand_icon = true
+
+[node name="PanelContainer3" type="PanelContainer" parent="Buttons"]
+offset_left = 8.0
+offset_top = -66.0
+offset_right = 48.0
+offset_bottom = -26.0
+scale = Vector2(0.75, 0.75)
+
+[node name="RemoveButton" type="Button" parent="Buttons/PanelContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "X"
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_a87ni")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+scale = Vector2(0.15, 0.15)
+sprite_frames = SubResource("SpriteFrames_qbr2w")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Buttons/PanelContainer2/UpgradeButton" to="UpgradeComponent" method="_on_upgrade_button_mouse_entered"]
+[connection signal="mouse_exited" from="Buttons/PanelContainer2/UpgradeButton" to="UpgradeComponent" method="_on_upgrade_button_mouse_exited"]
+[connection signal="pressed" from="Buttons/PanelContainer2/UpgradeButton" to="UpgradeComponent" method="_on_upgrade_button_pressed"]
+[connection signal="pressed" from="Buttons/PanelContainer3/RemoveButton" to="." method="_on_remove_button_pressed"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

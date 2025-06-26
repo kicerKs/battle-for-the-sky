@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="BuildingStats" load_steps=3 format=3 uid="uid://chph1q0ca06u8"]
+
+[ext_resource type="Texture2D" uid="uid://bb3eq45uquyjh" path="res://assets/buildings/gold_mine_up.png" id="1_6lrmx"]
+[ext_resource type="Script" uid="uid://cnpqub73glek8" path="res://resources/empire/buildings/building_stats.gd" id="2_6shgh"]
+
+[resource]
+script = ExtResource("2_6shgh")
+name = "Gold Minery"
+description = "An upgraded gold generator building."
+is_upgraded = true
+texture = ExtResource("1_6lrmx")
+icon = ExtResource("1_6lrmx")
+cost = Dictionary[int, int]({
+0: 10,
+1: 0,
+2: 0,
+3: 0,
+4: 0
+})
+metadata/_custom_type_script = "uid://cnpqub73glek8"

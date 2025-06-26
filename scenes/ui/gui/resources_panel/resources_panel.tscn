@@ -64,6 +64,12 @@ text = "144"
 label_settings = ExtResource("3_myorl")
 vertical_alignment = 1
 
+[node name="WoodChangeLabel" type="Label" parent="MarginContainer/VBoxContainer/WoodBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+label_settings = ExtResource("3_myorl")
+
 [node name="FoodBox" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
@@ -81,6 +87,11 @@ layout_mode = 2
 text = "1234"
 label_settings = ExtResource("3_myorl")
 vertical_alignment = 1
+
+[node name="FoodChangeLabel" type="Label" parent="MarginContainer/VBoxContainer/FoodBox"]
+unique_name_in_owner = true
+layout_mode = 2
+label_settings = ExtResource("3_myorl")
 
 [node name="GoldBox" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -100,6 +111,11 @@ text = "1234"
 label_settings = ExtResource("3_myorl")
 vertical_alignment = 1
 
+[node name="GoldChangeLabel" type="Label" parent="MarginContainer/VBoxContainer/GoldBox"]
+unique_name_in_owner = true
+layout_mode = 2
+label_settings = ExtResource("3_myorl")
+
 [node name="IronBox" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
@@ -118,6 +134,11 @@ text = "1234"
 label_settings = ExtResource("3_myorl")
 vertical_alignment = 1
 
+[node name="IronChangeLabel" type="Label" parent="MarginContainer/VBoxContainer/IronBox"]
+unique_name_in_owner = true
+layout_mode = 2
+label_settings = ExtResource("3_myorl")
+
 [node name="StoneBox" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
@@ -135,3 +156,8 @@ layout_mode = 2
 text = "1234"
 label_settings = ExtResource("3_myorl")
 vertical_alignment = 1
+
+[node name="StoneChangeLabel" type="Label" parent="MarginContainer/VBoxContainer/StoneBox"]
+unique_name_in_owner = true
+layout_mode = 2
+label_settings = ExtResource("3_myorl")

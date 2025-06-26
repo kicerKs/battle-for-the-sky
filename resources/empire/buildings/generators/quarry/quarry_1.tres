@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="BuildingStats" load_steps=3 format=3 uid="uid://b6q8byaayhjll"]
+
+[ext_resource type="Texture2D" uid="uid://12ms764ifbf6" path="res://assets/buildings/kamieniolom.png" id="1_lqi3c"]
+[ext_resource type="Script" uid="uid://cnpqub73glek8" path="res://resources/empire/buildings/building_stats.gd" id="2_hhmd6"]
+
+[resource]
+script = ExtResource("2_hhmd6")
+name = "Quarry"
+description = "Generates stone"
+is_upgraded = false
+texture = ExtResource("1_lqi3c")
+icon = ExtResource("1_lqi3c")
+cost = Dictionary[int, int]({
+0: 10,
+1: 0,
+2: 0,
+3: 0,
+4: 0
+})
+metadata/_custom_type_script = "uid://cnpqub73glek8"

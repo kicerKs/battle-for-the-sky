@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://v8pkbptbiqs0"]
+
+[ext_resource type="Script" uid="uid://q3l6gsgbt1kb" path="res://scenes/world/projectiles/cannon_ball_projectile.gd" id="1_krr5g"]
+[ext_resource type="Texture2D" uid="uid://2st2n5epw1en" path="res://assets/gfx/cannon_ball.png" id="2_krr5g"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4nv1e"]
+radius = 24.0
+height = 48.0
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_28ee3"]
+properties/0/path = NodePath("Sprite2D:rotation")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("Sprite2D:position")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:g_pos")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
+[node name="MagicMissileProjectile" type="Area2D"]
+collision_layer = 256
+script = ExtResource("1_krr5g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_krr5g")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -3)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_4nv1e")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_28ee3")

@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="UnitStats" load_steps=7 format=3 uid="uid://bcdenqwiplu75"]
+
+[ext_resource type="Texture2D" uid="uid://bh3kn7ed737u8" path="res://assets/units/soldier_blue.png" id="1_c8txa"]
+[ext_resource type="Script" uid="uid://cayakk8o7fjyy" path="res://resources/empire/units/unit_stats.gd" id="2_p3vda"]
+[ext_resource type="Texture2D" uid="uid://cau00a4j4gq4r" path="res://assets/units/soldier_green.png" id="3_gbyyj"]
+[ext_resource type="Texture2D" uid="uid://csi6hj40utb3a" path="res://assets/units/soldier_purple.png" id="4_p5byd"]
+[ext_resource type="Texture2D" uid="uid://ydh2j76stlfe" path="res://assets/units/soldier_red.png" id="5_sdywy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5t4rl"]
+atlas = ExtResource("1_c8txa")
+region = Rect2(0, 0, 800, 800)
+
+[resource]
+script = ExtResource("2_p3vda")
+name = "Archer"
+description = "Strong ranged unit"
+level = 1
+spriteSheetBlue = ExtResource("1_c8txa")
+spriteSheetRed = ExtResource("5_sdywy")
+spriteSheetPurple = ExtResource("4_p5byd")
+spriteSheetGreen = ExtResource("3_gbyyj")
+max_hp = 100
+armor = 10
+speed = 100
+range = 60
+singleTarget = true
+action = 7
+actionSpeed = 1
+icon = SubResource("AtlasTexture_5t4rl")
+metadata/_custom_type_script = "uid://cayakk8o7fjyy"

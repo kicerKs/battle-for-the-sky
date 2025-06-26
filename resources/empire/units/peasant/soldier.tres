@@ -1,26 +1,30 @@
-[gd_resource type="Resource" script_class="UnitStats" load_steps=5 format=3 uid="uid://c02iduu6f2f7p"]
+[gd_resource type="Resource" script_class="UnitStats" load_steps=7 format=3 uid="uid://bgi6pope2k4fx"]
 
 [ext_resource type="Script" uid="uid://cayakk8o7fjyy" path="res://resources/empire/units/unit_stats.gd" id="1_q7xis"]
 [ext_resource type="Texture2D" uid="uid://hqqtpupdy15b" path="res://assets/units/soldier_blue_up.png" id="2_g5s6b"]
 [ext_resource type="Texture2D" uid="uid://eyrsur4kgqnm" path="res://assets/units/soldier_red_up.png" id="3_r32me"]
+[ext_resource type="Texture2D" uid="uid://dtcb3355grr4t" path="res://assets/units/soldier_green_up.png" id="4_43emt"]
+[ext_resource type="Texture2D" uid="uid://bwkuhvrfmw4rn" path="res://assets/units/soldier_purple_up.png" id="5_exx46"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_q7xis"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5t4rl"]
 atlas = ExtResource("2_g5s6b")
 region = Rect2(0, 0, 800, 800)
 
 [resource]
 script = ExtResource("1_q7xis")
 name = "Soldier"
-description = "Strong melee unit"
+description = "Weak melee unit"
 level = 2
 spriteSheetBlue = ExtResource("2_g5s6b")
 spriteSheetRed = ExtResource("3_r32me")
-max_hp = 150
-armor = 50
+spriteSheetPurple = ExtResource("5_exx46")
+spriteSheetGreen = ExtResource("4_43emt")
+max_hp = 120
+armor = 15
 speed = 100
 range = 60
 singleTarget = true
-action = 0
-actionSpeed = 0
-icon = SubResource("AtlasTexture_q7xis")
+action = 9
+actionSpeed = 1
+icon = SubResource("AtlasTexture_5t4rl")
 metadata/_custom_type_script = "uid://cayakk8o7fjyy"

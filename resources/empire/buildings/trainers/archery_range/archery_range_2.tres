@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="BuildingStats" load_steps=4 format=3 uid="uid://boo2u0hm5lgjd"]
+
+[ext_resource type="Texture2D" uid="uid://boee1skeul67o" path="res://assets/buildings/archery 2 cropped.png" id="1_4lq54"]
+[ext_resource type="Script" uid="uid://cnpqub73glek8" path="res://resources/empire/buildings/building_stats.gd" id="2_pccbg"]
+[ext_resource type="Texture2D" uid="uid://bljp6dx60l276" path="res://assets/buildings/archery 2.png" id="3_ua5j1"]
+
+[resource]
+script = ExtResource("2_pccbg")
+name = "Upgraded Archery range"
+description = "Upgraded archery range trains crossbowman"
+is_upgraded = true
+texture = ExtResource("3_ua5j1")
+icon = ExtResource("1_4lq54")
+cost = Dictionary[int, int]({
+0: 0,
+1: 0,
+2: 0,
+3: 0,
+4: 0
+})
+metadata/_custom_type_script = "uid://cnpqub73glek8"

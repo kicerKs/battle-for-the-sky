@@ -1,12 +1,30 @@
-[gd_scene load_steps=9 format=3 uid="uid://c87lkvypeebod"]
+[gd_scene load_steps=27 format=3 uid="uid://c87lkvypeebod"]
 
 [ext_resource type="PackedScene" uid="uid://bbljsvw0xepxi" path="res://scenes/ui/gui/construction_panel/building_button.tscn" id="1_irbr6"]
 [ext_resource type="Texture2D" uid="uid://bqd64lwx1xt6l" path="res://assets/resources/frame2.png" id="1_k7g8g"]
 [ext_resource type="Script" uid="uid://eq4iddp3mid4" path="res://scenes/ui/gui/construction_panel/construction_panel.gd" id="1_qpvwg"]
 [ext_resource type="Resource" uid="uid://bc1is3namt155" path="res://resources/empire/buildings/trainers/house/house_1.tres" id="5_qpvwg"]
 [ext_resource type="Resource" uid="uid://b4a6olvmb635h" path="res://resources/empire/buildings/generators/woodcutter/woodcutter_1.tres" id="7_okhnq"]
-[ext_resource type="PackedScene" uid="uid://c817i4cmyy633" path="res://scenes/world/buildings/instances/test_unit_building.tscn" id="8_gnnp1"]
-[ext_resource type="PackedScene" uid="uid://dkrv674okmjmm" path="res://scenes/world/buildings/instances/test_generator_building.tscn" id="10_u3a1o"]
+[ext_resource type="PackedScene" uid="uid://cl3y2b058k0sl" path="res://resources/empire/buildings/generators/woodcutter/woodcutter.tscn" id="8_c55rn"]
+[ext_resource type="PackedScene" uid="uid://l7nunxuldoil" path="res://resources/empire/buildings/generators/farm/farm.tscn" id="9_74w2r"]
+[ext_resource type="Resource" uid="uid://cs8fvq07r284g" path="res://resources/empire/buildings/generators/farm/farm_1.tres" id="10_icagi"]
+[ext_resource type="PackedScene" uid="uid://dhwh85gk0mnbj" path="res://resources/empire/buildings/generators/gold_mine/gold_mine.tscn" id="11_x7niu"]
+[ext_resource type="Resource" uid="uid://bwu251wae47gl" path="res://resources/empire/buildings/generators/gold_mine/gold_mine_1.tres" id="12_badbr"]
+[ext_resource type="PackedScene" uid="uid://b1qvfnxcyo4pf" path="res://resources/empire/buildings/generators/quarry/quarry.tscn" id="13_guim0"]
+[ext_resource type="Resource" uid="uid://b6q8byaayhjll" path="res://resources/empire/buildings/generators/quarry/quarry_1.tres" id="14_6htay"]
+[ext_resource type="PackedScene" uid="uid://deud6jkjjjtau" path="res://resources/empire/buildings/trainers/archery_range/archery_range.tscn" id="14_akcl0"]
+[ext_resource type="PackedScene" uid="uid://876elfpic5kx" path="res://resources/empire/buildings/generators/smelter/smelter.tscn" id="15_8rr8w"]
+[ext_resource type="Resource" uid="uid://hdfsk5tulh0e" path="res://resources/empire/buildings/trainers/archery_range/archery_range_1.tres" id="15_digkk"]
+[ext_resource type="PackedScene" uid="uid://cdhxmxl1y3wnf" path="res://resources/empire/buildings/trainers/barracks/barracks.tscn" id="16_8opmq"]
+[ext_resource type="Resource" uid="uid://dhrqghuou0eu8" path="res://resources/empire/buildings/generators/smelter/smelter_1.tres" id="16_n8wjo"]
+[ext_resource type="Resource" uid="uid://hs8rrnbl81ig" path="res://resources/empire/buildings/trainers/barracks/barracks_1.tres" id="17_xltwr"]
+[ext_resource type="PackedScene" uid="uid://ca7a5ode53v3b" path="res://resources/empire/buildings/trainers/blacksmith/blacksmith.tscn" id="18_akcl0"]
+[ext_resource type="Resource" uid="uid://bewwam7syq6g3" path="res://resources/empire/buildings/trainers/blacksmith/blacksmith_1.tres" id="19_digkk"]
+[ext_resource type="PackedScene" uid="uid://cmx07hkkj2mcf" path="res://resources/empire/buildings/trainers/church/church.tscn" id="20_8opmq"]
+[ext_resource type="Resource" uid="uid://ciltrkeymn1ji" path="res://resources/empire/buildings/trainers/church/church_1.tres" id="21_xltwr"]
+[ext_resource type="PackedScene" uid="uid://d1uytkg3nafik" path="res://resources/empire/buildings/trainers/house/house.tscn" id="22_vvids"]
+[ext_resource type="PackedScene" uid="uid://c3g7plcxyfift" path="res://resources/empire/buildings/trainers/mage_tower/mage_tower.tscn" id="24_nwl5y"]
+[ext_resource type="Resource" uid="uid://c7yx8swh6u22w" path="res://resources/empire/buildings/trainers/mage_tower/mage_tower_1.tres" id="25_ja0dy"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qpvwg"]
 
@@ -40,15 +58,69 @@ theme_override_constants/margin_bottom = 20
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="BuildingButton3" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_irbr6")]
+[node name="Woodcutter" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_irbr6")]
 layout_mode = 2
-building = ExtResource("8_gnnp1")
-building_stats = ExtResource("5_qpvwg")
-
-[node name="BuildingButton4" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_irbr6")]
-layout_mode = 2
-building = ExtResource("10_u3a1o")
+building = ExtResource("8_c55rn")
 building_stats = ExtResource("7_okhnq")
 
-[connection signal="building_pressed" from="MarginContainer/HBoxContainer/BuildingButton3" to="." method="_on_building_button_building_pressed"]
-[connection signal="building_pressed" from="MarginContainer/HBoxContainer/BuildingButton4" to="." method="_on_building_button_building_pressed"]
+[node name="Farm" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_irbr6")]
+layout_mode = 2
+building = ExtResource("9_74w2r")
+building_stats = ExtResource("10_icagi")
+
+[node name="GoldMine" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_irbr6")]
+layout_mode = 2
+building = ExtResource("11_x7niu")
+building_stats = ExtResource("12_badbr")
+
+[node name="Quarry" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_irbr6")]
+layout_mode = 2
+building = ExtResource("13_guim0")
+building_stats = ExtResource("14_6htay")
+
+[node name="Smelter" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_irbr6")]
+layout_mode = 2
+building = ExtResource("15_8rr8w")
+building_stats = ExtResource("16_n8wjo")
+
+[node name="ArcheryRange" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_irbr6")]
+layout_mode = 2
+building = ExtResource("14_akcl0")
+building_stats = ExtResource("15_digkk")
+
+[node name="Barracks" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_irbr6")]
+layout_mode = 2
+building = ExtResource("16_8opmq")
+building_stats = ExtResource("17_xltwr")
+
+[node name="Church" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_irbr6")]
+layout_mode = 2
+building = ExtResource("20_8opmq")
+building_stats = ExtResource("21_xltwr")
+
+[node name="House" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_irbr6")]
+layout_mode = 2
+building = ExtResource("22_vvids")
+building_stats = ExtResource("5_qpvwg")
+
+[node name="Tree" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_irbr6")]
+layout_mode = 2
+building = ExtResource("24_nwl5y")
+building_stats = ExtResource("25_ja0dy")
+
+[node name="Blacksmith" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_irbr6")]
+layout_mode = 2
+building = ExtResource("18_akcl0")
+building_stats = ExtResource("19_digkk")
+
+[connection signal="building_pressed" from="MarginContainer/HBoxContainer/Woodcutter" to="." method="_on_building_button_building_pressed"]
+[connection signal="building_pressed" from="MarginContainer/HBoxContainer/Farm" to="." method="_on_building_button_building_pressed"]
+[connection signal="building_pressed" from="MarginContainer/HBoxContainer/GoldMine" to="." method="_on_building_button_building_pressed"]
+[connection signal="building_pressed" from="MarginContainer/HBoxContainer/Quarry" to="." method="_on_building_button_building_pressed"]
+[connection signal="building_pressed" from="MarginContainer/HBoxContainer/Smelter" to="." method="_on_building_button_building_pressed"]
+[connection signal="building_pressed" from="MarginContainer/HBoxContainer/ArcheryRange" to="." method="_on_building_button_building_pressed"]
+[connection signal="building_pressed" from="MarginContainer/HBoxContainer/Barracks" to="." method="_on_building_button_building_pressed"]
+[connection signal="building_pressed" from="MarginContainer/HBoxContainer/Church" to="." method="_on_building_button_building_pressed"]
+[connection signal="building_pressed" from="MarginContainer/HBoxContainer/House" to="." method="_on_building_button_building_pressed"]
+[connection signal="building_pressed" from="MarginContainer/HBoxContainer/Tree" to="." method="_on_building_button_building_pressed"]
+[connection signal="building_pressed" from="MarginContainer/HBoxContainer/Blacksmith" to="." method="_on_building_button_building_pressed"]

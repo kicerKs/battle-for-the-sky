@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="BuildingStats" load_steps=4 format=3 uid="uid://cqsqip4rifeww"]
+
+[ext_resource type="Texture2D" uid="uid://b75t8icybrmpc" path="res://assets/buildings/blacksmith 2 cropped.png" id="1_x328e"]
+[ext_resource type="Script" uid="uid://cnpqub73glek8" path="res://resources/empire/buildings/building_stats.gd" id="2_rf7og"]
+[ext_resource type="Texture2D" uid="uid://cfv1m0goqy1s8" path="res://assets/buildings/blacksmith 2.png" id="3_ko5wg"]
+
+[resource]
+script = ExtResource("2_rf7og")
+name = "Upgraded Blacksmith"
+description = "Upgraded blacksmith trains cannons"
+is_upgraded = true
+texture = ExtResource("3_ko5wg")
+icon = ExtResource("1_x328e")
+cost = Dictionary[int, int]({
+0: 0,
+1: 0,
+2: 0,
+3: 0,
+4: 0
+})
+metadata/_custom_type_script = "uid://cnpqub73glek8"

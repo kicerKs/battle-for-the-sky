@@ -130,12 +130,22 @@ func add_building(building):
 	buildings_number+=1
 	update_sprites()
 
+var remove_scene = load("res://scenes/world/projectiles/remove_building.tscn")
+
 func remove_building(building):
-	%MainNavigationRegion.remove_child(building)
-	building.queue_free()
+	setup_remove_scene.rpc(building.position)
+	building.remove.rpc()
+	#%MainNavigationRegion.remove_child(building)
+	#building.queue_free()
 	%MainNavigationRegion.bake_navigation_polygon()
 	buildings_number-=1
 	update_sprites()
+
+@rpc("any_peer", "call_local", "reliable")
+func setup_remove_scene(pos):
+	var remove_scene_inst = remove_scene.instantiate()
+	remove_scene_inst.position = pos
+	add_child(remove_scene_inst)
 
 func start_conquering(unit_side: Lobby.Factions):
 	if conquering:

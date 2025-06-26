@@ -1,13 +1,50 @@
-[gd_scene load_steps=7 format=3 uid="uid://ci3pvao0i18fm"]
+[gd_scene load_steps=13 format=3 uid="uid://ci3pvao0i18fm"]
 
 [ext_resource type="Script" uid="uid://dygyc5vd6k1w1" path="res://scenes/world/buildings/lair.gd" id="1_6m0tl"]
 [ext_resource type="Resource" uid="uid://wkw646heby6y" path="res://resources/monsters/buildings/goblin_tent/goblin_tent.tres" id="2_8yhi4"]
 [ext_resource type="Script" uid="uid://cuadstb6yf17v" path="res://scenes/world/buildings/lair_component.gd" id="3_oncox"]
 [ext_resource type="Resource" uid="uid://r0ct523ysgh5" path="res://resources/monsters/buildings/goblin_tent/goblin_tent_lair.tres" id="4_arrks"]
 [ext_resource type="Texture2D" uid="uid://b4mqt7qj6p0i3" path="res://assets/buildings/goblin_tent.png" id="5_5l0at"]
+[ext_resource type="Texture2D" uid="uid://4a3fd370bpyu" path="res://assets/buildings/building_cloud.png" id="6_ib0lk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a4dru"]
 size = Vector2(200, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvc3b"]
+atlas = ExtResource("6_ib0lk")
+region = Rect2(0, 0, 1600, 1600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ekal"]
+atlas = ExtResource("6_ib0lk")
+region = Rect2(1600, 0, 1600, 1600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p238k"]
+atlas = ExtResource("6_ib0lk")
+region = Rect2(3200, 0, 1600, 1600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ceol0"]
+atlas = ExtResource("6_ib0lk")
+region = Rect2(4800, 0, 1600, 1600)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tr8qv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvc3b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ekal")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p238k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ceol0")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Lair" type="Node2D"]
 script = ExtResource("1_6m0tl")
@@ -25,3 +62,9 @@ texture = ExtResource("5_5l0at")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_a4dru")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.15, 0.15)
+sprite_frames = SubResource("SpriteFrames_tr8qv")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

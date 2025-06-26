@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c817i4cmyy633"]
+[gd_scene load_steps=22 format=3 uid="uid://c817i4cmyy633"]
 
 [ext_resource type="Script" uid="uid://dkfjkrmloyb8q" path="res://scenes/world/buildings/building.gd" id="1_akj7n"]
 [ext_resource type="Resource" uid="uid://bc1is3namt155" path="res://resources/empire/buildings/trainers/house/house_1.tres" id="2_ei8ew"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://c555ryq6v6pc" path="res://assets/icons/building can upgrade.png" id="10_ei8ew"]
 [ext_resource type="Texture2D" uid="uid://cdki4fbh54yuc" path="res://assets/buildings/exclamation_status.png" id="12_o0igf"]
 [ext_resource type="Texture2D" uid="uid://curhut5bk68hy" path="res://assets/buildings/sleep_status.png" id="13_2ps7l"]
+[ext_resource type="Texture2D" uid="uid://4a3fd370bpyu" path="res://assets/buildings/building_cloud.png" id="14_2ps7l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_akj7n"]
 size = Vector2(200, 350)
@@ -24,6 +25,42 @@ properties/0/replication_mode = 1
 properties/1/path = NodePath("Buttons/PanelContainer/TrainActivateButton:text")
 properties/1/spawn = true
 properties/1/replication_mode = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvc3b"]
+atlas = ExtResource("14_2ps7l")
+region = Rect2(0, 0, 1600, 1600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ekal"]
+atlas = ExtResource("14_2ps7l")
+region = Rect2(1600, 0, 1600, 1600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p238k"]
+atlas = ExtResource("14_2ps7l")
+region = Rect2(3200, 0, 1600, 1600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ceol0"]
+atlas = ExtResource("14_2ps7l")
+region = Rect2(4800, 0, 1600, 1600)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yorsq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvc3b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ekal")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p238k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ceol0")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Building" type="Node2D"]
 script = ExtResource("1_akj7n")
@@ -152,8 +189,18 @@ position = Vector2(-154, -86)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("13_2ps7l")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+scale = Vector2(0.15, 0.15)
+sprite_frames = SubResource("SpriteFrames_yorsq")
+
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Buttons/PanelContainer/TrainActivateButton" to="TrainComponent" method="_on_train_activate_button_mouse_entered"]
+[connection signal="mouse_exited" from="Buttons/PanelContainer/TrainActivateButton" to="TrainComponent" method="_on_train_activate_button_mouse_exited"]
 [connection signal="pressed" from="Buttons/PanelContainer/TrainActivateButton" to="TrainComponent" method="_on_train_activate_button_pressed"]
+[connection signal="mouse_entered" from="Buttons/PanelContainer2/UpgradeButton" to="UpgradeComponent" method="_on_upgrade_button_mouse_entered"]
+[connection signal="mouse_exited" from="Buttons/PanelContainer2/UpgradeButton" to="UpgradeComponent" method="_on_upgrade_button_mouse_exited"]
 [connection signal="pressed" from="Buttons/PanelContainer2/UpgradeButton" to="UpgradeComponent" method="_on_upgrade_button_pressed"]
 [connection signal="pressed" from="Buttons/PanelContainer3/RemoveButton" to="." method="_on_remove_button_pressed"]
 [connection signal="pressed" from="Buttons/PanelContainer4/FrontChangeButton" to="TrainComponent" method="_on_front_change_button_pressed"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

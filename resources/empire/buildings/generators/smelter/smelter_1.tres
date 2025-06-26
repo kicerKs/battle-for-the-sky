@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="BuildingStats" load_steps=3 format=3 uid="uid://dhrqghuou0eu8"]
+
+[ext_resource type="Texture2D" uid="uid://cnxma2xscfuhp" path="res://assets/buildings/iron_smelter.png" id="1_1w1bn"]
+[ext_resource type="Script" uid="uid://cnpqub73glek8" path="res://resources/empire/buildings/building_stats.gd" id="2_jwfn7"]
+
+[resource]
+script = ExtResource("2_jwfn7")
+name = "Iron Smelter"
+description = "Generates iron"
+is_upgraded = false
+texture = ExtResource("1_1w1bn")
+icon = ExtResource("1_1w1bn")
+cost = Dictionary[int, int]({
+0: 10,
+1: 0,
+2: 0,
+3: 0,
+4: 0
+})
+metadata/_custom_type_script = "uid://cnpqub73glek8"

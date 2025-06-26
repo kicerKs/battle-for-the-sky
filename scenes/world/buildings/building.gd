@@ -42,6 +42,9 @@ func reload():
 	if has_node("Sprite2D"):
 		$Sprite2D.texture = stats.texture
 
+@rpc("any_peer", "call_local", "reliable")
+func remove():
+	queue_free()
 
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and !placement_mode:
@@ -64,3 +67,10 @@ func hide_buttons():
 
 func get_island() -> Island:
 	return Game.tileMapLayer.tiles[Game.tileMapLayer.local_to_map(self.global_position)]
+
+func start_animation():
+	$AnimatedSprite2D.visible = true
+	$AnimatedSprite2D.play("default")
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	$AnimatedSprite2D.visible = false

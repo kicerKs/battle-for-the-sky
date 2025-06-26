@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="UnitStats" load_steps=7 format=3 uid="uid://q1xbrmjvh7e4"]
+
+[ext_resource type="Texture2D" uid="uid://cqh125xfmua8m" path="res://assets/units/knight_blue_up.png" id="1_xjnxe"]
+[ext_resource type="Script" uid="uid://cayakk8o7fjyy" path="res://resources/empire/units/unit_stats.gd" id="2_kb4yp"]
+[ext_resource type="Texture2D" uid="uid://b7i7ub4alk4j" path="res://assets/units/knight_green_up.png" id="3_kb4yp"]
+[ext_resource type="Texture2D" uid="uid://cmshqijud6bp8" path="res://assets/units/knight_purple_up.png" id="4_aewpi"]
+[ext_resource type="Texture2D" uid="uid://cok3onwm60gq" path="res://assets/units/knight_red_up.png" id="5_g11tv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5t4rl"]
+atlas = ExtResource("1_xjnxe")
+region = Rect2(0, 0, 800, 800)
+
+[resource]
+script = ExtResource("2_kb4yp")
+name = "Cavalry"
+description = "Fast cavalery unit"
+level = 2
+spriteSheetBlue = ExtResource("1_xjnxe")
+spriteSheetRed = ExtResource("5_g11tv")
+spriteSheetPurple = ExtResource("4_aewpi")
+spriteSheetGreen = ExtResource("3_kb4yp")
+max_hp = 150
+armor = 25
+speed = 150
+range = 60
+singleTarget = true
+action = 6
+actionSpeed = 1
+icon = SubResource("AtlasTexture_5t4rl")
+metadata/_custom_type_script = "uid://cayakk8o7fjyy"

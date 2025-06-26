@@ -1,8 +1,25 @@
-[gd_resource type="Resource" script_class="TrainerStats" load_steps=2 format=3 uid="uid://bxhcinshs0pjk"]
+[gd_resource type="Resource" script_class="TrainerStats" load_steps=6 format=3 uid="uid://bxhcinshs0pjk"]
 
 [ext_resource type="Script" uid="uid://bg5yhrle0o8gv" path="res://resources/empire/buildings/trainer_stats.gd" id="1_jxud2"]
+[ext_resource type="PackedScene" uid="uid://dck1iawmdi6wa" path="res://resources/empire/units/knight/knight.tscn" id="2_1erqt"]
+[ext_resource type="Texture2D" uid="uid://dhna12dlh1nhk" path="res://assets/units/knight_blue.png" id="3_3kj1y"]
+[ext_resource type="Resource" uid="uid://5t12x2l86xqe" path="res://resources/empire/units/knight/knight.tres" id="4_g1tni"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gt14e"]
+atlas = ExtResource("3_3kj1y")
+region = Rect2(0, 0, 800, 800)
 
 [resource]
 script = ExtResource("1_jxud2")
 training_time = 15
+training_cost = Dictionary[int, int]({
+0: 0,
+1: 0,
+2: 0,
+3: 0,
+4: 0
+})
+unit = ExtResource("2_1erqt")
+unit_stats = ExtResource("4_g1tni")
+unit_icon = SubResource("AtlasTexture_gt14e")
 metadata/_custom_type_script = "uid://bg5yhrle0o8gv"

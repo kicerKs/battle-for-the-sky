@@ -1,7 +1,7 @@
-[gd_scene load_steps=35 format=3 uid="uid://bqcybw2oa43k1"]
+[gd_scene load_steps=35 format=3 uid="uid://da13ls5ollwhu"]
 
 [ext_resource type="Script" uid="uid://cyybcthqo12ku" path="res://scenes/world/units/test_character.gd" id="1_8jfkc"]
-[ext_resource type="Resource" uid="uid://c02iduu6f2f7p" path="res://resources/empire/units/peasant/soldier.tres" id="2_8jfkc"]
+[ext_resource type="Resource" uid="uid://bgi6pope2k4fx" path="res://resources/empire/units/peasant/soldier.tres" id="2_8jfkc"]
 [ext_resource type="Script" uid="uid://bcmlgj2w55p8f" path="res://common/state_machine.gd" id="3_7qwm3"]
 [ext_resource type="Script" uid="uid://dfmwd4i4cvcj5" path="res://scenes/world/units/states/unit_state_moving.gd" id="4_s7sjj"]
 [ext_resource type="Script" uid="uid://bu25hbxcgqsnt" path="res://scenes/world/units/states/unit_state_conquering.gd" id="5_36tkg"]
@@ -16,13 +16,25 @@
 [ext_resource type="Script" uid="uid://c7ftxhy6tmrtt" path="res://scenes/world/units/animation_generator.gd" id="12_4kfdt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xb5ci"]
-radius = 313.571
-height = 741.429
+radius = 8.0
+height = 36.0
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_xb5ci"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
+properties/1/path = NodePath("AnimatedSprite2D:flip_h")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Components/HealthComponent:max_hp")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("Components/HealthComponent:current_hp")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath(".:side")
+properties/4/spawn = true
+properties/4/replication_mode = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l2a1g"]
 atlas = ExtResource("11_pbomd")
@@ -116,7 +128,7 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_m1kc6")
 }, {
 "duration": 1.0,
@@ -133,25 +145,26 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8jfkc"]
-radius = 20000.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_66boy"]
+radius = 800.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6vxgh"]
-radius = 600.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_7x4tg"]
+radius = 60.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8jfkc"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_66boy"]
 bg_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6vxgh"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7x4tg"]
 bg_color = Color(0.340192, 0.698577, 0.227424, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
 border_color = Color(0, 0, 0, 1)
 
 [node name="TestCharacter" type="CharacterBody2D" node_paths=PackedStringArray("movement_component", "health_component", "attack_component", "animation", "nav_agent") groups=["units"]]
-scale = Vector2(0.07, 0.07)
+collision_layer = 19
+collision_mask = 17
 input_pickable = true
 script = ExtResource("1_8jfkc")
 stats = ExtResource("2_8jfkc")
@@ -198,7 +211,7 @@ script = ExtResource("9_toamu")
 script = ExtResource("10_hvq0v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(15, 75)
+position = Vector2(1, 2)
 shape = SubResource("CapsuleShape2D_xb5ci")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
@@ -208,24 +221,26 @@ replication_config = SubResource("SceneReplicationConfig_xb5ci")
 path_desired_distance = 25.0
 target_desired_distance = 35.0
 avoidance_enabled = true
-radius = 8.0
+radius = 1.5
 neighbor_distance = 100.0
 avoidance_priority = 0.5
 debug_enabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.07, 0.07)
 sprite_frames = SubResource("SpriteFrames_g3gjs")
 animation = &"walk"
 autoplay = "idle"
 script = ExtResource("12_4kfdt")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -457.143
-offset_top = -528.571
-offset_right = 456.857
-offset_bottom = -363.571
+visible = false
+offset_left = -113.0
+offset_top = -75.0
+offset_right = 114.0
+offset_bottom = -58.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_font_sizes/font_size = 120
+theme_override_font_sizes/font_size = 12
 text = "State"
 horizontal_alignment = 1
 
@@ -233,27 +248,39 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 collision_layer = 16
 collision_mask = 16
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
-shape = SubResource("CircleShape2D_8jfkc")
+shape = SubResource("CircleShape2D_66boy")
+metadata/_edit_lock_ = true
 
 [node name="AttackRange" type="Area2D" parent="."]
 unique_name_in_owner = true
-collision_layer = 16
-collision_mask = 16
+collision_layer = 18
+collision_mask = 2
+metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
-shape = SubResource("CircleShape2D_6vxgh")
+[node name="AttackRangeCollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_7x4tg")
+metadata/_edit_lock_ = true
 
 [node name="HPBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
-offset_left = -371.0
-offset_top = -600.0
-offset_right = 371.0
-offset_bottom = -530.0
-theme_override_styles/background = SubResource("StyleBoxFlat_8jfkc")
-theme_override_styles/fill = SubResource("StyleBoxFlat_6vxgh")
+offset_left = -34.0
+offset_top = -40.0
+offset_right = 34.0
+offset_bottom = -30.0
+theme_override_styles/background = SubResource("StyleBoxFlat_66boy")
+theme_override_styles/fill = SubResource("StyleBoxFlat_7x4tg")
 show_percentage = false
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://bri2l5ir5eg1u", "uid://cqobkdhf7su8e")
+
+[node name="MultiplayerSpawner2" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://dfd5k0w8lrb38")
+spawn_path = NodePath("..")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="velocity_computed" from="NavigationAgent2D" to="Components/MovementComponent" method="_on_navigation_agent_2d_velocity_computed"]

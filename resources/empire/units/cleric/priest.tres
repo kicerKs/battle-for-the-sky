@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="UnitStats" load_steps=7 format=3 uid="uid://8yeo4ovfqfqs"]
+
+[ext_resource type="Texture2D" uid="uid://ccne1otvhqy61" path="res://assets/units/clerc_blue.png" id="1_7eo47"]
+[ext_resource type="Script" uid="uid://cayakk8o7fjyy" path="res://resources/empire/units/unit_stats.gd" id="2_i1k77"]
+[ext_resource type="Texture2D" uid="uid://c3ehxqblh1dii" path="res://assets/units/clerc_green.png" id="3_5obei"]
+[ext_resource type="Texture2D" uid="uid://qw5c6yri6txc" path="res://assets/units/clerc_purple.png" id="4_u3a36"]
+[ext_resource type="Texture2D" uid="uid://bkd0h3g8ughi5" path="res://assets/units/clerc_red.png" id="5_qmbr1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5t4rl"]
+atlas = ExtResource("1_7eo47")
+region = Rect2(0, 0, 800, 800)
+
+[resource]
+script = ExtResource("2_i1k77")
+name = "Priest"
+description = "Unupgraded healer unit"
+level = 1
+spriteSheetBlue = ExtResource("1_7eo47")
+spriteSheetRed = ExtResource("5_qmbr1")
+spriteSheetPurple = ExtResource("4_u3a36")
+spriteSheetGreen = ExtResource("3_5obei")
+max_hp = 60
+armor = 10
+speed = 100
+range = 600
+singleTarget = true
+action = 6
+actionSpeed = 1
+icon = SubResource("AtlasTexture_5t4rl")
+metadata/_custom_type_script = "uid://cayakk8o7fjyy"

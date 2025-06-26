@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="BuildingStats" load_steps=3 format=3 uid="uid://bha6wej10by71"]
+
+[ext_resource type="Texture2D" uid="uid://cvxd55clidd71" path="res://assets/buildings/farm_up.png" id="1_7p6do"]
+[ext_resource type="Script" uid="uid://cnpqub73glek8" path="res://resources/empire/buildings/building_stats.gd" id="2_celp0"]
+
+[resource]
+script = ExtResource("2_celp0")
+name = "Farm"
+description = "An upgraded food generator building."
+is_upgraded = true
+texture = ExtResource("1_7p6do")
+icon = ExtResource("1_7p6do")
+cost = Dictionary[int, int]({
+0: 10,
+1: 0,
+2: 0,
+3: 0,
+4: 0
+})
+metadata/_custom_type_script = "uid://cnpqub73glek8"

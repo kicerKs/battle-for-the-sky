@@ -5,3 +5,5 @@ signal unit_clicked(unit: TestCharacter)
 signal monster_clicked(unit: TestMonster)
 signal hide_panels
 signal panels_closed
+signal show_resource_cost(dict: Dictionary)
+signal hide_resource_cost

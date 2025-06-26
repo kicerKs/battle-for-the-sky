@@ -26,11 +26,11 @@ enum Resources{
 }
 
 var _player_resources = {
-	Resources.WOOD: 5,
-	Resources.FOOD: 0,
-	Resources.STONE: 0,
-	Resources.IRON: 0,
-	Resources.GOLD: 0
+	Resources.WOOD: 15,
+	Resources.FOOD: 10,
+	Resources.STONE: 15,
+	Resources.IRON: 15,
+	Resources.GOLD: 10
 }
 
 func change_player_resource(resource: Resources, amount: int):

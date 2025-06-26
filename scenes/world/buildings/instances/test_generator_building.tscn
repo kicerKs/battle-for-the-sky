@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dkrv674okmjmm"]
+[gd_scene load_steps=20 format=3 uid="uid://dkrv674okmjmm"]
 
 [ext_resource type="Script" uid="uid://dkfjkrmloyb8q" path="res://scenes/world/buildings/building.gd" id="1_2utar"]
 [ext_resource type="Resource" uid="uid://b4a6olvmb635h" path="res://resources/empire/buildings/generators/woodcutter/woodcutter_1.tres" id="2_84i42"]
@@ -8,7 +8,10 @@
 [ext_resource type="Resource" uid="uid://knnjujux4ks2" path="res://resources/empire/buildings/generators/woodcutter/woodcutter_2.tres" id="6_mab8j"]
 [ext_resource type="Resource" uid="uid://bhu236kvrs205" path="res://resources/empire/buildings/generators/woodcutter/woodcutter_2_generator.tres" id="7_a87ni"]
 [ext_resource type="Texture2D" uid="uid://byx58bdtjlh34" path="res://assets/buildings/timber.png" id="8_a87ni"]
+[ext_resource type="LabelSettings" uid="uid://bmu2llc0hca8r" path="res://scenes/ui/gui/resources_panel/resource_panel_label_settings.tres" id="9_24yaw"]
 [ext_resource type="Texture2D" uid="uid://c555ryq6v6pc" path="res://assets/icons/building can upgrade.png" id="9_a87ni"]
+[ext_resource type="Texture2D" uid="uid://c1be1e8s0fvca" path="res://assets/resources/wood.png" id="10_6dd4m"]
+[ext_resource type="Texture2D" uid="uid://4a3fd370bpyu" path="res://assets/buildings/building_cloud.png" id="12_6dd4m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_atpml"]
 size = Vector2(200, 200)
@@ -18,14 +21,51 @@ properties/0/path = NodePath("GeneratorComponent:generation_progress")
 properties/0/spawn = true
 properties/0/replication_mode = 1
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvc3b"]
+atlas = ExtResource("12_6dd4m")
+region = Rect2(0, 0, 1600, 1600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ekal"]
+atlas = ExtResource("12_6dd4m")
+region = Rect2(1600, 0, 1600, 1600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p238k"]
+atlas = ExtResource("12_6dd4m")
+region = Rect2(3200, 0, 1600, 1600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ceol0"]
+atlas = ExtResource("12_6dd4m")
+region = Rect2(4800, 0, 1600, 1600)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qbr2w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvc3b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ekal")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p238k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ceol0")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Building" type="Node2D"]
 script = ExtResource("1_2utar")
 stats = ExtResource("2_84i42")
 metadata/_custom_type_script = "uid://dkfjkrmloyb8q"
 
-[node name="GeneratorComponent" type="Node" parent="."]
+[node name="GeneratorComponent" type="Node" parent="." node_paths=PackedStringArray("resource_indicator")]
 script = ExtResource("2_qo0ud")
 stats = ExtResource("3_hfpdo")
+resource_indicator = NodePath("../ResourceIndicator")
 metadata/_custom_type_script = "uid://bgfw61xrlis0x"
 
 [node name="UpgradeComponent" parent="." instance=ExtResource("5_84i42")]
@@ -59,6 +99,25 @@ max_value = 1.0
 fill_mode = 3
 show_percentage = false
 
+[node name="ResourceIndicator" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = -3.0
+offset_top = -78.0
+offset_right = 61.0
+offset_bottom = -55.0
+
+[node name="ResourceNumber" type="Label" parent="ResourceIndicator"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "+40"
+label_settings = ExtResource("9_24yaw")
+
+[node name="TextureRect" type="TextureRect" parent="ResourceIndicator"]
+layout_mode = 2
+texture = ExtResource("10_6dd4m")
+expand_mode = 3
+
 [node name="Buttons" type="Node2D" parent="."]
 visible = false
 position = Vector2(0, -67)
@@ -91,6 +150,14 @@ text = "X"
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_a87ni")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+scale = Vector2(0.15, 0.15)
+sprite_frames = SubResource("SpriteFrames_qbr2w")
+
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Buttons/PanelContainer2/UpgradeButton" to="UpgradeComponent" method="_on_upgrade_button_mouse_entered"]
+[connection signal="mouse_exited" from="Buttons/PanelContainer2/UpgradeButton" to="UpgradeComponent" method="_on_upgrade_button_mouse_exited"]
 [connection signal="pressed" from="Buttons/PanelContainer2/UpgradeButton" to="UpgradeComponent" method="_on_upgrade_button_pressed"]
 [connection signal="pressed" from="Buttons/PanelContainer3/RemoveButton" to="." method="_on_remove_button_pressed"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

@@ -1,13 +1,50 @@
-[gd_scene load_steps=7 format=3 uid="uid://bv78a2o63sj8a"]
+[gd_scene load_steps=13 format=3 uid="uid://bv78a2o63sj8a"]
 
 [ext_resource type="Script" uid="uid://dygyc5vd6k1w1" path="res://scenes/world/buildings/lair.gd" id="1_ohi58"]
 [ext_resource type="Resource" uid="uid://bdg66ademstjc" path="res://resources/monsters/buildings/cyclops_cave/cyclops_cave.tres" id="2_haebj"]
 [ext_resource type="Script" uid="uid://cuadstb6yf17v" path="res://scenes/world/buildings/lair_component.gd" id="3_pd7gn"]
 [ext_resource type="Resource" uid="uid://c483bn57how30" path="res://resources/monsters/buildings/cyclops_cave/cyclops_cave_lair.tres" id="4_sv10s"]
 [ext_resource type="Texture2D" uid="uid://2x3lhg1j5trv" path="res://assets/buildings/cyclope_cave.png" id="5_haebj"]
+[ext_resource type="Texture2D" uid="uid://4a3fd370bpyu" path="res://assets/buildings/building_cloud.png" id="6_sv10s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a4dru"]
 size = Vector2(200, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvc3b"]
+atlas = ExtResource("6_sv10s")
+region = Rect2(0, 0, 1600, 1600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ekal"]
+atlas = ExtResource("6_sv10s")
+region = Rect2(1600, 0, 1600, 1600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p238k"]
+atlas = ExtResource("6_sv10s")
+region = Rect2(3200, 0, 1600, 1600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ceol0"]
+atlas = ExtResource("6_sv10s")
+region = Rect2(4800, 0, 1600, 1600)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n4tpt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvc3b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ekal")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p238k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ceol0")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Lair" type="Node2D"]
 script = ExtResource("1_ohi58")
@@ -25,3 +62,9 @@ texture = ExtResource("5_haebj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_a4dru")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.15, 0.15)
+sprite_frames = SubResource("SpriteFrames_n4tpt")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

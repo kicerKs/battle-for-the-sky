@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="TrainerStats" load_steps=6 format=3 uid="uid://btol4brade3aq"]
 
 [ext_resource type="Script" uid="uid://bg5yhrle0o8gv" path="res://resources/empire/buildings/trainer_stats.gd" id="1_tincg"]
-[ext_resource type="PackedScene" uid="uid://bqcybw2oa43k1" path="res://resources/empire/units/peasant/soldier.tscn" id="2_tincg"]
+[ext_resource type="PackedScene" uid="uid://da13ls5ollwhu" path="res://resources/empire/units/peasant/soldier.tscn" id="2_tincg"]
 [ext_resource type="Texture2D" uid="uid://hqqtpupdy15b" path="res://assets/units/soldier_blue_up.png" id="3_ilt7w"]
-[ext_resource type="Resource" uid="uid://c02iduu6f2f7p" path="res://resources/empire/units/peasant/soldier.tres" id="3_khnsf"]
+[ext_resource type="Resource" uid="uid://bgi6pope2k4fx" path="res://resources/empire/units/peasant/soldier.tres" id="3_khnsf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lbcct"]
 atlas = ExtResource("3_ilt7w")

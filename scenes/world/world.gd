@@ -8,6 +8,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_pressed():
 		if placement_mode:
 			if event.button_index == MOUSE_BUTTON_RIGHT:
+				SignalBus.hide_resource_cost.emit()
 				placement_building.queue_free()
 				placement_mode = false
 			elif event.button_index == MOUSE_BUTTON_LEFT:
@@ -15,6 +16,7 @@ func _unhandled_input(event: InputEvent) -> void:
 					if placement_building.can_build($TileMapLayer.tiles[Game.tileMapLayer.local_to_map(placement_building.position)]):
 						var target_island = Game.tileMapLayer.local_to_map(placement_building.position)
 						if Game.tileMapLayer.tiles.has(target_island):
+							SignalBus.hide_resource_cost.emit()
 							remove_child(placement_building)
 							for res in placement_building.stats.cost.keys():
 								Game.change_player_resource(res, -placement_building.stats.cost[res])
@@ -48,6 +50,7 @@ func building_selected(building):
 	placement_mode = true
 	placement_building = building.instantiate()
 	placement_building.placement_mode = true
+	SignalBus.show_resource_cost.emit(placement_building.stats.cost)
 	placement_building.position = get_global_mouse_position()
 	add_child(placement_building)
 
@@ -55,6 +58,7 @@ func building_selected(building):
 func add_building(target_island, scene_path, building_dict):
 	var building = load(scene_path).instantiate()
 	building.set_dict(building_dict)
+	building.start_animation()
 	if multiplayer.is_server():
 		activate_building(building, target_island)
 	Game.tileMapLayer.tiles[target_island].add_building(building)

@@ -1,0 +1,206 @@
+[gd_scene load_steps=22 format=3 uid="uid://d1uytkg3nafik"]
+
+[ext_resource type="Script" uid="uid://dkfjkrmloyb8q" path="res://scenes/world/buildings/building.gd" id="1_y4a6c"]
+[ext_resource type="Resource" uid="uid://bc1is3namt155" path="res://resources/empire/buildings/trainers/house/house_1.tres" id="2_yt88b"]
+[ext_resource type="Script" uid="uid://d4hsgvbrj0rlt" path="res://scenes/world/buildings/train_component.gd" id="3_pipox"]
+[ext_resource type="Resource" uid="uid://beo8i2f6jcg3w" path="res://resources/empire/buildings/trainers/house/house_1_trainer.tres" id="4_73kqc"]
+[ext_resource type="Script" uid="uid://dlfqvdrv0wj33" path="res://scenes/world/units/components/SearchComponent.gd" id="5_fpvou"]
+[ext_resource type="PackedScene" uid="uid://kuij88i7j4x1" path="res://scenes/world/buildings/upgrade_component.tscn" id="6_k0etd"]
+[ext_resource type="Resource" uid="uid://c2fjfp51jee2k" path="res://resources/empire/buildings/trainers/house/house_2.tres" id="7_j5kqj"]
+[ext_resource type="Resource" uid="uid://btol4brade3aq" path="res://resources/empire/buildings/trainers/house/house_2_trainer.tres" id="8_qv202"]
+[ext_resource type="Texture2D" uid="uid://d1fd6ltnjv8gf" path="res://assets/buildings/house 1.png" id="9_y3f17"]
+[ext_resource type="Texture2D" uid="uid://c555ryq6v6pc" path="res://assets/icons/building can upgrade.png" id="10_7thw1"]
+[ext_resource type="Texture2D" uid="uid://bpetq6rubw0vm" path="res://assets/resources/attackspeed.png" id="11_e4v2y"]
+[ext_resource type="Texture2D" uid="uid://cdki4fbh54yuc" path="res://assets/buildings/exclamation_status.png" id="12_gt8f5"]
+[ext_resource type="Texture2D" uid="uid://curhut5bk68hy" path="res://assets/buildings/sleep_status.png" id="13_cohos"]
+[ext_resource type="Texture2D" uid="uid://4a3fd370bpyu" path="res://assets/buildings/building_cloud.png" id="14_thxc2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_akj7n"]
+size = Vector2(200, 350)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ei8ew"]
+properties/0/path = NodePath("TrainComponent:training_progress")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("Buttons/PanelContainer/TrainActivateButton:text")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvc3b"]
+atlas = ExtResource("14_thxc2")
+region = Rect2(0, 0, 1600, 1600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ekal"]
+atlas = ExtResource("14_thxc2")
+region = Rect2(1600, 0, 1600, 1600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p238k"]
+atlas = ExtResource("14_thxc2")
+region = Rect2(3200, 0, 1600, 1600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ceol0"]
+atlas = ExtResource("14_thxc2")
+region = Rect2(4800, 0, 1600, 1600)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yorsq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvc3b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ekal")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p238k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ceol0")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Building" type="Node2D"]
+script = ExtResource("1_y4a6c")
+stats = ExtResource("2_yt88b")
+metadata/_custom_type_script = "uid://dkfjkrmloyb8q"
+
+[node name="TrainComponent" type="Node" parent="." node_paths=PackedStringArray("search_component")]
+script = ExtResource("3_pipox")
+stats = ExtResource("4_73kqc")
+search_component = NodePath("../SearchComponent")
+metadata/_custom_type_script = "uid://d4hsgvbrj0rlt"
+
+[node name="SearchComponent" type="Node" parent="."]
+script = ExtResource("5_fpvou")
+metadata/_custom_type_script = "uid://dlfqvdrv0wj33"
+
+[node name="UpgradeComponent" parent="." instance=ExtResource("6_k0etd")]
+upgrade_cost = Dictionary[int, int]({
+0: 0,
+1: 2,
+2: 0,
+3: 2,
+4: 0
+})
+upgraded_building = ExtResource("7_j5kqj")
+trainer_stats = ExtResource("8_qv202")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("9_y3f17")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 31.5)
+shape = SubResource("RectangleShape2D_akj7n")
+
+[node name="UnitTrainProgressBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = 101.0
+offset_top = -11.0
+offset_right = 107.0
+offset_bottom = 98.0
+scale = Vector2(2, 2)
+max_value = 1.0
+fill_mode = 3
+show_percentage = false
+
+[node name="Buttons" type="Node2D" parent="."]
+visible = false
+
+[node name="PanelContainer" type="PanelContainer" parent="Buttons"]
+offset_left = 5.0
+offset_top = 217.0
+offset_right = 45.0
+offset_bottom = 257.0
+scale = Vector2(0.75, 0.75)
+
+[node name="TrainActivateButton" type="Button" parent="Buttons/PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "ON"
+
+[node name="PanelContainer2" type="PanelContainer" parent="Buttons"]
+offset_left = -35.0
+offset_top = 217.0
+offset_right = 5.0
+offset_bottom = 257.0
+scale = Vector2(0.75, 0.75)
+
+[node name="UpgradeButton" type="Button" parent="Buttons/PanelContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+icon = ExtResource("10_7thw1")
+expand_icon = true
+
+[node name="PanelContainer3" type="PanelContainer" parent="Buttons"]
+offset_left = 70.0
+offset_top = 208.0
+offset_right = 110.0
+offset_bottom = 248.0
+scale = Vector2(0.75, 0.75)
+
+[node name="RemoveButton" type="Button" parent="Buttons/PanelContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "X"
+
+[node name="PanelContainer4" type="PanelContainer" parent="Buttons"]
+offset_left = -100.0
+offset_top = 208.0
+offset_right = -60.0
+offset_bottom = 248.0
+scale = Vector2(0.75, 0.75)
+
+[node name="FrontChangeButton" type="Button" parent="Buttons/PanelContainer4"]
+unique_name_in_owner = true
+layout_mode = 2
+icon = ExtResource("11_e4v2y")
+
+[node name="Line2D" type="Line2D" parent="Buttons"]
+z_index = 1
+default_color = Color(0, 1, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -75.0
+offset_top = 16.0
+offset_right = -35.0
+offset_bottom = 39.0
+text = "false"
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_ei8ew")
+
+[node name="NoResources" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(8, -119)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("12_gt8f5")
+
+[node name="BuildingSleeps" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-154, -86)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("13_cohos")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+scale = Vector2(0.15, 0.15)
+sprite_frames = SubResource("SpriteFrames_yorsq")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Buttons/PanelContainer/TrainActivateButton" to="TrainComponent" method="_on_train_activate_button_mouse_entered"]
+[connection signal="mouse_exited" from="Buttons/PanelContainer/TrainActivateButton" to="TrainComponent" method="_on_train_activate_button_mouse_exited"]
+[connection signal="pressed" from="Buttons/PanelContainer/TrainActivateButton" to="TrainComponent" method="_on_train_activate_button_pressed"]
+[connection signal="mouse_entered" from="Buttons/PanelContainer2/UpgradeButton" to="UpgradeComponent" method="_on_upgrade_button_mouse_entered"]
+[connection signal="mouse_exited" from="Buttons/PanelContainer2/UpgradeButton" to="UpgradeComponent" method="_on_upgrade_button_mouse_exited"]
+[connection signal="pressed" from="Buttons/PanelContainer2/UpgradeButton" to="UpgradeComponent" method="_on_upgrade_button_pressed"]
+[connection signal="pressed" from="Buttons/PanelContainer3/RemoveButton" to="." method="_on_remove_button_pressed"]
+[connection signal="pressed" from="Buttons/PanelContainer4/FrontChangeButton" to="TrainComponent" method="_on_front_change_button_pressed"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

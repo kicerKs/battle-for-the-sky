@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="UnitStats" load_steps=7 format=3 uid="uid://cck0gssvdfa4n"]
+
+[ext_resource type="Texture2D" uid="uid://88yscmt360t2" path="res://assets/units/archer_blue_up.png" id="1_kpj58"]
+[ext_resource type="Script" uid="uid://cayakk8o7fjyy" path="res://resources/empire/units/unit_stats.gd" id="2_lmfag"]
+[ext_resource type="Texture2D" uid="uid://bxw40irfosain" path="res://assets/units/archer_green_up.png" id="3_lmfag"]
+[ext_resource type="Texture2D" uid="uid://pifshvjqh7ab" path="res://assets/units/archer_purple_up.png" id="4_x0eiu"]
+[ext_resource type="Texture2D" uid="uid://dvevgdp61bpr0" path="res://assets/units/archer_red_up.png" id="5_qpv2f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5t4rl"]
+atlas = ExtResource("1_kpj58")
+region = Rect2(0, 0, 800, 800)
+
+[resource]
+script = ExtResource("2_lmfag")
+name = "Crossbowman"
+description = "Strong upgraded ranged unit"
+level = 2
+spriteSheetBlue = ExtResource("1_kpj58")
+spriteSheetRed = ExtResource("5_qpv2f")
+spriteSheetPurple = ExtResource("4_x0eiu")
+spriteSheetGreen = ExtResource("3_lmfag")
+max_hp = 90
+armor = 10
+speed = 100
+range = 700
+singleTarget = true
+action = 10
+actionSpeed = 1
+icon = SubResource("AtlasTexture_5t4rl")
+metadata/_custom_type_script = "uid://cayakk8o7fjyy"

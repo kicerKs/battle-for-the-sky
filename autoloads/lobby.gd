@@ -4,11 +4,15 @@ enum Factions{
 	MONSTERS,
 	PLAYER_RED,
 	PLAYER_BLUE,
+	PLAYER_PURPLE,
+	PLAYER_GREEN
 }
 const FACTION_COLORS = {
 	Factions.MONSTERS: Color.WHITE,
 	Factions.PLAYER_RED: Color.RED,
 	Factions.PLAYER_BLUE: Color.BLUE,
+	Factions.PLAYER_PURPLE: Color.PURPLE,
+	Factions.PLAYER_GREEN: Color.GREEN
 }
 
 signal player_connected(peer_id, player_info)

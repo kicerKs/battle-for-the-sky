@@ -6,6 +6,8 @@ extends Resource
 @export var level: int = 1
 @export var spriteSheetBlue: Texture2D
 @export var spriteSheetRed: Texture2D
+@export var spriteSheetPurple: Texture2D
+@export var spriteSheetGreen: Texture2D
 @export var max_hp: int = 100
 @export var armor: int = 10
 @export var speed: int = 100

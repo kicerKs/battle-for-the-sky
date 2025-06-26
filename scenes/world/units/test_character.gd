@@ -42,6 +42,10 @@ func _ready():
 			spritesheet = stats.spriteSheetRed
 		2: # our player
 			spritesheet = stats.spriteSheetBlue
+		3:
+			spritesheet = stats.spriteSheetPurple
+		4:
+			spritesheet = stats.spriteSheetGreen
 	animation.setup_animations(spritesheet)
 	%AttackRangeCollisionShape2D.shape.radius = stats.range
 

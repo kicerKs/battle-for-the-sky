@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="TrainerStats" load_steps=6 format=3 uid="uid://b14jb38ibos4k"]
+
+[ext_resource type="Script" uid="uid://bg5yhrle0o8gv" path="res://resources/empire/buildings/trainer_stats.gd" id="1_7o2b2"]
+[ext_resource type="PackedScene" uid="uid://dss0c04hduojd" path="res://resources/empire/units/mage/mage.tscn" id="2_1pjav"]
+[ext_resource type="Texture2D" uid="uid://bintuk52jneap" path="res://assets/units/mage_blue_up.png" id="3_0nk07"]
+[ext_resource type="Resource" uid="uid://neyl5rjd664d" path="res://resources/empire/units/mage/mage.tres" id="4_8fs6p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_punrv"]
+atlas = ExtResource("3_0nk07")
+region = Rect2(0, 0, 800, 800)
+
+[resource]
+script = ExtResource("1_7o2b2")
+training_time = 15
+training_cost = Dictionary[int, int]({
+0: 0,
+1: 0,
+2: 0,
+3: 0,
+4: 0
+})
+unit = ExtResource("2_1pjav")
+unit_stats = ExtResource("4_8fs6p")
+unit_icon = SubResource("AtlasTexture_punrv")
+metadata/_custom_type_script = "uid://bg5yhrle0o8gv"

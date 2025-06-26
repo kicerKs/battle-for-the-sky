@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="UnitStats" load_steps=7 format=3 uid="uid://b5fuii1tw6511"]
+
+[ext_resource type="Texture2D" uid="uid://0oedde3g2t0" path="res://assets/units/mage_blue.png" id="1_vplak"]
+[ext_resource type="Script" uid="uid://cayakk8o7fjyy" path="res://resources/empire/units/unit_stats.gd" id="2_2g3uo"]
+[ext_resource type="Texture2D" uid="uid://c3ehxqblh1dii" path="res://assets/units/clerc_green.png" id="3_beayi"]
+[ext_resource type="Texture2D" uid="uid://qw5c6yri6txc" path="res://assets/units/clerc_purple.png" id="4_d25s8"]
+[ext_resource type="Texture2D" uid="uid://bkd0h3g8ughi5" path="res://assets/units/clerc_red.png" id="5_4tjph"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5t4rl"]
+atlas = ExtResource("1_vplak")
+region = Rect2(0, 0, 800, 800)
+
+[resource]
+script = ExtResource("2_2g3uo")
+name = "Druid"
+description = "Very strong ranged unit with AOE attacks"
+level = 1
+spriteSheetBlue = ExtResource("1_vplak")
+spriteSheetRed = ExtResource("5_4tjph")
+spriteSheetPurple = ExtResource("4_d25s8")
+spriteSheetGreen = ExtResource("3_beayi")
+max_hp = 60
+armor = 10
+speed = 100
+range = 600
+singleTarget = true
+action = 9
+actionSpeed = 1
+icon = SubResource("AtlasTexture_5t4rl")
+metadata/_custom_type_script = "uid://cayakk8o7fjyy"

@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="UnitStats" load_steps=8 format=3 uid="uid://bithqw6coqu4y"]
+
+[ext_resource type="Texture2D" uid="uid://cx5gotto7ayd3" path="res://assets/units/catapult.png" id="1_med56"]
+[ext_resource type="Script" uid="uid://cayakk8o7fjyy" path="res://resources/empire/units/unit_stats.gd" id="2_2kw77"]
+[ext_resource type="Texture2D" uid="uid://cgh5v0cyxut4m" path="res://assets/units/catapult_blue.png" id="3_xdfa4"]
+[ext_resource type="Texture2D" uid="uid://dh8iltsdkbp00" path="res://assets/units/catapult_green.png" id="4_3x2af"]
+[ext_resource type="Texture2D" uid="uid://dk10pei17i32p" path="res://assets/units/catapult_purple.png" id="5_mi7m5"]
+[ext_resource type="Texture2D" uid="uid://cbatagk53bseh" path="res://assets/units/catapult_red.png" id="6_h1moc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5t4rl"]
+atlas = ExtResource("1_med56")
+region = Rect2(0, 0, 800, 800)
+
+[resource]
+script = ExtResource("2_2kw77")
+name = "Catapult"
+description = "High range AOE unit"
+level = 2
+spriteSheetBlue = ExtResource("3_xdfa4")
+spriteSheetRed = ExtResource("6_h1moc")
+spriteSheetPurple = ExtResource("5_mi7m5")
+spriteSheetGreen = ExtResource("4_3x2af")
+max_hp = 120
+armor = 20
+speed = 30
+range = 1000
+singleTarget = true
+action = 12
+actionSpeed = 1
+icon = SubResource("AtlasTexture_5t4rl")
+metadata/_custom_type_script = "uid://cayakk8o7fjyy"

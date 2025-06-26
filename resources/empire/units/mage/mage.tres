@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="UnitStats" load_steps=7 format=3 uid="uid://neyl5rjd664d"]
+
+[ext_resource type="Texture2D" uid="uid://bintuk52jneap" path="res://assets/units/mage_blue_up.png" id="1_husix"]
+[ext_resource type="Script" uid="uid://cayakk8o7fjyy" path="res://resources/empire/units/unit_stats.gd" id="2_7l6dn"]
+[ext_resource type="Texture2D" uid="uid://dqfa6kxqp6jbv" path="res://assets/units/mage_green_up.png" id="3_7l6dn"]
+[ext_resource type="Texture2D" uid="uid://da7h3a0hre8q5" path="res://assets/units/mage_purple_up.png" id="4_ag766"]
+[ext_resource type="Texture2D" uid="uid://2b6rgm6fofyr" path="res://assets/units/mage_red_up.png" id="5_bsydf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5t4rl"]
+atlas = ExtResource("1_husix")
+region = Rect2(0, 0, 800, 800)
+
+[resource]
+script = ExtResource("2_7l6dn")
+name = "Mage"
+description = "Very strong upgraded ranged unit with AOE attacks"
+level = 2
+spriteSheetBlue = ExtResource("1_husix")
+spriteSheetRed = ExtResource("5_bsydf")
+spriteSheetPurple = ExtResource("4_ag766")
+spriteSheetGreen = ExtResource("3_7l6dn")
+max_hp = 80
+armor = 10
+speed = 100
+range = 700
+singleTarget = true
+action = 11
+actionSpeed = 1
+icon = SubResource("AtlasTexture_5t4rl")
+metadata/_custom_type_script = "uid://cayakk8o7fjyy"

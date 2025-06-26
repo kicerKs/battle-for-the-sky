@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="TrainerStats" load_steps=6 format=3 uid="uid://y3p2au5amqoy"]
+
+[ext_resource type="Script" uid="uid://bg5yhrle0o8gv" path="res://resources/empire/buildings/trainer_stats.gd" id="1_mqpcw"]
+[ext_resource type="PackedScene" uid="uid://b8t2d8k16xmv2" path="res://resources/empire/units/catapult/catapult.tscn" id="2_4qxwn"]
+[ext_resource type="Texture2D" uid="uid://cx5gotto7ayd3" path="res://assets/units/catapult.png" id="3_5m5k7"]
+[ext_resource type="Resource" uid="uid://bithqw6coqu4y" path="res://resources/empire/units/catapult/catapult.tres" id="4_weevf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iurrj"]
+atlas = ExtResource("3_5m5k7")
+region = Rect2(0, 0, 800, 800)
+
+[resource]
+script = ExtResource("1_mqpcw")
+training_time = 15
+training_cost = Dictionary[int, int]({
+0: 0,
+1: 0,
+2: 0,
+3: 0,
+4: 0
+})
+unit = ExtResource("2_4qxwn")
+unit_stats = ExtResource("4_weevf")
+unit_icon = SubResource("AtlasTexture_iurrj")
+metadata/_custom_type_script = "uid://bg5yhrle0o8gv"

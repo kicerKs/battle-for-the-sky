@@ -156,3 +156,10 @@ func change_front(pos):
 	line.clear_points()
 	line.add_point(owner.global_position)
 	line.add_point(Game.tileMapLayer.map_to_local(current_front))
+
+
+func _on_train_activate_button_mouse_entered() -> void:
+	SignalBus.show_resource_cost.emit(stats.training_cost)
+
+func _on_train_activate_button_mouse_exited() -> void:
+	SignalBus.hide_resource_cost.emit()

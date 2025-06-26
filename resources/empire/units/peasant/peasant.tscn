@@ -234,6 +234,7 @@ autoplay = "idle"
 script = ExtResource("12_vqhq0")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_left = -113.0
 offset_top = -75.0
 offset_right = 114.0
@@ -267,9 +268,9 @@ metadata/_edit_lock_ = true
 [node name="HPBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
 offset_left = -34.0
-offset_top = -56.0
+offset_top = -40.0
 offset_right = 34.0
-offset_bottom = -46.0
+offset_bottom = -30.0
 theme_override_styles/background = SubResource("StyleBoxFlat_66boy")
 theme_override_styles/fill = SubResource("StyleBoxFlat_7x4tg")
 show_percentage = false

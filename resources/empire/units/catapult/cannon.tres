@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="UnitStats" load_steps=8 format=3 uid="uid://d3yfck83exf3u"]
+
+[ext_resource type="Texture2D" uid="uid://dglupat18f63k" path="res://assets/units/cannon.png" id="1_cvf8j"]
+[ext_resource type="Script" uid="uid://cayakk8o7fjyy" path="res://resources/empire/units/unit_stats.gd" id="2_vwl46"]
+[ext_resource type="Texture2D" uid="uid://dmaklb4sy2s0n" path="res://assets/units/cannon_blue.png" id="3_vwl46"]
+[ext_resource type="Texture2D" uid="uid://d4mwccfubqkrh" path="res://assets/units/cannon_green.png" id="4_ribwu"]
+[ext_resource type="Texture2D" uid="uid://bxlsxryg1yv4c" path="res://assets/units/cannon_purple.png" id="5_4nyrf"]
+[ext_resource type="Texture2D" uid="uid://b7hqnci7n1meb" path="res://assets/units/cannon_red.png" id="6_vobso"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5t4rl"]
+atlas = ExtResource("1_cvf8j")
+region = Rect2(0, 0, 800, 800)
+
+[resource]
+script = ExtResource("2_vwl46")
+name = "Cannon"
+description = "High range AOE unit"
+level = 1
+spriteSheetBlue = ExtResource("3_vwl46")
+spriteSheetRed = ExtResource("6_vobso")
+spriteSheetPurple = ExtResource("5_4nyrf")
+spriteSheetGreen = ExtResource("4_ribwu")
+max_hp = 120
+armor = 20
+speed = 30
+range = 1000
+singleTarget = true
+action = 12
+actionSpeed = 1
+icon = SubResource("AtlasTexture_5t4rl")
+metadata/_custom_type_script = "uid://cayakk8o7fjyy"

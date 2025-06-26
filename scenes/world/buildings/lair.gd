@@ -28,6 +28,10 @@ func get_dict():
 func set_dict(dict):
 	self.position = dict["position"]
 
+@rpc("any_peer", "call_local", "reliable")
+func remove():
+	queue_free()
+
 func reload():
 	if has_node("Sprite2D"):
 		$Sprite2D.texture = stats.texture
@@ -37,3 +41,10 @@ func _on_remove_button_pressed() -> void:
 
 func get_island() -> Island:
 	return Game.tileMapLayer.tiles[Game.tileMapLayer.local_to_map(self.global_position)]
+
+func start_animation():
+	$AnimatedSprite2D.visible = true
+	$AnimatedSprite2D.play("default")
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	$AnimatedSprite2D.visible = false

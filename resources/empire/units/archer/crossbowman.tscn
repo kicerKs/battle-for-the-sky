@@ -1,0 +1,288 @@
+[gd_scene load_steps=36 format=3 uid="uid://dwfxjfeqqphto"]
+
+[ext_resource type="Script" uid="uid://cyybcthqo12ku" path="res://scenes/world/units/test_character.gd" id="1_6y4b7"]
+[ext_resource type="Resource" uid="uid://cck0gssvdfa4n" path="res://resources/empire/units/archer/crossbowman.tres" id="2_h3tpk"]
+[ext_resource type="Script" uid="uid://bcmlgj2w55p8f" path="res://common/state_machine.gd" id="3_nuw85"]
+[ext_resource type="Script" uid="uid://dfmwd4i4cvcj5" path="res://scenes/world/units/states/unit_state_moving.gd" id="4_dypn3"]
+[ext_resource type="Script" uid="uid://bu25hbxcgqsnt" path="res://scenes/world/units/states/unit_state_conquering.gd" id="5_0eptb"]
+[ext_resource type="Script" uid="uid://dfp1sreyotxeh" path="res://scenes/world/units/states/unit_state_attacking.gd" id="6_lo221"]
+[ext_resource type="Script" uid="uid://jhhec70pls3g" path="res://scenes/world/units/states/unit_state_idle.gd" id="7_3mqpt"]
+[ext_resource type="Script" uid="uid://4gsx4bajmlk1" path="res://scenes/world/units/states/unit_state_engage.gd" id="8_dr2sq"]
+[ext_resource type="Script" uid="uid://ci5l05gemqu30" path="res://scenes/world/units/states/unit_state_dying.gd" id="9_nt877"]
+[ext_resource type="Script" uid="uid://chixtoay5fbmj" path="res://scenes/world/units/components/MovementComponent.gd" id="10_aa1k5"]
+[ext_resource type="Script" uid="uid://bgjqylyg8052t" path="res://scenes/world/units/components/HealthComponent.gd" id="11_j0w5j"]
+[ext_resource type="Script" uid="uid://bu625gum4lcu2" path="res://scenes/world/units/components/AttackComponent.gd" id="12_lbp76"]
+[ext_resource type="Texture2D" uid="uid://bmsh0s6amr1u8" path="res://assets/resources/unit_test.png" id="13_bbb6x"]
+[ext_resource type="PackedScene" uid="uid://bri2l5ir5eg1u" path="res://scenes/world/projectiles/arrow_projectile.tscn" id="13_nuw85"]
+[ext_resource type="Script" uid="uid://c7ftxhy6tmrtt" path="res://scenes/world/units/animation_generator.gd" id="14_6vyvt"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xb5ci"]
+radius = 8.0
+height = 36.0
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_xb5ci"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("AnimatedSprite2D:flip_h")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Components/HealthComponent:max_hp")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("Components/HealthComponent:current_hp")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath(".:side")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l2a1g"]
+atlas = ExtResource("13_bbb6x")
+region = Rect2(0, 70, 740, 730)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h141o"]
+atlas = ExtResource("13_bbb6x")
+region = Rect2(820, 70, 740, 730)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hyo0f"]
+atlas = ExtResource("13_bbb6x")
+region = Rect2(1640, 70, 740, 730)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12525"]
+atlas = ExtResource("13_bbb6x")
+region = Rect2(2460, 70, 740, 730)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t36qh"]
+atlas = ExtResource("13_bbb6x")
+region = Rect2(0, 870, 740, 730)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qn0t"]
+atlas = ExtResource("13_bbb6x")
+region = Rect2(820, 870, 740, 730)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bud83"]
+atlas = ExtResource("13_bbb6x")
+region = Rect2(1640, 870, 740, 730)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vymlm"]
+atlas = ExtResource("13_bbb6x")
+region = Rect2(2460, 870, 740, 730)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xb5ci"]
+atlas = ExtResource("13_bbb6x")
+region = Rect2(0, 70, 740, 730)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m1kc6"]
+atlas = ExtResource("13_bbb6x")
+region = Rect2(820, 70, 740, 730)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmuja"]
+atlas = ExtResource("13_bbb6x")
+region = Rect2(1640, 70, 740, 730)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hnc1u"]
+atlas = ExtResource("13_bbb6x")
+region = Rect2(2460, 70, 740, 730)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6hfjt"]
+atlas = ExtResource("13_bbb6x")
+region = Rect2(0, 870, 740, 730)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g3gjs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l2a1g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h141o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hyo0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_12525")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t36qh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5qn0t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bud83")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vymlm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xb5ci")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_m1kc6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmuja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hnc1u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6hfjt")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_66boy"]
+radius = 800.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7x4tg"]
+radius = 600.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_66boy"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7x4tg"]
+bg_color = Color(0.340192, 0.698577, 0.227424, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+
+[node name="TestCharacter" type="CharacterBody2D" node_paths=PackedStringArray("movement_component", "health_component", "attack_component", "animation", "nav_agent") groups=["units"]]
+collision_layer = 19
+collision_mask = 17
+input_pickable = true
+script = ExtResource("1_6y4b7")
+stats = ExtResource("2_h3tpk")
+movement_component = NodePath("Components/MovementComponent")
+health_component = NodePath("Components/HealthComponent")
+attack_component = NodePath("Components/AttackComponent")
+side = 2
+animation = NodePath("AnimatedSprite2D")
+nav_agent = NodePath("NavigationAgent2D")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_nuw85")
+initial_state = NodePath("Moving")
+metadata/_custom_type_script = "uid://bcmlgj2w55p8f"
+
+[node name="Moving" type="Node" parent="StateMachine"]
+script = ExtResource("4_dypn3")
+
+[node name="Conquering" type="Node" parent="StateMachine"]
+script = ExtResource("5_0eptb")
+
+[node name="Attacking" type="Node" parent="StateMachine"]
+script = ExtResource("6_lo221")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("7_3mqpt")
+
+[node name="Engage" type="Node" parent="StateMachine"]
+script = ExtResource("8_dr2sq")
+
+[node name="Dying" type="Node" parent="StateMachine"]
+script = ExtResource("9_nt877")
+
+[node name="Components" type="Node" parent="."]
+
+[node name="MovementComponent" type="Node" parent="Components" node_paths=PackedStringArray("testCharacter")]
+script = ExtResource("10_aa1k5")
+testCharacter = NodePath("../..")
+
+[node name="HealthComponent" type="Node" parent="Components"]
+script = ExtResource("11_j0w5j")
+
+[node name="AttackComponent" type="Node" parent="Components"]
+script = ExtResource("12_lbp76")
+projectile_scene = ExtResource("13_nuw85")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 2)
+shape = SubResource("CapsuleShape2D_xb5ci")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_xb5ci")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 25.0
+target_desired_distance = 35.0
+avoidance_enabled = true
+radius = 1.5
+neighbor_distance = 100.0
+avoidance_priority = 0.5
+debug_enabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.07, 0.07)
+sprite_frames = SubResource("SpriteFrames_g3gjs")
+animation = &"walk"
+autoplay = "idle"
+script = ExtResource("14_6vyvt")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -113.0
+offset_top = -75.0
+offset_right = 114.0
+offset_bottom = -58.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "State"
+horizontal_alignment = 1
+
+[node name="DetectionRange" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 16
+collision_mask = 16
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+shape = SubResource("CircleShape2D_66boy")
+metadata/_edit_lock_ = true
+
+[node name="AttackRange" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 18
+collision_mask = 2
+metadata/_edit_lock_ = true
+
+[node name="AttackRangeCollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_7x4tg")
+metadata/_edit_lock_ = true
+
+[node name="HPBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = -34.0
+offset_top = -40.0
+offset_right = 34.0
+offset_bottom = -30.0
+theme_override_styles/background = SubResource("StyleBoxFlat_66boy")
+theme_override_styles/fill = SubResource("StyleBoxFlat_7x4tg")
+show_percentage = false
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://bri2l5ir5eg1u", "uid://cqobkdhf7su8e")
+
+[node name="MultiplayerSpawner2" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://dfd5k0w8lrb38")
+spawn_path = NodePath("..")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="velocity_computed" from="NavigationAgent2D" to="Components/MovementComponent" method="_on_navigation_agent_2d_velocity_computed"]

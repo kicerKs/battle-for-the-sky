@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://dg4qpcmwckbhp"]
+
+[ext_resource type="Script" uid="uid://bfln358spo3h4" path="res://scenes/world/projectiles/remove_building.gd" id="1_jcnaf"]
+[ext_resource type="Texture2D" uid="uid://4a3fd370bpyu" path="res://assets/buildings/building_cloud.png" id="2_tovkh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hipfk"]
+atlas = ExtResource("2_tovkh")
+region = Rect2(0, 0, 1600, 1600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_boih6"]
+atlas = ExtResource("2_tovkh")
+region = Rect2(1600, 0, 1600, 1600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gvvs"]
+atlas = ExtResource("2_tovkh")
+region = Rect2(3200, 0, 1600, 1600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eec2l"]
+atlas = ExtResource("2_tovkh")
+region = Rect2(4800, 0, 1600, 1600)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8o3lk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hipfk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_boih6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2gvvs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eec2l")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="RemoveBuilding" type="Node2D"]
+script = ExtResource("1_jcnaf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.15, 0.15)
+sprite_frames = SubResource("SpriteFrames_8o3lk")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

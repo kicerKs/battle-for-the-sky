@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="TrainerStats" load_steps=6 format=3 uid="uid://b8ceqm8iws2n5"]
+
+[ext_resource type="Script" uid="uid://bg5yhrle0o8gv" path="res://resources/empire/buildings/trainer_stats.gd" id="1_nylxy"]
+[ext_resource type="PackedScene" uid="uid://dwfxjfeqqphto" path="res://resources/empire/units/archer/crossbowman.tscn" id="2_ojyju"]
+[ext_resource type="Texture2D" uid="uid://88yscmt360t2" path="res://assets/units/archer_blue_up.png" id="3_jyhbx"]
+[ext_resource type="Resource" uid="uid://cck0gssvdfa4n" path="res://resources/empire/units/archer/crossbowman.tres" id="4_nny80"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_punrv"]
+atlas = ExtResource("3_jyhbx")
+region = Rect2(0, 0, 800, 800)
+
+[resource]
+script = ExtResource("1_nylxy")
+training_time = 15
+training_cost = Dictionary[int, int]({
+0: 0,
+1: 0,
+2: 0,
+3: 0,
+4: 0
+})
+unit = ExtResource("2_ojyju")
+unit_stats = ExtResource("4_nny80")
+unit_icon = SubResource("AtlasTexture_punrv")
+metadata/_custom_type_script = "uid://bg5yhrle0o8gv"
