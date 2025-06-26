@@ -40,8 +40,7 @@ func register_child(node: Node):
 			set_starting_islands.rpc(red_island_key, Lobby.Factions.PLAYER_RED)
 			
 			if len(Lobby.players) > 1:
-				#var blue_island_key = Vector2i(0, last_island_y)
-				var blue_island_key = Vector2i(0, 1)
+				var blue_island_key = Vector2i(0, last_island_y)
 				var blue_island = tiles[blue_island_key]
 				blue_island.ownership = Lobby.Factions.PLAYER_BLUE
 				tiles[blue_island_key] = blue_island
