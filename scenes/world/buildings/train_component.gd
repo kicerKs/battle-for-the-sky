@@ -132,13 +132,14 @@ func hide_sleep():
 	%BuildingSleeps.visible = false
 
 func complete_training(): 
-	_is_training = false
-	new_unit.current_front = current_front
-	new_unit.owner = get_tree().current_scene.get_node("World")
-	get_tree().current_scene.get_node("World").add_child(new_unit)
-	new_unit.global_position = spawn_position
-	if _training_loop:
-		start_training()
+	if multiplayer.is_server():
+		_is_training = false
+		new_unit.current_front = current_front
+		new_unit.owner = get_tree().current_scene.get_node("World")
+		get_tree().current_scene.get_node("World").add_child(new_unit)
+		new_unit.global_position = spawn_position
+		if _training_loop:
+			start_training()
 
 func get_training_progress() -> float:
 	return 1.0 - (_current_train_timer / stats.training_time)
