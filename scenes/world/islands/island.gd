@@ -103,6 +103,7 @@ func set_connections(connections):
 	update_sprites()
 
 func update_sprites():
+	buildings_number = %MainNavigationRegion.get_child_count()
 	match ownership:
 		Lobby.Factions.MONSTERS:
 			$Flag.texture = load("res://assets/buildings/flag_neutral.png")
@@ -151,7 +152,7 @@ func add_building(building):
 	building.position -= self.position
 	%MainNavigationRegion.add_child(building)
 	%MainNavigationRegion.bake_navigation_polygon()
-	buildings_number+=1
+	buildings_number = %MainNavigationRegion.get_child_count()
 	update_sprites()
 
 var remove_scene = load("res://scenes/world/projectiles/remove_building.tscn")
@@ -162,13 +163,13 @@ func remove_building(building):
 	#%MainNavigationRegion.remove_child(building)
 	#building.queue_free()
 	%MainNavigationRegion.bake_navigation_polygon()
-	buildings_number-=1
+	buildings_number = %MainNavigationRegion.get_child_count()
 	update_sprites()
 
 @rpc("any_peer", "call_local", "reliable")
 func setup_remove_scene(pos):
 	if multiplayer.is_server():
-		buildings_number -= 1
+		buildings_number = %MainNavigationRegion.get_child_count()
 	var remove_scene_inst = remove_scene.instantiate()
 	remove_scene_inst.position = pos
 	add_child(remove_scene_inst)
