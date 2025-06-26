@@ -50,6 +50,7 @@ func generate_resources():
 	if Game.tileMapLayer.tiles[Game.tileMapLayer.local_to_map(owner.global_position)].ownership == Lobby.player_info["color"]:
 		for res in stats.generatingResources:
 			if stats.generatingResources[res] != 0:
+				reload_resource_indicator()
 				resource_indicator.visible = true
 				Game.change_player_resource(res, int(stats.generatingResources[res] * get_island_multiplayer(res)))
 				# play animation here

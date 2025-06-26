@@ -167,6 +167,8 @@ func remove_building(building):
 
 @rpc("any_peer", "call_local", "reliable")
 func setup_remove_scene(pos):
+	if multiplayer.is_server():
+		buildings_number -= 1
 	var remove_scene_inst = remove_scene.instantiate()
 	remove_scene_inst.position = pos
 	add_child(remove_scene_inst)
