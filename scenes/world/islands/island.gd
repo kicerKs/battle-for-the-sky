@@ -10,6 +10,14 @@ class_name Island
 	Game.Resources.IRON: 1.0
 }
 
+var unit_count = {
+	Lobby.Factions.MONSTERS: 0,
+	Lobby.Factions.PLAYER_RED: 0,
+	Lobby.Factions.PLAYER_BLUE: 0,
+	Lobby.Factions.PLAYER_GREEN: 0,
+	Lobby.Factions.PLAYER_PURPLE: 0
+}
+
 signal island_conquered
 
 @onready var progress_bar = $CustomProgressBar
@@ -186,3 +194,11 @@ func remove_all_buildings():
 
 func sync_conquering_bar():
 	progress_bar.value = progress
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body is TestCharacter or body is TestMonster:
+		unit_count[body.side] += 1
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if body is TestCharacter or body is TestMonster:
+		unit_count[body.side] -= 1
