@@ -23,6 +23,7 @@ func _physics_process(delta: float) -> void:
 			end_position = target.global_position
 		elif direction == null:
 			queue_free()
+			return
 		global_position += direction * speed * delta
 		g_pos = global_position
 		$Sprite2D.look_at(end_position)
