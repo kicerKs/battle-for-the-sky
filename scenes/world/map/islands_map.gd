@@ -120,7 +120,7 @@ func add_lairs():
 					collisions = space_state.intersect_shape(query)
 					
 				$"..".remove_child(lair)
-				$"..".add_building.rpc(key, lair_scene, lair.get_dict())
+				$"..".add_building.rpc(key, lair_scene, lair.get_dict(), added_lairs)
 				#tiles[key].add_building(lair)
 				added_lairs += 1
 
