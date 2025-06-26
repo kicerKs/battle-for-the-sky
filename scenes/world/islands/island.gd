@@ -159,8 +159,8 @@ var remove_scene = load("res://scenes/world/projectiles/remove_building.tscn")
 
 func remove_building(building):
 	setup_remove_scene.rpc(building.position)
+	%MainNavigationRegion.remove_child(building)
 	building.remove.rpc()
-	#%MainNavigationRegion.remove_child(building)
 	#building.queue_free()
 	%MainNavigationRegion.bake_navigation_polygon()
 	buildings_number = %MainNavigationRegion.get_child_count()

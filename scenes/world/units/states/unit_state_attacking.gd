@@ -55,7 +55,10 @@ func update(delta: float) -> void:
 		if owner.heal_component.target == null or owner.heal_component.target not in array or owner.heal_component.target.health_component.is_max_hp():
 			#print(owner.heal_component.target, owner.heal_component.target.health_component.is_max_hp())
 			change_state.emit(ENGAGE)
-	
+	if owner.attack_component.target.global_position.x < owner.global_position.x:
+		owner.animation.flip_h = true
+	else:
+		owner.animation.flip_h = false
 	
 	# if no enemy nearby
 	#	if state_machine.previous_state_name == CONQUERING:
