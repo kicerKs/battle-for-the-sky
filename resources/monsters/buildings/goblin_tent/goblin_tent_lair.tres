@@ -11,9 +11,9 @@ region = Rect2(0, 0, 800, 800)
 
 [resource]
 script = ExtResource("1_snqnp")
-training_time = 8
+training_time = 10
 unit = ExtResource("2_gsnyx")
 unit_stats = ExtResource("4_uby6w")
 unit_icon = SubResource("AtlasTexture_v2ali")
-unit_limit = 3
+unit_limit = 5
 metadata/_custom_type_script = "uid://cgn4rw1tmlctg"

@@ -11,7 +11,7 @@ region = Rect2(0, 0, 800, 800)
 
 [resource]
 script = ExtResource("1_7su6v")
-training_time = 10
+training_time = 14
 unit = ExtResource("2_nmj4x")
 unit_stats = ExtResource("4_krcc1")
 unit_icon = SubResource("AtlasTexture_v2ali")

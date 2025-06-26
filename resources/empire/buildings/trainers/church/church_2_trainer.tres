@@ -14,10 +14,10 @@ script = ExtResource("1_0funl")
 training_time = 15
 training_cost = Dictionary[int, int]({
 0: 0,
-1: 0,
+1: 10,
 2: 0,
-3: 0,
-4: 0
+3: 10,
+4: 80
 })
 unit = ExtResource("2_1iaec")
 unit_stats = ExtResource("4_8wgj7")

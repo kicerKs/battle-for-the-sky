@@ -14,8 +14,8 @@ icon = ExtResource("1_0ls33")
 cost = Dictionary[int, int]({
 0: 0,
 1: 0,
-2: 0,
+2: 50,
 3: 0,
-4: 0
+4: 150
 })
 metadata/_custom_type_script = "uid://cnpqub73glek8"

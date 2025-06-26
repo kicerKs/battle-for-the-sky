@@ -4,10 +4,10 @@
 
 [resource]
 script = ExtResource("1_6mau4")
-generatingTime = 10
+generatingTime = 4
 generatingResources = Dictionary[int, int]({
 0: 0,
-1: 25,
+1: 60,
 2: 0,
 3: 0,
 4: 0

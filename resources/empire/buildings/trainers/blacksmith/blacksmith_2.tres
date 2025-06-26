@@ -12,10 +12,10 @@ is_upgraded = true
 texture = ExtResource("3_ko5wg")
 icon = ExtResource("1_x328e")
 cost = Dictionary[int, int]({
-0: 0,
+0: 30,
 1: 0,
-2: 0,
-3: 0,
-4: 0
+2: 40,
+3: 20,
+4: 50
 })
 metadata/_custom_type_script = "uid://cnpqub73glek8"

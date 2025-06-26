@@ -11,7 +11,7 @@ is_upgraded = false
 texture = ExtResource("1_lwmbr")
 icon = ExtResource("1_lwmbr")
 cost = Dictionary[int, int]({
-0: 10,
+0: 15,
 1: 0,
 2: 0,
 3: 0,

@@ -11,13 +11,13 @@ region = Rect2(0, 0, 800, 800)
 
 [resource]
 script = ExtResource("1_5upym")
-training_time = 15
+training_time = 8
 training_cost = Dictionary[int, int]({
-0: 0,
-1: 0,
+0: 5,
+1: 10,
 2: 0,
 3: 0,
-4: 0
+4: 5
 })
 unit = ExtResource("2_iivuv")
 unit_stats = ExtResource("4_qsqsx")
