@@ -63,14 +63,6 @@ offset_right = 1135.0
 offset_bottom = 906.0
 theme_override_constants/separation = 50
 
-[node name="SinglePlayerButton" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(350, 75)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 3
-theme = ExtResource("3_r70wa")
-text = "Singleplayer"
-
 [node name="HostGameButton" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(350, 75)
 layout_mode = 2
@@ -201,7 +193,6 @@ size_flags_horizontal = 3
 theme = ExtResource("3_r70wa")
 text = "Cancel"
 
-[connection signal="pressed" from="VBoxContainer/SinglePlayerButton" to="." method="_on_single_but_pressed"]
 [connection signal="pressed" from="VBoxContainer/HostGameButton" to="." method="_on_host_game_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/JoinGameButton" to="." method="_on_multi_but_pressed"]
 [connection signal="pressed" from="VBoxContainer/SettingsButton" to="." method="_on_set_but_pressed"]
