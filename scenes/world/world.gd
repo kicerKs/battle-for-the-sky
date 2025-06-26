@@ -59,9 +59,10 @@ func add_building(target_island, scene_path, building_dict):
 	var building = load(scene_path).instantiate()
 	building.set_dict(building_dict)
 	building.start_animation()
+	Game.tileMapLayer.tiles[target_island].add_building(building)
 	if multiplayer.is_server():
 		activate_building(building, target_island)
-	Game.tileMapLayer.tiles[target_island].add_building(building)
+	
 
 # Building starts to work after placed on map
 func activate_building(building, target_island):

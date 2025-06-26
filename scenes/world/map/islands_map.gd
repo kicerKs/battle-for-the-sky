@@ -196,7 +196,7 @@ func check_for_endgame():
 	
 	if len(still_in_game) == 1:
 		player_won.rpc(still_in_game[0])
-	
+
 @rpc("call_local", "reliable", "any_peer")
 func player_eliminated(key):
 	SignalBus.player_eliminated.emit(key)

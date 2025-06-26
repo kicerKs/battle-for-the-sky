@@ -43,9 +43,12 @@ var front_change_mode: bool = false:
 func activate():
 	is_active = true
 	spawn_position = get_parent().global_position
-	current_front = search_component.find_nearest_enemy_island(
+	change_front.rpc(search_component.find_nearest_enemy_island(
 		Game.tileMapLayer.local_to_map(spawn_position)
-	)
+	))
+	#current_front = search_component.find_nearest_enemy_island(
+	#	Game.tileMapLayer.local_to_map(spawn_position)
+	#)
 	_training_loop = true
 	
 	var line = owner.get_node("Buttons").get_node("Line2D")
@@ -67,7 +70,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if front_change_mode:
 		if event is InputEventMouse and event.is_pressed():
 			if event.button_index == MOUSE_BUTTON_LEFT:
-				change_front.rpc(owner.get_global_mouse_position())
+				change_front.rpc(Game.tileMapLayer.local_to_map(owner.get_global_mouse_position()))
 				#current_front = Game.tileMapLayer.local_to_map(owner.get_global_mouse_position())
 
 func _process(delta: float) -> void:
@@ -146,11 +149,12 @@ func _on_front_change_button_pressed() -> void:
 	front_change_mode = true
 
 func _on_auto_front_change(island: Vector2i):
-	current_front = search_component.find_nearest_enemy_island(island)
+	change_front.rpc(search_component.find_nearest_enemy_island(island))
+	#current_front = search_component.find_nearest_enemy_island(island)
 
 @rpc("call_local", "any_peer", "reliable")
 func change_front(pos):
-	current_front = Game.tileMapLayer.local_to_map(pos)
+	current_front = pos
 	var line = owner.get_node("Buttons").get_node("Line2D")
 	line.global_position = Vector2(0, 0)
 	line.clear_points()
