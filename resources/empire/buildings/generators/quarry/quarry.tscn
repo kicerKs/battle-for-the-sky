@@ -20,6 +20,9 @@ size = Vector2(200, 200)
 properties/0/path = NodePath("GeneratorComponent:generation_progress")
 properties/0/spawn = true
 properties/0/replication_mode = 1
+properties/1/path = NodePath("GeneratorComponent:resource_indicator_starting_position")
+properties/1/spawn = true
+properties/1/replication_mode = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lvc3b"]
 atlas = ExtResource("12_ybi76")

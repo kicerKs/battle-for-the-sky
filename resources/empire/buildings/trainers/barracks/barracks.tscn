@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://kuij88i7j4x1" path="res://scenes/world/buildings/upgrade_component.tscn" id="6_ey3yq"]
 [ext_resource type="Resource" uid="uid://dx47pw4pa83d4" path="res://resources/empire/buildings/trainers/barracks/barracks_2.tres" id="7_2rome"]
 [ext_resource type="Resource" uid="uid://crrwpuirefdbu" path="res://resources/empire/buildings/trainers/barracks/barracks_2_trainer.tres" id="8_3lty8"]
-[ext_resource type="Texture2D" uid="uid://d1fd6ltnjv8gf" path="res://assets/buildings/house 1.png" id="9_voixf"]
+[ext_resource type="Texture2D" uid="uid://f026odxk54xh" path="res://assets/buildings/barrack 1.png" id="9_6b0r3"]
 [ext_resource type="Texture2D" uid="uid://c555ryq6v6pc" path="res://assets/icons/building can upgrade.png" id="10_4rauo"]
 [ext_resource type="Texture2D" uid="uid://bpetq6rubw0vm" path="res://assets/resources/attackspeed.png" id="11_7lrv1"]
 [ext_resource type="Texture2D" uid="uid://cdki4fbh54yuc" path="res://assets/buildings/exclamation_status.png" id="12_ycxbu"]
@@ -90,7 +90,7 @@ trainer_stats = ExtResource("8_3lty8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("9_voixf")
+texture = ExtResource("9_6b0r3")
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -191,6 +191,7 @@ texture = ExtResource("13_uyqnq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
+position = Vector2(17, 98)
 scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_yorsq")
 

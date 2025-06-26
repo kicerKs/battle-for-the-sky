@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://kuij88i7j4x1" path="res://scenes/world/buildings/upgrade_component.tscn" id="6_r2qss"]
 [ext_resource type="Resource" uid="uid://cqsqip4rifeww" path="res://resources/empire/buildings/trainers/blacksmith/blacksmith_2.tres" id="7_6x7xc"]
 [ext_resource type="Resource" uid="uid://bannpx7p6mlsy" path="res://resources/empire/buildings/trainers/blacksmith/blacksmith_2_trainer.tres" id="8_iuhdp"]
-[ext_resource type="Texture2D" uid="uid://d1fd6ltnjv8gf" path="res://assets/buildings/house 1.png" id="9_6pq68"]
+[ext_resource type="Texture2D" uid="uid://i3cn6dmmxiys" path="res://assets/buildings/blacksmith 1.png" id="9_ny0qx"]
 [ext_resource type="Texture2D" uid="uid://c555ryq6v6pc" path="res://assets/icons/building can upgrade.png" id="10_p2t3o"]
 [ext_resource type="Texture2D" uid="uid://bpetq6rubw0vm" path="res://assets/resources/attackspeed.png" id="11_nqewg"]
 [ext_resource type="Texture2D" uid="uid://cdki4fbh54yuc" path="res://assets/buildings/exclamation_status.png" id="12_5lhkp"]
@@ -90,7 +90,7 @@ trainer_stats = ExtResource("8_iuhdp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("9_6pq68")
+texture = ExtResource("9_ny0qx")
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -191,6 +191,7 @@ texture = ExtResource("13_gocfj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
+position = Vector2(5, 94)
 scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_yorsq")
 

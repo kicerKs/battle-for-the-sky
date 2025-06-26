@@ -15,6 +15,9 @@ const FACTION_COLORS = {
 	Factions.PLAYER_GREEN: Color.GREEN
 }
 
+var next_player_color = 2
+var colors_changed = [1]
+
 signal player_connected(peer_id, player_info)
 signal player_disconnected(peer_id)
 signal server_disconnected
@@ -23,14 +26,14 @@ signal connection_failed
 
 const DEFAULT_SERVER_PORT = 3907
 const DEFAULT_SERVER_IP = "127.0.0.1"
-const MAX_CONNECTIONS = 2
+const MAX_CONNECTIONS = 4
 
 var players_loaded = 0
 
 var players = {}
 var player_info = {
 	"name": "Oskar",
-	"color": Factions.PLAYER_BLUE
+	"color": Factions.PLAYER_RED
 }
 var last_used_ip
 var last_used_port
@@ -70,7 +73,6 @@ func join_game(address = "", port = -1):
 	save_config()
 	var peer = ENetMultiplayerPeer.new()
 	var error = peer.create_client(address, port)
-	print(error)
 	if error:
 		return error
 	multiplayer.multiplayer_peer = peer
@@ -98,15 +100,32 @@ func get_free_factions():
 	return table
 
 func _on_player_connected(id):
+	print("player connected ", multiplayer.get_unique_id())
 	_register_player.rpc_id(id, player_info)
 
 @rpc("any_peer", "reliable")
 func _register_player(new_player_info):
+	if multiplayer.is_server():
+		if multiplayer.get_remote_sender_id() not in colors_changed:
+			new_player_info["color"] = next_player_color
+			next_player_color += 1
+			colors_changed.append(multiplayer.get_remote_sender_id())
+			update_color.rpc(multiplayer.get_remote_sender_id(), new_player_info)
 	var new_player_id = multiplayer.get_remote_sender_id()
-	players[new_player_id] = new_player_info
-	player_connected.emit(new_player_id, new_player_info)
+	if !players.has(new_player_id):
+		players[new_player_id] = new_player_info
+		player_connected.emit(new_player_id, new_player_info)
+	else:
+		player_connected.emit(new_player_id, players[new_player_id])
 	if new_player_id == 1 and !multiplayer.is_server():
 		get_tree().change_scene_to_file("res://scenes/ui/lobby_menu/lobby_menu.tscn")
+
+@rpc("any_peer", "reliable", "call_local")
+func update_color(id, play_inf):
+	if id == multiplayer.get_unique_id():
+		player_info = play_inf
+	players[id] = play_inf
+	SignalBus.player_info_changed.emit(id)
 
 func _on_player_disconnected(id):
 	players.erase(id)
@@ -114,7 +133,7 @@ func _on_player_disconnected(id):
 
 func _on_connected_ok():
 	var peer_id = multiplayer.get_unique_id()
-	player_info["color"] = Factions.PLAYER_BLUE
+	#player_info["color"] = Factions.PLAYER_BLUE
 	players[peer_id] = player_info
 	player_connected.emit(peer_id, player_info)
 

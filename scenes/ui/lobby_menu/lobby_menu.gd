@@ -14,7 +14,6 @@ func _ready():
 		%StartButton.disabled = true
 	for key in Lobby.players.keys():
 		_add_new_player(key, Lobby.players[key])
-	print(Lobby.players)
 	var host_name = Lobby.players[1]["name"]
 	$PanelContainer/VBoxContainer/Label.text = host_name + "'s Game"
 

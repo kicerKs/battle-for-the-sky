@@ -24,23 +24,43 @@ func register_child(node: Node):
 	# Tutaj info z wygenerowanej mapy, wrzucimy to potem może w jeden resource, albo i nie, idk
 	#node.init(IslandData.new(), IslandDevelopmentData.IslandOwner.PLAYER_RED)
 	loaded_islands+=1
+	if multiplayer.is_server():
+		tiles[local_to_map(node.position)].connect("island_conquered", check_for_endgame)
 	if loaded_islands == len(get_used_cells()):
 		#map_loaded.emit()
 		if multiplayer.is_server():
 			# ### SET OWNERSHIP ###
-			var red_island_key = Vector2i(0, 0)
-			var red_island = tiles[red_island_key]
-			
+			var last_island_x = get_used_rect().size.x-1
 			var last_island_y = get_used_rect().size.y-1
 			
-			var blue_island_key = Vector2i(0, last_island_y)
-			var blue_island = tiles[blue_island_key]
+			var red_island_key = Vector2i(0, 0)
+			var red_island = tiles[red_island_key]
 			red_island.ownership = Lobby.Factions.PLAYER_RED
-			blue_island.ownership = Lobby.Factions.PLAYER_BLUE
 			tiles[red_island_key] = red_island
-			tiles[blue_island_key] = blue_island
+			set_starting_islands.rpc(red_island_key, Lobby.Factions.PLAYER_RED)
 			
-			set_starting_islands.rpc(red_island_key, blue_island_key)
+			if len(Lobby.players) > 1:
+				var blue_island_key = Vector2i(0, last_island_y)
+				var blue_island = tiles[blue_island_key]
+				blue_island.ownership = Lobby.Factions.PLAYER_BLUE
+				tiles[blue_island_key] = blue_island
+				set_starting_islands.rpc(blue_island_key, Lobby.Factions.PLAYER_BLUE)
+			
+			if len(Lobby.players) > 2:
+				var purple_island_key = Vector2i(last_island_x, 0)
+				var purple_island = tiles[purple_island_key]
+				purple_island.ownership = Lobby.Factions.PLAYER_PURPLE
+				tiles[purple_island_key] = purple_island
+				set_starting_islands.rpc(purple_island_key, Lobby.Factions.PLAYER_PURPLE)
+			
+			if len(Lobby.players) > 3:
+				var green_island_key = Vector2i(last_island_x, last_island_y)
+				var green_island = tiles[green_island_key]
+				green_island.ownership = Lobby.Factions.PLAYER_GREEN
+				tiles[green_island_key] = green_island
+				set_starting_islands.rpc(green_island_key, Lobby.Factions.PLAYER_GREEN)
+			
+			setup_camera.rpc()
 			
 			# ### ADD LAIRS HERE ###
 			
@@ -53,9 +73,13 @@ func register_child(node: Node):
 			# ###########################
 
 @rpc("any_peer", "call_local", "reliable")
-func set_starting_islands(r_key, b_key):
-	starting_islands[Lobby.Factions.PLAYER_RED] = r_key
-	starting_islands[Lobby.Factions.PLAYER_BLUE] = b_key
+func set_starting_islands(key, color):
+	starting_islands[color] = key
+	#starting_islands[Lobby.Factions.PLAYER_RED] = r_key
+	#starting_islands[Lobby.Factions.PLAYER_BLUE] = b_key
+
+@rpc("any_peer", "call_local", "reliable")
+func setup_camera():
 	if Game.camera != null:
 		Game.camera.setup_camera()
 
@@ -148,3 +172,16 @@ func set_generated_connections(connections):
 		#if middle_connections["E"] == 1:
 		#	middle_connections["W"] = 1
 		tiles[Vector2i(x, last_cell_id.y/2)].set_connections(middle_connections)
+
+func check_for_endgame():
+	var remaining_islands = {
+		Lobby.Factions.PLAYER_RED: 0,
+		Lobby.Factions.PLAYER_BLUE: 0,
+		Lobby.Factions.PLAYER_GREEN: 0,
+		Lobby.Factions.PLAYER_PURPLE: 0
+	}
+	for key in tiles.keys():
+		if tiles[key].ownership != Lobby.Factions.MONSTERS:
+			remaining_islands[tiles[key].ownership] += 1
+	
+	print(remaining_islands)

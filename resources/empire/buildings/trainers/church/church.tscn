@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://kuij88i7j4x1" path="res://scenes/world/buildings/upgrade_component.tscn" id="6_wq785"]
 [ext_resource type="Resource" uid="uid://dj0k7itcruj7f" path="res://resources/empire/buildings/trainers/church/church_2.tres" id="7_6kvhb"]
 [ext_resource type="Resource" uid="uid://5h8p6sjhtr7" path="res://resources/empire/buildings/trainers/church/church_2_trainer.tres" id="8_vrye1"]
-[ext_resource type="Texture2D" uid="uid://d1fd6ltnjv8gf" path="res://assets/buildings/house 1.png" id="9_suqs3"]
+[ext_resource type="Texture2D" uid="uid://beo1uvhw0vg16" path="res://assets/buildings/church 1.png" id="9_sphmx"]
 [ext_resource type="Texture2D" uid="uid://c555ryq6v6pc" path="res://assets/icons/building can upgrade.png" id="10_5esiy"]
 [ext_resource type="Texture2D" uid="uid://bpetq6rubw0vm" path="res://assets/resources/attackspeed.png" id="11_svrvu"]
 [ext_resource type="Texture2D" uid="uid://cdki4fbh54yuc" path="res://assets/buildings/exclamation_status.png" id="12_i28mf"]
@@ -90,7 +90,7 @@ trainer_stats = ExtResource("8_vrye1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("9_suqs3")
+texture = ExtResource("9_sphmx")
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -191,6 +191,7 @@ texture = ExtResource("13_nqfh6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
+position = Vector2(12, 86)
 scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_yorsq")
 

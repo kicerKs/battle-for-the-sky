@@ -6,7 +6,7 @@ class_name GeneratorComponent
 @export var generation_progress: float
 @export var resource_indicator: HBoxContainer
 
-var resource_indicator_starting_position
+@export var resource_indicator_starting_position: Vector2
 
 var is_active: bool = false
 

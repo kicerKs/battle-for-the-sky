@@ -1,5 +1,7 @@
 extends Node
 
+signal player_info_changed(id)
+
 signal building_clicked(building: Building)
 signal unit_clicked(unit: TestCharacter)
 signal monster_clicked(unit: TestMonster)

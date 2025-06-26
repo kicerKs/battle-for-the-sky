@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://kuij88i7j4x1" path="res://scenes/world/buildings/upgrade_component.tscn" id="6_tvixt"]
 [ext_resource type="Resource" uid="uid://boo2u0hm5lgjd" path="res://resources/empire/buildings/trainers/archery_range/archery_range_2.tres" id="7_14hv5"]
 [ext_resource type="Resource" uid="uid://b8ceqm8iws2n5" path="res://resources/empire/buildings/trainers/archery_range/archery_range_2_trainer.tres" id="8_up0o4"]
-[ext_resource type="Texture2D" uid="uid://d1fd6ltnjv8gf" path="res://assets/buildings/house 1.png" id="9_pe3at"]
+[ext_resource type="Texture2D" uid="uid://drawmidnc7qr0" path="res://assets/buildings/archery 1.png" id="9_i5af2"]
 [ext_resource type="Texture2D" uid="uid://c555ryq6v6pc" path="res://assets/icons/building can upgrade.png" id="10_k4vpy"]
 [ext_resource type="Texture2D" uid="uid://bpetq6rubw0vm" path="res://assets/resources/attackspeed.png" id="11_07f80"]
 [ext_resource type="Texture2D" uid="uid://cdki4fbh54yuc" path="res://assets/buildings/exclamation_status.png" id="12_e75eh"]
@@ -90,7 +90,7 @@ trainer_stats = ExtResource("8_up0o4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("9_pe3at")
+texture = ExtResource("9_i5af2")
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -191,6 +191,7 @@ texture = ExtResource("13_montl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
+position = Vector2(13, 61)
 scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_yorsq")
 

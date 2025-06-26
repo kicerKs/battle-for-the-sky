@@ -90,6 +90,10 @@ func update_sprites():
 			$Flag.texture = load("res://assets/buildings/flag_red.png")
 		Lobby.Factions.PLAYER_BLUE:
 			$Flag.texture = load("res://assets/buildings/flag_blue.png")
+		Lobby.Factions.PLAYER_PURPLE:
+			$Flag.texture = load("res://assets/buildings/flag_purple.png")
+		Lobby.Factions.PLAYER_GREEN:
+			$Flag.texture = load("res://assets/buildings/flag_green.png")
 		_:
 			$Flag.texture = load("res://assets/buildings/flag_red.png")
 	%BridgeSW.visible = connections["SW"]

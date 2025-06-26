@@ -279,6 +279,7 @@ show_percentage = false
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://bri2l5ir5eg1u", "uid://cqobkdhf7su8e")
+spawn_path = NodePath("../Components/AttackComponent")
 
 [node name="MultiplayerSpawner2" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://dfd5k0w8lrb38")

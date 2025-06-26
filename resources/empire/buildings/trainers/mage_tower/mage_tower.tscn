@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://kuij88i7j4x1" path="res://scenes/world/buildings/upgrade_component.tscn" id="6_kvgdg"]
 [ext_resource type="Resource" uid="uid://ftp2fog15or1" path="res://resources/empire/buildings/trainers/mage_tower/mage_tower_2.tres" id="7_v3r77"]
 [ext_resource type="Resource" uid="uid://b14jb38ibos4k" path="res://resources/empire/buildings/trainers/mage_tower/mage_tower_2_trainer.tres" id="8_c18p3"]
-[ext_resource type="Texture2D" uid="uid://d1fd6ltnjv8gf" path="res://assets/buildings/house 1.png" id="9_anah2"]
+[ext_resource type="Texture2D" uid="uid://b4t45l6c20vq7" path="res://assets/buildings/mage 1.png" id="9_sd6ds"]
 [ext_resource type="Texture2D" uid="uid://c555ryq6v6pc" path="res://assets/icons/building can upgrade.png" id="10_hdm0k"]
 [ext_resource type="Texture2D" uid="uid://bpetq6rubw0vm" path="res://assets/resources/attackspeed.png" id="11_aw340"]
 [ext_resource type="Texture2D" uid="uid://cdki4fbh54yuc" path="res://assets/buildings/exclamation_status.png" id="12_8e1ai"]
@@ -90,7 +90,7 @@ trainer_stats = ExtResource("8_c18p3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("9_anah2")
+texture = ExtResource("9_sd6ds")
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -191,6 +191,7 @@ texture = ExtResource("13_0hals")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
+position = Vector2(11, 87)
 scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_yorsq")
 
