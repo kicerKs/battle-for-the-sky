@@ -23,7 +23,7 @@ func _unhandled_input(event: InputEvent) -> void:
 							remove_child(placement_building)
 							for res in placement_building.stats.cost.keys():
 								Game.change_player_resource(res, -placement_building.stats.cost[res])
-							add_building.rpc(target_island, building_path, placement_building.get_dict())
+							add_building.rpc(target_island, building_path, placement_building.get_dict(), i)
 							placement_mode = false
 
 func _ready():
@@ -58,10 +58,10 @@ func building_selected(building):
 	add_child(placement_building)
 
 @rpc("any_peer", "call_local", "reliable")
-func add_building(target_island, scene_path, building_dict):
+func add_building(target_island, scene_path, building_dict, number):
 	var building = load(scene_path).instantiate()
-	building.name = "Building"+str(i)
-	i+=1
+	building.name = "Building"+str(number)
+	i = number + 1
 	building.set_dict(building_dict)
 	building.start_animation()
 	Game.tileMapLayer.tiles[target_island].add_building(building)
