@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dhwh85gk0mnbj"]
+[gd_scene load_steps=23 format=3 uid="uid://dhwh85gk0mnbj"]
 
 [ext_resource type="Script" uid="uid://dkfjkrmloyb8q" path="res://scenes/world/buildings/building.gd" id="1_02ldp"]
 [ext_resource type="Resource" uid="uid://bwu251wae47gl" path="res://resources/empire/buildings/generators/gold_mine/gold_mine_1.tres" id="2_a5uq4"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://def8x7rbpe8dm" path="res://assets/resources/gold.png" id="10_sx7gv"]
 [ext_resource type="Texture2D" uid="uid://c555ryq6v6pc" path="res://assets/icons/building can upgrade.png" id="11_flx3t"]
 [ext_resource type="Texture2D" uid="uid://4a3fd370bpyu" path="res://assets/buildings/building_cloud.png" id="12_83db8"]
+[ext_resource type="Texture2D" uid="uid://d1v1g2dia2tjj" path="res://assets/icons/bomb.png" id="13_edxb7"]
 [ext_resource type="AudioStream" uid="uid://1r2uqoa3qdn6" path="res://assets/audio/budowanie (freesound_community).mp3" id="14_sj8ud"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_atpml"]
@@ -153,7 +154,8 @@ theme = ExtResource("9_sx7gv")
 [node name="RemoveButton" type="Button" parent="Buttons/PanelContainer3"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "X"
+icon = ExtResource("13_edxb7")
+expand_icon = true
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_a87ni")

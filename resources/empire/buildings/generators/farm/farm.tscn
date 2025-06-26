@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://l7nunxuldoil"]
+[gd_scene load_steps=23 format=3 uid="uid://l7nunxuldoil"]
 
 [ext_resource type="Script" uid="uid://dkfjkrmloyb8q" path="res://scenes/world/buildings/building.gd" id="1_5074k"]
 [ext_resource type="Resource" uid="uid://cs8fvq07r284g" path="res://resources/empire/buildings/generators/farm/farm_1.tres" id="2_8mv27"]
@@ -13,6 +13,7 @@
 [ext_resource type="Theme" uid="uid://mr4lptrp8b4w" path="res://assets/themes/buiding_ui_theme.tres" id="11_74udv"]
 [ext_resource type="Texture2D" uid="uid://c555ryq6v6pc" path="res://assets/icons/building can upgrade.png" id="11_ljssv"]
 [ext_resource type="Texture2D" uid="uid://4a3fd370bpyu" path="res://assets/buildings/building_cloud.png" id="12_up18v"]
+[ext_resource type="Texture2D" uid="uid://d1v1g2dia2tjj" path="res://assets/icons/bomb.png" id="13_mesee"]
 [ext_resource type="AudioStream" uid="uid://1r2uqoa3qdn6" path="res://assets/audio/budowanie (freesound_community).mp3" id="14_770t7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_atpml"]
@@ -154,7 +155,8 @@ scale = Vector2(0.75, 0.75)
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("11_74udv")
-text = "X"
+icon = ExtResource("13_mesee")
+expand_icon = true
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_a87ni")
