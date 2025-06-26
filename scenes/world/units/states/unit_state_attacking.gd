@@ -9,11 +9,35 @@ func on_enter() -> void:
 	timer = attack_speed
 
 func physics_update(delta: float) -> void:
-	unit.movement_component.update_movement(delta)
+	var original_velocity = unit.movement_component.get_velocity()
 	unit.move_and_slide()
-	for i in unit.get_slide_collision_count():
-		var collision = unit.get_slide_collision(i)
-		unit.movement_component.add_collision(collision.get_remainder())
+	
+	# Handle collisions
+	if unit.get_slide_collision_count() > 0:
+		var total_repulsion = Vector2.ZERO
+		var collision_count = 0
+		
+		# Collect collision data
+		for i in unit.get_slide_collision_count():
+			var collision = unit.get_slide_collision(i)
+			var collider = collision.get_collider()
+			
+			# Only react to other units (not walls/obstacles)
+			if collider.is_in_group("units"):
+				var push_vector = collision.get_normal() * collision.get_remainder().length()
+				total_repulsion += push_vector
+				collision_count += 1
+		
+		# Calculate average repulsion if we had collisions
+		if collision_count > 0:
+			var average_repulsion = total_repulsion / collision_count
+			var modified_velocity = original_velocity + (average_repulsion * 0.5)  # Dampen the effect
+			
+			# Apply the modified velocity
+			unit.movement_component.set_velocity(modified_velocity)
+	
+	# Update movement with potential new velocity
+	unit.movement_component.update_movement(delta)
 
 func update(delta: float) -> void:
 	timer -= delta

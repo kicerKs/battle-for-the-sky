@@ -41,3 +41,9 @@ func update_movement(delta):
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
 	owner.velocity = safe_velocity
+
+func set_velocity(velocity: Vector2) -> void:
+	owner.nav_agent.set_velocity(velocity)
+
+func get_velocity() -> Vector2:
+	return owner.velocity
