@@ -4,6 +4,8 @@ var placement_mode = false
 var placement_building
 var building_path
 
+static var i = 0
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_pressed():
 		if placement_mode:
@@ -58,6 +60,7 @@ func building_selected(building):
 @rpc("any_peer", "call_local", "reliable")
 func add_building(target_island, scene_path, building_dict):
 	var building = load(scene_path).instantiate()
+	building.name = "Building"+str(i)
 	building.set_dict(building_dict)
 	building.start_animation()
 	Game.tileMapLayer.tiles[target_island].add_building(building)
