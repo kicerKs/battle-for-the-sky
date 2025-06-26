@@ -37,7 +37,9 @@ func change_player_resource(resource: Resources, amount: int):
 	if amount < 0:
 		if _player_resources[resource] + amount >= 0:
 			_player_resources[resource] += amount
-			resources_changed.emit()
+	else:
+		_player_resources[resource] += amount
+	resources_changed.emit()
 
 func get_player_resource(resource: Resources):
 	return _player_resources[resource]
