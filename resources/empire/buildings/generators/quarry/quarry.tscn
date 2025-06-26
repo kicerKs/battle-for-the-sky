@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b1qvfnxcyo4pf"]
+[gd_scene load_steps=21 format=3 uid="uid://b1qvfnxcyo4pf"]
 
 [ext_resource type="Script" uid="uid://dkfjkrmloyb8q" path="res://scenes/world/buildings/building.gd" id="1_hm4sq"]
 [ext_resource type="Resource" uid="uid://b6q8byaayhjll" path="res://resources/empire/buildings/generators/quarry/quarry_1.tres" id="2_mgrsw"]
@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://dirlq0olg5rho" path="res://resources/empire/buildings/generators/quarry/quarry_2_generator.tres" id="7_welmc"]
 [ext_resource type="Texture2D" uid="uid://12ms764ifbf6" path="res://assets/buildings/kamieniolom.png" id="8_j5gr2"]
 [ext_resource type="LabelSettings" uid="uid://bmu2llc0hca8r" path="res://scenes/ui/gui/resources_panel/resource_panel_label_settings.tres" id="9_edy05"]
+[ext_resource type="Theme" uid="uid://mr4lptrp8b4w" path="res://assets/themes/buiding_ui_theme.tres" id="9_u14fo"]
 [ext_resource type="Texture2D" uid="uid://cu47poko5g5im" path="res://assets/resources/stone.png" id="10_d75qa"]
 [ext_resource type="Texture2D" uid="uid://c555ryq6v6pc" path="res://assets/icons/building can upgrade.png" id="11_3yckd"]
 [ext_resource type="Texture2D" uid="uid://4a3fd370bpyu" path="res://assets/buildings/building_cloud.png" id="12_ybi76"]
@@ -98,6 +99,7 @@ offset_left = 102.0
 offset_top = -100.0
 offset_right = 116.0
 offset_bottom = 100.0
+theme = ExtResource("9_u14fo")
 max_value = 1.0
 fill_mode = 3
 show_percentage = false
@@ -131,6 +133,7 @@ offset_top = -66.0
 offset_right = 1.0
 offset_bottom = -26.0
 scale = Vector2(0.75, 0.75)
+theme = ExtResource("9_u14fo")
 
 [node name="UpgradeButton" type="Button" parent="Buttons/PanelContainer2"]
 unique_name_in_owner = true
@@ -144,6 +147,7 @@ offset_top = -66.0
 offset_right = 48.0
 offset_bottom = -26.0
 scale = Vector2(0.75, 0.75)
+theme = ExtResource("9_u14fo")
 
 [node name="RemoveButton" type="Button" parent="Buttons/PanelContainer3"]
 unique_name_in_owner = true

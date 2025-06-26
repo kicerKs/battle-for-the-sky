@@ -1,0 +1,80 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://mr4lptrp8b4w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wssy5"]
+bg_color = Color(0.7, 0.606667, 0.56, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.4, 0.346667, 0.32, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+shadow_offset = Vector2(1, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rvdyu"]
+bg_color = Color(0.8, 0.693333, 0.64, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.4, 0.346667, 0.32, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+shadow_offset = Vector2(1, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_flwy5"]
+bg_color = Color(0.6, 0.52, 0.48, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.4, 0.346667, 0.32, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_top = 2.0
+expand_margin_right = 4.0
+expand_margin_bottom = 2.0
+shadow_offset = Vector2(1, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ekulb"]
+bg_color = Color(0.8, 0.693333, 0.64, 1)
+border_width_left = 2
+border_width_top = 4
+border_width_right = 2
+border_width_bottom = 4
+border_color = Color(0.4, 0.346667, 0.32, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfstl"]
+bg_color = Color(0.333855, 0.509355, 0.851559, 1)
+anti_aliasing = false
+
+[resource]
+Button/styles/focus = SubResource("StyleBoxFlat_wssy5")
+Button/styles/hover = SubResource("StyleBoxFlat_wssy5")
+Button/styles/normal = SubResource("StyleBoxFlat_rvdyu")
+Button/styles/pressed = SubResource("StyleBoxFlat_flwy5")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_ekulb")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_xfstl")

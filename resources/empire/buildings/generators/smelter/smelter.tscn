@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://876elfpic5kx"]
+[gd_scene load_steps=21 format=3 uid="uid://876elfpic5kx"]
 
 [ext_resource type="Script" uid="uid://dkfjkrmloyb8q" path="res://scenes/world/buildings/building.gd" id="1_trka8"]
 [ext_resource type="Resource" uid="uid://dhrqghuou0eu8" path="res://resources/empire/buildings/generators/smelter/smelter_1.tres" id="2_07l0q"]
@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://cb6x15ptillbg" path="res://resources/empire/buildings/generators/smelter/smelter_2.tres" id="6_w1yt8"]
 [ext_resource type="Resource" uid="uid://dhtaiglybopgg" path="res://resources/empire/buildings/generators/smelter/smelter_2_generator.tres" id="7_k3lsp"]
 [ext_resource type="Texture2D" uid="uid://cnxma2xscfuhp" path="res://assets/buildings/iron_smelter.png" id="8_5n266"]
+[ext_resource type="Theme" uid="uid://mr4lptrp8b4w" path="res://assets/themes/buiding_ui_theme.tres" id="9_p6wpl"]
 [ext_resource type="LabelSettings" uid="uid://bmu2llc0hca8r" path="res://scenes/ui/gui/resources_panel/resource_panel_label_settings.tres" id="9_sa5fd"]
 [ext_resource type="Texture2D" uid="uid://cdvxgk3p45brw" path="res://assets/resources/iron.png" id="10_cng01"]
 [ext_resource type="Texture2D" uid="uid://c555ryq6v6pc" path="res://assets/icons/building can upgrade.png" id="11_aj7lt"]
@@ -98,6 +99,7 @@ offset_left = 102.0
 offset_top = -100.0
 offset_right = 116.0
 offset_bottom = 100.0
+theme = ExtResource("9_p6wpl")
 max_value = 1.0
 fill_mode = 3
 show_percentage = false
@@ -131,6 +133,7 @@ offset_top = -66.0
 offset_right = 1.0
 offset_bottom = -26.0
 scale = Vector2(0.75, 0.75)
+theme = ExtResource("9_p6wpl")
 
 [node name="UpgradeButton" type="Button" parent="Buttons/PanelContainer2"]
 unique_name_in_owner = true
@@ -144,6 +147,7 @@ offset_top = -66.0
 offset_right = 48.0
 offset_bottom = -26.0
 scale = Vector2(0.75, 0.75)
+theme = ExtResource("9_p6wpl")
 
 [node name="RemoveButton" type="Button" parent="Buttons/PanelContainer3"]
 unique_name_in_owner = true

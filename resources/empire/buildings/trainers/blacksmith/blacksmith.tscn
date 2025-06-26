@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ca7a5ode53v3b"]
+[gd_scene load_steps=24 format=3 uid="uid://ca7a5ode53v3b"]
 
 [ext_resource type="Script" uid="uid://dkfjkrmloyb8q" path="res://scenes/world/buildings/building.gd" id="1_0x717"]
 [ext_resource type="Resource" uid="uid://bewwam7syq6g3" path="res://resources/empire/buildings/trainers/blacksmith/blacksmith_1.tres" id="2_ny0qx"]
@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://cqsqip4rifeww" path="res://resources/empire/buildings/trainers/blacksmith/blacksmith_2.tres" id="7_6x7xc"]
 [ext_resource type="Resource" uid="uid://bannpx7p6mlsy" path="res://resources/empire/buildings/trainers/blacksmith/blacksmith_2_trainer.tres" id="8_iuhdp"]
 [ext_resource type="Texture2D" uid="uid://i3cn6dmmxiys" path="res://assets/buildings/blacksmith 1.png" id="9_ny0qx"]
+[ext_resource type="Theme" uid="uid://mr4lptrp8b4w" path="res://assets/themes/buiding_ui_theme.tres" id="10_4i17t"]
 [ext_resource type="Texture2D" uid="uid://c555ryq6v6pc" path="res://assets/icons/building can upgrade.png" id="10_p2t3o"]
 [ext_resource type="Texture2D" uid="uid://bpetq6rubw0vm" path="res://assets/resources/attackspeed.png" id="11_nqewg"]
 [ext_resource type="Texture2D" uid="uid://cdki4fbh54yuc" path="res://assets/buildings/exclamation_status.png" id="12_5lhkp"]
@@ -17,6 +18,10 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_akj7n"]
 size = Vector2(200, 350)
+
+[sub_resource type="Curve" id="Curve_6x7xc"]
+_data = [Vector2(0, 0.247191), 0.0, 0.0, 0, 0, Vector2(0.526596, 0.561798), 0.0, 0.0, 0, 0, Vector2(0.978723, 1), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ei8ew"]
 properties/0/path = NodePath("TrainComponent:training_progress")
@@ -105,6 +110,7 @@ offset_top = -11.0
 offset_right = 107.0
 offset_bottom = 98.0
 scale = Vector2(2, 2)
+theme = ExtResource("10_4i17t")
 max_value = 1.0
 fill_mode = 3
 show_percentage = false
@@ -118,6 +124,7 @@ offset_top = 217.0
 offset_right = 45.0
 offset_bottom = 257.0
 scale = Vector2(0.75, 0.75)
+theme = ExtResource("10_4i17t")
 
 [node name="TrainActivateButton" type="Button" parent="Buttons/PanelContainer"]
 unique_name_in_owner = true
@@ -130,6 +137,7 @@ offset_top = 217.0
 offset_right = 5.0
 offset_bottom = 257.0
 scale = Vector2(0.75, 0.75)
+theme = ExtResource("10_4i17t")
 
 [node name="UpgradeButton" type="Button" parent="Buttons/PanelContainer2"]
 unique_name_in_owner = true
@@ -143,6 +151,7 @@ offset_top = 208.0
 offset_right = 110.0
 offset_bottom = 248.0
 scale = Vector2(0.75, 0.75)
+theme = ExtResource("10_4i17t")
 
 [node name="RemoveButton" type="Button" parent="Buttons/PanelContainer3"]
 unique_name_in_owner = true
@@ -155,6 +164,7 @@ offset_top = 208.0
 offset_right = -60.0
 offset_bottom = 248.0
 scale = Vector2(0.75, 0.75)
+theme = ExtResource("10_4i17t")
 
 [node name="FrontChangeButton" type="Button" parent="Buttons/PanelContainer4"]
 unique_name_in_owner = true
@@ -163,7 +173,15 @@ icon = ExtResource("11_nqewg")
 
 [node name="Line2D" type="Line2D" parent="Buttons"]
 z_index = 1
-default_color = Color(0, 1, 0, 1)
+width = 4.0
+width_curve = SubResource("Curve_6x7xc")
+default_color = Color(0.53298, 0.84, 0.4116, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+sharp_limit = 4.0
+round_precision = 16
+antialiased = true
 
 [node name="Label" type="Label" parent="."]
 offset_left = -75.0

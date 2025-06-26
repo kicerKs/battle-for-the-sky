@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cl3y2b058k0sl"]
+[gd_scene load_steps=22 format=3 uid="uid://cl3y2b058k0sl"]
 
 [ext_resource type="Script" uid="uid://dkfjkrmloyb8q" path="res://scenes/world/buildings/building.gd" id="1_bmhep"]
 [ext_resource type="Resource" uid="uid://b4a6olvmb635h" path="res://resources/empire/buildings/generators/woodcutter/woodcutter_1.tres" id="2_d4b6o"]
@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://knnjujux4ks2" path="res://resources/empire/buildings/generators/woodcutter/woodcutter_2.tres" id="6_3pexc"]
 [ext_resource type="Resource" uid="uid://bhu236kvrs205" path="res://resources/empire/buildings/generators/woodcutter/woodcutter_2_generator.tres" id="7_feyp6"]
 [ext_resource type="Texture2D" uid="uid://byx58bdtjlh34" path="res://assets/buildings/timber.png" id="8_mmb23"]
+[ext_resource type="Theme" uid="uid://mr4lptrp8b4w" path="res://assets/themes/buiding_ui_theme.tres" id="9_c0kes"]
 [ext_resource type="LabelSettings" uid="uid://bmu2llc0hca8r" path="res://scenes/ui/gui/resources_panel/resource_panel_label_settings.tres" id="9_n8pi1"]
 [ext_resource type="Texture2D" uid="uid://c1be1e8s0fvca" path="res://assets/resources/wood.png" id="10_c1r84"]
 [ext_resource type="Texture2D" uid="uid://c555ryq6v6pc" path="res://assets/icons/building can upgrade.png" id="11_axq0s"]
@@ -15,6 +16,8 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_atpml"]
 size = Vector2(200, 200)
+
+[sub_resource type="Theme" id="Theme_2csuv"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_a87ni"]
 properties/0/path = NodePath("GeneratorComponent:generation_progress")
@@ -98,6 +101,7 @@ offset_left = 102.0
 offset_top = -100.0
 offset_right = 116.0
 offset_bottom = 100.0
+theme = ExtResource("9_c0kes")
 max_value = 1.0
 fill_mode = 3
 show_percentage = false
@@ -131,6 +135,7 @@ offset_top = -66.0
 offset_right = 1.0
 offset_bottom = -26.0
 scale = Vector2(0.75, 0.75)
+theme = ExtResource("9_c0kes")
 
 [node name="UpgradeButton" type="Button" parent="Buttons/PanelContainer2"]
 unique_name_in_owner = true
@@ -144,6 +149,7 @@ offset_top = -66.0
 offset_right = 48.0
 offset_bottom = -26.0
 scale = Vector2(0.75, 0.75)
+theme = SubResource("Theme_2csuv")
 
 [node name="RemoveButton" type="Button" parent="Buttons/PanelContainer3"]
 unique_name_in_owner = true

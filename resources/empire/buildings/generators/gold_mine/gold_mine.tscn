@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dhwh85gk0mnbj"]
+[gd_scene load_steps=21 format=3 uid="uid://dhwh85gk0mnbj"]
 
 [ext_resource type="Script" uid="uid://dkfjkrmloyb8q" path="res://scenes/world/buildings/building.gd" id="1_02ldp"]
 [ext_resource type="Resource" uid="uid://bwu251wae47gl" path="res://resources/empire/buildings/generators/gold_mine/gold_mine_1.tres" id="2_a5uq4"]
@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://dboqov8xkmmmx" path="res://resources/empire/buildings/generators/gold_mine/gold_mine_2_generator.tres" id="7_edxb7"]
 [ext_resource type="Texture2D" uid="uid://bmetmvq3vd343" path="res://assets/buildings/gold_mine.png" id="8_a5uq4"]
 [ext_resource type="LabelSettings" uid="uid://bmu2llc0hca8r" path="res://scenes/ui/gui/resources_panel/resource_panel_label_settings.tres" id="9_i66eg"]
+[ext_resource type="Theme" uid="uid://mr4lptrp8b4w" path="res://assets/themes/buiding_ui_theme.tres" id="9_sx7gv"]
 [ext_resource type="Texture2D" uid="uid://def8x7rbpe8dm" path="res://assets/resources/gold.png" id="10_sx7gv"]
 [ext_resource type="Texture2D" uid="uid://c555ryq6v6pc" path="res://assets/icons/building can upgrade.png" id="11_flx3t"]
 [ext_resource type="Texture2D" uid="uid://4a3fd370bpyu" path="res://assets/buildings/building_cloud.png" id="12_83db8"]
@@ -98,6 +99,7 @@ offset_left = 102.0
 offset_top = -100.0
 offset_right = 116.0
 offset_bottom = 100.0
+theme = ExtResource("9_sx7gv")
 max_value = 1.0
 fill_mode = 3
 show_percentage = false
@@ -131,6 +133,7 @@ offset_top = -66.0
 offset_right = 1.0
 offset_bottom = -26.0
 scale = Vector2(0.75, 0.75)
+theme = ExtResource("9_sx7gv")
 
 [node name="UpgradeButton" type="Button" parent="Buttons/PanelContainer2"]
 unique_name_in_owner = true
@@ -144,6 +147,7 @@ offset_top = -66.0
 offset_right = 48.0
 offset_bottom = -26.0
 scale = Vector2(0.75, 0.75)
+theme = ExtResource("9_sx7gv")
 
 [node name="RemoveButton" type="Button" parent="Buttons/PanelContainer3"]
 unique_name_in_owner = true
