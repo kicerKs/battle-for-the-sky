@@ -23,7 +23,7 @@ signal conquering_interrupted
 
 @onready var progress_bar = $CustomProgressBar
 
-var buildings_number = 0
+@export var buildings_number = 0
 
 var conquering: bool = false
 var conquering_time: float = 5.0
