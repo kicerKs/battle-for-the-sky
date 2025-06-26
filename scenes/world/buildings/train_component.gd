@@ -138,10 +138,10 @@ func _on_train_activate_button_pressed() -> void:
 func change_training_status():
 	if multiplayer.is_server():
 		if _training_loop:
-			%TrainActivateButton.text = "OFF"
+			#%TrainActivateButton.text = "OFF"
 			show_sleep.rpc()
 		else:
-			%TrainActivateButton.text = "ON"
+			#%TrainActivateButton.text = "ON"
 			hide_sleep.rpc()
 		_training_loop = !_training_loop
 
