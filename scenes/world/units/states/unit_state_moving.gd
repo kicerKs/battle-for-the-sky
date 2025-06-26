@@ -14,6 +14,10 @@ func on_enter() -> void:
 	for body in arr:
 		if body is CharacterBody2D and body != owner and ((body.side != owner.side and owner.has_node("Components/AttackComponent")) or (body.side == owner.side and owner.has_node("Components/HealComponent") and !body.health_component.is_max_hp())):
 			change_state.emit(ENGAGE)
+	
+	var current_island_side = get_current_island_ownership()
+	if current_island_side != unit.side and can_current_island_be_conquered():
+		change_state.emit(CONQUERING)
 
 func physics_update(delta: float) -> void:
 	unit.movement_component.update_movement(delta)
@@ -36,9 +40,9 @@ func update(delta: float) -> void:
 		timer = 2.5
 		unit.movement_component.intended_velocity = Vector2.ZERO
 		var current_island_side = get_current_island_ownership()
-		if current_island_side != unit.side:
+		if current_island_side != unit.side and can_current_island_be_conquered():
 			change_state.emit(CONQUERING)
-		else:
+		elif unit.nav_agent.is_navigation_finished():
 			change_state.emit(IDLE)
 
 func _on_front_changed(island: Vector2i):

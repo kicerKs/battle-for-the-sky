@@ -19,6 +19,7 @@ var unit_count = {
 }
 
 signal island_conquered
+signal conquering_interrupted
 
 @onready var progress_bar = $CustomProgressBar
 
@@ -26,7 +27,7 @@ var buildings_number = 0
 
 var conquering: bool = false
 var conquering_time: float = 5.0
-var conquering_timer: float = 0.0
+var conquering_timer: float = 5.0
 var conquering_unit_side: Lobby.Factions
 
 @export var progress: float
@@ -47,11 +48,22 @@ func _ready():
 
 func _process(delta: float) -> void:
 	if conquering:
+		if !can_conquer(conquering_unit_side):
+			conquering = false
+			print("Conquering interrupted!")
+			conquering_interrupted.emit()
 		conquering_timer -= delta
 		progress = 1.0 - (conquering_timer / conquering_time)
 		if conquering_timer <= 0:
 			stop_conquering()
 		progress_bar.value = progress
+	else:
+		if !has_enemy():
+			conquering_timer += delta
+			progress = 1.0 - (conquering_timer / conquering_time)
+			if conquering_timer >= conquering_time:
+				conquering_failed()
+			progress_bar.value = progress
 
 #func init(data: IslandData = IslandData.new(), owner: IslandDevelopmentData.IslandOwner = IslandDevelopmentData.IslandOwner.MONSTERS):
 #	island_development_data = IslandDevelopmentData.new()
@@ -160,10 +172,10 @@ func setup_remove_scene(pos):
 	add_child(remove_scene_inst)
 
 func start_conquering(unit_side: Lobby.Factions):
-	if conquering:
+	if conquering or !can_conquer(unit_side):
 		return
-	
-	conquering_timer = conquering_time
+	if conquering_timer <= 0:
+		conquering_timer = conquering_time
 	conquering_unit_side = unit_side
 	conquering = true
 	show_conquering_bar.rpc()
@@ -172,9 +184,16 @@ func start_conquering(unit_side: Lobby.Factions):
 func show_conquering_bar():
 	progress_bar.visible = true
 
+func conquering_failed():
+	hide_conquering_bar.rpc()
+	conquering_timer = conquering_time
+	progress_bar.value = 0.0
+	conquering = false
+
 func stop_conquering():
 	hide_conquering_bar.rpc()
 	remove_all_buildings.rpc()
+	conquering_time = 0
 	progress_bar.value = 0.0
 	
 	ownership = conquering_unit_side
@@ -202,3 +221,18 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body is TestCharacter or body is TestMonster:
 		unit_count[body.side] -= 1
+
+func can_conquer(side):
+	for key in unit_count.keys():
+		if unit_count[key] > 0 and key != side:
+			return false
+	return true
+
+func has_enemy():
+	for key in unit_count.keys():
+		if unit_count[key] > 0 and key != ownership:
+			return true
+	return false
+
+func is_conquering():
+	return conquering

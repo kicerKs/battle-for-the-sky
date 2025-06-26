@@ -25,3 +25,9 @@ func get_current_island_ownership():
 	if Game.tileMapLayer.tiles.has(current_island_key):
 		var current_island_side = Game.tileMapLayer.tiles[current_island_key].ownership
 		return current_island_side
+
+func can_current_island_be_conquered():
+	var current_island_key = Game.tileMapLayer.local_to_map(unit.position)
+	if Game.tileMapLayer.tiles.has(current_island_key):
+		return Game.tileMapLayer.tiles[current_island_key].can_conquer(unit.side)
+	return false
