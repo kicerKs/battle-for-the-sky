@@ -98,17 +98,18 @@ func start_training():
 
 @rpc("any_peer", "call_local", "reliable")
 func training_started():
-	_is_training = true
-	load_unit()
-	hide_no_resources.rpc()
-	hide_sleep.rpc()
-	_current_train_timer = stats.training_time
-	var player_id
-	for id in Lobby.players.keys():
-		if Lobby.players[id]["color"] == island_ownership:
-			player_id = id
-	reduce_resource_for_real.rpc_id(player_id)
-	return true
+	if !_is_training:
+		_is_training = true
+		load_unit()
+		hide_no_resources.rpc()
+		hide_sleep.rpc()
+		_current_train_timer = stats.training_time
+		var player_id
+		for id in Lobby.players.keys():
+			if Lobby.players[id]["color"] == island_ownership:
+				player_id = id
+		reduce_resource_for_real.rpc_id(player_id)
+		return true
 
 @rpc("any_peer", "call_local", "reliable")
 func reduce_resource():
