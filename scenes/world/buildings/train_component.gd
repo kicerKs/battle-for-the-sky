@@ -94,7 +94,7 @@ func start_training():
 		for id in Lobby.players.keys():
 			if Lobby.players[id]["color"] == island_ownership:
 				player_id = id
-		
+		_is_training = true
 		reduce_resource.rpc_id(player_id)
 
 @rpc("any_peer", "call_local", "reliable")
@@ -102,7 +102,6 @@ func training_started():
 	load_unit()
 	hide_no_resources.rpc()
 	hide_sleep.rpc()
-	_is_training = true
 	_current_train_timer = stats.training_time
 	return true
 
