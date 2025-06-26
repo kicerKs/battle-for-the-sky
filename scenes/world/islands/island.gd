@@ -23,7 +23,9 @@ signal conquering_interrupted
 
 @onready var progress_bar = $CustomProgressBar
 
-@export var buildings_number = 0
+@export var buildings_number = 0:
+	get:
+		return %MainNavigationRegion.get_child_count()
 
 var conquering: bool = false
 var conquering_time: float = 5.0
