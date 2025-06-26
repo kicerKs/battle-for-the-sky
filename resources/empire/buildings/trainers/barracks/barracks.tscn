@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cdhxmxl1y3wnf"]
+[gd_scene load_steps=25 format=3 uid="uid://cdhxmxl1y3wnf"]
 
 [ext_resource type="Script" uid="uid://dkfjkrmloyb8q" path="res://scenes/world/buildings/building.gd" id="1_4ya26"]
 [ext_resource type="Resource" uid="uid://hs8rrnbl81ig" path="res://resources/empire/buildings/trainers/barracks/barracks_1.tres" id="2_6b0r3"]
@@ -13,6 +13,7 @@
 [ext_resource type="Theme" uid="uid://mr4lptrp8b4w" path="res://assets/themes/buiding_ui_theme.tres" id="10_fsk6s"]
 [ext_resource type="Texture2D" uid="uid://bpetq6rubw0vm" path="res://assets/resources/attackspeed.png" id="11_7lrv1"]
 [ext_resource type="Texture2D" uid="uid://cdki4fbh54yuc" path="res://assets/buildings/exclamation_status.png" id="12_ycxbu"]
+[ext_resource type="Texture2D" uid="uid://d1v1g2dia2tjj" path="res://assets/icons/bomb.png" id="13_2rome"]
 [ext_resource type="Texture2D" uid="uid://curhut5bk68hy" path="res://assets/buildings/sleep_status.png" id="13_uyqnq"]
 [ext_resource type="Texture2D" uid="uid://4a3fd370bpyu" path="res://assets/buildings/building_cloud.png" id="14_dg2ut"]
 
@@ -157,7 +158,7 @@ theme = ExtResource("10_fsk6s")
 [node name="RemoveButton" type="Button" parent="Buttons/PanelContainer3"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "X"
+icon = ExtResource("13_2rome")
 expand_icon = true
 
 [node name="PanelContainer4" type="PanelContainer" parent="Buttons"]
