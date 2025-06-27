@@ -38,7 +38,6 @@ func update_movement(delta):
 	for coll in collisions:
 		intended_velocity += coll
 	collisions.clear()
-	print(intended_velocity)
 	owner.nav_agent.set_velocity(intended_velocity)
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
