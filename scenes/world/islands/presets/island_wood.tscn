@@ -63,7 +63,6 @@ properties/1/replication_mode = 1
 
 [node name="WoodIsland" type="Sprite2D"]
 script = ExtResource("1_46180")
-building_limit = 3
 resources_modifier = {
 0: 1.2,
 1: 1.0,

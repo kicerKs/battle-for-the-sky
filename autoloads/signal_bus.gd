@@ -20,3 +20,5 @@ signal player_eliminated(id)
 signal player_won(id)
 
 signal island_conquered(before, after)
+
+signal zoom_changed(zoom)

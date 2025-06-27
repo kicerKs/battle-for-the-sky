@@ -74,3 +74,4 @@ func _input(event):
 		zoom *= Vector2(1 - zoom_speed, 1 - zoom_speed)
 	zoom.x = clamp(zoom.x, min_zoom, max_zoom)
 	zoom.y = clamp(zoom.y, min_zoom, max_zoom)
+	SignalBus.zoom_changed.emit(zoom)

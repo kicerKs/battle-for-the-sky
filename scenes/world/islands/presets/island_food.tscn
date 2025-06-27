@@ -63,7 +63,6 @@ properties/1/replication_mode = 1
 
 [node name="FoodIsland" type="Sprite2D"]
 script = ExtResource("1_tgp7i")
-building_limit = 3
 resources_modifier = {
 0: 1.0,
 1: 1.2,
