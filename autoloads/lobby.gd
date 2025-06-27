@@ -59,7 +59,6 @@ func create_game():
 		return error
 	multiplayer.multiplayer_peer = peer
 	player_info["color"] = Factions.PLAYER_RED
-	
 	players[1] = player_info
 	player_connected.emit(1, player_info)
 	print("game created")
@@ -74,6 +73,7 @@ func join_game(address = "", port = -1):
 	save_config()
 	var peer = ENetMultiplayerPeer.new()
 	var error = peer.create_client(address, port)
+	print(error)
 	if error:
 		return error
 	multiplayer.multiplayer_peer = peer

@@ -126,6 +126,7 @@ texture = ExtResource("10_c1r84")
 expand_mode = 3
 
 [node name="Buttons" type="Node2D" parent="."]
+unique_name_in_owner = true
 visible = false
 position = Vector2(0, -67)
 

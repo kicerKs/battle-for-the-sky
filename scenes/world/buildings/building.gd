@@ -20,8 +20,8 @@ func _ready():
 	SignalBus.connect("zoom_changed", change_buttons_zoom)
 
 func change_buttons_zoom(zoom):
-	$Buttons.scale = Vector2(1/zoom.x, 1/zoom.y)
-	$Buttons.z_index = 2
+	%Buttons.scale = Vector2(1/zoom.x, 1/zoom.y)
+	%Buttons.z_index = 2
 
 func change_sound_volume():
 	$BuildingSound.volume_linear = AudioManager.sound_volume
