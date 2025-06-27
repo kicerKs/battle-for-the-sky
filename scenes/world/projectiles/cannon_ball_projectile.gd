@@ -26,12 +26,10 @@ func _physics_process(delta: float) -> void:
 		if target != null:
 			direction = global_position.direction_to(target.global_position + off)
 			end_position = target.global_position + off
+			global_position += direction * speed * delta
 		elif direction == null:
-			if end_position == null:
-				queue_free()
-				return
-			else:
-				direction = global_position.direction_to(end_position + off)
+			queue_free()
+			return
 		else:
 			global_position += direction * speed * delta
 		g_pos = global_position
