@@ -86,11 +86,11 @@ metadata/_custom_type_script = "uid://dlfqvdrv0wj33"
 
 [node name="UpgradeComponent" parent="." instance=ExtResource("6_tvixt")]
 upgrade_cost = Dictionary[int, int]({
-0: 0,
-1: 2,
-2: 0,
-3: 2,
-4: 0
+0: 100,
+1: 40,
+2: 40,
+3: 0,
+4: 40
 })
 upgraded_building = ExtResource("7_14hv5")
 trainer_stats = ExtResource("8_up0o4")
