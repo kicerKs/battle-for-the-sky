@@ -159,6 +159,10 @@ func load_config():
 	player_info["name"] = config.get_value("Multiplayer", "player_name")
 	last_used_ip = config.get_value("Multiplayer", "last_ip")
 	last_used_port = config.get_value("Multiplayer", "last_port")
+	AudioManager.music_volume = config.get_value("Sound", "music_volume")
+	AudioManager.sound_volume = config.get_value("Sound", "sound_volume")
+	
+	SignalBus.config_loaded.emit()
 
 func save_config():
 	var config = ConfigFile.new()
@@ -172,5 +176,8 @@ func save_config():
 		config.set_value("Multiplayer", "last_port", last_used_port)
 	else:
 		config.set_value("Multiplayer", "last_port", DEFAULT_SERVER_PORT)
+	
+	config.set_value("Sound", "music_volume", AudioManager.music_volume)
+	config.set_value("Sound", "sound_volume", AudioManager.sound_volume)
 	
 	config.save("user://config.cfg")

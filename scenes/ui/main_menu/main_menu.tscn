@@ -93,6 +93,14 @@ size_flags_vertical = 3
 theme = ExtResource("3_r70wa")
 text = "Credits"
 
+[node name="SettingsButton2" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(350, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme = ExtResource("3_r70wa")
+text = "Exit Game"
+
 [node name="JoiningGameBox" type="PanelContainer" parent="."]
 unique_name_in_owner = true
 visible = false
@@ -197,5 +205,6 @@ text = "Cancel"
 [connection signal="pressed" from="VBoxContainer/JoinGameButton" to="." method="_on_multi_but_pressed"]
 [connection signal="pressed" from="VBoxContainer/SettingsButton" to="." method="_on_set_but_pressed"]
 [connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_cred_but_pressed"]
+[connection signal="pressed" from="VBoxContainer/SettingsButton2" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="JoiningGameBox/MarginContainer/VBoxContainer/HBoxContainer2/JoinButton" to="." method="_on_join_button_pressed"]
 [connection signal="pressed" from="JoiningGameBox/MarginContainer/VBoxContainer/HBoxContainer2/CancelButton" to="." method="_on_cancel_button_pressed"]

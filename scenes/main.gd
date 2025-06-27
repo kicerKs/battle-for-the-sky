@@ -5,6 +5,11 @@ func _ready():
 	SignalBus.player_won.connect(play_victory_music)
 	SignalBus.player_eliminated.connect(play_elimination_music)
 	SignalBus.island_conquered.connect(play_island_change_sounds)
+	SignalBus.music_volume_changed.connect(set_background_music_volume)
+	SignalBus.sound_volume_changed.connect(set_sound_volume)
+	set_sound_volume()
+	set_background_music_volume()
+	Lobby.load_config()
 
 func start_game():
 	play_background_music.rpc()
@@ -12,6 +17,15 @@ func start_game():
 @rpc("call_local", "any_peer", "reliable")
 func play_background_music():
 	$AudioStreamPlayer.play()
+
+func set_background_music_volume():
+	$AudioStreamPlayer.volume_linear = AudioManager.music_volume
+
+func set_sound_volume():
+	$WinMusic.volume_linear = AudioManager.sound_volume
+	$DefeatMusic.volume_linear = AudioManager.sound_volume
+	$IslandConquered.volume_linear = AudioManager.sound_volume
+	$IslandLost.volume_linear = AudioManager.sound_volume
 
 @rpc("call_local", "any_peer", "reliable")
 func play_victory_music(id):

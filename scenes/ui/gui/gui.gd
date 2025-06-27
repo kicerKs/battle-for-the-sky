@@ -17,12 +17,21 @@ func _ready() -> void:
 	
 	SignalBus.connect("player_eliminated", show_defeat)
 	SignalBus.connect("player_won", show_victory)
+	SignalBus.connect("config_loaded", setup_sliders)
 	Lobby.server_disconnected.connect(show_leave_panel)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_RIGHT:
 			hide_panels()
+
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("pause"):
+		%PauseMenu.visible = !%PauseMenu.visible
+
+func setup_sliders():
+	$PauseMenu/MarginContainer/VBoxContainer/GridContainer/HSlider.value = AudioManager.music_volume
+	$PauseMenu/MarginContainer/VBoxContainer/GridContainer/HSlider2.value = AudioManager.sound_volume
 
 func hide_panels():
 	$BuildingPanel.visible = false
@@ -62,3 +71,15 @@ func show_victory(id):
 func show_defeat(id):
 	if id == multiplayer.get_unique_id():
 		%DefeatScreen.visible = true
+
+
+func _on_exit_button_pressed() -> void:
+	get_tree().quit()
+
+
+func _on_h_slider_value_changed(value: float) -> void:
+	AudioManager.music_volume = value
+
+
+func _on_h_slider_2_value_changed(value: float) -> void:
+	AudioManager.sound_volume = value

@@ -1,5 +1,11 @@
 extends Node
 
+signal config_loaded
+
+signal music_volume_changed
+signal sound_volume_changed
+signal music_muted
+
 signal player_info_changed(id)
 
 signal building_clicked(building: Building)

@@ -15,6 +15,11 @@ func _ready():
 	add_child(xd)
 	$Sprite2D.texture = stats.texture
 	SignalBus.connect("panels_closed", hide_buttons)
+	SignalBus.connect("sound_volume_changed", change_sound_volume)
+	$BuildingSound.volume_linear = AudioManager.sound_volume
+
+func change_sound_volume():
+	$BuildingSound.volume_linear = AudioManager.sound_volume
 
 func _input(event: InputEvent):
 	if placement_mode:

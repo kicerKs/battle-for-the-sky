@@ -26,7 +26,7 @@ func _on_set_but_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/ui/settings_menu/settings_menu.tscn");
 
 func _on_cred_but_pressed() -> void:
-	pass
+	get_tree().change_scene_to_file("res://scenes/ui/credits/credits.tscn");
 
 func _on_host_game_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/ui/lobby_menu/lobby_menu.tscn");
@@ -42,3 +42,7 @@ func _on_cancel_button_pressed() -> void:
 
 func _show_connection_error_message():
 	%ConnectionMessage.text = "Failed to connect to the server! Check if IP address is valid and try again."
+
+
+func _on_exit_pressed() -> void:
+	get_tree().quit()

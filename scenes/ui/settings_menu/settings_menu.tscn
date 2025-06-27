@@ -80,6 +80,46 @@ theme_override_font_sizes/font_size = 32
 text = "Oskar"
 alignment = 1
 
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("4_k0j6j")
+theme_override_font_sizes/font_size = 32
+text = "Music"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="PanelContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.001
+value = 1.0
+
+[node name="Label3" type="Label" parent="PanelContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("4_k0j6j")
+theme_override_font_sizes/font_size = 32
+text = "Sound effects"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider2" type="HSlider" parent="PanelContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.001
+value = 1.0
+
 [node name="Button" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 10
@@ -87,4 +127,6 @@ theme = ExtResource("3_wafav")
 text = "Return to main menu"
 
 [connection signal="text_changed" from="PanelContainer/VBoxContainer/GridContainer/TextEdit" to="." method="_on_text_edit_text_changed"]
+[connection signal="value_changed" from="PanelContainer/VBoxContainer/GridContainer/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="PanelContainer/VBoxContainer/GridContainer/HSlider2" to="." method="_on_h_slider_2_value_changed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
