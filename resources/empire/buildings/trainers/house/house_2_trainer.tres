@@ -11,7 +11,7 @@ region = Rect2(0, 0, 800, 800)
 
 [resource]
 script = ExtResource("1_tincg")
-training_time = 5
+training_time = 7
 training_cost = Dictionary[int, int]({
 0: 0,
 1: 20,
