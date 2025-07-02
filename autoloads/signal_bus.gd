@@ -20,5 +20,12 @@ signal player_eliminated(id)
 signal player_won(id)
 
 signal island_conquered(before, after)
+signal resource_generated(res, amount)
+signal resource_spent(res, amount)
+signal building_built(side)
+signal unit_trained(name, side)
+signal unit_died(side)
+signal unit_killed(side)
+signal monster_killed(side)
 
 signal zoom_changed(zoom)

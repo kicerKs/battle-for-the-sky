@@ -32,13 +32,6 @@ func damage() -> void: #funkcja będzie wywoływana dla listy przeciwników któ
 		projectile.name = "Projectile"+str(i)
 		i+=1
 		add_child(projectile)
-	# To dla AOE do pokombinowania potem
-	else:
-		var targets
-		for target in targets:
-			if target is HealthComponent:
-				target.take_damage(attack) #Do zrobienia: wybierz przeciwnika najbliższego  - posortuj po odległości?
-				if (singleTarget):break
-			
+
 func deal_damage(tar):
-	tar.health_component.take_damage(attack)
+	tar.health_component.take_damage(attack, owner.side)

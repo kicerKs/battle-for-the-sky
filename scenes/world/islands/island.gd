@@ -151,6 +151,7 @@ func update_sprites():
 func add_building(building):
 	if building is Building:
 		building.placement_mode = false
+		SignalBus.building_built.emit(ownership)
 	building.position -= self.position
 	%MainNavigationRegion.add_child(building)
 	%MainNavigationRegion.bake_navigation_polygon()

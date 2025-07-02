@@ -30,6 +30,7 @@ func _on_unit_died():
 
 @rpc("authority", "call_local", "reliable")
 func die():
+	SignalBus.unit_died.emit(side)
 	queue_free()
 
 func _ready():
@@ -48,7 +49,7 @@ func _ready():
 			spritesheet = stats.spriteSheetGreen
 	animation.setup_animations(spritesheet)
 	%AttackRangeCollisionShape2D.shape.radius = stats.range
-
+	SignalBus.unit_trained.emit(stats.name, side)
 	if(health_component!=null):
 		health_component.unit_died.connect(_on_unit_died)
 

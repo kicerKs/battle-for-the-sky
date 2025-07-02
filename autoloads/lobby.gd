@@ -52,6 +52,12 @@ func _ready():
 	if last_used_port == null:
 		last_used_port = DEFAULT_SERVER_PORT
 
+func get_player_id_by_color(side: Factions):
+	for key in players.keys():
+		if players[key]["color"] == side:
+			return key
+	return -1
+
 func create_game():
 	var peer = ENetMultiplayerPeer.new()
 	var error = peer.create_server(DEFAULT_SERVER_PORT, MAX_CONNECTIONS)
