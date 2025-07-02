@@ -1,0 +1,663 @@
+[gd_scene load_steps=6 format=3 uid="uid://cske5rgw4ufgc"]
+
+[ext_resource type="Script" uid="uid://cbc6f1leqrk1b" path="res://scenes/ui/stats/game_stats.gd" id="1_vkdar"]
+[ext_resource type="Texture2D" uid="uid://dsttt01mbchn7" path="res://assets/UI/main screen.png" id="2_vkdar"]
+[ext_resource type="FontFile" uid="uid://ba8wsyl36d580" path="res://resources/ui/fonts/Quintessential-Regular.ttf" id="3_k06pe"]
+[ext_resource type="Theme" uid="uid://tit816pj440" path="res://resources/ui/themes/mainmenu/button_theme_main_menu.tres" id="3_p2gkn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ying2"]
+bg_color = Color(0.0745098, 0.301961, 0.654902, 0.878431)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.2, 0.109804, 0.027451, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+expand_margin_left = 15.0
+expand_margin_top = 15.0
+expand_margin_right = 5.0
+expand_margin_bottom = 15.0
+
+[node name="StatsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vkdar")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_vkdar")
+expand_mode = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.3
+anchor_right = 0.8
+anchor_bottom = 0.8
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ying2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 25
+columns = 2
+
+[node name="Label3" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "Buildings built"
+
+[node name="BuildingsBuilt" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "0"
+
+[node name="Label13" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "Islands conquered"
+
+[node name="IslandsConquered" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "0"
+
+[node name="Label5" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "Islands lost"
+
+[node name="IslandsLost" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "0"
+
+[node name="Label7" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "Monsters killed"
+
+[node name="MonstersKilled" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "0"
+
+[node name="Label11" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "Units killed"
+
+[node name="UnitsKilled" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "0"
+
+[node name="Label9" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "Units lost"
+
+[node name="UnitsLost" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "0"
+
+[node name="Label3" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "Resources generated"
+
+[node name="MarginContainer3" type="MarginContainer" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+
+[node name="VBoxContainer" type="GridContainer" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer3"]
+layout_mode = 2
+theme_override_constants/h_separation = 25
+columns = 2
+
+[node name="Label7" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer3/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "Wood"
+
+[node name="WoodGen" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer3/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "0"
+
+[node name="Label3" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer3/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "Food"
+
+[node name="FoodGen" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer3/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "0"
+
+[node name="Label8" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer3/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "Gold"
+
+[node name="GoldGen" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer3/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "0"
+
+[node name="Label6" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer3/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "Iron"
+
+[node name="IronGen" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer3/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "0"
+
+[node name="Label10" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer3/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "Stone"
+
+[node name="StoneGen" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer3/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "0"
+
+[node name="Label4" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "Resources spent"
+
+[node name="MarginContainer4" type="MarginContainer" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+
+[node name="VBoxContainer" type="GridContainer" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer4"]
+layout_mode = 2
+theme_override_constants/h_separation = 25
+columns = 2
+
+[node name="Label7" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer4/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "Wood"
+
+[node name="WoodSpt" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer4/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "0"
+
+[node name="Label3" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer4/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "Food"
+
+[node name="FoodSpt" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer4/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "0"
+
+[node name="Label8" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer4/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "Gold"
+
+[node name="GoldSpt" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer4/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "0"
+
+[node name="Label6" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer4/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "Iron"
+
+[node name="IronSpt" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer4/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "0"
+
+[node name="Label10" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer4/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "Stone"
+
+[node name="StoneSpt" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer4/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "0"
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "Units trained"
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+
+[node name="VBoxContainer" type="GridContainer" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 25
+columns = 2
+
+[node name="Label7" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "Peasant"
+
+[node name="Peasant" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "0"
+
+[node name="Label3" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "Soldier"
+
+[node name="Soldier" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "0"
+
+[node name="Label5" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "Archer"
+
+[node name="Archer" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "0"
+
+[node name="Label8" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "Crossbowman"
+
+[node name="Crossbowman" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "0"
+
+[node name="Label10" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "Druid"
+
+[node name="Druid" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "0"
+
+[node name="Label12" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "Mage"
+
+[node name="Mage" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "0"
+
+[node name="Label14" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "Knight"
+
+[node name="Knight" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "0"
+
+[node name="Label16" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "Cavalry"
+
+[node name="Cavalry" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "0"
+
+[node name="Label18" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "Catapult"
+
+[node name="Catapult" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "0"
+
+[node name="Label20" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "Cannon"
+
+[node name="Cannon" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "0"
+
+[node name="Label22" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "Priest"
+
+[node name="Priest" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "0"
+
+[node name="Label24" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "Cleric"
+
+[node name="Cleric" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_k06pe")
+theme_override_font_sizes/font_size = 24
+text = "0"
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("3_p2gkn")
+text = "Return"
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

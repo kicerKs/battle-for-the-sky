@@ -122,6 +122,7 @@ func save_stats():
 	var save = ConfigFile.new()
 	save.set_value("Units", "units_killed", units_killed)
 	save.set_value("Units", "monsters_killed", monsters_killed)
+	save.set_value("Units", "units_lost", units_lost)
 	save.set_value("Units", "Peasant", units_trained["Peasant"])
 	save.set_value("Units", "Soldier", units_trained["Soldier"])
 	save.set_value("Units", "Archer", units_trained["Archer"])
@@ -147,4 +148,6 @@ func save_stats():
 	save.set_value("ResourcesSpent", "gold", resources_spent[Game.Resources.GOLD])
 	save.set_value("ResourcesSpent", "iron", resources_spent[Game.Resources.IRON])
 	save.set_value("ResourcesSpent", "stone", resources_spent[Game.Resources.STONE])
-	save.save("user://stats_"+game_name+".save")
+	if !DirAccess.dir_exists_absolute("user://stats"):
+		DirAccess.make_dir_absolute("user://stats")
+	save.save("user://stats/game_"+game_name+".save")

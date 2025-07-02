@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5s2amxlom3ga"]
+
+[ext_resource type="Theme" uid="uid://tit816pj440" path="res://resources/ui/themes/mainmenu/button_theme_main_menu.tres" id="1_cr2hr"]
+[ext_resource type="Script" uid="uid://dq4ibvl3nmw84" path="res://scenes/ui/stats/stats_button.gd" id="2_y4lbk"]
+
+[node name="StatsButton" type="Button"]
+theme = ExtResource("1_cr2hr")
+text = "Game"
+script = ExtResource("2_y4lbk")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

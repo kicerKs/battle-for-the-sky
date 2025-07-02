@@ -13,6 +13,9 @@ func _ready():
 
 func start_game():
 	play_background_music.rpc()
+	Global.game_name = str(Time.get_datetime_string_from_system())
+	Global.game_name = Global.game_name.replace(":","_")
+	Global.game_name = Global.game_name.replace("-","_")
 
 @rpc("call_local", "any_peer", "reliable")
 func play_background_music():

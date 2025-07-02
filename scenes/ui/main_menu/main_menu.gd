@@ -43,6 +43,8 @@ func _on_cancel_button_pressed() -> void:
 func _show_connection_error_message():
 	%ConnectionMessage.text = "Failed to connect to the server! Check if IP address is valid and try again."
 
-
 func _on_exit_pressed() -> void:
 	get_tree().quit()
+
+func _on_stats_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/ui/stats/stats.tscn")
