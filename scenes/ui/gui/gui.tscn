@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dp4h3hdabpmsc"]
+[gd_scene load_steps=14 format=3 uid="uid://dp4h3hdabpmsc"]
 
 [ext_resource type="Script" uid="uid://bqdu7c24sxdfi" path="res://scenes/ui/gui/gui.gd" id="1_w6p3d"]
 [ext_resource type="PackedScene" uid="uid://dghdx8l8c2e6f" path="res://scenes/ui/gui/building_panel/building_panel.tscn" id="2_7a7fb"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://edm5uaol81ig" path="res://scenes/ui/gui/resources_panel/resources_panel.tscn" id="4_00xwm"]
 [ext_resource type="FontFile" uid="uid://ba8wsyl36d580" path="res://resources/ui/fonts/Quintessential-Regular.ttf" id="6_a6c70"]
 [ext_resource type="Theme" uid="uid://tit816pj440" path="res://resources/ui/themes/mainmenu/button_theme_main_menu.tres" id="7_1j7g2"]
+[ext_resource type="Texture2D" uid="uid://bqd64lwx1xt6l" path="res://assets/resources/frame2.png" id="8_w62vw"]
+[ext_resource type="LabelSettings" uid="uid://bmu2llc0hca8r" path="res://scenes/ui/gui/resources_panel/resource_panel_label_settings.tres" id="9_fn1jr"]
 [ext_resource type="PackedScene" uid="uid://b00qlr3qdf2xk" path="res://scenes/ui/gui/unit_panel/unit_panel.tscn" id="13_w6p3d"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w62vw"]
@@ -33,6 +35,10 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_00xwm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7apbk"]
 
 [node name="GUI" type="CanvasLayer"]
 script = ExtResource("1_w6p3d")
@@ -275,6 +281,47 @@ size_flags_horizontal = 3
 theme = ExtResource("7_1j7g2")
 text = "Exit"
 
+[node name="TimerPanel" type="PanelContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -130.0
+offset_bottom = 61.0
+grow_horizontal = 0
+theme = SubResource("Theme_00xwm")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_7apbk")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="TimerPanel"]
+layout_mode = 2
+texture = ExtResource("8_w62vw")
+region_rect = Rect2(1, 1, 64, 64)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="TimerPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TimerPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="Timer" type="Label" parent="TimerPanel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "00:00"
+label_settings = ExtResource("9_fn1jr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+
 [connection signal="building_selected" from="ConstructionPanel" to="." method="_on_construction_panel_building_selected"]
 [connection signal="pressed" from="JoiningGameBox/MarginContainer/VBoxContainer/HBoxContainer2/JoinButton" to="." method="_on_join_button_pressed"]
 [connection signal="pressed" from="WinScreen/MarginContainer/VBoxContainer/HBoxContainer2/JoinButton" to="." method="_on_join_button_pressed"]
@@ -282,3 +329,4 @@ text = "Exit"
 [connection signal="value_changed" from="PauseMenu/MarginContainer/VBoxContainer/GridContainer/HSlider" to="." method="_on_h_slider_value_changed"]
 [connection signal="value_changed" from="PauseMenu/MarginContainer/VBoxContainer/GridContainer/HSlider2" to="." method="_on_h_slider_2_value_changed"]
 [connection signal="pressed" from="PauseMenu/MarginContainer/VBoxContainer/CancelButton" to="." method="_on_exit_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

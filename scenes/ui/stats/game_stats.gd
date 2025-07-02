@@ -7,7 +7,10 @@ func _ready():
 	print(Global.game_name)
 	if err != OK:
 		return
-	
+	var time_in_seconds = config.get_value("Game", "time")
+	var m = int(time_in_seconds / 60.0)
+	var s = time_in_seconds - m * 60
+	%GameTime.text = '%02d:%02d' % [m, s]
 	%BuildingsBuilt.text = str(config.get_value("Islands", "buildings_built"))
 	%IslandsConquered.text = str(config.get_value("Islands", "islands_conquered"))
 	%IslandsLost.text = str(config.get_value("Islands", "islands_lost"))

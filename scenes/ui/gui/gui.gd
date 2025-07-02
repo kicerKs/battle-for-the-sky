@@ -2,6 +2,8 @@ extends CanvasLayer
 
 signal building_selected(building)
 
+var time_in_seconds = 0
+
 func _ready() -> void:
 	var window_width = get_viewport().size.x
 	var char_panel = get_node("characterPanel")
@@ -83,3 +85,11 @@ func _on_h_slider_value_changed(value: float) -> void:
 
 func _on_h_slider_2_value_changed(value: float) -> void:
 	AudioManager.sound_volume = value
+
+
+func _on_timer_timeout() -> void:
+	time_in_seconds += 1
+	Global.set_game_time(time_in_seconds)
+	var m = int(time_in_seconds / 60.0)
+	var s = time_in_seconds - m * 60
+	%Timer.text = '%02d:%02d' % [m, s]

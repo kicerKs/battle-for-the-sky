@@ -4,6 +4,7 @@ extends Node
 
 var game_name = ""
 
+var game_time = 0
 var units_killed = 0
 var monsters_killed = 0
 var units_lost = 0
@@ -110,6 +111,10 @@ func add_unit_lost():
 	units_lost += 1
 	save_stats()
 
+func set_game_time(time):
+	game_time = time
+	save_stats()
+
 func add_resource_generated(resource, number):
 	resources_generated[resource] += number
 	save_stats()
@@ -148,6 +153,8 @@ func save_stats():
 	save.set_value("ResourcesSpent", "gold", resources_spent[Game.Resources.GOLD])
 	save.set_value("ResourcesSpent", "iron", resources_spent[Game.Resources.IRON])
 	save.set_value("ResourcesSpent", "stone", resources_spent[Game.Resources.STONE])
+	save.set_value("Game", "time", game_time)
 	if !DirAccess.dir_exists_absolute("user://stats"):
 		DirAccess.make_dir_absolute("user://stats")
+	print("lol?")
 	save.save("user://stats/game_"+game_name+".save")

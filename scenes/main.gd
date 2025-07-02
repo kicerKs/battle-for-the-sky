@@ -16,6 +16,7 @@ func start_game():
 	Global.game_name = str(Time.get_datetime_string_from_system())
 	Global.game_name = Global.game_name.replace(":","_")
 	Global.game_name = Global.game_name.replace("-","_")
+	$GUI/Timer.start()
 
 @rpc("call_local", "any_peer", "reliable")
 func play_background_music():
@@ -35,12 +36,14 @@ func play_victory_music(id):
 	if id == multiplayer.get_unique_id():
 		$WinMusic.play()
 		$AudioStreamPlayer.stop()
+		$GUI/Timer.stop()
 
 @rpc("call_local", "any_peer", "reliable")
 func play_elimination_music(id):
 	if id == multiplayer.get_unique_id():
 		$DefeatMusic.play()
 		$AudioStreamPlayer.stop()
+		$GUI/Timer.stop()
 
 func play_island_change_sounds(before, after):
 	pics.rpc(before, after)
