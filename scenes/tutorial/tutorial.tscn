@@ -1,0 +1,35 @@
+[gd_scene load_steps=9 format=3 uid="uid://dpv1134ifek5l"]
+
+[ext_resource type="Script" uid="uid://c1uudd1032ia1" path="res://scenes/main.gd" id="1_ckvwl"]
+[ext_resource type="PackedScene" uid="uid://0kxosusx0u58" path="res://scenes/tutorial/tutorial_world/tutorial_world.tscn" id="2_ha56g"]
+[ext_resource type="PackedScene" uid="uid://exouaone4o6o" path="res://scenes/tutorial/tutorial_gui/tutorial_gui.tscn" id="3_ha56g"]
+[ext_resource type="AudioStream" uid="uid://gxe1codspx2i" path="res://assets/audio/bg music (andorios).mp3" id="4_g2equ"]
+[ext_resource type="AudioStream" uid="uid://dlq7r0xx47unq" path="res://assets/audio/wygranie (freesound_community).mp3" id="5_tbcdj"]
+[ext_resource type="AudioStream" uid="uid://b23x5a2lwvc7r" path="res://assets/audio/przegranie gry (floraphonic).mp3" id="6_ej4tf"]
+[ext_resource type="AudioStream" uid="uid://cbxnfrpq752nc" path="res://assets/audio/podbicie wyspy (freesound_community).mp3" id="7_0hilk"]
+[ext_resource type="AudioStream" uid="uid://c5m2ou8qy1c7l" path="res://assets/audio/stracenie wyspy (floraphonic).mp3" id="8_wr8iv"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_ckvwl")
+
+[node name="World" parent="." instance=ExtResource("2_ha56g")]
+
+[node name="GUI" parent="." instance=ExtResource("3_ha56g")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_g2equ")
+parameters/looping = true
+
+[node name="WinMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_tbcdj")
+
+[node name="DefeatMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ej4tf")
+
+[node name="IslandConquered" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_0hilk")
+
+[node name="IslandLost" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_wr8iv")
+
+[connection signal="building_selected" from="GUI" to="World" method="building_selected"]

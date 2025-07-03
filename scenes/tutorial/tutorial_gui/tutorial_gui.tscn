@@ -1,0 +1,729 @@
+[gd_scene load_steps=12 format=3 uid="uid://exouaone4o6o"]
+
+[ext_resource type="Script" uid="uid://drdaojxdvwwsr" path="res://scenes/tutorial/tutorial_gui/tutorial_gui.gd" id="1_2vqyv"]
+[ext_resource type="PackedScene" uid="uid://dghdx8l8c2e6f" path="res://scenes/ui/gui/building_panel/building_panel.tscn" id="2_ivrl3"]
+[ext_resource type="PackedScene" uid="uid://53p3f5wggdfm" path="res://scenes/tutorial/tutorial_gui/construction_panel/tutorial_construction_panel.tscn" id="3_ll2gh"]
+[ext_resource type="PackedScene" uid="uid://edm5uaol81ig" path="res://scenes/ui/gui/resources_panel/resources_panel.tscn" id="4_5lesw"]
+[ext_resource type="PackedScene" uid="uid://b00qlr3qdf2xk" path="res://scenes/ui/gui/unit_panel/unit_panel.tscn" id="5_7ca28"]
+[ext_resource type="FontFile" uid="uid://ba8wsyl36d580" path="res://resources/ui/fonts/Quintessential-Regular.ttf" id="6_o7xvx"]
+[ext_resource type="Theme" uid="uid://tit816pj440" path="res://resources/ui/themes/mainmenu/button_theme_main_menu.tres" id="7_ocaiy"]
+[ext_resource type="Script" uid="uid://bigqq5yim8pfy" path="res://scenes/tutorial/tutorial_gui/tutorial_boxes/tutorial_boxes.gd" id="8_ldijg"]
+[ext_resource type="Script" uid="uid://dmgqs7adakisa" path="res://scenes/tutorial/tutorial_gui/tutorial_boxes/tutorial_0.gd" id="9_sbco0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w62vw"]
+bg_color = Color(0.422388, 0.597074, 0.910494, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.401623, 0.262534, 0.0870988, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a6c70"]
+bg_color = Color(0.422388, 0.597074, 0.910494, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.401623, 0.262534, 0.0870988, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="GUI" type="CanvasLayer"]
+script = ExtResource("1_2vqyv")
+
+[node name="BuildingPanel" parent="." instance=ExtResource("2_ivrl3")]
+visible = false
+
+[node name="ConstructionPanel2" parent="." instance=ExtResource("3_ll2gh")]
+
+[node name="ResourcesPanel" parent="." instance=ExtResource("4_5lesw")]
+
+[node name="UnitPanel" parent="." instance=ExtResource("5_7ca28")]
+visible = false
+
+[node name="JoiningGameBox" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -182.0
+offset_top = -71.5
+offset_right = 182.0
+offset_bottom = 71.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w62vw")
+
+[node name="MarginContainer" type="MarginContainer" parent="JoiningGameBox"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="JoiningGameBox/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="JoiningGameBox/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("6_o7xvx")
+theme_override_font_sizes/font_size = 32
+text = "Host abandoned game, you won!"
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="JoiningGameBox/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="JoinButton" type="Button" parent="JoiningGameBox/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("7_ocaiy")
+text = "Victory!"
+
+[node name="WinScreen" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -182.0
+offset_top = -71.5
+offset_right = 182.0
+offset_bottom = 71.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w62vw")
+
+[node name="MarginContainer" type="MarginContainer" parent="WinScreen"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WinScreen/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="WinScreen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("6_o7xvx")
+theme_override_font_sizes/font_size = 32
+text = "You conquered all the lands, congratulations!"
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="WinScreen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="JoinButton" type="Button" parent="WinScreen/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("7_ocaiy")
+text = "Victory!"
+
+[node name="DefeatScreen" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -182.0
+offset_top = -71.5
+offset_right = 182.0
+offset_bottom = 71.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w62vw")
+
+[node name="MarginContainer" type="MarginContainer" parent="DefeatScreen"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DefeatScreen/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="DefeatScreen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("6_o7xvx")
+theme_override_font_sizes/font_size = 32
+text = "Your lands have vanished... Good luck next time!"
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="DefeatScreen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="JoinButton" type="Button" parent="DefeatScreen/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("7_ocaiy")
+text = "Ouch!"
+
+[node name="PauseMenu" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -182.0
+offset_top = -71.5
+offset_right = 182.0
+offset_bottom = 71.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_a6c70")
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseMenu"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="GridContainer" type="GridContainer" parent="PauseMenu/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 20
+columns = 2
+
+[node name="Label2" type="Label" parent="PauseMenu/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("6_o7xvx")
+theme_override_font_sizes/font_size = 32
+text = "Music"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="PauseMenu/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.001
+value = 1.0
+
+[node name="Label3" type="Label" parent="PauseMenu/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("6_o7xvx")
+theme_override_font_sizes/font_size = 32
+text = "Sound effects"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider2" type="HSlider" parent="PauseMenu/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.001
+value = 1.0
+
+[node name="Label" type="Label" parent="PauseMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("6_o7xvx")
+theme_override_font_sizes/font_size = 32
+text = "Do you want to exit game?"
+horizontal_alignment = 1
+
+[node name="CancelButton" type="Button" parent="PauseMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("7_ocaiy")
+text = "Exit"
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="TutorialBoxes" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("8_ldijg")
+
+[node name="Tutorial0" type="PanelContainer" parent="TutorialBoxes"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -528.5
+offset_top = -156.5
+offset_right = 528.5
+offset_bottom = 156.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w62vw")
+script = ExtResource("9_sbco0")
+
+[node name="MarginContainer" type="MarginContainer" parent="TutorialBoxes/Tutorial0"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TutorialBoxes/Tutorial0/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="TutorialBoxes/Tutorial0/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("6_o7xvx")
+theme_override_font_sizes/font_size = 32
+text = "Welcome to Battle of the Sky!
+In this game your goal is to eliminate all the opponents by conquering their islands.
+You can do so by training some units, but we'll come to it in a while.
+Ready?"
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TutorialBoxes/Tutorial0/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="NextButton" type="Button" parent="TutorialBoxes/Tutorial0/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("7_ocaiy")
+text = "Next"
+
+[node name="Tutorial1" type="PanelContainer" parent="TutorialBoxes"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+offset_top = 250.0
+offset_right = 633.0
+offset_bottom = 515.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_w62vw")
+script = ExtResource("9_sbco0")
+
+[node name="MarginContainer" type="MarginContainer" parent="TutorialBoxes/Tutorial1"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TutorialBoxes/Tutorial1/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="TutorialBoxes/Tutorial1/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("6_o7xvx")
+theme_override_font_sizes/font_size = 24
+text = "Here you can see all the resources you have now.
+There are five resources: wood, food, gold, iron and stone.
+They are used by building and training.
+Resources are generated by buildings, which we should place now."
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TutorialBoxes/Tutorial1/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="NextButton" type="Button" parent="TutorialBoxes/Tutorial1/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("7_ocaiy")
+text = "Next"
+
+[node name="Tutorial2" type="PanelContainer" parent="TutorialBoxes"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -316.5
+offset_top = 120.0
+offset_right = 316.5
+offset_bottom = 385.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w62vw")
+script = ExtResource("9_sbco0")
+
+[node name="MarginContainer" type="MarginContainer" parent="TutorialBoxes/Tutorial2"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TutorialBoxes/Tutorial2/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="TutorialBoxes/Tutorial2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("6_o7xvx")
+theme_override_font_sizes/font_size = 24
+text = "This is construction panel. Here you can select and place buildings.
+First few buildings are generation buildings. They will generate resources for you.
+Rest are training buildings. They will train units in exchange for resources.
+For the sake of this tutorial there are only three buildings. Rest you will need to
+discover by yourself :)"
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TutorialBoxes/Tutorial2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="NextButton" type="Button" parent="TutorialBoxes/Tutorial2/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("7_ocaiy")
+text = "Next"
+
+[node name="Tutorial3" type="PanelContainer" parent="TutorialBoxes"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -316.5
+offset_top = 120.0
+offset_right = 202.5
+offset_bottom = 225.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w62vw")
+script = ExtResource("9_sbco0")
+
+[node name="MarginContainer" type="MarginContainer" parent="TutorialBoxes/Tutorial3"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TutorialBoxes/Tutorial3/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="TutorialBoxes/Tutorial3/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("6_o7xvx")
+theme_override_font_sizes/font_size = 24
+text = "First thing first, you need some wood.
+Click on the Woodcutter's Hut above and place it on your island."
+horizontal_alignment = 1
+
+[node name="Tutorial4" type="PanelContainer" parent="TutorialBoxes"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -316.5
+offset_top = 120.0
+offset_right = 202.5
+offset_bottom = 225.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w62vw")
+script = ExtResource("9_sbco0")
+
+[node name="MarginContainer" type="MarginContainer" parent="TutorialBoxes/Tutorial4"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TutorialBoxes/Tutorial4/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="TutorialBoxes/Tutorial4/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("6_o7xvx")
+theme_override_font_sizes/font_size = 24
+text = "Very good! Now you will get some wood over time.
+You can see on the bottom of the screen that the building is now selected. 
+Generator buildings have two buttons. Bomb will delete the building.
+Second button will upgrade the building, if you have resources.
+You can deselect the building by clicking right mouse button."
+horizontal_alignment = 1
+
+[node name="Tutorial5" type="PanelContainer" parent="TutorialBoxes"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -316.5
+offset_top = 120.0
+offset_right = 202.5
+offset_bottom = 225.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w62vw")
+script = ExtResource("9_sbco0")
+
+[node name="MarginContainer" type="MarginContainer" parent="TutorialBoxes/Tutorial5"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TutorialBoxes/Tutorial5/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="TutorialBoxes/Tutorial5/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("6_o7xvx")
+theme_override_font_sizes/font_size = 24
+text = "Good! Now, let's go further. Literally.
+You can move your camera using WSAD or Arrow keys. When you scroll right,
+you can see another island with some goblins. We should conquer it. But to conquer it,
+we will need some units.
+Nearly all the units require food. So, shall we place a windmill?"
+horizontal_alignment = 1
+
+[node name="Tutorial6" type="PanelContainer" parent="TutorialBoxes"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -399.5
+offset_top = 120.0
+offset_right = 399.5
+offset_bottom = 307.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w62vw")
+script = ExtResource("9_sbco0")
+
+[node name="MarginContainer" type="MarginContainer" parent="TutorialBoxes/Tutorial6"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TutorialBoxes/Tutorial6/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="TutorialBoxes/Tutorial6/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("6_o7xvx")
+theme_override_font_sizes/font_size = 24
+text = "Very nice! You seem to catch things very fast.
+First building, that you can built that trains units, is House. It will train peasants.
+They are very weak, but it should be enough to kill those goblins.
+Build a House on your island."
+horizontal_alignment = 1
+
+[node name="Tutorial7" type="PanelContainer" parent="TutorialBoxes"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -399.0
+offset_top = 120.0
+offset_right = 384.0
+offset_bottom = 344.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w62vw")
+script = ExtResource("9_sbco0")
+
+[node name="MarginContainer" type="MarginContainer" parent="TutorialBoxes/Tutorial7"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TutorialBoxes/Tutorial7/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="TutorialBoxes/Tutorial7/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("6_o7xvx")
+theme_override_font_sizes/font_size = 24
+text = "Now it's good time to tell you what are these two new buttons on the House.
+Target shield allows you to manually select which island units from this building
+should attack. The \"ZZZ\" button will prevent the building from training units."
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TutorialBoxes/Tutorial7/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="NextButton" type="Button" parent="TutorialBoxes/Tutorial7/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("7_ocaiy")
+text = "Next"
+
+[node name="Tutorial8" type="PanelContainer" parent="TutorialBoxes"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -332.5
+offset_top = 120.0
+offset_right = 332.5
+offset_bottom = 266.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w62vw")
+script = ExtResource("9_sbco0")
+
+[node name="MarginContainer" type="MarginContainer" parent="TutorialBoxes/Tutorial8"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TutorialBoxes/Tutorial8/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="TutorialBoxes/Tutorial8/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("6_o7xvx")
+theme_override_font_sizes/font_size = 24
+text = "Units will go to their selected front and attack enemy units in range.
+When all units on an island is, they will start conquering island.
+Now watch as your units are conquering goblin island."
+horizontal_alignment = 1
+
+[node name="Tutorial9" type="PanelContainer" parent="TutorialBoxes"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -332.5
+offset_top = 120.0
+offset_right = 332.5
+offset_bottom = 266.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w62vw")
+script = ExtResource("9_sbco0")
+
+[node name="MarginContainer" type="MarginContainer" parent="TutorialBoxes/Tutorial9"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TutorialBoxes/Tutorial9/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="TutorialBoxes/Tutorial9/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.882353, 0.909804, 0.505882, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("6_o7xvx")
+theme_override_font_sizes/font_size = 24
+text = "Very well! You are one step closer to finishing this map!
+There is one island left, this time with cyclops.
+Build, train, conquer! Good luck!"
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TutorialBoxes/Tutorial9/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="NextButton" type="Button" parent="TutorialBoxes/Tutorial9/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("7_ocaiy")
+text = "Close"
+
+[connection signal="building_selected" from="ConstructionPanel2" to="." method="_on_construction_panel_building_selected"]
+[connection signal="pressed" from="JoiningGameBox/MarginContainer/VBoxContainer/HBoxContainer2/JoinButton" to="." method="_on_join_button_pressed"]
+[connection signal="pressed" from="WinScreen/MarginContainer/VBoxContainer/HBoxContainer2/JoinButton" to="." method="_on_join_button_pressed"]
+[connection signal="pressed" from="DefeatScreen/MarginContainer/VBoxContainer/HBoxContainer2/JoinButton" to="." method="_on_join_button_pressed"]
+[connection signal="value_changed" from="PauseMenu/MarginContainer/VBoxContainer/GridContainer/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="PauseMenu/MarginContainer/VBoxContainer/GridContainer/HSlider2" to="." method="_on_h_slider_2_value_changed"]
+[connection signal="pressed" from="PauseMenu/MarginContainer/VBoxContainer/CancelButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="TutorialBoxes/Tutorial0/MarginContainer/VBoxContainer/HBoxContainer2/NextButton" to="TutorialBoxes/Tutorial0" method="_on_next_button_pressed"]
+[connection signal="pressed" from="TutorialBoxes/Tutorial1/MarginContainer/VBoxContainer/HBoxContainer2/NextButton" to="TutorialBoxes/Tutorial1" method="_on_next_button_pressed"]
+[connection signal="pressed" from="TutorialBoxes/Tutorial2/MarginContainer/VBoxContainer/HBoxContainer2/NextButton" to="TutorialBoxes/Tutorial2" method="_on_next_button_pressed"]
+[connection signal="pressed" from="TutorialBoxes/Tutorial7/MarginContainer/VBoxContainer/HBoxContainer2/NextButton" to="TutorialBoxes/Tutorial2" method="_on_next_button_pressed"]
+[connection signal="pressed" from="TutorialBoxes/Tutorial9/MarginContainer/VBoxContainer/HBoxContainer2/NextButton" to="TutorialBoxes/Tutorial2" method="_on_next_button_pressed"]

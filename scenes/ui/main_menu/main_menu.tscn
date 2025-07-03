@@ -61,7 +61,15 @@ offset_left = 785.0
 offset_top = 331.0
 offset_right = 1135.0
 offset_bottom = 906.0
-theme_override_constants/separation = 50
+theme_override_constants/separation = 35
+
+[node name="TutorialButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(350, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme = ExtResource("3_r70wa")
+text = "Tutorial"
 
 [node name="HostGameButton" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(350, 75)
@@ -91,7 +99,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 theme = ExtResource("3_r70wa")
-text = "Stats"
+text = "Game history"
 
 [node name="CreditsButton" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(350, 75)
@@ -209,6 +217,7 @@ size_flags_horizontal = 3
 theme = ExtResource("3_r70wa")
 text = "Cancel"
 
+[connection signal="pressed" from="VBoxContainer/TutorialButton" to="." method="_on_tutorial_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HostGameButton" to="." method="_on_host_game_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/JoinGameButton" to="." method="_on_multi_but_pressed"]
 [connection signal="pressed" from="VBoxContainer/SettingsButton" to="." method="_on_set_but_pressed"]

@@ -1,0 +1,507 @@
+[gd_scene load_steps=16 format=3 uid="uid://vx07kcqcs04"]
+
+[ext_resource type="Script" uid="uid://revmvetclto8" path="res://scenes/ui/gui/building_panel/building_panel.gd" id="1_8pk5u"]
+[ext_resource type="Texture2D" uid="uid://bqd64lwx1xt6l" path="res://assets/resources/frame2.png" id="2_p6l8c"]
+[ext_resource type="Texture2D" uid="uid://ci2bkvttnpqdi" path="res://assets/buildings/house 1 cropped.png" id="3_qd45r"]
+[ext_resource type="LabelSettings" uid="uid://dnnraievjxt1t" path="res://scenes/ui/gui/building_panel/building_panel_label_settings.tres" id="4_ya6n1"]
+[ext_resource type="Texture2D" uid="uid://yf8tb4f1enp7" path="res://assets/icons/hp.png" id="5_1nran"]
+[ext_resource type="Texture2D" uid="uid://dryn31lwjtfhw" path="res://assets/icons/building production.png" id="6_clqi1"]
+[ext_resource type="Texture2D" uid="uid://b8aitqlv5meyj" path="res://assets/resources/human.png" id="7_0woyf"]
+[ext_resource type="Texture2D" uid="uid://c1be1e8s0fvca" path="res://assets/resources/wood.png" id="8_u8h3f"]
+[ext_resource type="Texture2D" uid="uid://cq4at1c2y4in8" path="res://assets/resources/food.png" id="9_vo328"]
+[ext_resource type="Texture2D" uid="uid://def8x7rbpe8dm" path="res://assets/resources/gold.png" id="10_ukotd"]
+[ext_resource type="Texture2D" uid="uid://cu47poko5g5im" path="res://assets/resources/stone.png" id="11_xed8p"]
+[ext_resource type="Texture2D" uid="uid://cdvxgk3p45brw" path="res://assets/resources/iron.png" id="12_i1l1f"]
+[ext_resource type="Texture2D" uid="uid://c5xrjey8kacnq" path="res://assets/icons/building time.png" id="13_eua6a"]
+[ext_resource type="Texture2D" uid="uid://c555ryq6v6pc" path="res://assets/icons/building can upgrade.png" id="14_w3axs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wgegm"]
+
+[node name="BuildingPanel" type="PanelContainer"]
+custom_minimum_size = Vector2(800, 0)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -172.0
+offset_right = 250.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxEmpty_wgegm")
+script = ExtResource("1_8pk5u")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_p6l8c")
+patch_margin_left = 30
+patch_margin_top = 10
+patch_margin_right = 30
+patch_margin_bottom = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_constants/margin_left = 13
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 13
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="icon + name" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/icon + name"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_right = 25
+
+[node name="BuildingIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/icon + name/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("3_qd45r")
+expand_mode = 5
+
+[node name="BuildingName" type="Label" parent="MarginContainer/HBoxContainer/icon + name"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Building name"
+label_settings = ExtResource("4_ya6n1")
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="statistics" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="HP Container" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/HP Container"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("5_1nran")
+expand_mode = 5
+
+[node name="hp_label" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/HP Container"]
+layout_mode = 2
+size_flags_stretch_ratio = 3.58
+text = "300/300"
+label_settings = ExtResource("4_ya6n1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Production Container" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("6_clqi1")
+expand_mode = 5
+
+[node name="Unit Container" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="UnitTextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("7_0woyf")
+expand_mode = 5
+
+[node name="UniWood" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container/UniWood"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("8_u8h3f")
+expand_mode = 5
+
+[node name="UniWoodCountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container/UniWood"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "25"
+label_settings = ExtResource("4_ya6n1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UniFood" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container/UniFood"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("9_vo328")
+expand_mode = 5
+
+[node name="UniFoodCountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container/UniFood"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "25"
+label_settings = ExtResource("4_ya6n1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UniGold" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container/UniGold"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("10_ukotd")
+expand_mode = 5
+
+[node name="UniGoldCountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container/UniGold"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "25"
+label_settings = ExtResource("4_ya6n1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UniStone" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container/UniStone"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("11_xed8p")
+expand_mode = 5
+
+[node name="UniStoneCountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container/UniStone"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "25"
+label_settings = ExtResource("4_ya6n1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UniIron" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container/UniIron"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("12_i1l1f")
+expand_mode = 5
+
+[node name="UniIronCountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container/UniIron"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "25"
+label_settings = ExtResource("4_ya6n1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UniTime" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container/UniTime"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("13_eua6a")
+expand_mode = 5
+
+[node name="UniTimeCountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Unit Container/UniTime"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "25"
+label_settings = ExtResource("4_ya6n1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Resource Container" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ResWood" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container/ResWood"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("8_u8h3f")
+expand_mode = 5
+
+[node name="ResWoodCountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container/ResWood"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "25"
+label_settings = ExtResource("4_ya6n1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResFood" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container/ResFood"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("9_vo328")
+expand_mode = 5
+
+[node name="ResFoodCountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container/ResFood"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "25"
+label_settings = ExtResource("4_ya6n1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResGold" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container/ResGold"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("10_ukotd")
+expand_mode = 5
+
+[node name="ResGoldCountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container/ResGold"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "25"
+label_settings = ExtResource("4_ya6n1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResStone" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container/ResStone"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("11_xed8p")
+expand_mode = 5
+
+[node name="ResStoneCountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container/ResStone"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "25"
+label_settings = ExtResource("4_ya6n1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResIron" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container/ResIron"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("12_i1l1f")
+expand_mode = 5
+
+[node name="ResIronCountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container/ResIron"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "25"
+label_settings = ExtResource("4_ya6n1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResTime" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container/ResTime"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("13_eua6a")
+expand_mode = 5
+
+[node name="ResTimeCountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Production Container/Resource Container/ResTime"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "25"
+label_settings = ExtResource("4_ya6n1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Upgrade Container" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 10
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("14_w3axs")
+expand_mode = 5
+
+[node name="UpWood" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container/UpWood"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("8_u8h3f")
+expand_mode = 5
+
+[node name="UpWoodCountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container/UpWood"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "25"
+label_settings = ExtResource("4_ya6n1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UpFood" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container/UpFood"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("9_vo328")
+expand_mode = 5
+
+[node name="UpFoodCountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container/UpFood"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "25"
+label_settings = ExtResource("4_ya6n1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UpGold" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container/UpGold"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("10_ukotd")
+expand_mode = 5
+
+[node name="UpGoldCountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container/UpGold"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "25"
+label_settings = ExtResource("4_ya6n1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UpStone" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container/UpStone"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("11_xed8p")
+expand_mode = 5
+
+[node name="UpStoneCountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container/UpStone"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "25"
+label_settings = ExtResource("4_ya6n1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UpIron" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container/UpIron"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("12_i1l1f")
+expand_mode = 5
+
+[node name="UpIronCountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/statistics/Upgrade Container/UpIron"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "25"
+label_settings = ExtResource("4_ya6n1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Building placeholder text"
+label_settings = ExtResource("4_ya6n1")
+horizontal_alignment = 1

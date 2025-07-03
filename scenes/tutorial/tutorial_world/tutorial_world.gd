@@ -28,7 +28,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _ready():
 	Game.world = $VFX
-	
+	Lobby.create_game()
 
 func _process(delta: float) -> void:
 	if placement_mode:
