@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://dhna12dlh1nhk" path="res://assets/units/knight_blue.png" id="1_1i2fy"]
 [ext_resource type="Script" uid="uid://cayakk8o7fjyy" path="res://resources/empire/units/unit_stats.gd" id="2_ntrk8"]
 [ext_resource type="Texture2D" uid="uid://d2xos3p8ue868" path="res://assets/units/knight_green.png" id="3_8ylrw"]
+[ext_resource type="Texture2D" uid="uid://dh1t68x8s0crg" path="res://assets/units/knight_purple.png" id="4_1i2fy"]
 [ext_resource type="Texture2D" uid="uid://d3mclj70sdn7r" path="res://assets/units/knight_red.png" id="4_o4v4c"]
-[ext_resource type="Texture2D" uid="uid://ydh2j76stlfe" path="res://assets/units/soldier_red.png" id="5_p2jmg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5t4rl"]
 atlas = ExtResource("1_1i2fy")
@@ -16,8 +16,8 @@ name = "Knight"
 description = "Strong melee unit"
 level = 1
 spriteSheetBlue = ExtResource("1_1i2fy")
-spriteSheetRed = ExtResource("5_p2jmg")
-spriteSheetPurple = ExtResource("4_o4v4c")
+spriteSheetRed = ExtResource("4_o4v4c")
+spriteSheetPurple = ExtResource("4_1i2fy")
 spriteSheetGreen = ExtResource("3_8ylrw")
 max_hp = 150
 armor = 30
