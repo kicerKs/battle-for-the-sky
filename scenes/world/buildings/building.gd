@@ -59,6 +59,7 @@ func remove():
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and !placement_mode:
 		if event.button_index == MOUSE_BUTTON_LEFT:
+			SignalBus.hide_panels.emit()
 			SignalBus.building_clicked.emit(self)
 			if get_island().ownership == Lobby.player_info["color"]:
 				show_buttons()
