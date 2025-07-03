@@ -13,14 +13,14 @@ func _ready():
 
 func start_game():
 	play_background_music.rpc()
-	Global.game_name = str(Time.get_datetime_string_from_system())
-	Global.game_name = Global.game_name.replace(":","_")
-	Global.game_name = Global.game_name.replace("-","_")
-	$GUI/Timer.start()
 
 @rpc("call_local", "any_peer", "reliable")
 func play_background_music():
 	$AudioStreamPlayer.play()
+	Global.game_name = str(Time.get_datetime_string_from_system())
+	Global.game_name = Global.game_name.replace(":","_")
+	Global.game_name = Global.game_name.replace("-","_")
+	$GUI/Timer.start()
 
 func set_background_music_volume():
 	$AudioStreamPlayer.volume_linear = AudioManager.music_volume

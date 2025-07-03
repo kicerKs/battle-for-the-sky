@@ -61,7 +61,7 @@ offset_left = 785.0
 offset_top = 331.0
 offset_right = 1135.0
 offset_bottom = 906.0
-theme_override_constants/separation = 35
+theme_override_constants/separation = 27
 
 [node name="TutorialButton" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(350, 75)
