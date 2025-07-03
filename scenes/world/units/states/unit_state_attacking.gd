@@ -40,6 +40,8 @@ func physics_update(delta: float) -> void:
 	unit.movement_component.update_movement(delta)
 
 func update(delta: float) -> void:
+	if owner == null:
+		return
 	timer -= delta
 	if timer <= 0:
 		timer = attack_speed
