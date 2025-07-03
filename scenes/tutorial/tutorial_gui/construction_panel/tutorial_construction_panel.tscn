@@ -43,16 +43,19 @@ layout_mode = 2
 theme_override_constants/separation = 10
 
 [node name="Woodcutter" parent="MarginContainer/HBoxContainer" instance=ExtResource("3_hy80l")]
+unique_name_in_owner = true
 layout_mode = 2
 building = ExtResource("4_naik8")
 building_stats = ExtResource("5_5kdaa")
 
 [node name="Farm" parent="MarginContainer/HBoxContainer" instance=ExtResource("3_hy80l")]
+unique_name_in_owner = true
 layout_mode = 2
 building = ExtResource("6_j5sgq")
 building_stats = ExtResource("7_aw1td")
 
 [node name="House" parent="MarginContainer/HBoxContainer" instance=ExtResource("3_hy80l")]
+unique_name_in_owner = true
 layout_mode = 2
 building = ExtResource("20_cgesj")
 building_stats = ExtResource("21_llq2g")
