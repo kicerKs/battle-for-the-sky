@@ -156,5 +156,4 @@ func save_stats():
 	save.set_value("Game", "time", game_time)
 	if !DirAccess.dir_exists_absolute("user://stats"):
 		DirAccess.make_dir_absolute("user://stats")
-	print("lol?")
 	save.save("user://stats/game_"+game_name+".save")
