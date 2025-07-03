@@ -198,7 +198,7 @@ func conquering_failed():
 func stop_conquering():
 	hide_conquering_bar.rpc()
 	remove_all_buildings.rpc()
-	conquering_time = 0
+	conquering_time = 5.0
 	progress_bar.value = 0.0
 	SignalBus.island_conquered.emit(ownership, conquering_unit_side)
 	ownership = conquering_unit_side

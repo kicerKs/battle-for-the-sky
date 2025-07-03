@@ -12,9 +12,8 @@ func _on_timer_timeout() -> void:
 	if multiplayer.is_server():
 		if source == null:
 			remove.rpc()
+			return
 		for target in get_overlapping_bodies():
-			if source == null:
-				remove.rpc()
 			if target is TestMonster:
 				source.attack_component.deal_damage(target)
 			elif target is TestCharacter:
